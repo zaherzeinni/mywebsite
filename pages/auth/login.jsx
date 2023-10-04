@@ -116,8 +116,8 @@ const login = () => {
                           {showPassword ? <ViewIcon /> : <ViewOffIcon/>  }
                         </Button>
                       </InputRightElement>
-
-                  </InputGroup>
+                      </InputGroup>
+                      
                       <FormErrorMessage>
                         {formik.errors.password}
                       </FormErrorMessage>

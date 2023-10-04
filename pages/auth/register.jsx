@@ -1,5 +1,7 @@
 import React from "react";
 import {
+  InputRightElement,
+  InputGroup,
   Box,
   Stack,
   Text,
@@ -9,10 +11,10 @@ import {
   HStack,
   Button,
   Heading,
-  Center,
   Flex,
   FormErrorMessage,
 } from "@chakra-ui/react";
+import { ViewIcon,ViewOffIcon } from '@chakra-ui/icons';
 import Link from "next/link";
 import * as Yup from "yup";
 import { useFormik } from "formik";
@@ -52,6 +54,7 @@ const RegisterPage = () => {
     },
   });
 
+  const [showPassword, setShowPassword] = React.useState(false)
 
   return (
     <div className="">
@@ -193,12 +196,22 @@ const RegisterPage = () => {
                       // isRequired
                     >
                   <FormLabel>Password</FormLabel>
+                  <InputGroup size='md'>
                   <Input 
-                  type="password" 
+                  type={showPassword ? 'text' : 'password'} 
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.password}
                   />
+                  <InputRightElement width='3.5rem'>
+                  <Button h='1.75rem' size='sm' onClick={() =>
+                  setShowPassword((showPassword) => !showPassword)
+                  }>
+                  {showPassword ? <ViewIcon /> : <ViewOffIcon/>  }
+                  </Button>
+                  </InputRightElement>
+                    </InputGroup>
+
                       <FormErrorMessage>
                         {formik.errors.password}
                       </FormErrorMessage>
