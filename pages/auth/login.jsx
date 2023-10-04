@@ -53,7 +53,7 @@ const login = () => {
                 </Text>
                 </Stack>
 
-                {/* form */}
+                {/* form text */}
 
                 <Box px="20px" py="35px" rounded={"lg"} bg="white" boxShadow={"xl"}>
                 <form onSubmit={formik.handleSubmit}>
