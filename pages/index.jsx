@@ -4,32 +4,32 @@ import { Box,Stack } from '@chakra-ui/react';
 
 const Home = () => {
     return (
-        <div >
+        <Box justifyContent={"center"} textAlign={"center"} 
+        minW={"100vw"} 
+        minH={"100vh"}
+        alignContent={"center"}
+        align="center"
+        justify="center"
+        >
              <Link href={"/auth/register"}>
                       {/* // inline block {span}  */}
-                      <Stack justifyContent={"center"} textAlign={"center"} 
-                      minW={"100vw"} 
-                      minH={"100vh"}
-                      alignContent={"center"}>
+                      <Stack >
                       <span as="span" className="bg-amber-500" 
                       >
                         Register Page
                       </span>
-                      </Stack>
+                      </Stack>  
                       </Link>
-                      
+                      <Stack>
                       <Link href={"/Cards"}>
-                      <Stack justifyContent={"center"} textAlign={"center"} 
-                      alignContent={"center"}>
                       <span as="span" className="bg-amber-500" 
                       >
                         Open Page Cards Design
                       </span>
-
-                      </Stack>
                     </Link>
+                    </Stack>
                     
-        </div>
+        </Box>
     );
 }
 
