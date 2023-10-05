@@ -5,7 +5,7 @@ import { Box,Stack } from '@chakra-ui/react';
 const Home = () => {
     return (
         <div >
-             <Link href={"/auth/login"}>
+             <Link href={"/auth/register"}>
                       {/* // inline block {span}  */}
                       <Stack justifyContent={"center"} textAlign={"center"} 
                       minW={"100vw"} 
@@ -13,8 +13,19 @@ const Home = () => {
                       alignContent={"center"}>
                       <span as="span" className="bg-amber-500" 
                       >
-                        login
+                        Register Page
                       </span>
+                      </Stack>
+                      </Link>
+                      
+                      <Link href={"/Cards"}>
+                      <Stack justifyContent={"center"} textAlign={"center"} 
+                      alignContent={"center"}>
+                      <span as="span" className="bg-amber-500" 
+                      >
+                        Open Page Cards Design
+                      </span>
+
                       </Stack>
                     </Link>
                     

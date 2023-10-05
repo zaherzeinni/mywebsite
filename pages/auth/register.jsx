@@ -18,8 +18,10 @@ import { ViewIcon,ViewOffIcon } from '@chakra-ui/icons';
 import Link from "next/link";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-// import {db} from '../../functions/firebase/index'
+import { useAuth } from "@/utils/context";
 
+// import {db} from '../../functions/firebase/index'
+//yes
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -54,7 +56,8 @@ const RegisterPage = () => {
     },
   });
 
-  const [showPassword, setShowPassword] = React.useState(false)
+  const [showPassword, setShowPassword] = React.useState(false);
+  const {name} = useAuth();
 
   return (
     <div className="">
@@ -73,7 +76,7 @@ const RegisterPage = () => {
 
           <Stack align={"center"}>
             <Heading fontSize={"4xl"} textAlign={"center"}>
-              Sign up
+              Sign up <span className="text-red-600" >{name}</span>
             </Heading>
 
 
@@ -249,3 +252,13 @@ const RegisterPage = () => {
 
 
 export default RegisterPage;
+
+
+
+
+// in Register
+// import { useAuth } from "@/utils/context";
+
+
+// const {name} = useAuth()
+
