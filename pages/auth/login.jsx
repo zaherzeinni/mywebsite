@@ -136,6 +136,7 @@ const login = () => {
                 </Box>
                 </HStack>
                 <Button
+                type='submit'
                 _hover={{ bg: "blue.500" }}
                 bg={"blue.400"}
                 color={"white"}

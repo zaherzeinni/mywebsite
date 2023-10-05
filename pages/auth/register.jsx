@@ -222,6 +222,7 @@ const RegisterPage = () => {
 
 
                 <Button mt="10px"
+                  type="submit"
                   _hover={{ bg: "blue.500" }}
                   bg={"blue.400"}
                   color={"white"}
