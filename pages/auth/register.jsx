@@ -1,7 +1,5 @@
 import React from "react";
 import {
-  InputRightElement,
-  InputGroup,
   Box,
   Stack,
   Text,
@@ -11,18 +9,29 @@ import {
   HStack,
   Button,
   Heading,
+  Center,
   Flex,
   FormErrorMessage,
+  InputGroup,
+  InputRightElement,
+  Spinner,
+  Avatar,
 } from "@chakra-ui/react";
-import { ViewIcon,ViewOffIcon } from '@chakra-ui/icons';
+import { ViewIcon, ViewOffIcon, AddIcon } from "@chakra-ui/icons";
 import Link from "next/link";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { useAuth } from "@/utils/context";
+import { useAuth } from "@/functions/context";
+import { useState, useRef } from "react";
+import { v4 as uuid } from "uuid";
 
-
-// import {db} from '../../functions/firebase/index'
-//yes
+import { storage } from "@/functions/firebase";
+import {
+  getDownloadURL,
+  ref as sRef,
+  deleteObject,
+  uploadBytesResumable,
+} from "firebase/storage";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -39,8 +48,9 @@ const validationSchema = Yup.object().shape({
     .required("LastName is required"),
 });
 
-
 const RegisterPage = () => {
+  const { name, register } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -50,217 +60,265 @@ const RegisterPage = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
-      console.log(values);
-
-
+      //  console.log(values);
+      register(
+        values.email,
+        values.password,
+        values.firstName,
+        values.lastName
+      );
       //resetForm();
     },
   });
 
-  const [showPassword, setShowPassword] = React.useState(false);
-  const {name} = useAuth();
+  const [imageAsset, setImageAsset] = useState(null);
+  const [imageId, setId] = useState("");
+  const [loadingImage, setImageLoading] = useState(false);
+  const [uploadingByte, setUploadingByte] = useState(null);
+
+  const fileInput = useRef();
+  const unique_id = uuid(); //12121dfhjgfihdfd
+
+  const UploadImage = (e) => {
+    const small_id = unique_id.slice(0, 8);
+    const imageFile = e.target.files[0];
+
+    setId(small_id);
+
+    console.log("small id", small_id);
+    console.log("image File-->", imageFile);
+
+    // to specify where i well store the image -->{in profile/{id}} profile as folder name and id as imageName
+    const storageRef = sRef(storage, `Profile/${small_id}`);
+    // then upload image to location in firebase/storage
+    const uploadTask = uploadBytesResumable(storageRef, imageFile);
+
+    // progress when start image Upload to firebase/storage
+    //state_change from firebase
+    uploadTask.on("state_change", (snapshot) => {
+        // calculate pircentge of uploaded data of image
+        const progressBar =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        //  slice the numbers after coma --> 1.3232 --> 1
+        const roundUp = Math.trunc(progressBar);
+        setImageLoading(true); // for  execute spinner Loading
+        setUploadingByte(roundUp); // for show number of progress --> 10%
+      },
+
+      (err) => {
+        console.log("err when uploading image", err);
+      },
+
+      () => {
+        // get Uploaded image URL from storage
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
+          // set image Url from storage in imageAsset
+          setImageAsset(downloadUrl);
+          console.log("downloadurl====>",downloadUrl)
+          // then stop loading spinner
+          setImageLoading(false);
+        });
+      }
+    );
+  };
 
   return (
-    <div className="">
-      <Flex
-        minH={"100vh"}
-        bg={"gray.100"}
-        //  to centered  children from top and button
-        //align-items
-        align={"center"}
-        //  to centered children from left and right in flex
-        justify={"center"}
-      >
-        <Stack mx={"auto"} maxW={"lg"} py={12} px={6}>
-          {/* ----header--- */}
+    <Flex align={"center"} justify={"center"} bg={"white"}>
+      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+        <Stack align={"center"}>
+          <Heading fontSize={"4xl"} textAlign={"center"}>
+            Sign up dev branch
+          </Heading>
+          <Text fontSize={"lg"} color={"gray.600"}>
+            to enjoy all of our cool features ✌️
+          </Text>
+        </Stack>
+        <Box rounded={"lg"} bg={"white"} boxShadow={"lg"} p={8}>
+          <form onSubmit={formik.handleSubmit}>
+            {/* ---------image Upload--- */}
+            <Center>
+             <Box>
+              {loadingImage ? <img src='downloadUrl' alt="image" /> : <Avatar/>}
+             </Box>
+             
+             
+              {/* {loadingImage ? () : ()} */}
 
+              {/* <Avatar alt='avatar'  /> */}
+            </Center>
 
-          <Stack align={"center"}>
-            <Heading fontSize={"4xl"} textAlign={"center"}>
-              Sign up <span className="text-red-600" >{name}</span>
-            </Heading>
+            <Stack spacing={4}>
+              <HStack className="!h-[120px]">
+                <Box h={"full"}>
+                  <FormControl
+                    py={"2"}
+                    isInvalid={
+                      formik.touched.firstName && formik.errors.firstName
+                        ? true
+                        : false
+                    }
+                    id="firstName"
+                    // isRequired
+                  >
+                    <FormLabel>
+                      First Name
+                      {/* {profile?.displayName} */}
+                    </FormLabel>
+                    <Input
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.firstName}
+                      //  onChange={e => setFirstName(e.target.value)}
+                      //  value={firstName}
 
+                      type="text"
+                    />
 
-            <Text fontSize={"lg"} color={"blue.400"}>
-              To Get Discount %
-            </Text>
-          </Stack>
+                    <FormErrorMessage>
+                      {formik.errors.firstName}
+                    </FormErrorMessage>
+                  </FormControl>
+                </Box>
+                <Box h={"full"}>
+                  <FormControl
+                    py={"2"}
+                    isInvalid={
+                      formik.touched.lastName && formik.errors.lastName
+                        ? true
+                        : false
+                    }
+                    id="lastName"
+                  >
+                    <FormLabel>Last Name</FormLabel>
+                    <Input
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.lastName}
+                      //  onChange={e => setLastName(e.target.value)}
+                      //  value={lastName}
 
+                      type="text"
+                    />
 
-          {/* form */}
-
-
-          <Box px={12} py={14} rounded={"lg"} bg={"white"} boxShadow={"xl"}>
-            <form onSubmit={formik.handleSubmit}>
-              <Stack spacing={4}>
-                {/* // for firstname and LastName */}
-                <HStack height={'85px'}>
-                  <Box height={'85px'}>
-                    <FormControl
-                      py={"2"}
-                      isInvalid={
-                        formik.touched.firstName && formik.errors.firstName
-                          ? true
-                          : false
-                      }
-                      id="firstName"
-                      // isRequired
-                    >
-                      <FormLabel>
-                        First Name
-                        {/* {profile?.displayName} */}
-                      </FormLabel>
-                      <Input
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.firstName}
-                        //  onChange={e => setFirstName(e.target.value)}
-                        //  value={firstName}
-
-
-                        type="text"
-                      />
-
-
-                      <FormErrorMessage>
-                        {formik.errors.firstName}
-                      </FormErrorMessage>
-                    </FormControl>
-                  </Box>
-
-
-                  <Box height={'85px'}>
-                    <FormControl
-                      py={"2"}
-                      isInvalid={
-                        formik.touched.lastName && formik.errors.lastName
-                          ? true
-                          : false
-                      }
-                      id="lastName"
-                      // isRequired
-                    >
-                      <FormLabel>
-                        Last Name
-                        {/* {profile?.displayName} */}
-                      </FormLabel>
-                      <Input
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.lastName}
-                        //  onChange={e => setFirstName(e.target.value)}
-                        //  value={firstName}
-
-
-                        type="text"
-                      />
-
-
-                      <FormErrorMessage>
-                        {formik.errors.lastName}
-                      </FormErrorMessage>
-                    </FormControl>
-                  </Box>
-                </HStack>
-
-
-                 <FormControl 
-                 height={'85px'}
-                      py={"2"}
-                      isInvalid={
-                        formik.touched.email && formik.errors.email
-                          ? true
-                          : false
-                      }
-                      id="email"
-                      // isRequired
-                    >
-                  <FormLabel>Email address</FormLabel>
-                  <Input 
-                  type="email"
+                    <FormErrorMessage>
+                      {formik.errors.lastName}
+                    </FormErrorMessage>
+                  </FormControl>
+                </Box>
+              </HStack>
+              <FormControl
+                isInvalid={
+                  formik.touched.email && formik.errors.email ? true : false
+                }
+                id="email"
+                isRequired
+              >
+                <FormLabel>Email address</FormLabel>
+                <Input
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.email}
+                  // onChange={e => setEmail(e.target.value)}
+                  // value={email}
+
+                  type="email"
+                />
+
+                <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+              </FormControl>
+              <FormControl
+                isInvalid={
+                  formik.touched.password && formik.errors.password
+                    ? true
+                    : false
+                }
+                id="password"
+                isRequired
+              >
+                <FormLabel>Password</FormLabel>
+                <InputGroup>
+                  <Input
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.password}
+                    // onChange={e => setPassword(e.target.value)}
+                    // value={password}
+                    type={showPassword ? "text" : "password"}
                   />
-                    <FormErrorMessage>
-                        {formik.errors.email}
-                      </FormErrorMessage>
-                </FormControl>
-
-
-                 <FormControl
-                 height={'85px'}
-                      py={"2"}
-                      isInvalid={
-                        formik.touched.password && formik.errors.password
-                          ? true
-                          : false
+                  <InputRightElement h={"full"}>
+                    <Button
+                      variant={"ghost"}
+                      onClick={() =>
+                        setShowPassword((showPassword) => !showPassword)
                       }
-                      id="password"
-                      // isRequired
                     >
-                  <FormLabel>Password</FormLabel>
-                  <InputGroup size='md'>
-                  <Input 
-                  type={showPassword ? 'text' : 'password'} 
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.password}
-                  />
-                  <InputRightElement width='3.5rem'>
-                  <Button h='1.75rem' size='sm' onClick={() =>
-                  setShowPassword((showPassword) => !showPassword)
-                  }>
-                  {showPassword ? <ViewIcon /> : <ViewOffIcon/>  }
-                  </Button>
+                      {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                    </Button>
                   </InputRightElement>
-                    </InputGroup>
+                </InputGroup>
 
-                      <FormErrorMessage>
-                        {formik.errors.password}
-                      </FormErrorMessage>
-                </FormControl>
+                <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
+              </FormControl>
 
-
-                <Button mt="10px"
-                  type="submit"
-                  _hover={{ bg: "blue.500" }}
-                  bg={"blue.400"}
+              <Box>
+                <Button
                   color={"white"}
+                  bg={"blue.400 !important"}
+                  mt={"20px"}
+                  mb={"5px"}
+                  _hover={{
+                    bg: "blue.600 !important",
+                  }}
+                  // open  the hidden input file when click in text upload to open images in computer
+
+                  onClick={() => fileInput.current.click()}
+                  leftIcon={<AddIcon />}
+                >
+                  Upload Image
+                  <input
+                    onChange={UploadImage}
+                    name="uploadimage"
+                    hidden
+                    ref={fileInput}
+                    type="file"
+                  />
+                </Button>
+              </Box>
+
+              <Stack spacing={10} pt={2}>
+                <Button
+                  type="submit"
+                  // onClick={onSubmit}
+                  loadingText="Submitting"
+                  size="lg"
+                  bg={"blue.400 !important"}
+                  color={"white"}
+                  _hover={{
+                    bg: "blue.500 !important",
+                  }}
                 >
                   Sign up
                 </Button>
-
-
-                <Box align={"center"}>
-                  <Text>
-                    Already a Register?
-                    <Link href={"/auth/login"}>
-                      {/* // inline block {span}  */}
-                      <Box as="span" color={"blue.400"} className="pl-2">
-                        login
-                      </Box>
-                    </Link>
-                  </Text>
-                </Box>
               </Stack>
-            </form>
-          </Box>
-        </Stack>
-      </Flex>
-    </div>
+              <Stack pt={6}>
+                <Text align={"center"}>
+                  Already a user?{" "}
+                  <Link href="/">
+                    <span>Login</span>
+                  </Link>
+                </Text>
+              </Stack>
+            </Stack>
+          </form>
+        </Box>
+      </Stack>
+    </Flex>
   );
 };
 
-
 export default RegisterPage;
-
-
-
 
 // in Register
 // import { useAuth } from "@/utils/context";
 
-
 // const {name} = useAuth()
-
