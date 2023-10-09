@@ -7,7 +7,7 @@ import { ViewIcon,ViewOffIcon } from '@chakra-ui/icons';
 import * as Yup from "yup";
 import { useFormik } from "formik";
 
-
+import Link from "next/link";
 
 
     
@@ -132,7 +132,9 @@ const login = () => {
                 </Radio>
                 </Box>
                 <Box color={"blue.400"}>
-                    Forgot Password?
+                <Link href="/auth/reset">
+                    <span>Forgot Password!</span>
+                  </Link>
                 </Box>
                 </HStack>
                 <Button

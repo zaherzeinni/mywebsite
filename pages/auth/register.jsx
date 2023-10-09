@@ -24,6 +24,7 @@ import { useFormik } from "formik";
 import { useAuth } from "@/functions/context";
 import { useState, useRef } from "react";
 import { v4 as uuid } from "uuid";
+import { toast } from 'react-toastify'
 
 import { storage } from "@/functions/firebase";
 import {
@@ -71,6 +72,9 @@ const RegisterPage = () => {
     },
   });
 
+  const defaultImage =
+    "https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg";
+
   const [imageAsset, setImageAsset] = useState(null);
   const [imageId, setId] = useState("");
   const [loadingImage, setImageLoading] = useState(false);
@@ -95,7 +99,9 @@ const RegisterPage = () => {
 
     // progress when start image Upload to firebase/storage
     //state_change from firebase
-    uploadTask.on("state_change", (snapshot) => {
+    uploadTask.on(
+      "state_change",
+      (snapshot) => {
         // calculate pircentge of uploaded data of image
         const progressBar =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -114,12 +120,20 @@ const RegisterPage = () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
           // set image Url from storage in imageAsset
           setImageAsset(downloadUrl);
-          console.log("downloadurl====>",downloadUrl)
+          console.log("downloadurl====>", downloadUrl);
           // then stop loading spinner
           setImageLoading(false);
         });
       }
     );
+  };
+
+  const DeleteImage = () => {
+    const deleteRef = sRef(storage, imageAsset);
+    deleteObject(deleteRef).then(() => {
+      toast.success("Image deleted successfully!");
+      setImageAsset(null);
+    });
   };
 
   return (
@@ -136,16 +150,82 @@ const RegisterPage = () => {
         <Box rounded={"lg"} bg={"white"} boxShadow={"lg"} p={8}>
           <form onSubmit={formik.handleSubmit}>
             {/* ---------image Upload--- */}
-            <Center>
-             <Box>
-              {loadingImage ? <img src='downloadUrl' alt="image" /> : <Avatar/>}
-             </Box>
-             
-             
-              {/* {loadingImage ? () : ()} */}
+            <>
+                  {loadingImage ? (
+                    <Box
+                    display={'flex'}
+                    flexDirection={'column'}
+                    justifyContent={'center'}
+                    alignItems={'center'}
+                   
+                    >
+                      {uploadingByte && (
+                        <Box
+                        fontSize={'18px'}
+                        fontWeight={'500'}
+                        color={'blue.400'}
+                       
+                        >
+                          {`${uploadingByte}%`}
+                        </Box>
+                      )}
+                      <Spinner/>
+                    {/* //  <CircularProgress /> */}
+                    </Box>
+                  ) : (
+                    <>
+                      {imageAsset ? (
+                        <Box
+                        w={'full'}
+                        display={'flex'}
+                        flexDirection={'column'}
+                        justifyContent={'center'}
+                        alignItems={'center'}
+                       
+                        >
+                          <Avatar
+                            src={imageAsset}
+                            alt="avatar"
+                            w={'100px'}
+                            h={'100px'}
+                           
+                          />
 
-              {/* <Avatar alt='avatar'  /> */}
-            </Center>
+
+                          <Button
+                          mt={'10px'}
+                          color={'red'}
+                         
+                            onClick={DeleteImage}
+                           // startIcon={<DeleteIcon />}
+                          >
+                            Delete
+                          </Button>
+                        </Box>
+                      ) : (
+                        <Box
+                       
+                  display={'flex'}
+                        >
+
+
+
+
+                   
+                        <Avatar alt="avatar"
+                        src={defaultImage}
+                      m={'auto'}
+                        w={'100px'}
+                        h={'100px'}
+                       
+                        />
+                            </Box>
+                      )}{" "}
+                    </>
+                  )}
+                </>
+
+
 
             <Stack spacing={4}>
               <HStack className="!h-[120px]">
@@ -259,7 +339,7 @@ const RegisterPage = () => {
 
                 <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
               </FormControl>
-
+              {!imageAsset && 
               <Box>
                 <Button
                   color={"white"}
@@ -285,6 +365,9 @@ const RegisterPage = () => {
                 </Button>
               </Box>
 
+                       }
+
+
               <Stack spacing={10} pt={2}>
                 <Button
                   type="submit"
@@ -303,7 +386,7 @@ const RegisterPage = () => {
               <Stack pt={6}>
                 <Text align={"center"}>
                   Already a user?{" "}
-                  <Link href="/">
+                  <Link href="/auth/login">
                     <span>Login</span>
                   </Link>
                 </Text>
