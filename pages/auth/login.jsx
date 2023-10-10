@@ -9,7 +9,7 @@ import { useFormik } from "formik";
 
 import Link from "next/link";
 
-
+import { useAuth } from '@/functions/context';
     
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -23,6 +23,7 @@ const validationSchema = Yup.object().shape({
 
 const login = () => {
 
+const {signInUser} = useAuth()
   
   const formik = useFormik({
     initialValues: {
@@ -31,10 +32,13 @@ const login = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
-      console.log(values);
+      //console.log(values);
+     signInUser(
+      values.email,
+      values.password,
+     )
 
-
-      //resetForm();
+      resetForm();
     },
   });
 

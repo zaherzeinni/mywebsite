@@ -66,7 +66,9 @@ const RegisterPage = () => {
         values.email,
         values.password,
         values.firstName,
-        values.lastName
+        values.lastName,
+        imageAsset ? imageAsset : defaultImage,
+        imageId
       );
       //resetForm();
     },

@@ -25,7 +25,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const Reset = () => {
-  const { signInUser } = useAuth();
+  const { forgetPassword } = useAuth();
 
   const formik = useFormik({
     initialValues: {
@@ -34,12 +34,17 @@ const Reset = () => {
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
       console.log("Values=====>",values);
-
+      forgetPassword(values.email)
       //  signInUser(values.email )
       //resetForm();
     },
   });
 
+
+
+
+
+  
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"} bg="grey.100">
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
