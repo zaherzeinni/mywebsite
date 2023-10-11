@@ -1,20 +1,34 @@
 import React from 'react';
 import {Data} from './Data'
-
+import { Card,Box,SimpleGrid,Button } from '@chakra-ui/react';
+import Link from 'next/link';
 const Cards = () => {
-    return (
+    
+  return (
         <div>
-           
-           <div className="card card-compact w-96 bg-base-100 shadow-xl">
-  <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  <div className="card-body">
-    <h2 className="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
-    </div>
+          <Link href={"/"}>
+          <Button className=' items-center flex ml-80 h-[100vh]'>Home</Button>
+          </Link>
+          <Card columns={[2,2,4] } mx={10} my={10} w={"70%"}>
+          <SimpleGrid spacing={5} columns={[1,1,2,3,4]} >
+            
+          {Data.map((Data)=> (         
+           <div className="card card-compact w-50 bg-base-100 shadow-xl" >
+  <figure >
+    <Box >
+    <img width={"100%"} style={{height:"350px"}} src={Data.IMG} alt="coats" />
+    </Box>
+    </figure>
+    
+  
+    <h2 className="card-title">{Data.Title}</h2>
+    
   </div>
-</div>
+))}
+
+</SimpleGrid>
+</Card>
+
         </div>
     );
 }

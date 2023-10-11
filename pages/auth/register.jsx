@@ -389,7 +389,8 @@ const RegisterPage = () => {
                 <Text align={"center"}>
                   Already a user?{" "}
                   <Link href="/auth/login">
-                    <span>Login</span>
+                    
+                    <span style={{color:"blue"}}>Login</span>
                   </Link>
                 </Text>
               </Stack>

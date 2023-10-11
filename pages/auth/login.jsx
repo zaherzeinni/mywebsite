@@ -131,16 +131,31 @@ const {signInUser} = useAuth()
 
                 <HStack justifyContent={"space-between"} py={4} >
                     <Box >
-                <Radio  >
-                    Remember me
-                </Radio>
+                    <Link href={"/auth/register"}>
+                      {/* // inline block {span}  */}
+                      
+                        <Box color="blue.400" _hover={{ color: "blue.500" }}>
+                        <span
+                        type='submit'
+                        _hover={{ bg: "blue.500" }}
+                        bg={"blue.400"}
+                        color={"white"}
+                        ml="115px"
+                        
+                        >
+                        Register Now
+                        </span>
+                        </Box>
+                       
+                      </Link>
                 </Box>
-                <Box color={"blue.400"}>
+                <Box color={"blue.400"} _hover={{ color: "blue.500" }}>
                 <Link href="/auth/reset">
                     <span>Forgot Password!</span>
                   </Link>
                 </Box>
                 </HStack>
+                
                 <Button
                 type='submit'
                 _hover={{ bg: "blue.500" }}

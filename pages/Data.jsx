@@ -1,4 +1,4 @@
-const data = [
+export const Data = [
 
     {
     IMG:"1.jpg",

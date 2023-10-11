@@ -1,30 +1,46 @@
 import React from 'react';
 import Link from "next/link";
-import { Box,Stack } from '@chakra-ui/react';
+import { Box,Stack,Button } from '@chakra-ui/react';
 
 const Home = () => {
     return (
-        <Box justifyContent={"center"} textAlign={"center"} 
-        minW={"100vw"} 
-        minH={"100vh"}
-        alignContent={"center"}
-        align="center"
-        justify="center"
+        <Box className="flex justify-center  items-center h-[100vh] "
+    
         >
              <Link href={"/auth/register"}>
                       {/* // inline block {span}  */}
                       <Stack >
-                      <span as="span" className="bg-amber-500" 
+                      <span as="span"  
                       >
+                        <Button>
                         Register Page
+                        </Button>
                       </span>
                       </Stack>  
                       </Link>
                       <Stack>
                       <Link href={"/Cards"}>
-                      <span as="span" className="bg-amber-500" 
+                      <span as="span"
                       >
-                        Open Page Cards Design
+                        <Button>
+                        Cards 
+                        </Button>
+                      </span>
+                    </Link>
+                      <Link href={"/"}>
+                      <span as="span"
+                      >
+                        <Button>
+                        Sign Out
+                        </Button>
+                      </span>
+                    </Link>
+                      <Link href={"/auth/login"}>
+                      <span as="span"
+                      >
+                        <Button>
+                        Log In
+                        </Button>
                       </span>
                     </Link>
                     </Stack>
