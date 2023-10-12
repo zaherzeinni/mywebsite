@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {InputRightElement ,Input,Stack,Box,Flex, Heading, Text, FormControl, FormLabel ,Radio, HStack,Button,FormErrorMessage, InputGroup} from '@chakra-ui/react';
+import {InputRightElement ,Input,Stack,Box,Flex, Heading, Text, FormControl, FormLabel ,Radio, HStack,Button,FormErrorMessage, InputGroup, Spinner} from '@chakra-ui/react';
 
 import { ViewIcon,ViewOffIcon } from '@chakra-ui/icons';
 
@@ -66,6 +66,7 @@ const {signInUser} = useAuth()
 
                 <Box px="20px" py="35px" rounded={"lg"} bg="white" boxShadow={"xl"}>
                 <form onSubmit={formik.handleSubmit}>
+
                 <Stack spacing={4}>
                     
                 <FormControl
@@ -79,6 +80,7 @@ const {signInUser} = useAuth()
                       id="email"
                       // isRequired
                     >
+                    
                   <FormLabel>Email address</FormLabel>
                   <Input 
                   type="email"
