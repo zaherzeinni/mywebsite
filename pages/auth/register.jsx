@@ -34,6 +34,8 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 
+import Loader from "@/components/common/Loader";
+
 const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("invalid email address")
@@ -50,7 +52,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const RegisterPage = () => {
-  const { name, register } = useAuth();
+  const { name, register,pageLoading } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const formik = useFormik({
     initialValues: {
@@ -138,7 +140,16 @@ const RegisterPage = () => {
     });
   };
 
+
+
+
+
   return (
+    <>
+    {pageLoading ?
+    <Loader />
+    :  
+  
     <Flex align={"center"} justify={"center"} bg={"white"}>
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
@@ -399,6 +410,8 @@ const RegisterPage = () => {
         </Box>
       </Stack>
     </Flex>
+}
+    </>
   );
 };
 

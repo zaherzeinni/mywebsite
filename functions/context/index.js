@@ -110,13 +110,42 @@ export const StateContextProvider = ({ children }) => {
     }
   };
 
+  const [userData,setUserData] = useState(null);
+
+  const [profile,setProfile] = useState(null);
+
+  useEffect (()=>{
+
+    onAuthStateChanged(auth,async(user) => {
+      console.log("user Auth Data--->",user);
+      //if auth user is already maked register or login
+      //find his profile data from firebase/firestore
+      if (user) {
+        //set Auth user data in state
+        setUserData(user);
+        //specify path for get Auth user data from firestore
+        const userRef = doc(db, "users",user?.uid);
+
+        const docSnap = await
+        getDoc(userRef);
+
+        //if Auth User have data in firestore set his data in setProfile
+
+        if (docSnap.exists()) {
+          console.log("firestore Data of user---->",docSnap.data());
+          setProfile(docSnap.data());
+
+        }
+      }
+      }
+      )
+  })
 
   return (
-    <StateContext.Provider value={{ name, register, signInUser,forgetPassword }}>
+    <StateContext.Provider value={{ name, register, signInUser,forgetPassword,
+    pageLoading,profile,userData }}>
       
-      <Box  > {!pageLoading ? <>{children}</> : <div className="   justify-center items-center flex !h-[100vh] "><Spinner  /></div> }
-
-      </Box>
+      {children}
     </StateContext.Provider>
   );
 };
@@ -125,6 +154,4 @@ export const useAuth = () => {
   const context = useContext(StateContext);
   return context;
 };
-
-
 
