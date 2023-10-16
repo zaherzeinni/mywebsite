@@ -1,52 +1,21 @@
 import React from 'react';
-import Link from "next/link";
-import { Box,Stack,Button } from '@chakra-ui/react';
+import { useAuth } from '@/functions/context';
 
-const Home = () => {
+
+
+const Index = () => {
+
+const {profile,userData} = useAuth();
+console.log("user Data---->",profile)
+
     return (
-        <Box className="flex justify-center  items-center h-[100vh] "
-    
-        >
-             <Link href={"/auth/register"}>
-                      {/* // inline block {span}  */}
-                      <Stack >
-                      <span as="span"  
-                      >
-                        <Button>
-                        Register Page
-                        </Button>
-                      </span>
-                      </Stack>  
-                      </Link>
-                      <Stack>
-                      <Link href={"/Cards"}>
-                      <span as="span"
-                      >
-                        <Button>
-                        Cards 
-                        </Button>
-                      </span>
-                    </Link>
-                      <Link href={"/"}>
-                      <span as="span"
-                      >
-                        <Button>
-                        Sign Out
-                        </Button>
-                      </span>
-                    </Link>
-                      <Link href={"/auth/login"}>
-                      <span as="span"
-                      >
-                        <Button>
-                        Log In
-                        </Button>
-                      </span>
-                    </Link>
-                    </Stack>
-                    
-        </Box>
+       
+        <div className='bg-green-500 text-white text-center my-4'>
+            Home Page
+        </div>
+      
+      
     );
 }
 
-export default Home;
+export default Index;

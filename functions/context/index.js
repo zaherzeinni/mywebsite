@@ -73,13 +73,13 @@ export const StateContextProvider = ({ children }) => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       
       console.log("user===>",userCredential.user.emailVerified)
-      if (userCredential.user.emailVerified === false) {
+      // if (userCredential.user.emailVerified === false) {
       
-        setPageLoading(false);
-        toast.error("please verify your email")
+      //   setPageLoading(false);
+      //   toast.error("please verify your email")
         
-        return
-      }
+      //   return
+      // }
      
       setPageLoading(false);
       toast.success("successfully signed in");
@@ -114,36 +114,51 @@ export const StateContextProvider = ({ children }) => {
 
   const [profile,setProfile] = useState(null);
 
-  useEffect (()=>{
 
-    onAuthStateChanged(auth,async(user) => {
-      console.log("user Auth Data--->",user);
-      //if auth user is already maked register or login
-      //find his profile data from firebase/firestore
-      if (user) {
-        //set Auth user data in state
-        setUserData(user);
-        //specify path for get Auth user data from firestore
-        const userRef = doc(db, "users",user?.uid);
+  useEffect(
+    () =>
+      onAuthStateChanged(auth, async (user) => {
+        if (user) {
+           setPageLoading(true);
+          console.log("auth ", user);
+          const userRef = doc(db, "users", user.uid);
 
-        const docSnap = await
-        getDoc(userRef);
+          const docSnap = await getDoc(userRef);
 
-        //if Auth User have data in firestore set his data in setProfile
+          if (docSnap.exists()) {
+            setProfile(docSnap.data());
+              setPageLoading(false);
+          }
 
-        if (docSnap.exists()) {
-          console.log("firestore Data of user---->",docSnap.data());
-          setProfile(docSnap.data());
-
+          // dispatch({
+          //   type: "INITIALISE",
+          //   payload: { isAuthenticated: true, user },
+          // });
+          // console.log("initialized state changed", profile);
         }
-      }
-      }
-      )
-  })
+         else {
+          // dispatch({
+          //   type: "INITIALISE",
+          //   payload: { isAuthenticated: false, user: null },
+          // });
+        }
+      }),
+
+    [
+     // dispatch
+    
+    ]
+  );
+
+
+const logout = () => {
+  signOut(auth);
+  setProfile(null);
+};
 
   return (
     <StateContext.Provider value={{ name, register, signInUser,forgetPassword,
-    pageLoading,profile,userData }}>
+    pageLoading,profile,userData,logout }}>
       
       {children}
     </StateContext.Provider>
