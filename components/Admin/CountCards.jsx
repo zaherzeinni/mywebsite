@@ -6,7 +6,7 @@ import { TbCategory } from "react-icons/tb";
 import { BiSolidFileJpg, BiSolidFilePdf } from "react-icons/bi";
 import { FaTrophy } from "react-icons/fa";
 
-export default function CountCard({cats}) {
+export default function CountCard({cats,subcats,products}) {
   return (
     <div>
 
@@ -19,7 +19,7 @@ export default function CountCard({cats}) {
             </div>
             <div className="text-xs md:text-lg">
               <p className="font-bold">Total Products</p>
-              <p>12</p>
+              <p>{products}</p>
             </div>
           </div>
         </Card>
@@ -40,8 +40,8 @@ export default function CountCard({cats}) {
               <FaSackDollar className="text-[#00952A] text-s min-[376px]:text-3xl" />
             </div>
             <div className="text-xs md:text-lg">
-              <p className="font-bold">Total Revenue</p>
-              <p>12</p>
+              <p className="font-bold">Sub Category</p>
+              <p>{subcats}</p>
             </div>
           </div>
         </Card>
@@ -51,7 +51,7 @@ export default function CountCard({cats}) {
               <FaTrophy className="text-[#74C5DF] text-s min-[376px]:text-3xl" />
             </div>
             <div className="text-xs md:text-lg">
-              <p className="font-bold">Most Sold Product</p>
+              <p className="font-bold">extra</p>
               <p>12</p>
             </div>
           </div>
