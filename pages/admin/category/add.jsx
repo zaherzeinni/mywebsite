@@ -1,15 +1,11 @@
 import React from 'react';
-import AdminLayout from '@/components/Admin/AdminLayout';
-
-
+import AddCategoryMain from '@/components/admin/category/addCategory';
 const Add = () => {
     return (
         <div>
-            <AdminLayout>
-            adddd
-            </AdminLayout>
+            <AddCategoryMain/>
         </div>
     );
 }
 
-export default Add;
+export default Add;

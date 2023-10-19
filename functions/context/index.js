@@ -115,46 +115,38 @@ export const StateContextProvider = ({ children }) => {
   const [profile,setProfile] = useState(null);
 
 
-  useEffect(
-    () =>
-      onAuthStateChanged(auth, async (user) => {
-        if (user) {
-           setPageLoading(true);
-          console.log("auth ", user);
-          const userRef = doc(db, "users", user.uid);
+useEffect(() => {
+  onAuthStateChanged(auth, async (user) => {
+    console.log("user Auth Data--->", user);
+    // if auth user is  already maked register or Login
+    // find his profile data from firebase/firetore
+    setPageLoading(true);
+    if (user) {
+      // set Authuser data in state
+      setUserData(user);
+      localStorage.setItem("isLogged", true);
+      // specify path for get Auth user Data from firestore
+      const userRef = doc(db, "users", user?.uid);
 
-          const docSnap = await getDoc(userRef);
+      const docSnap = await getDoc(userRef);
 
-          if (docSnap.exists()) {
-            setProfile(docSnap.data());
-              setPageLoading(false);
-          }
+      // if AuthUser have data in firestore set his data in setProfile
+      if (docSnap.exists()) {
+        console.log("firstore Data of user--->", docSnap.data());
+        setProfile(docSnap.data());
+      }
+    }
 
-          // dispatch({
-          //   type: "INITIALISE",
-          //   payload: { isAuthenticated: true, user },
-          // });
-          // console.log("initialized state changed", profile);
-        }
-         else {
-          // dispatch({
-          //   type: "INITIALISE",
-          //   payload: { isAuthenticated: false, user: null },
-          // });
-        }
-      }),
-
-    [
-     // dispatch
-    
-    ]
-  );
-
+    setPageLoading(false);
+  });
+}, []);
 
 const logout = () => {
   signOut(auth);
   setProfile(null);
-};
+  setPageLoading(false);
+  };
+
 
   return (
     <StateContext.Provider value={{ name, register, signInUser,forgetPassword,

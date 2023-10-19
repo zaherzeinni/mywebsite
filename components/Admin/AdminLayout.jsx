@@ -1,38 +1,73 @@
-import React from "react";
+//import { AiOutlineUser } from "react-icons/ai";
 import Link from "next/link";
-import { useRouter } from "next/router";
+
+//import { getAuth } from "@/functions/firebase/auth";
+//import { auth } from "@/functions/firebase";
+
+import Loader from "../common/Loader";
 import { useAuth } from "@/functions/context";
-import { Spinner, Button, Avatar } from "@chakra-ui/react";
-import { VscSignOut } from "react-icons/vsc";
+
+import { useRouter } from "next/router";
+import React, { useState, useEffect } from "react";
+import { Spinner, Avatar, Button } from "@chakra-ui/react";
 import { toast } from "react-toastify";
 
 const AdminLayout = ({ children }) => {
   const list = [
-    { id: 1, text: "Add Category", path: "/admin/category/add" },
-    { id: 2, text: "All Categories", path: "/admin/category/all" },
-    { id: 3, text: "Add Product", path: "/admin/product/add" },
-    { id: 4, text: "All Products", path: "/admin/product/all" },
+    { id: 1, text: "Admin", path: "/admin" },
+    { id: 2, text: "Add Category", path: "/admin/category/add" },
+    { id: 3, text: "All Categories", path: "/admin/category/all" },
+    { id: 4, text: "Add Product", path: "/admin/product/add" },
+    { id: 5, text: "All Products", path: "/admin/product/all" },
+    { id: 6, text: "Recently Viewed", path: "recently-viewed" },
+    { id: 7, text: "Reviews", path: "reviews" },
+    
+
   ];
 
+  const { logout, profile, setPageLoading, pageLoading, user  } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
   const { pathname, replace } = useRouter();
 
-  console.log("pathname-->", pathname);
 
-  const { logout, setPageLoading, pageLoading, profile } = useAuth();
+  useEffect(() => {
+    console.log("profile Role: " + user);
+
+    if (profile?.role && profile?.role !== "admin") {
+      replace("/");
+      toast.error("sorry you are not allowed to edit this page");
+    }
+
+
+ const  isLoggeed = localStorage.getItem("isLogged");
+ 
+ console.log('isLogged-->' , isLoggeed)
+if(!isLoggeed)
+{
+
+  replace('/auth/login')
+
+}
+
+
+
+    
+  }, [profile]);
 
   const signOut = () => {
     try {
-      //setPageLoading(true);
+      // setPageLoading(true);
       logout();
+      localStorage.removeItem('isLogged');
       replace("/auth/login");
-      //setPageLoading(false);
+      // setPageLoading(false);
     } catch (error) {
       console.log(error);
       toast.error(error?.message);
     }
   };
 
-  console.log("profile===>", profile);
+
 
   if (pageLoading) {
     <div className=" h-[100vh] flex justify-center items-center">
@@ -58,13 +93,19 @@ const AdminLayout = ({ children }) => {
     );
   }
 
+
   if (profile === null) {
     return (
-      <div className="bg-blue-200 h-screen w-full fixed top-0 flex justify-center items-center z-50">
-        <h1  className="font-cutiveMono text-3xl ">Sorry Access Denied</h1>
-      </div>
+      <>
+      <Loader/>
+      
+      </>
+   
     );
   }
+
+
+ 
 
   return (
     <>
@@ -105,11 +146,9 @@ const AdminLayout = ({ children }) => {
           </div>
         </div>
         <div className="grow">{children}</div>
-          
       </div>
-          
     </>
   );
 };
 
-export default AdminLayout;
+export default AdminLayout;
