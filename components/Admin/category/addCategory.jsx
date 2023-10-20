@@ -1,33 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AdminLayout from '../AdminLayout';
-import {
-    FormControl,
-    FormLabel,
-    FormErrorMessage,
-    FormHelperText,
-    Input,
-    Button,
-  } from '@chakra-ui/react'
+import CategoryForm from './categoryForm';
 
 const AddCategoryMain = () => {
+
+const [title,setTitle] = useState("");
+const [image , setImage] = useState({url:'' , name:''})
+
+
+
+
     return (
         <AdminLayout>
-<FormControl isRequired w={500}>
-  <FormLabel>Title</FormLabel>
-  <Input placeholder='' />
 
-
-
-  <FormLabel>Description</FormLabel>
-  <Input placeholder='' />
-
-  <FormLabel>Upload Image or Video</FormLabel>
-  <Input placeholder='' />
-
-<Button mt="3">Upload</Button>
-
-</FormControl>
-
+        <CategoryForm
+       {...{title , setTitle , image , setImage}}
+       
+        />
 
         </AdminLayout>
     );
