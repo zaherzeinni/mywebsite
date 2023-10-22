@@ -45,7 +45,7 @@ const CategoryForm = ({ title, setTitle, image, setImage }) => {
             <button
               type="button"
               className="rounded-l-none w-[50%]  inline-block shrink-0 rounded-md border border-teal-600 bg-teal-600 px-12 py-3 text-sm font-medium text-white transition hover:text-teal-700  focus:outline-none focus:ring active:text-teal-500 "
-            //   onClick={uploadImage}
+            ///   onClick={uploadImage}
             >
               Upload Image
             </button>
