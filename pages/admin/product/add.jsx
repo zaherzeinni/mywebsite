@@ -4,7 +4,7 @@ const Add = () => {
     return (
         <div>
             <AdminLayout>
-            addd product
+            adddd product
             </AdminLayout>
         </div>
     );
