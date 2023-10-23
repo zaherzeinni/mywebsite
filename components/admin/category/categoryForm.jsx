@@ -58,18 +58,20 @@ const CategoryForm = ({
           {/* -----images upload----- */}
 
 
-          <div>
-            <Upload
-              accept="image/*"
-              maxCount={1}
-              // file is data of image will be uploaded to firebase/storage
-              beforeUpload={(file) => {
-                setFile(file);
-                // setFiles((prev) => [...prev, file]);
-                return false;
-              }}
-              listType="picture-card"
-              onRemove={() => setFile("")}
+        <div className=" my-4">
+          <div className="w-full flex">
+            <input
+              type="file"
+              id="file"
+              name=""
+              className="text-black font-medium rounded-md border-teal-400 py-3 px-6 border-2 border-r-0 rounded-r-none"
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+            <button
+              type="button"
+              className="rounded-l-none w-[50%]  inline-block shrink-0 rounded-md border border-teal-600 bg-teal-600 px-12 py-3 text-sm font-medium text-white transition hover:text-teal-700  focus:outline-none focus:ring active:text-teal-500 "
+            //   onClick={uploadImage}
+            //
             >
               Upload Image
             </Upload>
