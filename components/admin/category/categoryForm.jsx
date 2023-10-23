@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import {
   getDocuments,
@@ -14,6 +15,16 @@ import {
   InputNumber,
 } from "antd";
 const { TextArea } = Input;
+=======
+import React from "react";
+import  {useState} from 'react';
+
+
+const CategoryForm = ({ title, setTitle, image, setImage }) => {
+
+
+    const [file , setFile] = useState('')
+>>>>>>> 75f931e (to vscodee)
 
 
 import Image from "next/image";
@@ -52,14 +63,16 @@ const CategoryForm = ({
           </Form.Item>
 
 
-          <div className=" grid gap-3 md:grid-cols-4 grid-cols-1"></div>
+          <div className=" grid gap-3 md:grid-cols-4 grid-cols-1">
 
 
           {/* -----images upload----- */}
 
-
+          
         <div className=" my-4">
+        
           <div className="w-full flex">
+          <Upload>    
             <input
               type="file"
               id="file"
@@ -74,9 +87,10 @@ const CategoryForm = ({
             //
             >
               Upload Image
+              </button>
             </Upload>
           </div>
-
+          </div>
 
           {/* -----show category image {update category} ---- */}
 
