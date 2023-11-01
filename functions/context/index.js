@@ -150,7 +150,7 @@ const logout = () => {
 
   return (
     <StateContext.Provider value={{ name, register, signInUser,forgetPassword,
-    pageLoading,profile,userData,logout }}>
+    pageLoading,profile,userData,logout,setPageLoading }}>
       
       {children}
     </StateContext.Provider>

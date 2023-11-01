@@ -1,6 +1,6 @@
 import React from "react";
 import MainAdmin from "@/components/admin/MainAdmin";
-import { getCount } from "@/functions/getData";
+import { getCount } from "@/functions/firebase/getData";
 const Admin = ({cats,subcats,products}) => {
 
 

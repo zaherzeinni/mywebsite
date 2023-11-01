@@ -1,17 +1,25 @@
+
 import React from "react";
-import  {useState} from 'react';
-import {uploadFile} from "@/functions/firebase/addImage";
-import { toast} from "react-toastify";
+import { Box } from "@chakra-ui/react";
+import { useState, useRef } from "react";
+import { uploadFile } from "@/functions/firebase/addImage";
+import { toast } from "react-toastify";
 import { handleDeleteImage } from "@/functions/firebase/addImage";
-const CategoryForm = ({
+import { FaImage as Image } from "react-icons/fa6";
+const SubCategoryForm = ({
   title,
   setTitle,
   image,
   setImage,
   handleClick,
+  cats,
   isupdate = false,
+  category,
+  setCategory,
 }) => {
   const [file, setFile] = useState("");
+  const [base64Image, setBase64Image] = useState("");
+  const fileInputRef = useRef(null);
 
 
   const uploadImage = async (e) => {
@@ -21,6 +29,7 @@ const CategoryForm = ({
     e.preventDefault();
 
 
+    // if noImage selected Throw Error
     if (!file) {
       // return with nothing will stop function and  all logic will came after it
       toast.error("file is Empty you have to add some files before upload");
@@ -28,21 +37,16 @@ const CategoryForm = ({
     }
 
 
-// if you select same image again dont delete or add any thing
+    if (file.name === image.name) {
+      toast.error("sorry you select same image again");
+      return;
+    }
 
 
-          if (file.name  === image.name) {
-    toast.error('sorry you select same image again')
-          return
-        }
-       
+    const filePath = `subcats/${file?.name}`;
 
 
-
-
-    const filePath = `cats/${file?.name}`;
-
-
+    // ------------Delete OldImage --------
     // from updateCategory page this image is not empty
     // if image came from updatecategory page
     //  delete it then add new image
@@ -52,6 +56,9 @@ const CategoryForm = ({
       await handleDeleteImage("cats", image);
       toast.success("old image deleted success");
     }
+
+
+    // ----------Add newImage --------
 
 
     try {
@@ -76,21 +83,21 @@ const CategoryForm = ({
   };
 
 
-  //
-
-
   return (
     <div>
       <div className="w-full  p-4">
         <div className="w-[70%] md:!w-[40%] ">
+          {title}
           <div className="    ">
             <div className=" text-center mb-4 text-orange-400  font-semibold text-2xl ">
-              {isupdate ? "Update Category Form" : "Add Category Form"}
+              {isupdate ? "Update SubCategory Form" : "Add SubCategory Form"}
             </div>
 
 
             {file?.name}
-            <p className=" mb-2 text-center  font-semibold">Category title</p>
+            <p className=" mb-2 text-center  font-semibold">
+              SubCategory title
+            </p>
             <input
               onChange={(e) => setTitle(e.target.value)}
               className="w-full border-2 text-black font-medium rounded-md border-teal-400 py-3 px-6"
@@ -102,23 +109,26 @@ const CategoryForm = ({
 
 
           <div className=" my-4">
-            <div className="w-full flex">
-              <input
-                type="file"
-                id="file"
-                name=""
-                className="text-black font-medium rounded-md border-teal-400 py-3 px-6 border-2 border-r-0 rounded-r-none"
-                onChange={(e) => setFile(e.target.files[0])}
-              />
-              <button
-                onClick={uploadImage}
-                type="button"
-                className="rounded-l-none   inline-block shrink-0 rounded-md border border-teal-600 bg-teal-600 px-12 py-3 text-sm font-medium text-white transition hover:text-teal-700  focus:outline-none focus:ring active:text-teal-500 "
-                //   onClick={uploadImage}
-              >
-                Upload Image
-              </button>
-            </div>
+            <>
+              <div className="w-full flex">
+                <input
+                  id="logo-input"
+                  ref={fileInputRef}
+                  type="file"
+                  name=""
+                  className="text-black font-medium rounded-md border-teal-400 py-3 px-6 border-2 border-r-0 rounded-r-none"
+                  onChange={(e) => setFile(e.target.files[0])}
+                />
+                <button
+                  onClick={uploadImage}
+                  type="button"
+                  className="rounded-l-none   inline-block shrink-0 rounded-md border border-teal-600 bg-teal-600 px-12 py-3 text-sm font-medium text-white transition hover:text-teal-700  focus:outline-none focus:ring active:text-teal-500 "
+                  //   onClick={uploadImage}
+                >
+                  Upload Image
+                </button>
+              </div>
+            </>
 
 
             <div className="text-xl font-cutiveMono text-center py-2">or</div>
@@ -132,6 +142,22 @@ const CategoryForm = ({
               />
             </div>
           </div>
+
+
+          {/* ------select category---- */}
+          <select 
+          className="w-1/5 border-2 text-black font-medium rounded-md border-teal-400 py-3 px-6 mb-4 text-lg"
+            value={category}
+            name="category"
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="" >Select..</option> 
+            {cats?.map((cat) => (
+              <option key={cat?.id} value={cat?.title}>
+                {cat?.title}
+              </option>
+            ))}
+          </select>
 
 
           {/* --------show image   in updateCategory page ---- */}
@@ -163,6 +189,4 @@ const CategoryForm = ({
 };
 
 
-export default CategoryForm;
-
-
+export default SubCategoryForm;

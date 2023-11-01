@@ -6,11 +6,9 @@ import { Input,Box,Button ,Stack} from '@chakra-ui/react';
 import AdminLayout from '@/components/admin/AdminLayout';
 const Add = () => {
 
-
     const [inputValue, setInputValue] = useState('');
     const [showValue, setShowValue] = useState('');
 
-    
     const handleInputChange = (e) => {
     setInputValue(e.target.value);
     console.log("handlerinput", handleInputChange)
@@ -19,6 +17,7 @@ const Add = () => {
     const showInput = () => {
     setShowValue(inputValue);
     console.log("show value", inputValue,showInput);
+    setInputValue("")
     };
 
     return (
@@ -26,13 +25,13 @@ const Add = () => {
             
             {/* <AdminLayout> */}
             <Stack  >
-            <Box>
-            Type here :  
+            <Box>             
+            <Box fontSize={40} w={'450px'}>
+
+             {showValue &&  <span>Hello: {showValue}</span>     }
             
-            <Button onClick={showInput}>Show me </Button>
+            
             </Box>
-            <Box>
-               
             <Input _hover={{border: "1px solid orange"}} border="1px solid yellow"
             placeHolder="insert any text"
             focusBorderColor='pink.400'
@@ -41,21 +40,13 @@ const Add = () => {
             value={inputValue}
 
             ></Input>
-            
+                
+            </Box>               
+            <Box>        
+            <Button onClick={showInput}>Submit </Button>
+                
             </Box>
             
-            <Box>
-            
-            
-        
-
-
-            <submit>
-                Submit</submit>
-               
-
-            
-            </Box>
             </Stack>
             {/* </AdminLayout> */}
         </div>

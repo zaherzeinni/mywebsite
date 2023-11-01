@@ -1,34 +1,28 @@
 import React from 'react';
-import CategoriesMain from '@/components/admin/category/Categories';
+import  UpdateSubCategoryMain from '@/components/admin/subCategory/updateSubCategory';
 import { getDocuments } from '@/functions/firebase/getData';
-
-const All = ({cats}) => {
+const EditSubPage = ({cats}) => {
     return (
         <div>
-            <CategoriesMain
-            cats={cats}
-            />
+            <UpdateSubCategoryMain cats={cats}/>
         </div>
     );
 }
 
-export default All;
+
+export default EditSubPage;
+
 
 
 
 // serverside
-    All.getInitialProps = async (context) => {
+EditSubPage.getInitialProps = async (context) => {
     const Categories = await getDocuments("cats"); //  []
-  
-  
+ 
     console.log("data", Categories);
-  
-  
+ 
     return {
       // props from serverside will go to props in clientside
       cats: Categories,
     };
   };
-  
-  
-  

@@ -1,11 +1,14 @@
 import React from 'react';
+import AdminLayout from '../AdminLayout';
+import CategoryTable from './categoryTable';
 
-const Categories = () => {
+const CategoriesMain = ({cats}) => {
     return (
         <div>
-            c
+            <AdminLayout>
+            <CategoryTable cats={cats} />
+            </AdminLayout>
         </div>
     );
 }
-
-export default Categories;
+export default CategoriesMain;
