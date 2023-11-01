@@ -1,56 +1,34 @@
-// https://shop-nest-app.netlify.app/
-// https://sciteens.org/
 import React, { useState } from 'react';
 import { Input,Box,Button ,Stack} from '@chakra-ui/react';
+import AddProductMain from '@/components/admin/product/addProduct';
+import { getDocuments } from '@/functions/firebase/getData';
 
-import AdminLayout from '@/components/admin/AdminLayout';
-const Add = () => {
-
-    const [inputValue, setInputValue] = useState('');
-    const [showValue, setShowValue] = useState('');
-
-    const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-    console.log("handlerinput", handleInputChange)
-    };
-
-    const showInput = () => {
-    setShowValue(inputValue);
-    console.log("show value", inputValue,showInput);
-    setInputValue("")
-    };
-
+const AddProductPage = ({subcats,cats}) => {
     return (
-        <div className=' bg-cyan-600  text-white h-[100vh] justify-center items-center flex'>
-            
-            {/* <AdminLayout> */}
-            <Stack  >
-            <Box>             
-            <Box fontSize={40} w={'450px'}>
-
-             {showValue &&  <span>Hello: {showValue}</span>     }
-            
-            
-            </Box>
-            <Input _hover={{border: "1px solid orange"}} border="1px solid yellow"
-            placeHolder="insert any text"
-            focusBorderColor='pink.400'
-            w={"300px"}
-            onChange={handleInputChange}
-            value={inputValue}
-
-            ></Input>
-                
-            </Box>               
-            <Box>        
-            <Button onClick={showInput}>Submit </Button>
-                
-            </Box>
-            
-            </Stack>
-            {/* </AdminLayout> */}
+            <div>
+                <AddProductMain
+                subcats={subcats}
+                cats={cats}
+                />
         </div>
     );
 }
 
-export default Add;
+export default AddProductPage;
+
+
+// serverside
+AddProductPage.getInitialProps = async (context) => {
+    const SubCategories = await getDocuments("subcats"); //  []
+    const Categories = await getDocuments("cats"); //  []
+  
+    console.log("data SubCats💡", SubCategories);
+    console.log("data Cats💡", Categories);
+  
+    return {
+      // props from serverside will go to props in clientside
+      subcats: SubCategories,
+      cats: Categories,
+    };
+  };
+  
