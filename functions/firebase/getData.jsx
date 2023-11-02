@@ -103,3 +103,17 @@ window.location.reload()
 
 }
 
+// -------------Products-------
+
+
+
+
+// error input antd design -----
+
+
+export const antdFieldValidation = [
+  {
+    required: true,
+    message: "This field is required",
+  },
+];
