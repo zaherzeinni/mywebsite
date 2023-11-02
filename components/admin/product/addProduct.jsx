@@ -20,7 +20,7 @@ const [video , setVideo] = useState({url:'' , name:''})
 const [desc , setDesc] = useState("")
 const [price , setPrice] = useState(0)
 const [color , setColor] = useState("")
-const [inStock , setInStock] = useState(ture)
+const [inStock , setInStock] = useState(true)
 const [disCount , setDisCount] = useState(0)
 
 const {setPageLoading,pageLoading} = useAuth();
