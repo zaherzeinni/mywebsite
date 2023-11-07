@@ -1,10 +1,14 @@
 import React from 'react';
-import  UpdateSubCategoryMain from '@/components/admin/subCategory/updateSubCategory';
-import { getDocuments } from '@/functions/firebase/getData';
-const EditSubPage = ({cats}) => {
+import UpdateProduct from '@/components/admin/product/updateProduct';
+import { getDocuments,getDocument } from '@/functions/firebase/getData';
+const EditSubPage = ({product,cats,subcats}) => {
     return (
         <div>
-            <UpdateSubCategoryMain cats={cats}/>
+            <UpdateProduct
+            product={product}
+            cats={cats}
+            subcats={subcats}
+            />
         </div>
     );
 }
@@ -14,15 +18,26 @@ export default EditSubPage;
 
 
 
+// serverside to fetch single catgory in serverside from firestore
 
-// serverside
+
+
+
 EditSubPage.getInitialProps = async (context) => {
-    const Categories = await getDocuments("cats"); //  []
  
-    console.log("data", Categories);
- 
-    return {
-      // props from serverside will go to props in clientside
-      cats: Categories,
-    };
-  };
+    // context.query.id ==> admin/category/edit/${context.query.id} in browser
+        const product = await getDocument("products", context.query.id);
+        const cats = await getDocuments("cats");
+        const subcats = await getDocuments("subcats");
+     
+       
+        console.log('single category --<>' , product,cats,subcats)
+    
+    
+     
+        return {
+            product: product,
+            cats: cats,
+            subcats: subcats,
+        };
+      };

@@ -11,9 +11,21 @@ import {
     limit,
   } from "firebase/firestore";
   //import { db, storage } from "./index";
-  import {db,storage} from '.'
-  import { ref, deleteObject } from "firebase/storage";
+  import {db,storage} from './index'
+  
 
+import {
+  // to speceify the folder to save and retrive image from it
+  ref,
+  // to delete image from storage
+  deleteObject,
+  // to send image from website to firebase/storage
+  uploadBytes,
+  // to retrive image from storage
+  getDownloadURL,
+} from "firebase/storage";
+
+  import { v4 as uuidv4 } from "uuid";
 
 //step-1- get number of documents in one Collection
   export const getCount = async(col)=>{
@@ -84,24 +96,53 @@ export const getDocument = async (col ,id)=>{
 
 // col is collection name -->  category  or product
 // item is  object that have  data
-export const  handleDelete  = (col ,item) =>{
 
 
+// export const  handleDelete  = (col ,item) =>{
+
+
+//   // path of document we well delete
+//   const itemDoc = doc(db, col ,item.id)
+// // delete document from firestore then delete document images
+//   deleteDoc(itemDoc).then(async()=>{
+
+
+//     // specifu image folder and name to delete it => col is folder  image.name is image name will deleted from storage
+//     const desertRef = ref(storage ,`${col}/${item.image.name}`)
+// await deleteObject(desertRef)
+
+// window.location.reload()
+
+//   })
+
+// }
+
+export const handleDelete = (col, item, isproduct = false) => {
   // path of document we well delete
-  const itemDoc = doc(db, col ,item.id)
-// delete document from firestore then delete document images
-  deleteDoc(itemDoc).then(async()=>{
-
-
+  const itemDoc = doc(db, col, item.id);
+  // delete document from firestore then delete document images
+  deleteDoc(itemDoc).then(async () => {
     // specifu image folder and name to delete it => col is folder  image.name is image name will deleted from storage
-    const desertRef = ref(storage ,`${col}/${item.image.name}`)
-await deleteObject(desertRef)
 
-window.location.reload()
 
-  })
+    // from productsTable array of images delete
 
-}
+
+    if (isproduct) {
+      deleteImages(item.images);
+    } else {
+      const desertRef = ref(storage, `${col}/${item.image.name}`);
+
+
+      // delete single image
+      await deleteObject(desertRef);
+    }
+
+
+    window.location.reload();
+  });
+};
+
 
 // -------------Products-------
 
@@ -117,3 +158,40 @@ export const antdFieldValidation = [
     message: "This field is required",
   },
 ];
+
+
+//Upload product array of images to firebase/storage
+export const uploadImages = async (files) => {
+  const urls = [];
+  await Promise.all(
+
+    files.map(async (file) => {
+        // folder and image name to save image it  --> products/121212
+      const imageRef = ref(storage, `products/${uuidv4()}`);
+        // send image to firebase/storage
+      const res = await uploadBytes(imageRef, file);
+
+      // retrive image from firebase/storage
+      const url = await getDownloadURL(res.ref);
+      //// then add image Link to array
+      urls.push(url);
+    })
+  );
+
+  // all images link return {result of this function}
+
+  return urls;
+};
+
+
+
+export const deleteImages = async (images) => {
+  try {
+    const deleteResponses = await Promise.all(
+      images.map((image) => deleteObject(ref(storage, image)))
+    );
+    return deleteResponses;
+  } catch (error) {
+    throw error;
+  }
+};
