@@ -21,7 +21,7 @@ const AdminLayout = ({ children }) => {
     { id: 5, text: "All Products", path: "/admin/product/all" },
     { id: 6, text: "Add SubCategory", path: "/admin/subcategory/add" },
     { id: 7, text: "All SubCategories", path: "/admin/subcategory/all" },
-    
+    { id: 8, text: "All Users", path: "/admin/users" },
 
   ];
 

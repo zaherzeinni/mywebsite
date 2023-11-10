@@ -195,3 +195,28 @@ export const deleteImages = async (images) => {
     throw error;
   }
 };
+
+
+
+export const updateUserRole = async (userId, updatedRole, ) => {
+  console.log('Updating user role' , userId , updatedRole);
+  if (["guest", "superadmin", "admin"].includes(updatedRole)) {
+    const usersCollection = doc(db, "users", userId);
+
+
+    try {
+      // Update the role attribute in the user document
+      await updateDoc(usersCollection, { role: updatedRole });
+     // successCallback();
+     message.success('User role updated successfully');
+      //console.log("User role successfully updated!");
+    } catch (error) {
+    //  console.error("Error updating user role:", error);
+      message.error('User role): ' + error.message);
+    }
+  } else {
+    console.error(
+      "Invalid updatedRole parameter. Please provide 'guest', 'superadmin', or 'admin'."
+    );
+  }
+};
