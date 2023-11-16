@@ -1,6 +1,6 @@
 
 import React from "react";
-import SubCategoryForm from "./subcategoryForm";
+import SubCategoryForm from "./subCategoryForm";
 import { toast } from "react-toastify";
 import { useAuth } from "@/functions/context";
 import { useState } from "react";
