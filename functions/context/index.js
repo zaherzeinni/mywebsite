@@ -48,10 +48,11 @@ export const StateContextProvider = ({ children }) => {
 
         await setDoc(userRef, {
           uid: res.user?.uid,
-          email,
+          email:email,
           displayName: `${firstName} ${lastName}`,
-          imageAsset,
-          imageId,
+          password:password,
+          imageAsset:imageAsset,
+          imageId:imageId,
           role: "admin",
         });
         setPageLoading(false);

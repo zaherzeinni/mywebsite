@@ -2,14 +2,13 @@ import React from 'react';
 import AdminLayout from '../AdminLayout';
 import SubCategoryTable from './subCategoryTable';
 
-
-const SubCategoriesMain = ({ subcats}) => {
+const SubCategoriesMain = ({subcats}) => {
     return (
-        <AdminLayout>
-           <SubCategoryTable subcats={subcats} />
-        </AdminLayout>
+        <div>
+            <AdminLayout>
+            <SubCategoryTable subcats={subcats} />
+            </AdminLayout>
+        </div>
     );
 }
-
-
 export default SubCategoriesMain;

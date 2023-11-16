@@ -8,17 +8,18 @@ const ProductTable = ({ products }) => {
 
   const columns = [
     {
-      title: "Title",
+      title: "Products",
       // same name from database   // category={title ,....}
       dataIndex: "title",
     },
 
 
     {
-      title: "image",
+      title: "Image",
       // single category {record} --> record.image.url === category.image.url
       render: (record) => {
         return (
+          
           <div className="flex justify-start w-[100%]  gap-4 " >
             {record.images.map((img,index)=>(
             <img
@@ -42,10 +43,13 @@ const ProductTable = ({ products }) => {
       render: (record) => {
         return (
           <>
+            
             <div className=" flex gap-4  items-center">
+              
+              
               <div>
 
-
+              
                 <AiFillDelete
                 // send collection name and single category data to delete
                 onClick={()=>handleDelete("products",record ,true)}

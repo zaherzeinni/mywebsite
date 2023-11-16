@@ -1,81 +1,64 @@
-import React, { useEffect, useState } from "react";
-import AdminLayout from "../AdminLayout";
-import { useRouter } from "next/router";
-import { getDocument } from "@/functions/firebase/getData";
-import { useAuth } from "@/functions/context";
+
+import React from "react";
 import CategoryForm from "./categoryForm";
 import { toast } from "react-toastify";
-import { updateDoc, doc } from "firebase/firestore";
+import { useAuth } from "@/functions/context";
+import { useState } from "react";
 import { db } from "@/functions/firebase";
+import { updateDoc, doc } from "firebase/firestore";
+import { uploadImages, deleteImage } from "@/functions/firebase/getData";
+import { message } from "antd";
+import AdminLayout from "../AdminLayout";
 
 
-//  update category page will be same states will  send to categoryForm
-const UpdateCategoryMain = () => {
-  const { query, replace } = useRouter();
-  const { id } = query;
-
-
-  // same in
-  const [title, setTitle] = useState("");
-  const [image, setImage] = useState({ url: "", name: "" });
-
-
-  const isupdate = true;
+const UpdateCategoryMain = ({ cats }) => {
+  const [file, setFile] = useState("");
   const { setPageLoading, pageLoading } = useAuth();
+  const isupdate = true;
+  const initialValues = category;
 
 
-  useEffect(() => {
-    const getData = async () => {
-      //   col , id will change every time data change  cats ,id
-      const singledoc = await getDocument("cats", id);
+  const onFinish = async (values) => {
+    console.log("values-->", values);
+    console.log("file", file);
 
 
-      console.log("single-->", singledoc);
-
-
-      setTitle(singledoc?.title);
-      setImage(singledoc?.image);
-    };
-
-
-    if (id) getData();
-  }, [id]);
-
-
-  //
-
-
-  const handleClick = async (e) => {
-    console.log("Update");
-    e.preventDefault();
-    setPageLoading(true);
-
-
-    const data = {
-      title: title,
-      image: image,
-    };
-
-
-    try {
-      await updateDoc(doc(db, "cats", id), data);
-      toast.success("Hero updated successfully");
-    } catch (error) {
-      setPageLoading(false);
-      toast.error(error?.message);
+    // if file is empty {upload icon}  and update category  image Remover stop function and show error message
+    if (!file && !values.image) {
+      message.error("Please select file and your initial image is Empty");
+      return; // stoppppp progress the function
     }
-    setPageLoading(false);
+
+
+    // if file select from upload icon delete old image and add new image from file
+    else if (file) {
+      message.info(
+        "file select from upload icon delete old image and add new image from file"
+      );
+
+
+      await deleteImage(initialValues.image);
+      message.success("image deleted");
+      values.image = await uploadImages(file, true, "cats");
+      message.success("new image updated");
+      await updateDoc(doc(db, "cats", initialValues?.id), values);
+      message.success('updated Successfully')
+    } else {
+      await updateDoc(doc(db, "cats", initialValues?.id), values);
+      message.info("update only title with old image success");
+    }
   };
 
 
   return (
     <AdminLayout>
-      <CategoryForm
-        {...{ title, setTitle, image, setImage, handleClick, isupdate }}
-      />
+      <CategoryForm {...{ onFinish, file, setFile, initialValues }} />
     </AdminLayout>
   );
 };
 
 
 export default UpdateCategoryMain;
+
+
+

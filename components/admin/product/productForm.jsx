@@ -56,7 +56,7 @@ const ProductForm = ({
             images: initialValues?.images || [],
           }}
         >
-          <Form.Item name="title" label="Title">
+          <Form.Item name="title" label="Add Product - Title">
             <Input />
           </Form.Item>
 

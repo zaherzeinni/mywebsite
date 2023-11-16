@@ -1,22 +1,39 @@
 import React from "react";
-import { Table } from "antd";
+import { Table, Dropdown } from "antd";
 import Link from "next/link";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { MoreOutlined } from "@ant-design/icons";
 import { handleDelete, updateUserRole } from "@/functions/firebase/getData";
 const UsersTable = ({ users }) => {
   const USER_ACTIONS = [
-    { label: "Guest", value: "guest" },
-    { label: "SuperAdmin", value: "superadmin" },
     { label: "Admin", value: "admin" },
+    { label: "User", value: "user" },
+    { label: "Guest", value: "guest" },
   ];
+
+
+//  id is user id well be change role
+  const createUserAction = (id) =>
+    USER_ACTIONS.map(({ label, value }) => ({
+      key: label,
+      label,  //  // is  text or item in dropdown menu
+      onClick: () => updateUserRole(id, value ),
+    }));
+
+
+
+
+
+
+
+
 
 
   const columns = [
     {
       title: "name",
       // same name from database   // category={title ,....}
-      dataIndex: "name",
+      dataIndex: "displayName",
     },
 
 
@@ -45,7 +62,7 @@ const UsersTable = ({ users }) => {
 
 
     {
-      title: "Actions",
+      title: "Change Role",
       // 💡💡  render to make style in table in single category
       // single category data ==> title , image , id
       render: (record) => {
@@ -55,7 +72,7 @@ const UsersTable = ({ users }) => {
               <div>
                 <AiFillDelete
                   // send collection name and single category data to delete
-                  onClick={() => handleDelete("cats", record)}
+                  onClick={() => handleDelete("users", record , false ,true)}
                   className=" hover:text-red-700 text-red-500 cursor-pointer"
                   size={"25"}
                 />
@@ -63,12 +80,14 @@ const UsersTable = ({ users }) => {
 
 
               <div>
-                <Link href={`/admin/category/edit/${record?.id}`}>
-                  <AiFillEdit
-                    className="hover:text-blue-700 text-blue-500 cursor-pointer"
-                    size={"25"}
-                  />
-                </Link>
+                <Dropdown
+                  menu={{ items: createUserAction(record.id) }}
+                  trigger={["click"]}
+                >
+                  <a onClick={(e) => e.preventDefault()}>
+                    <MoreOutlined className=" text-xl" />
+                  </a>
+                </Dropdown>
               </div>
             </div>
           </>
@@ -87,5 +106,3 @@ const UsersTable = ({ users }) => {
 
 
 export default UsersTable;
-
-
