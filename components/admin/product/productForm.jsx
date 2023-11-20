@@ -27,8 +27,11 @@ const ProductForm = ({
   cats,
   subcats,
   isupdate = false,
+  videoFile,
+  setVideoFile,
 }) => {
   const [images, setImages] = useState(initialValues?.images || []);
+  const [video, setVideo] = useState(initialValues?.video || "");
 
 
   return (
@@ -44,6 +47,7 @@ const ProductForm = ({
             onFinish({
               ...values,
               images,
+              video,
             })
           }
           initialValues={{
@@ -54,6 +58,7 @@ const ProductForm = ({
             desc: initialValues?.desc || "",
             instock: initialValues?.instock || true,
             images: initialValues?.images || [],
+            video: initialValues?.video || "",
           }}
         >
           <Form.Item name="title" label="Add Product - Title">
@@ -133,16 +138,29 @@ const ProductForm = ({
                 return false;
               }}
               listType="picture-card"
+
+              onRemove={(file) => {
+                console.log("fileDATA", file);
+                setFiles((prev) => {
+                  const index = prev.indexOf(file);
+                  const newFileList = prev.slice();
+                  newFileList.splice(index, 1);
+                  return newFileList;
+                });
+
+                console.log("files", files);
+              }}
             >
-              Upload Images
+              Upload Images {files?.length}
             </Upload>
           </div>
+
 
 
           {/* -----show product images {update product} ---- */}
 
 
-          {images?.length}
+          
           <div className="flex flex-wrap gap-3 mt-2 ">
             {images?.map((data, index) => (
               <div key={index}>
@@ -167,6 +185,26 @@ const ProductForm = ({
               </div>
             ))}
           </div>
+
+          {/* -----Video upload----- */}
+
+          <div>
+            <Upload
+              accept="video/*"
+              maxCount={1}
+              // file is data of image will be uploaded to firebase/storage
+              beforeUpload={(file) => {
+                setVideoFile(file);
+                // setFiles((prev) => [...prev, file]);
+                return false;
+              }}
+              listType="picture-card"
+              onRemove={() => setVideoFile("")}
+            >
+              Upload Video
+            </Upload>
+          </div>
+
 
 
           <div className=" ">

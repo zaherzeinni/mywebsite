@@ -12,16 +12,25 @@ import AdminLayout from "../AdminLayout";
 
 const AddProductMain = ({ cats, subcats, products }) => {
   const [files, setFiles] = useState([]);
+  const [videoFile,setVideoFile] = useState("");
+  
   const { setPageLoading, pageLoading } = useAuth();
   const isupdate = true;
 
 
   const onFinish = async (values) => {
     console.log("values-->", values);
+    
 
 
-    //urls [array of images]
+    /////urls [array of images]
     values.images = await uploadImages(files);
+    
+    
+    if (videoFile) {
+      values.video = await uploadImages(videoFile,true)
+      message.success("Video Uploaded Successfully")
+    }
 
 
     await addDoc(collection(db, "products"), values);
@@ -33,7 +42,7 @@ const AddProductMain = ({ cats, subcats, products }) => {
 
   return (
     <AdminLayout>
-      <ProductForm {...{ cats, subcats, onFinish, files, setFiles }} />
+      <ProductForm {...{ cats, subcats, onFinish, files, setFiles,videoFile,setVideoFile }} />
     </AdminLayout>
   );
 };

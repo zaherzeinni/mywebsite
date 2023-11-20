@@ -2,7 +2,10 @@ import React from "react";
 import { Table } from "antd";
 import Link from "next/link";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import { FaVideo } from "react-icons/fa6";
 import { handleDelete } from "@/functions/firebase/getData";
+import Image from "next/image";
+
 const ProductTable = ({ products }) => {
 
 
@@ -22,7 +25,9 @@ const ProductTable = ({ products }) => {
           
           <div className="flex justify-start w-[100%]  gap-4 " >
             {record.images.map((img,index)=>(
-            <img
+                   <Image
+                   width={50}
+                   height={50}
               className="  relative  w-24 h-24 object-cover object-center rounded-full"
               src={img}
               key={index}
@@ -67,6 +72,17 @@ const ProductTable = ({ products }) => {
                   />
                 </Link>
               </div>
+              
+
+              { record.video ? 
+
+              <FaVideo
+              className="hover:text-green-700 text-green-500 cursor-pointer"
+              size={"25"}
+              />
+                :
+                false }
+                
             </div>
           </>
         );

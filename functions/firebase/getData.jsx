@@ -166,7 +166,7 @@ export const uploadImages = async (files ,isnotProduct=false ,col='products') =>
     if(isnotProduct) {
   
   
-  message.info('upload one image')
+  message.success('Image Uploaded')
       // files here is object one object
       const imageRef = ref(storage, `${col}/${uuidv4()}`);
       // send image to firebase/storage
