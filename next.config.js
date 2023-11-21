@@ -4,7 +4,7 @@ const nextConfig = {
       domains: [
         "localhost",
         "res.cloudinary.com",
-      
+        "mir-s3-cdn-cf.behance.net",
         "firebasestorage.googleapis.com",
       ],
     },
