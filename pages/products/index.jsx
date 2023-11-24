@@ -20,9 +20,8 @@ const Index = () => {
     return (
         <div>
             
-            {products.map((item,key)=>(
-                <div>
-                key={item.id}
+            {products.map((item,index)=>(
+                <div key={index}>
                 {item.title}
                 {item.category}
                 {item.subcategory}
