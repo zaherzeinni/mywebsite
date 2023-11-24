@@ -207,6 +207,25 @@ const ProductForm = ({
 
 
 
+          {/* -----Video delete----- */}
+
+          <div className="flex flex-wrap gap-3 mt-2 ">
+            {video ? 
+              <div>
+                <img src="https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dmlkZW8lMjBpY29ufGVufDB8fDB8fHww" className="w-20 h-20 rounded-full " />
+                <h1
+                  onClick={() => {
+                    setVideo("");
+                  }}
+                  className="text-center cursor-pointer text-red-600"
+                >
+                  remove
+                </h1>
+              </div>
+            :
+            false }
+          </div>
+
           <div className=" ">
             <Button
               className=" mt-4  block w-1/3 bg-blue-500 mx-auto"

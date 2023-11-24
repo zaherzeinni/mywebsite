@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "autoprefixer": "latest",
+    "create-react-class": "^15.7.0",
     "daisyui": "^3.9.1",
     "eslint": "latest",
     "eslint-config-next": "latest",

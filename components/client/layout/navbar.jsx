@@ -11,6 +11,9 @@ import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import StaggeringText from "./staggeringText";
 
+import { getDocuments } from "@/functions/firebase/getData";
+
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
@@ -34,6 +37,24 @@ const Navbar = () => {
       navbar.current.classList.remove("slide-bg");
     }
   }, [router.asPath]);
+
+
+  const [cats, setCats] = useState([]);
+
+    useEffect(() => {
+        const getCategories = async () => {
+            setCats([]);
+            const data = await getDocuments('cats');
+            console.log(data,"fetch categories ====>>>>")
+            setCats(data)
+          }
+          getCategories();
+      }, []);
+
+    
+
+
+
 
   const productCategory = [
     "Office Bag",
@@ -65,6 +86,8 @@ const Navbar = () => {
     setDropdown(false);
     setOpen(false);
   }, [router.asPath]);
+
+
 
   return (
     <>
@@ -130,14 +153,14 @@ const Navbar = () => {
                         }}
                         className="absolute -left-24 top-full z-20 mt-6 w-40 origin-top-left overflow-hidden rounded-xl border bg-gray-50 p-2 py-2 font-semibold shadow-xl duration-200"
                       >
-                        {productCategory.map((item, index) => {
+                        {cats.map((item, index) => {
                           return (
                             <Link
                               key={index}
-                              href={`/products/category/${item.toLowerCase()}`}
+                              href={`/products/category/${item.title.toLowerCase()}`}
                               className="hover:text-brandBlack block transform rounded-lg px-4 py-2 text-xs font-normal capitalize text-black  duration-300 hover:bg-gray-200"
                             >
-                              {item}
+                              {item.title}
                             </Link>
                           );
                         })}

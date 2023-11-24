@@ -12,6 +12,7 @@ console.log("user Data---->",profile)
        
         <div >
             <Navbar />
+            
         </div>
 
       
