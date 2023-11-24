@@ -48,7 +48,7 @@ const Countdown = ({}) => {
     <div className=" min-h-screen flex   justify-center items-center bg-black">
       {/* container */}
       <div
-        className="flex w-[80%] z-30 md:w-6/12 bg-primary rounded-md count sm:px-2 px-1 md:mt-32"
+        className="flex w-[70%] z-30 md:w-6/12 bg-primary rounded-md count sm:px-2 px-1 md:mt-32"
         style={{ backgroundColor: primaryColor }}
       >
         {/* Countdown Titles */}
@@ -137,6 +137,9 @@ const Countdown = ({}) => {
         </div>
       </div>
 
+
+ 
+      
       <img
         className="absolute object-cover w-full h-full top-0 left-0 -mt-32"
         alt="img"
@@ -144,9 +147,15 @@ const Countdown = ({}) => {
           "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1640&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         }
       />
-      <div className="relative text-white left-7 top-10 font-bold text-l">
-        Coming Soon...  ITPROMAX
+
+<div className="relative text-white left-7 top-10 font-bold text-l">
+        <span className="text-green-200 hover:text-red-400">Coming Soon </span>
+         <div>
+         <span className="text-blue-300 text-xl hover:text-yellow-400 ">ITPROMAX</span>
+         </div>
       </div>
+
+
     </div>
   );
 };
