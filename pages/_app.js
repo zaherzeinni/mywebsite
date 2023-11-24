@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { StateContextProvider } from '@/functions/context'
 
+
 export default function MyApp({ Component, pageProps }) {
 
     return (

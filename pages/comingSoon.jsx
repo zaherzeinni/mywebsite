@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { FaChampagneGlasses } from "react-icons/fa6";
 
+
 const Countdown = ({}) => {
+  
   const [primaryColor, setPrimaryColor] = useState("#061826");
   const [secondaryColor, setSecondaryColor] = useState("#2C4053");
   const [textColor, setTextColor] = useState("#ffffff");
@@ -136,14 +138,14 @@ const Countdown = ({}) => {
       </div>
 
       <img
-        className="absolute object-cover w-full h-full top-0 left-0 -my-32"
-        alt="banner sekcji"
+        className="absolute object-cover w-full h-full top-0 left-0 -mt-32"
+        alt="img"
         src={
           "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1640&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         }
       />
-      <div className="relative text-white left-7 top-14 font-bold text-xl">
-        Coming Soon...   ITPROMAX.com
+      <div className="relative text-white left-7 top-10 font-bold text-l">
+        Coming Soon...  ITPROMAX
       </div>
     </div>
   );
