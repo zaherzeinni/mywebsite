@@ -7,7 +7,7 @@ const Countdown = ({}) => {
   const [primaryColor, setPrimaryColor] = useState("#061826");
   const [secondaryColor, setSecondaryColor] = useState("#2C4053");
   const [textColor, setTextColor] = useState("#ffffff");
-  const [startTime, setStartTime] = useState(Date.now() + 48 * 3600 * 1000);
+  const [startTime, setStartTime] = useState(Date.now() + 450 * 3600 * 1000);
   console.log("setPrimaryColor", startTime);
   const [timeRemaining, setTimeRemaining] = useState(
     // dummy time remaining
