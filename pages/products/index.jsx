@@ -22,6 +22,7 @@ const Index = () => {
             
             {products.map((item,index)=>(
                 <div>
+                {item.key}
                 {item.title}
                 {item.category}
                 {item.subcategory}
