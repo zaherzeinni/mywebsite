@@ -22,15 +22,15 @@ const Index = () => {
             
             {products.map((item,index)=>(
                 <div>
-                {item.key}
+                
                 {item.title}
                 {item.category}
                 {item.subcategory}
                 {item.price}
                 {item.desc}
                 {item.instock}
-                <img src={item.images} width={50} height={50} />
-                <video src={item.video} width={80} height={80} />
+                <img src={item.images} alt="img" width={50} height={50} />
+                <video src={item.video} alt="video" width={80} height={80} />
                 </div>
             ))}
         </div>
