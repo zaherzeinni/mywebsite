@@ -137,9 +137,9 @@ const Countdown = ({}) => {
           </span>
           
  <div className="relative text-white xs:left-[-150px] xs:top-[100px] xl:top-[70px] xl:left-[-300px] font-bold xs:text-xs text-l  w-60">
-        <span className="text-green-200 hover:text-red-400 text-lg">Coming Soon </span>
+        <span className="text-green-200 hover:text-red-400 text-xl animate-ping ">Coming Soon </span>
          <div>
-         <span className="text-blue-300 text-3xl hover:text-yellow-400">ITPROMAX</span>
+         <span  className="text-blue-300 text-3xl hover:text-orange-400   ">ITPROMAX.COM</span>
          </div>
       </div> 
 

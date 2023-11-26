@@ -16,7 +16,12 @@ module.exports = {
       xxl: "1536px",
       ...screens,
     },
-    extend: {},
+    extend: {
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding',
+      }
+    },
   },
   plugins: [],
 }
