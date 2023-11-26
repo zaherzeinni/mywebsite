@@ -47,8 +47,9 @@ const Countdown = ({}) => {
   return (
     <div className=" min-h-screen flex   justify-center items-center bg-black">
       {/* container */}
+      
       <div
-        className="flex w-[70%] z-30 md:w-6/12 bg-primary rounded-md count sm:px-2 px-1 md:mt-32"
+        className="flex w-[100%] z-30 md:w-6/12 bg-primary rounded-md count sm:px-2 px-1 md:mt-32"
         style={{ backgroundColor: primaryColor }}
       >
         {/* Countdown Titles */}
@@ -58,7 +59,7 @@ const Countdown = ({}) => {
             style={{ backgroundColor: secondaryColor }}
           >
             <span
-              className="transition  text-7xl font-bold text-white flex justify-center items-center"
+              className="transition  text-6xl font-bold text-white flex justify-center items-center"
               style={{ color: textColor }}
               suppressHydrationWarning={true}
             >
@@ -66,7 +67,7 @@ const Countdown = ({}) => {
             </span>
           </div>
           <span
-            className="transition  text-2xl font-semibold text-white flex justify-center items-center"
+            className="transition  text-xl font-semibold text-white flex justify-center items-center"
             style={{ color: textColor }}
           >
             Days
@@ -79,7 +80,7 @@ const Countdown = ({}) => {
             style={{ backgroundColor: secondaryColor }}
           >
             <span
-              className="transition  text-7xl font-bold text-white flex justify-center items-center"
+              className="transition  text-6xl font-bold text-white flex justify-center items-center"
               style={{ color: textColor }}
               suppressHydrationWarning={true}
             >
@@ -87,7 +88,7 @@ const Countdown = ({}) => {
             </span>
           </div>
           <span
-            className="transition count-other text-2xl font-semibold text-white flex justify-center items-center"
+            className="transition count-other text-xl font-semibold text-white flex justify-center items-center"
             style={{ color: textColor }}
           >
             Hours
@@ -100,7 +101,7 @@ const Countdown = ({}) => {
             style={{ backgroundColor: secondaryColor }}
           >
             <span
-              className="transition count-text text-7xl font-bold text-white flex justify-center items-center"
+              className="transition count-text text-6xl font-bold text-white flex justify-center items-center"
               style={{ color: textColor }}
               suppressHydrationWarning={true}
             >
@@ -108,7 +109,7 @@ const Countdown = ({}) => {
             </span>
           </div>
           <span
-            className="transition count-other text-2xl font-semibold text-white flex justify-center items-center"
+            className="transition count-other text-xl font-semibold text-white flex justify-center items-center"
             style={{ color: textColor }}
           >
             Minutes
@@ -121,7 +122,7 @@ const Countdown = ({}) => {
             style={{ backgroundColor: secondaryColor }}
           >
             <span
-              className="transition count-text text-7xl font-bold text-white flex justify-center items-center"
+              className="transition count-text text-6xl font-bold text-white flex justify-center items-center"
               style={{ color: textColor }}
               suppressHydrationWarning={true}
             >
@@ -129,17 +130,26 @@ const Countdown = ({}) => {
             </span>
           </div>
           <span
-            className="transition count-other text-2xl font-semibold text-white flex justify-center items-center"
+            className="transition count-other text-xl font-semibold text-white flex justify-center items-center"
             style={{ color: textColor }}
           >
             Seconds
           </span>
+          
+ <div className="relative text-white xs:left-[-150px] xs:top-[100px] xl:top-[70px] xl:left-[-300px] font-bold xs:text-xs text-l  w-60">
+        <span className="text-green-200 hover:text-red-400 text-lg">Coming Soon </span>
+         <div>
+         <span className="text-blue-300 text-3xl hover:text-yellow-400">ITPROMAX</span>
+         </div>
+      </div> 
+
         </div>
       </div>
 
 
  
       
+
       <img
         className="absolute object-cover w-full h-full top-0 left-0 -mt-32"
         alt="img"
@@ -148,16 +158,12 @@ const Countdown = ({}) => {
         }
       />
 
-<div className="relative text-white left-7 top-10 font-bold text-l">
-        <span className="text-green-200 hover:text-red-400">Coming Soon </span>
-         <div>
-         <span className="text-blue-300 text-xl hover:text-yellow-400 ">ITPROMAX</span>
-         </div>
+
+
       </div>
-
-
-    </div>
+    
   );
+  
 };
 
 export default Countdown;
