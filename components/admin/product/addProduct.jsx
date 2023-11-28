@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useAuth } from "@/functions/context";
 import { useState } from "react";
 import { db } from "@/functions/firebase";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection ,serverTimestamp } from "firebase/firestore";
 import { uploadImages } from "@/functions/firebase/getData";
 import { message } from "antd";
 import AdminLayout from "../AdminLayout";
@@ -31,6 +31,8 @@ const AddProductMain = ({ cats, subcats, products }) => {
       values.video = await uploadImages(videoFile,true)
       message.success("Video Uploaded Successfully")
     }
+
+    values.timeStamp = serverTimestamp()
 
 
     await addDoc(collection(db, "products"), values);

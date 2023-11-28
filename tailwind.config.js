@@ -17,10 +17,7 @@ module.exports = {
       ...screens,
     },
     extend: {
-      transitionProperty: {
-        'height': 'height',
-        'spacing': 'margin, padding',
-      }
+
     },
   },
   plugins: [],

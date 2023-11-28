@@ -24,7 +24,7 @@ const AddSubCategoryMain = ({cats}) => {
       return; // stoppppp progress the function
     } else {
       values.image = await uploadImages(file, true, "subcats"); // result is image link from firebase/storage
-
+      values.timeStamp = serverTimestamp()
       await addDoc(collection(db, "subcats"), values);
 
       message.success("SubCategory added  successfully");

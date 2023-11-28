@@ -1,57 +1,57 @@
-import React from 'react';
-import { getDocuments } from '@/functions/firebase/getData';
-import { useState,useEffect } from 'react';
-import ProductsMain from '@/components/admin/product/products';
+import React from "react";
+import { orderBy,where } from "firebase/firestore";
+import { getDocuments, getDocumentsOrder } from "@/functions/firebase/getData";
+import ProdSlider from "@/components/client/products/slider";
 
-const Index = () => {
-    
-    const [products, setProducts] = useState([]);
+export default function ProductsPage({ products,cats }) {
+  console.log("ProductsPage" + products);
 
-    useEffect(() => {
-        const getProducts = async () => {
-            setProducts([]);
-            const data = await getDocuments('products');
-            console.log(data,"fetch Products ====>>>>")
-            setProducts(data)
-          }
-        getProducts();
-      }, []);
-    
-
-    return (
-        <div>
-            
-            {products.map((item,index)=>(
-                <div key={index}>
-                {item.title}
-                {item.category}
-                {item.subcategory}
-                {item.price}$
-                {item.desc}
-                {item.instock}
-                <img src={item.images} alt="img" width={50} height={50} />
-                <video src={item.video} alt="video" width={80} height={80} />
-                </div>
-            ))}
-        </div>
-    );
+  return (
+    <div>
+        <ProdSlider 
+        data={cats}
+        />
+      </div>
+  );
 }
 
-export default Index;
-
-
-
 // serverside
-Index.getInitialProps = async (context) => {
-    const Products = await getDocuments("products"); //  []
-  
-  
-    console.log("productsData", Products);
-  
-  
-    return {
-      // props from serverside will go to props in clientside
-      products: Products,
-    };
+ProductsPage.getInitialProps = async (context) => {
+  let products = [];
+//navbar.jsx href={`/products?category=${item.title.toLowerCase()}`}
+  const category = context.query.category;
+
+  console.log("categoryyyyy", category);
+
+  const subcategory = context.query.subcategory;
+
+  console.log("subcategoryyyyy", subcategory);
+
+  //    where("fieldname", "==", fieldValue)
+
+  products = await getDocumentsOrder(
+    "products",
+    orderBy("timeStamp", "desc"),
+
+
+    //category i am searching for all products that have a category name / same as subcategory , else null nothing (filteration)
+    category
+      ? where("category", "==", category)
+      : subcategory
+      ? where("subcategory", "==", subcategory)
+      : null
+  );
+    console.log("productsssssss",products)
+
+   const cats = await getDocumentsOrder(
+        "cats",
+        orderBy("title", "desc") )
+        console.log("catssssssssssss",cats)
+
+
+  return {
+    // props from serverside will go to props in clientside
+    products: products,
+    cats:cats
   };
-  
+};

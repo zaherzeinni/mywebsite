@@ -11,7 +11,7 @@ import { message } from "antd";
 import AdminLayout from "../AdminLayout";
 
 
-const UpdateCategoryMain = ({ cats }) => {
+const UpdateCategoryMain = ({ category }) => {
   const [file, setFile] = useState("");
   const { setPageLoading, pageLoading } = useAuth();
   const isupdate = true;

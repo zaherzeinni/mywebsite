@@ -23,7 +23,7 @@ const AddCategoryMain = ({}) => {
       return; // stoppppp progress the function
     } else {
       values.image = await uploadImages(file, true, "cats"); // result is image link from firebase/storage
-
+      values.timeStamp = serverTimestamp()
       await addDoc(collection(db, "cats"), values);
 
       message.success("Category added  successfully");
