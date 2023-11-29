@@ -3,43 +3,41 @@ import Slider from "react-slick";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import { Box,Center,IconButton } from '@chakra-ui/react';
 import Image from 'next/image';
+import CustomSliderArrow from './customSliderArrow';
+
 
 // Settings for the slider
 const settings = {
     dots: false,
-    infinite: false,
-    arrows: false,
+    infinite: true,
+    arrows: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
+    className:"md:w-[600px] mx-auto mt-12 w-[90%] ",
+    nextArrow:<CustomSliderArrow direction={"next"}/>,
+    prevArrow:<CustomSliderArrow />,
 
     responsive: [
         {
-          breakpoint: 1424,
+          breakpoint: 500,
           settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 2,
+            slidesToScroll: 1,
             infinite: true,
-            dots: true,
+            dots: false,
+            arrows:true,
           },
         },
 
         {
-            breakpoint: 1124,
+            breakpoint: 700,
             settings: {
               slidesToShow: 2,
               slidesToScroll: 2,
               infinite: true,
-              dots: true,
-            },
-          },
-          {
-            breakpoint: 800,
-            settings: {
-              dots: true,
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              initialSlide: 2,
+              dots: false,
+              arrows: true,
             },
           },
         ],
@@ -51,53 +49,24 @@ const ProdSlider = ({data}) => {
 
 const [slider, setSlider] = React.useState(null);
     return (
-        <div mt={22} marginTop={"22"}>
-        <Center>
-        <Box >
-      <IconButton
-        aria-label="left-arrow"
-        colorScheme="messenger"
-        borderRadius="full"
-        m="3"
-        //position="absolute"
-        //left={3}
-        //top={3}
-        //zIndex={2}
-        // onClick={() => slider.current.slickNext()}
-        onClick={() => slider.slickPrev()}
-      >
-        <BiLeftArrowAlt />
-      </IconButton>
-      {/* Right Icon */}
-      <IconButton
-        aria-label="right-arrow"
-        colorScheme="messenger"
-        borderRadius="full"
-        //position="absolute"
-        //left={55}
-        //top={3}
-        //zIndex={2}
-        // onClick={() => slider.current.slickNext()}
-        onClick={() => slider.slickNext()}
-      >
-        <BiRightArrowAlt />
-      </IconButton>
-      </Box>
-      </Center>
+        <div >
 
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
   
 
         {data.map((item,index)=>(
-            <div key={index}>
+            <div key={index} className='flex-col justify-center items-center'>
             
-            {item.title}
+            
             <Image src={item.image} 
-            width={150}
-            height={150}
-            className=' rounded-full'
+            width={100}
+            height={100}
+            className=' rounded-full w-[130px] h-[130px] mx-auto'
             
             />
+            <div className=' text-center mt-3 font-semibold text-lg'>
+            {item.title}
+            </div>
             </div>
         ))}
 
