@@ -14,7 +14,7 @@ const settings = {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    className:"md:w-[600px] mx-auto mt-12 w-[90%] ",
+    className:"md:w-[600px] mx-auto mt-12 w-[80%] ",
     nextArrow:<CustomSliderArrow direction={"next"}/>,
     prevArrow:<CustomSliderArrow />,
 
