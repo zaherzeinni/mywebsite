@@ -31,7 +31,7 @@ ProductsPage.getInitialProps = async (context) => {
 
   products = await getDocumentsOrder(
     "products",
-    orderBy("timeStamp", "desc"),
+    orderBy("timeStamp", "asc"),
 
 
     //category i am searching for all products that have a category name / same as subcategory , else null nothing (filteration)
@@ -45,7 +45,7 @@ ProductsPage.getInitialProps = async (context) => {
 
    const cats = await getDocumentsOrder(
         "cats",
-        orderBy("title", "desc") )
+        orderBy("title", "asc") )
         console.log("catssssssssssss",cats)
 
 

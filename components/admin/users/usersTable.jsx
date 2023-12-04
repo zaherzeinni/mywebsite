@@ -11,23 +11,13 @@ const UsersTable = ({ users }) => {
     { label: "Guest", value: "guest" },
   ];
 
-
-//  id is user id well be change role
+  //  id is user id well be change role
   const createUserAction = (id) =>
     USER_ACTIONS.map(({ label, value }) => ({
       key: label,
-      label,  //  // is  text or item in dropdown menu
-      onClick: () => updateUserRole(id, value ),
+      label, //  // is  text or item in dropdown menu
+      onClick: () => updateUserRole(id, value),
     }));
-
-
-
-
-
-
-
-
-
 
   const columns = [
     {
@@ -35,7 +25,6 @@ const UsersTable = ({ users }) => {
       // same name from database   // category={title ,....}
       dataIndex: "displayName",
     },
-
 
     // {
     //   title: "image",
@@ -53,13 +42,11 @@ const UsersTable = ({ users }) => {
     //   },
     // },
 
-
     {
       title: "role",
       // same name from database   // category={title ,....}
       dataIndex: "role",
     },
-
 
     {
       title: "Change Role",
@@ -72,12 +59,11 @@ const UsersTable = ({ users }) => {
               <div>
                 <AiFillDelete
                   // send collection name and single category data to delete
-                  onClick={() => handleDelete("users", record , false ,true)}
+                  onClick={() => handleDelete("users", record, false, true)}
                   className=" hover:text-red-700 text-red-500 cursor-pointer"
                   size={"25"}
                 />
               </div>
-
 
               <div>
                 <Dropdown
@@ -96,13 +82,11 @@ const UsersTable = ({ users }) => {
     },
   ];
 
-
   return (
     <div className=" w-[90%]  md:w-[70%] mx-auto">
       <Table columns={columns} dataSource={users} />
     </div>
   );
 };
-
 
 export default UsersTable;

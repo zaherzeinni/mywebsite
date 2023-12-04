@@ -1,9 +1,8 @@
 import React from 'react'
 import { Card, Spin } from "antd";
-import { MdLocalPharmacy } from "react-icons/md";
-import { FaSackDollar } from "react-icons/fa6";
+import { GrProductHunt } from "react-icons/gr";
+import { PiSubtractSquareDuotone } from "react-icons/pi";
 import { TbCategory } from "react-icons/tb";
-import { BiSolidFileJpg, BiSolidFilePdf } from "react-icons/bi";
 import { FaTrophy } from "react-icons/fa";
 
 export default function CountCard({cats,subcats,products}) {
@@ -15,7 +14,7 @@ export default function CountCard({cats,subcats,products}) {
         <Card className="min-[500px]:flex-grow max-[500px]:w-full ">
           <div className="flex justify-center items-center gap-2 font-poppins ">
             <div className="bg-[#EDF5F5] max-[500px]:p-1 min-[500px]:p-2 rounded-lg">
-              <MdLocalPharmacy className="text-[#98BDBC] text-s min-[376px]:text-3xl" />
+            <GrProductHunt  className="text-[#4d40a4] text-s min-[376px]:text-3xl" />
             </div>
             <div className="text-xs md:text-lg">
               <p className="font-bold">Total Products</p>
@@ -37,7 +36,7 @@ export default function CountCard({cats,subcats,products}) {
         <Card className="min-[500px]:flex-grow max-[500px]:w-full ">
           <div className="flex justify-center items-center gap-2 font-poppins">
             <div className="bg-[#E2FF54] max-[500px]:p-1 min-[500px]:p-2 rounded-lg">
-              <FaSackDollar className="text-[#00952A] text-s min-[376px]:text-3xl" />
+              <PiSubtractSquareDuotone className="text-[#00952A] text-s min-[376px]:text-3xl" />
             </div>
             <div className="text-xs md:text-lg">
               <p className="font-bold">Sub Category</p>
@@ -51,7 +50,7 @@ export default function CountCard({cats,subcats,products}) {
               <FaTrophy className="text-[#74C5DF] text-s min-[376px]:text-3xl" />
             </div>
             <div className="text-xs md:text-lg">
-              <p className="font-bold">extra</p>
+              <p className="font-bold">Extra</p>
               <p>12</p>
             </div>
           </div>

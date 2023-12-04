@@ -22,13 +22,11 @@ const AdminLayout = ({ children }) => {
     { id: 6, text: "Add SubCategory", path: "/admin/subcategory/add" },
     { id: 7, text: "All SubCategories", path: "/admin/subcategory/all" },
     { id: 8, text: "All Users", path: "/admin/users" },
-
   ];
 
-  const { logout, profile, setPageLoading, pageLoading, user  } = useAuth();
+  const { logout, profile, setPageLoading, pageLoading, user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const { pathname, replace } = useRouter();
-
 
   useEffect(() => {
     console.log("profile Role: " + user);
@@ -38,27 +36,19 @@ const AdminLayout = ({ children }) => {
       toast.error("sorry you are not allowed to edit this page");
     }
 
+    const isLoggeed = localStorage.getItem("isLogged");
 
- const  isLoggeed = localStorage.getItem("isLogged");
- 
- console.log('isLogged-->' , isLoggeed)
-if(!isLoggeed)
-{
-
-  replace('/auth/login')
-
-}
-
-
-
-    
+    console.log("isLogged-->", isLoggeed);
+    if (!isLoggeed) {
+      replace("/auth/login");
+    }
   }, [profile]);
 
   const signOut = () => {
     try {
       // setPageLoading(true);
       logout();
-      localStorage.removeItem('isLogged');
+      localStorage.removeItem("isLogged");
       replace("/auth/login");
       // setPageLoading(false);
     } catch (error) {
@@ -66,8 +56,6 @@ if(!isLoggeed)
       toast.error(error?.message);
     }
   };
-
-
 
   if (pageLoading) {
     <div className=" h-[100vh] flex justify-center items-center">
@@ -93,19 +81,13 @@ if(!isLoggeed)
     );
   }
 
-
   if (profile === null) {
     return (
       <>
-      <Loader/>
-      
+        <Loader />
       </>
-   
     );
   }
-
-
- 
 
   return (
     <>
@@ -151,4 +133,4 @@ if(!isLoggeed)
   );
 };
 
-export default AdminLayout;
+export default AdminLayout;
