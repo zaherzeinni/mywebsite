@@ -3,9 +3,9 @@ import { Card, Spin } from "antd";
 import { GrProductHunt } from "react-icons/gr";
 import { PiSubtractSquareDuotone } from "react-icons/pi";
 import { TbCategory } from "react-icons/tb";
-import { FaTrophy } from "react-icons/fa";
+import { IoMdContacts } from "react-icons/io";
 
-export default function CountCard({cats,subcats,products}) {
+export default function CountCard({cats,subcats,products,users}) {
   return (
     <div>
 
@@ -39,7 +39,7 @@ export default function CountCard({cats,subcats,products}) {
               <PiSubtractSquareDuotone className="text-[#00952A] text-s min-[376px]:text-3xl" />
             </div>
             <div className="text-xs md:text-lg">
-              <p className="font-bold">Sub Category</p>
+              <p className="font-bold">Sub Categories</p>
               <p>{subcats}</p>
             </div>
           </div>
@@ -47,11 +47,11 @@ export default function CountCard({cats,subcats,products}) {
         <Card className="min-[500px]:flex-grow max-[500px]:w-full">
           <div className="flex justify-center items-center gap-2 font-poppins">
             <div className="bg-[#ECF6FD] max-[500px]:p-2 min-[500px]:p-2 rounded-lg">
-              <FaTrophy className="text-[#74C5DF] text-s min-[376px]:text-3xl" />
+              <IoMdContacts  className="text-[#74C5DF] text-s min-[376px]:text-3xl" />
             </div>
             <div className="text-xs md:text-lg">
-              <p className="font-bold">Extra</p>
-              <p>12</p>
+              <p className="font-bold">Users</p>
+              <p>{users}</p>
             </div>
           </div>
         </Card>

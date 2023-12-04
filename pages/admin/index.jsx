@@ -1,7 +1,7 @@
 import React from "react";
 import MainAdmin from "@/components/admin/MainAdmin";
 import { getCount } from "@/functions/firebase/getData";
-const Admin = ({cats,subcats,products}) => {
+const Admin = ({cats,subcats,products,users}) => {
 
 
     console.log('categories Account-->' , cats)
@@ -12,7 +12,7 @@ const Admin = ({cats,subcats,products}) => {
       cats={cats}
       subcats={subcats}
       products={products}
-      
+      users={users}
       />
     </>
   );
@@ -26,10 +26,12 @@ Admin.getInitialProps = async (context) => {
   const products = await getCount('products')
   const subcats  =  await getCount('subcats')
 
+  const users = await getCount('users')
   return {
     cats: cats,
     subcats:subcats,
-    products:products
+    products:products,
+    users:users,
 
   };
 };

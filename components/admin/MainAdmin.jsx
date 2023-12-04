@@ -1,7 +1,7 @@
 import React from 'react';
 import AdminLayout from './AdminLayout';
 import CountCard from './CountCards';
-const MainAdmin = ({cats,subcats,products}) => {
+const MainAdmin = ({cats,subcats,products,users}) => {
     return (
         <div>
             <AdminLayout>
@@ -9,6 +9,7 @@ const MainAdmin = ({cats,subcats,products}) => {
                cats={cats}
                subcats={subcats}
                products={products}
+               users={users}
                />
             </AdminLayout>
         </div>

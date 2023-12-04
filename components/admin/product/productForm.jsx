@@ -15,9 +15,7 @@ import {
 } from "antd";
 const { TextArea } = Input;
 
-
 import Image from "next/image";
-
 
 const ProductForm = ({
   onFinish,
@@ -33,16 +31,13 @@ const ProductForm = ({
   const [images, setImages] = useState(initialValues?.images || []);
   const [video, setVideo] = useState(initialValues?.video || "");
 
-
   return (
     <div className=" w-[80%] mx-auto ">
-      <div className=" w-full md:w-1/2 border-2 py-6 px-6">
+      <div className=" w-full md:w-[70%] border-2 py-6 px-6">
         <Form
           layout="vertical"
           // onFinish same as submit normal form
           onFinish={(values) =>
-
-
             // name of our function
             onFinish({
               ...values,
@@ -65,13 +60,11 @@ const ProductForm = ({
             <Input />
           </Form.Item>
 
-
           <Form.Item name="desc" label="Description">
             <TextArea rows={4} />
           </Form.Item>
 
-
-          <div className=" grid gap-3 md:grid-cols-4 grid-cols-1">
+          <div className=" grid gap-3 md:grid-cols-3 lg:grid-cols-4 grid-cols-1">
             {/* -----category--- */}
             <Form.Item name="category" label="category">
               <Select placeholder="Select Category">
@@ -84,7 +77,6 @@ const ProductForm = ({
                 })}
               </Select>
             </Form.Item>
-
 
             {/* -----subcategory--- */}
             <Form.Item name="subcategory" label="subcategory">
@@ -99,34 +91,26 @@ const ProductForm = ({
               </Select>
             </Form.Item>
 
-
             <div className=" flex  md:col-span-2 gap-2 items-center justify-center md:justify-start">
               {/* ----Price--- */}
-
 
               <Form.Item name="price" label="Price">
                 <InputNumber min={0} />
               </Form.Item>
 
-
               {/* ----InStock----- */}
 
-
               <Form.Item name="instock" label="InStock">
-
-
                 <Switch
-                // checked="true"
-                defaultChecked
-               
-                className=" bg-red-400 " />
+                  // checked="true"
+                  defaultChecked
+                  className=" bg-red-400 "
+                />
               </Form.Item>
             </div>
           </div>
 
-
           {/* -----images upload----- */}
-
 
           <div>
             <Upload
@@ -138,7 +122,6 @@ const ProductForm = ({
                 return false;
               }}
               listType="picture-card"
-
               onRemove={(file) => {
                 console.log("fileDATA", file);
                 setFiles((prev) => {
@@ -155,12 +138,8 @@ const ProductForm = ({
             </Upload>
           </div>
 
-
-
           {/* -----show product images {update product} ---- */}
 
-
-          
           <div className="flex flex-wrap gap-3 mt-2 ">
             {images?.map((data, index) => (
               <div key={index}>
@@ -179,7 +158,6 @@ const ProductForm = ({
                   }}
                   className="text-center cursor-pointer text-red-600"
                 >
-                 
                   remove
                 </h1>
               </div>
@@ -205,14 +183,15 @@ const ProductForm = ({
             </Upload>
           </div>
 
-
-
           {/* -----Video delete----- */}
 
           <div className="flex flex-wrap gap-3 mt-2 ">
-            {video ? 
+            {video ? (
               <div>
-                <img src="https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dmlkZW8lMjBpY29ufGVufDB8fDB8fHww" className="w-20 h-20 rounded-full " />
+                <img
+                  src="https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dmlkZW8lMjBpY29ufGVufDB8fDB8fHww"
+                  className="w-20 h-20 rounded-full "
+                />
                 <h1
                   onClick={() => {
                     setVideo("");
@@ -222,8 +201,9 @@ const ProductForm = ({
                   remove
                 </h1>
               </div>
-            :
-            false }
+            ) : (
+              false
+            )}
           </div>
 
           <div className=" ">
@@ -241,7 +221,4 @@ const ProductForm = ({
   );
 };
 
-
 export default ProductForm;
-
-
