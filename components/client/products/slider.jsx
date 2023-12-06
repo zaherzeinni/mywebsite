@@ -7,51 +7,61 @@ import CustomSliderArrow from "./customSliderArrow";
 import Link from "next/link";
 
 // Settings for the slider
-const settings = {
-  dots: false,
-  infinite: true,
-  arrows: true,
-  speed: 500,
-  slidesToShow: 4,
-  slidesToScroll: 1,
-  className: "md:w-[600px] mx-auto mt-4 w-[80%] py-12",
-  nextArrow: <CustomSliderArrow direction={"next"} />,
-  prevArrow: <CustomSliderArrow />,
 
-  responsive: [
-    {
-      breakpoint: 500,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        infinite: true,
-        dots: false,
-        arrows: true,
-      },
-    },
-
-    {
-      breakpoint: 700,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        infinite: true,
-        dots: false,
-        arrows: true,
-      },
-    },
-  ],
-};
 
 const ProdSlider = ({ data ,linkText }) => {
+
+  const conditionSlider  =  data?.length >= 3 ? 3 : data?.length >=2 ? 2: 1
+
+  console.log('Slider--->' , conditionSlider)
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    arrows: true,
+    speed: 500,
+    slidesToShow: conditionSlider  ,
+    slidesToScroll: 1,
+    className: "md:w-[600px] mx-auto mt-4 w-[80%] py-12",
+    nextArrow: <CustomSliderArrow direction={"next"} />,
+    prevArrow: <CustomSliderArrow />,
+  
+    responsive: [
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+          arrows: true,
+        },
+      },
+  
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+          arrows: true,
+        },
+      },
+    ],
+  };
+
+
+
   const [slider, setSlider] = React.useState(null);
   return (
     <div>
+      {data?.length}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {data.map((item, index) => (
           <div key={index} className="flex-col py-6 justify-center items-center">
 <Link href={`/products?${linkText}=${item.title}`}>
-<div className="w-[130px] h-[130px] rounded-full overflow-hidden hover:border-4 border-blue-600 border-2 p-1" >
+<div className="w-[130px] mx-auto h-[130px] rounded-full overflow-hidden hover:border-4 border-blue-600 border-2 p-1" >
 
 
             <img

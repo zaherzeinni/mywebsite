@@ -1,76 +1,76 @@
 import React, { useEffect, useState } from "react";
-import AdminLayout from "../AdminLayout";
+
+
 import { useRouter } from "next/router";
-import {
-  getDocument,
-  deleteImages,
-  uploadImages,
-} from "@/functions/firebase/getData";
+import { getDocument } from "@/functions/firebase/getData";
 import { useAuth } from "@/functions/context";
 import ProductForm from "./productForm";
-import { toast } from "react-toastify";
-import { updateDoc, doc, query } from "firebase/firestore";
-import { db } from "@/functions/firebase";
 import { message } from "antd";
+import { updateDoc, doc } from "firebase/firestore";
+import { db } from "@/functions/firebase";
+import AdminLayout from "../AdminLayout";
 
-import { deleteImage } from "@/functions/firebase/getData";
 
-
-
+import { uploadImages, deleteImages } from "@/functions/firebase/getData";
 const UpdateProductMain = ({ product, cats, subcats }) => {
-  const router = useRouter();
-
+  const { query, replace } = useRouter();
   const { id } = query;
-
+  //const [product, setProduct] = useState(null);
   const [files, setFiles] = useState([]);
-  const isupdate = true;
 
+
+  const isupdate = true;
   const { setPageLoading, pageLoading } = useAuth();
 
+
+  const initialValues = product;
+
+
+  console.log("?????-?????-" + initialValues);
+
+
   const onFinish = async (values) => {
-    console.log("values-->", values);
-
-    const imagesToDelete = product.images.filter(
-      (image) => !values.images.includes(image)
-    );
-
-    await deleteImages(imagesToDelete);
-
-    const newImagesUpload = await uploadImages(files); // array of links {images}
-
-    // old images + new uploaded images
-    values.images = [...values.images, ...newImagesUpload];
+    try {
+      setPageLoading(true);
 
 
+      // delete images
+      const imagesToDelete = product.images.filter(
+        (image) => !values.images.includes(image)
+      );
+      await deleteImages(imagesToDelete);
+      const newImagesUploaded = await uploadImages(files);
+      values.images = [...values.images, ...newImagesUploaded];
+      await updateDoc(doc(db, "products", id), values);
 
-    if (!values.video) {
-      await deleteImage(product.video);
-      message.success("Video Deleted Successfully");
+
+      message.success("Product Updated Successfully");
+      // router.push("/admin?tab=1");
+    } catch (error) {
+      message.error(error.message);
+    } finally {
+      setPageLoading(false);
     }
-
-    await updateDoc(doc(db, "products", product.id), values);
-
-    console.log("deletedImages", imagesToDelete);
-
-    message.success(`Product Uploaded Successfully`);
-
-    window.location.reload();
   };
+
 
   return (
     <AdminLayout>
       <ProductForm
-        //  initialValues all info about product from firestore
-        initialValues={product}
-        cats={cats}
-        subcats={subcats}
-        onFinish={onFinish}
-        files={files}
-        setFiles={setFiles}
-        isupdate={isupdate}
+        {...{
+          initialValues,
+          cats,
+          subcats,
+          files,
+          setFiles,
+          isupdate,
+          onFinish,
+        }}
       />
     </AdminLayout>
   );
 };
 
+
 export default UpdateProductMain;
+

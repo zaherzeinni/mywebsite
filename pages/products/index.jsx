@@ -31,8 +31,13 @@ const condition = !categoryquery && !subcategoryquery ? cats
 
   return (
     <div>
+      
+      {condition?.length===0 ? 0 :  
       <ProdSlider data={condition} linkText ={conditionText} />
+      }
+      
       {products?.length}
+      
     </div>
   );
 }
@@ -77,9 +82,9 @@ const subcats = await getDocumentsOrder(
 
   //category i am searching for all products that have a category name / same as subcategory , else null nothing (filteration)
   //contextquery.query  // null all subcategories , category parent te3 subcategories ( sub cat limited)
-  // category
-  //   ? where("category", "==", category)
-  //   : null
+  category
+    ? where("category", "==", category)
+    : null
 );
 
 //console.log("subcats", subcats);
