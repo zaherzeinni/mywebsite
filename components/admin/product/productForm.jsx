@@ -119,7 +119,7 @@ const ProductForm = ({
                             {/* ----isoffer----- */}
 
                             <Form.Item name="isoffer" label="IsOffer">
-                <Switch
+                <Switch 
                   checked={offerToggle}
                   // defaultChecked
                   className=" bg-red-400 "
@@ -130,9 +130,9 @@ const ProductForm = ({
 
             </div>
           </div>
-                
+                {offerToggle ? 
 
-                <div className="flex-col flex md:flex-row md:gap-12">
+                <div className="flex-col flex md:flex-row md:gap-12 ">
                           {/* ----offerDesciption--- */}
 
                 <Form.Item  className="md:w-[70%]" name="offerdesc" label="OfferDesc">
@@ -146,7 +146,7 @@ const ProductForm = ({
               </Form.Item>
 
                 </div>
-
+                 : null } 
 
           {/* -----images upload----- */}
 
