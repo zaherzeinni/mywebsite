@@ -21,6 +21,7 @@
     "formik": "^2.4.5",
     "framer-motion": "^10.16.4",
     "next": "latest",
+    "next-nprogress-bar": "^2.1.2",
     "react": "latest",
     "react-dom": "latest",
     "react-icons": "^4.11.0",

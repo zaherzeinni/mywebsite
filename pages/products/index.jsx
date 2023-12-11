@@ -16,8 +16,11 @@ export default function ProductsPage({ products, cats ,subcats ,categoryquery ,s
 
 
 const condition = !categoryquery && !subcategoryquery ? cats
- : subcategoryquery ? subcats 
+ : subcategoryquery ? null 
  : categoryquery && subcats
+
+
+ 
 
  const conditionText = !categoryquery && !subcategoryquery ? "category"
  : subcategoryquery ? "subcategory" 
@@ -27,14 +30,35 @@ const condition = !categoryquery && !subcategoryquery ? cats
 
 
  console.log('condition,conditionText' ,products?.length , condition ,conditionText)
-
+ //justify-center flex items-center
 
   return (
     <div>
-      
-      {condition?.length===0 ? 0 :  
+            
+
+      <div className="gradient">
+      <div className=" opacity-[0.9] h-[30px] sm:h-[30px]" >
+      </div>
+      <div className="  h-full w-full items-center justify-center flex ">
+          <img src="forsale.jpg" 
+          className="w-[50%] h-[50%] object-fill "
+          />
+        </div>
+        
+        <div className=" h-[30px] sm:h-[50px] CodeMirror" >
+              <span className="text-center w-full h-full flex justify-center items-center text-white animate-pulse !text-xl sm:!text-4xl CodeMirror">
+                For Sale Laptop Macbook Pro
+              </span>
+              {/* <button className="text-white xs: text-[8px]">
+                more details
+              </button> */}
+        </div>
+        </div>
+              {condition !== null &&  
+        
       <ProdSlider data={condition} linkText ={conditionText} />
-      }
+      
+    }
       
       {products?.length}
       

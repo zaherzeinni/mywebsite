@@ -4,8 +4,8 @@ import '../styles/global.css'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
-
-
+import  ProgressBar from '../components/common/progressBar';
+import { useEffect } from 'react';
 
 
 import { ToastContainer,toast } from 'react-toastify'
@@ -16,6 +16,25 @@ import { StateContextProvider } from '@/functions/context'
 
 export default function MyApp({ Component, pageProps }) {
 
+
+    useEffect(() => {
+        if('serviceWorker' in navigator) {
+          window.addEventListener('load', function () {
+            navigator.serviceWorker.register('/service-worker.js').then(
+              function (registration) {
+                console.log('Service Worker registration successful with scope: ', registration.scope)
+              },
+              function (err) {
+                console.error('Service Worker registration failed: ', err)
+              }
+            )
+          })
+        }
+      }, [])
+
+      
+
+
     return (
         <>
     <ChakraProvider>
@@ -23,6 +42,7 @@ export default function MyApp({ Component, pageProps }) {
     
     <Component {...pageProps} />
     <ToastContainer />
+    <ProgressBar/>
     </StateContextProvider>
     </ChakraProvider>
     </>

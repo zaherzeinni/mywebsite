@@ -30,6 +30,13 @@ const ProductForm = ({
 }) => {
   const [images, setImages] = useState(initialValues?.images || []);
   const [video, setVideo] = useState(initialValues?.video || "");
+  const [offerToggle, setOfferToggle] = useState(false);
+
+
+  const onChange = (checked) => {
+    setOfferToggle(checked);
+    
+};
 
   return (
     <div className=" w-[80%] mx-auto ">
@@ -52,6 +59,7 @@ const ProductForm = ({
             price: initialValues?.price || 0,
             desc: initialValues?.desc || "",
             instock: initialValues?.instock || true,
+            isoffer: initialValues?.isoffer || false,
             images: initialValues?.images || [],
             video: initialValues?.video || "",
           }}
@@ -107,8 +115,38 @@ const ProductForm = ({
                   className=" bg-red-400 "
                 />
               </Form.Item>
+
+                            {/* ----isoffer----- */}
+
+                            <Form.Item name="isoffer" label="IsOffer">
+                <Switch
+                  checked={offerToggle}
+                  // defaultChecked
+                  className=" bg-red-400 "
+                  onChange={onChange}
+                />
+              </Form.Item>
+
+
             </div>
           </div>
+                
+
+                <div className="flex-col flex md:flex-row md:gap-12">
+                          {/* ----offerDesciption--- */}
+
+                <Form.Item  className="md:w-[70%]" name="offerdesc" label="OfferDesc">
+                <TextArea rows={2} />
+                </Form.Item>
+
+                              {/* ----Discount--- */}
+
+              <Form.Item name="Discount" label="Discount">
+                <InputNumber min={0} />
+              </Form.Item>
+
+                </div>
+
 
           {/* -----images upload----- */}
 

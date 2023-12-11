@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* #42A5F5 */
+
 
 body {
     font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
@@ -18,3 +20,46 @@ body {
     hyphens: auto;
   }
   
+  
+@font-face {
+  font-family:DroidSansMono;
+  src:url('../public/Header.ttf');
+  }
+
+  div.CodeMirror {
+    height:100%;
+    /* background:#fff; */
+    /* color:"#42A5F5"; */
+    padding:0px;
+    margin:0px;
+    font:12px/55px DroidSansMono;
+    /* font-size: 44px; */
+    }
+  
+    .gradient {
+      background: linear-gradient(
+      90deg, rgba(10,78,113,1) 16%, rgba(13,13,157,1) 52%, rgba(132,234,255,1) 90%
+      );
+      width: 100%;
+      animation: animateHeader 7s linear infinite;
+      background-size: 250% 150%;
+    }
+    
+
+
+    @keyframes animateHeader {
+
+      0% {
+        background-position: 0%;
+      }
+      50% {
+        background-position: 50%;
+      }
+
+      100% {
+        background-position: 100%;
+      }
+ 
+
+
+    }
