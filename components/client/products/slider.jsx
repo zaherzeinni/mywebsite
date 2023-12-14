@@ -19,6 +19,8 @@ const ProdSlider = ({ data ,linkText }) => {
     dots: false,
     infinite: true,
     arrows: true,
+    autoplay: true,
+    autoplaySpeed: 10000,
     speed: 500,
     slidesToShow: conditionSlider  ,
     slidesToScroll: 1,

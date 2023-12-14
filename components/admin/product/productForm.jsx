@@ -30,7 +30,7 @@ const ProductForm = ({
 }) => {
   const [images, setImages] = useState(initialValues?.images || []);
   const [video, setVideo] = useState(initialValues?.video || "");
-  const [offerToggle, setOfferToggle] = useState(false);
+  const [offerToggle, setOfferToggle] = useState(initialValues?.isoffer ||false);
 
 
   const onChange = (checked) => {
@@ -59,9 +59,12 @@ const ProductForm = ({
             price: initialValues?.price || 0,
             desc: initialValues?.desc || "",
             instock: initialValues?.instock || true,
-            isoffer: initialValues?.isoffer || false,
             images: initialValues?.images || [],
             video: initialValues?.video || "",
+            isoffer: initialValues?.isoffer || false,
+            discount: initialValues?.discount || 0,
+            offerdesc: initialValues?.offerdesc || "",
+
           }}
         >
           <Form.Item name="title" label="Add Product - Title">
@@ -141,7 +144,7 @@ const ProductForm = ({
 
                               {/* ----Discount--- */}
 
-              <Form.Item name="Discount" label="Discount">
+              <Form.Item name="discount" label="Discount">
                 <InputNumber min={0} />
               </Form.Item>
 
