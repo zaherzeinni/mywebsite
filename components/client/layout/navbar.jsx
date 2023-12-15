@@ -12,6 +12,7 @@ import React, { useEffect, useRef, useState } from "react";
 import StaggeringText from "./staggeringText";
 
 import { getDocuments } from "@/functions/firebase/getData";
+import SearchInput from "./searchInput";
 
 
 const Navbar = () => {
@@ -94,7 +95,7 @@ const Navbar = () => {
       <div
         ref={navbar}
         className={
-          "group/header header relative top-0 z-[500] flex w-full flex-row flex-wrap items-center justify-between py-3 px-3 text-black duration-150 lg:px-8 bg-white"
+          "group/header header relative top-0 z-[500] flex w-full flex-row flex-wrap items-center justify-between md:py-3 md:px-3 text-black duration-150 lg:px-8 bg-white"
           //     cn(
           //   'group/header header relative top-0 z-[500] flex w-full flex-row flex-wrap items-center justify-between py-3 px-3 text-black duration-150 lg:px-8',
           // )
@@ -102,7 +103,7 @@ const Navbar = () => {
       >
         {/* list of Links--- */}
         <div className="flex flex-wrap gap-8">
-          <div className="z-10 max-w-[80px] rounded-lg p-4 pr-0">
+          <div className="z-10 max-w-[80px] rounded-lg p-1 pr-0">
             <Link href="/">
               {/* LOGO */}
               <Image
@@ -193,11 +194,15 @@ const Navbar = () => {
         </div>
 
         {/* ---Right Side--- */}
-        <div className="flex flex-row flex-wrap">
+        <div className="flex flex-row flex-wrap justify-center items-center">
+          <div >
+            <SearchInput />
+          </div>
           {profile ? (
             //create a dropdown
             <>
               <div className="group relative">
+                
                 <p
                   onClick={toggleUserMenu}
                   className="relative z-[99] inline-block cursor-pointer select-none rounded-xl px-4 py-3 font-medium lowercase duration-150 hover:bg-green-50 hover:text-green-700 active:scale-95 active:bg-green-200"

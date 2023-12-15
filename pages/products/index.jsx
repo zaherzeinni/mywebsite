@@ -3,6 +3,9 @@ import { orderBy, where } from "firebase/firestore";
 import { getDocuments, getDocumentsOrder } from "@/functions/firebase/getData";
 import ProdSlider from "@/components/client/products/slider";
 import OfferSlider from "@/components/client/sections/offerSlider";
+import Navbar from "@/components/client/layout/navbar";
+
+
 export default function ProductsPage({
   products,
   cats,
@@ -45,6 +48,7 @@ export default function ProductsPage({
 
   return (
     <div className="">
+      <Navbar />
       {condition !== null && (
         <ProdSlider data={condition} linkText={conditionText} />
       )}
