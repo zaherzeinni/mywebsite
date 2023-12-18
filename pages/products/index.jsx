@@ -12,7 +12,8 @@ export default function ProductsPage({
   subcats,
   categoryquery,
   subcategoryquery,
-  offerProducts
+  offerProducts,
+  search
 }) {
   console.log("ProductsPage" + products);
 
@@ -44,7 +45,17 @@ export default function ProductsPage({
     condition,
     conditionText
   );
-  //justify-center flex items-center
+  
+
+  const resultProducts =
+
+  !search ? products : products.filter((item) =>
+  item.title.toLowerCase().includes(search))   
+
+  console.log("Result Products ====>",resultProducts)
+
+
+
 
   return (
     <div className="">
@@ -70,6 +81,9 @@ ProductsPage.getInitialProps = async (context) => {
   //navbar.jsx href={`/products?category=${item.title.toLowerCase()}`}
   const category = context.query.category;
   const subcategory = context.query.subcategory;
+  // step 1
+  const search = context.query.search;
+
   //console.log("categoryyyyy", category);
 
   //console.log("subcategoryyyyy", subcategory);
@@ -118,6 +132,9 @@ ProductsPage.getInitialProps = async (context) => {
 
   //console.log("subcats", subcats);
 
+
+
+
   return {
     // props from serverside will go to props in clientside
     products: products,
@@ -125,6 +142,7 @@ ProductsPage.getInitialProps = async (context) => {
     subcats: subcats,
     categoryquery: category, //laptop
     subcategoryquery: subcategory, // LG
-    offerProducts :offerProducts
+    offerProducts :offerProducts, // is offer @ main page
+    search : search, // Search input at Navbar
   };
 };

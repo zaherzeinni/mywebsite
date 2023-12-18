@@ -109,9 +109,7 @@ const Navbar = () => {
               <Image
                 width={100}
                 height={100}
-                src={
-                  "https://mir-s3-cdn-cf.behance.net/project_modules/1400/d77ac359949097.5a357be8594ab.jpg"
-                }
+                src={"/icon.png"}
                 alt="behide logo"
                 className="w-full"
               />
