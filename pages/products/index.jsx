@@ -17,6 +17,10 @@ export default function ProductsPage({
 }) {
   console.log("ProductsPage" + products);
 
+
+  
+
+
   //conditon one
   // only router /products  no  products?category={catName}  no  /products?subcategory={subcatName} cats slider
   // condition two
@@ -56,7 +60,6 @@ export default function ProductsPage({
 
 
 
-
   return (
     <div className="">
       <Navbar />
@@ -67,7 +70,9 @@ export default function ProductsPage({
       <div className=" container1">
 
 
-<OfferSlider/>
+<OfferSlider
+offerProducts={offerProducts}
+/>
 
 
       </div>

@@ -23,6 +23,9 @@ export const StateContextProvider = ({ children }) => {
   const [name, setName] = useState("zaher");
   const router = useRouter()
   const [pageLoading,setPageLoading] = useState(false)
+  
+
+
 
   const register = (
     email,
@@ -151,7 +154,7 @@ const logout = () => {
 
   return (
     <StateContext.Provider value={{ name, register, signInUser,forgetPassword,
-    pageLoading,profile,userData,logout,setPageLoading }}>
+    pageLoading,profile,userData,logout,setPageLoading,setName }}>
       
       {children}
     </StateContext.Provider>

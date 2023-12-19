@@ -107,11 +107,11 @@ const Navbar = () => {
             <Link href="/">
               {/* LOGO */}
               <Image
-                width={100}
-                height={100}
+                width={75}
+                height={75}
                 src={"/icon.png"}
                 alt="behide logo"
-                className="w-full"
+                className="w-[60px] h-[60px]"
               />
             </Link>
           </div>

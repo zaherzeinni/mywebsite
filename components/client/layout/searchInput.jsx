@@ -3,11 +3,14 @@ import { useState } from "react";
 
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+//import { useAuth } from "@/functions/context";
+
+
 
 const SearchInput = () => {
   const [search, setSearch] = useState("");
   const router = useRouter();
-
+  //const { setName } = useAuth();
   const handleFind = () => {
 
     if (search === "") {
@@ -35,6 +38,7 @@ const SearchInput = () => {
                   router.push("/products");
                 }
               }}
+              //onChange={(e) => setName(e.target.value)}
               onChange={(e) => setSearch(e.target.value)}
               type="search"
               className="w-full px-2 py-[5px] text-gray-800 rounded-md rounded-r-none  border-1 border border-gray-400 focus:outline-none"

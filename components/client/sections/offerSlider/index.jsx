@@ -1,38 +1,38 @@
 import React from "react";
 import Carousel from "react-slick";
 import CustomSliderArrow from "../../products/customSliderArrow";
-const OfferSlider = () => {
+const OfferSlider = ({offerProducts}) => {
   const settings = {
     dots: true,
     infinite: true,
     arrows: false,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
-    speed: 5000,
+    autoplay: false,
+    speed: 1000,
     autoplaySpeed: 5000,
     cssEase: "linear",
-    className: "md:w-[75%] mx-auto ",
+    className: "md:w-[75%] mx-auto !h-full ",
     nextArrow: <CustomSliderArrow direction={"next"} />,
     prevArrow: <CustomSliderArrow />,
     swipeToSlide: true,
   };
-
+  console.log("imagesssOfferrr ====>" ,offerProducts[0].images)
   return (
     <div className=" grid gap-1 my-12  grid-cols-1 overflow-hidde   lg:grid-cols-7   place-items-center !w-[100%] ">
       {/* ---- parent of slider ---- */}
 
-      <div className=" w-full lg:col-span-5 col-span-2">
+      <div className=" w-full h-full bg-red-200 lg:col-span-5 col-span-2">
         <Carousel {...settings}>
-          <div className="">
-            <img src="Hp Laptop.jpg" alt="" />
-          </div>
-          <div className="">
-            <img src="Hp Laptop.jpg" alt="" />
-          </div>
-          <div className="">
-            <img src="Hp Laptop.jpg" alt="" />
-          </div>
+         
+          {offerProducts.map((data)=>(
+ <div className="h-full w-full">
+  <img src={data.images[0]}
+  className="h-full md:max-h-[400px] md:h-[400px] w-full"
+  />
+  </div>
+          ))}
+          
         </Carousel>
       </div>
 
