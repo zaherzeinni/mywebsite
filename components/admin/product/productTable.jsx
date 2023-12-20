@@ -65,6 +65,19 @@ const ProductTable = ({ products }) => {
       // same name from database   // category={title ,....}
       dataIndex: "subcategory",
     },
+    
+    {
+      title: "Is Offer",
+      // same name from database   // category={title ,....}
+      render: (record) => {
+        return (
+          <div>
+          {record.isoffer ? <h1 className=" text-green-500"> True</h1> : <h1 className=" text-red-500"> False</h1> }
+          </div>
+          )
+    }},
+
+
     {
       title: "Image",
       // single category {record} --> record.image.url === category.image.url

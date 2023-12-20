@@ -21,7 +21,9 @@ const AdminLayout = ({ children }) => {
     { id: 5, text: "All Products", path: "/admin/product/all" },
     { id: 6, text: "Add SubCategory", path: "/admin/subcategory/add" },
     { id: 7, text: "All SubCategories", path: "/admin/subcategory/all" },
-    { id: 8, text: "All Users", path: "/admin/users" },
+    { id: 8, text: "Add Project", path: "/admin/project/add" },
+    { id: 9, text: "All Projects", path: "/admin/project/all" },
+    { id: 10, text: "All Users", path: "/admin/users" },
   ];
 
   const { logout, profile, setPageLoading, pageLoading, user } = useAuth();

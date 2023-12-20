@@ -8,7 +8,7 @@ const OfferSlider = ({offerProducts}) => {
     arrows: false,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     speed: 1000,
     autoplaySpeed: 5000,
     cssEase: "linear",
