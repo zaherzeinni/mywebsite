@@ -15,7 +15,7 @@ import {
 } from "firebase/auth";
 
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
-import { Spinner,Box } from "@chakra-ui/react";
+
 
 const StateContext = createContext();
 

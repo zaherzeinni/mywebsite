@@ -1,10 +1,11 @@
 import React from "react";
 import MainAdmin from "@/components/admin/MainAdmin";
 import { getCount } from "@/functions/firebase/getData";
-const Admin = ({cats,subcats,products,users}) => {
+const Admin = ({cats,subcats,products,users,projects}) => {
 
 
-    console.log('categories Account-->' , cats)
+    console.log('Total Categories Count-->' , cats)
+
 
   return (
     <>
@@ -13,6 +14,7 @@ const Admin = ({cats,subcats,products,users}) => {
       subcats={subcats}
       products={products}
       users={users}
+      projects={projects}
       />
     </>
   );

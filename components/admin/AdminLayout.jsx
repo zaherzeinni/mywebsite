@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 
 const AdminLayout = ({ children }) => {
   const list = [
-    { id: 1, text: "Admin", path: "/admin" },
+    { id: 1, text: "Admin Dashboard", path: "/admin" },
     { id: 2, text: "Add Category", path: "/admin/category/add" },
     { id: 3, text: "All Categories", path: "/admin/category/all" },
     { id: 4, text: "Add Product", path: "/admin/product/add" },

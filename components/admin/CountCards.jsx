@@ -5,7 +5,7 @@ import { PiSubtractSquareDuotone } from "react-icons/pi";
 import { TbCategory } from "react-icons/tb";
 import { IoMdContacts } from "react-icons/io";
 
-export default function CountCard({cats,subcats,products,users}) {
+export default function CountCard({cats,subcats,products,users,projects}) {
   return (
     <div>
 
@@ -17,8 +17,11 @@ export default function CountCard({cats,subcats,products,users}) {
             <GrProductHunt  className="text-[#4d40a4] text-s min-[376px]:text-3xl" />
             </div>
             <div className="text-xs md:text-lg">
+            <a href='/admin/product/all'>  
               <p className="font-bold">Total Products</p>
               <p>{products}</p>
+
+              </a>
             </div>
           </div>
         </Card>
@@ -28,8 +31,10 @@ export default function CountCard({cats,subcats,products,users}) {
               <TbCategory className="text-[#E9967B] text-s min-[376px]:text-3xl" />
             </div>
             <div className="text-xs md:text-lg">
+            <a href='/admin/category/all'>  
               <p className="font-bold    ">Total Categories</p>
               <p>{cats}</p>
+              </a>
             </div>
           </div>
         </Card>
@@ -39,9 +44,12 @@ export default function CountCard({cats,subcats,products,users}) {
               <PiSubtractSquareDuotone className="text-[#00952A] text-s min-[376px]:text-3xl" />
             </div>
             <div className="text-xs md:text-lg">
+            <a href='/admin/subcategory/all'>  
               <p className="font-bold">Sub Categories</p>
               <p>{subcats}</p>
+            </a>
             </div>
+            
           </div>
         </Card>
         <Card className="min-[500px]:flex-grow max-[500px]:w-full">
@@ -50,8 +58,10 @@ export default function CountCard({cats,subcats,products,users}) {
               <IoMdContacts  className="text-[#74C5DF] text-s min-[376px]:text-3xl" />
             </div>
             <div className="text-xs md:text-lg">
+            <a href='/admin/users'>  
               <p className="font-bold">Users</p>
               <p>{users}</p>
+            </a>
             </div>
           </div>
         </Card>

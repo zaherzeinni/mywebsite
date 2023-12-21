@@ -13,7 +13,6 @@ import {
   orderBy,
   onSnapshot,
 } from "firebase/firestore";
-//import { db, storage } from "./index";
 import { db, storage } from "./index";
 import { message } from "antd";
 
@@ -32,7 +31,7 @@ import { v4 as uuidv4 } from "uuid";
 
 //step-1- get number of documents in one Collection
 export const getCount = async (col) => {
-  //col --> {products , categories , subcategories}
+  //col --> {products , categories , subcategories,users,projects}
   const colRef = collection(db, col);
   const snapshot = await getCountFromServer(colRef);
   return snapshot.data().count;
@@ -44,15 +43,10 @@ function postToJSON(doc) {
   return {
     ...data,
     id: doc.id,
-    // createdAt: data.createdAt..... === true or  false
-    // createdAt: data.createdAt?.toMillis() || 0,
-    // updatedAt: data.updatedAt?.toMillis() || 0,
   };
 }
 
-// 3nde so2el m3yan 3la instock aw collection motghayira hasab price product name,
-//review bade 3dad m3ayn mnil data
-// query and limmit is params
+
 export const getDocuments = async (col, querydata = null, limit = null) => {
   const queryConstraints = [];
   // query here is value from function {price === 200} or {name === adidas} ....
