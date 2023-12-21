@@ -4,6 +4,7 @@ import { GrProductHunt } from "react-icons/gr";
 import { PiSubtractSquareDuotone } from "react-icons/pi";
 import { TbCategory } from "react-icons/tb";
 import { IoMdContacts } from "react-icons/io";
+import Link from 'next/link';
 
 export default function CountCard({cats,subcats,products,users,projects}) {
   return (
@@ -17,11 +18,11 @@ export default function CountCard({cats,subcats,products,users,projects}) {
             <GrProductHunt  className="text-[#4d40a4] text-s min-[376px]:text-3xl" />
             </div>
             <div className="text-xs md:text-lg">
-            <a href='/admin/product/all'>  
+            <Link href='/admin/product/all'>  
               <p className="font-bold">Total Products</p>
               <p>{products}</p>
 
-              </a>
+              </Link>
             </div>
           </div>
         </Card>
@@ -31,10 +32,10 @@ export default function CountCard({cats,subcats,products,users,projects}) {
               <TbCategory className="text-[#E9967B] text-s min-[376px]:text-3xl" />
             </div>
             <div className="text-xs md:text-lg">
-            <a href='/admin/category/all'>  
+            <Link href='/admin/category/all'>  
               <p className="font-bold    ">Total Categories</p>
               <p>{cats}</p>
-              </a>
+              </Link>
             </div>
           </div>
         </Card>
@@ -44,10 +45,10 @@ export default function CountCard({cats,subcats,products,users,projects}) {
               <PiSubtractSquareDuotone className="text-[#00952A] text-s min-[376px]:text-3xl" />
             </div>
             <div className="text-xs md:text-lg">
-            <a href='/admin/subcategory/all'>  
+            <Link href='/admin/subcategory/all'>  
               <p className="font-bold">Sub Categories</p>
               <p>{subcats}</p>
-            </a>
+            </Link>
             </div>
             
           </div>
@@ -58,10 +59,10 @@ export default function CountCard({cats,subcats,products,users,projects}) {
               <IoMdContacts  className="text-[#74C5DF] text-s min-[376px]:text-3xl" />
             </div>
             <div className="text-xs md:text-lg">
-            <a href='/admin/users'>  
+            <Link href='/admin/users'>  
               <p className="font-bold">Users</p>
               <p>{users}</p>
-            </a>
+            </Link>
             </div>
           </div>
         </Card>
