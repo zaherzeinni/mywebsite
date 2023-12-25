@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const ProdSlider = ({ data ,linkText }) => {
 
-  const conditionSlider  =  data?.length >= 3 ? 3 : data?.length >=2 ? 2: 1
+  const conditionSlider  =  data?.length >= 3 ? 4 : data?.length >=2 ? 4: 1
 
   console.log('Slider--->' , conditionSlider)
 
@@ -24,7 +24,7 @@ const ProdSlider = ({ data ,linkText }) => {
     speed: 500,
     slidesToShow: conditionSlider  ,
     slidesToScroll: 1,
-    className: "md:w-[600px] mx-auto mt-4 w-[80%] py-12",
+    className: "md:w-[750px] mx-auto mt-4 w-[95%] py-12",
     nextArrow: <CustomSliderArrow direction={"next"} />,
     prevArrow: <CustomSliderArrow />,
   
@@ -58,9 +58,9 @@ const ProdSlider = ({ data ,linkText }) => {
   const [slider, setSlider] = React.useState(null);
   return (
     <div>
-      {data?.length}
+     
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {data.map((item, index) => (
+        {data?.map((item, index) => (
           <div key={index} className="flex-col py-6 justify-center items-center">
 <Link href={`/products?${linkText}=${item.title}`}>
 <div className="w-[130px] mx-auto h-[130px] rounded-full overflow-hidden hover:border-4 border-blue-600 border-2 p-1" >

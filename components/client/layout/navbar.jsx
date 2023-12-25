@@ -156,7 +156,7 @@ const Navbar = () => {
                           return (
                             <Link
                               key={index}
-                              href={`/products?category=${item.title.toLowerCase()}`}
+                              href={`/products?category=${item.title}`}
                               className="hover:text-brandBlack block transform rounded-lg px-4 py-2 text-xs font-normal capitalize text-black  duration-300 hover:bg-gray-200"
                             >
                               {item.title}

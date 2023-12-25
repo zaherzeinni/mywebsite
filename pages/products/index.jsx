@@ -4,7 +4,8 @@ import { getDocuments, getDocumentsOrder } from "@/functions/firebase/getData";
 import ProdSlider from "@/components/client/products/slider";
 import OfferSlider from "@/components/client/sections/offerSlider";
 import Navbar from "@/components/client/layout/navbar";
-
+import ProjectsMain from "@/components/admin/project/projects";
+import ProjectSlider from "@/components/client/sections/projectSlider";
 
 export default function ProductsPage({
   products,
@@ -13,13 +14,10 @@ export default function ProductsPage({
   categoryquery,
   subcategoryquery,
   offerProducts,
-  search
+  search,
+  projects,
 }) {
   console.log("ProductsPage" + products);
-
-
-  
-
 
   //conditon one
   // only router /products  no  products?category={catName}  no  /products?subcategory={subcatName} cats slider
@@ -49,32 +47,30 @@ export default function ProductsPage({
     condition,
     conditionText
   );
-  
 
-  const resultProducts =
+  const resultProducts = !search
+    ? products
+    : products.filter((item) => item.title.toLowerCase().includes(search));
 
-  !search ? products : products.filter((item) =>
-  item.title.toLowerCase().includes(search))   
-
-  console.log("Result Products ====>",resultProducts)
-
-
+  console.log("Result Products ====>", resultProducts);
 
   return (
     <div className="">
       <Navbar />
+
+
+      <OfferSlider offerProducts={offerProducts} />
       {condition !== null && (
         <ProdSlider data={condition} linkText={conditionText} />
       )}
 
       <div className=" container1">
+        
 
-
-<OfferSlider
-offerProducts={offerProducts}
-/>
-
-
+        <div>
+          
+          <ProjectSlider projects ={projects}/>
+        </div>
       </div>
     </div>
   );
@@ -137,8 +133,12 @@ ProductsPage.getInitialProps = async (context) => {
 
   //console.log("subcats", subcats);
 
+  const projects = await getDocumentsOrder(
+    "projects",
+    orderBy("timeStamp", "asc")
+  );
 
-
+  console.log("projectsss", projects);
 
   return {
     // props from serverside will go to props in clientside
@@ -147,7 +147,8 @@ ProductsPage.getInitialProps = async (context) => {
     subcats: subcats,
     categoryquery: category, //laptop
     subcategoryquery: subcategory, // LG
-    offerProducts :offerProducts, // is offer @ main page
-    search : search, // Search input at Navbar
+    offerProducts: offerProducts, // is offer @ main page
+    search: search, // Search input at Navbar
+    projects: projects,
   };
 };
