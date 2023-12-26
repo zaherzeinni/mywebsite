@@ -140,3 +140,8 @@ body {
 
 
 }
+
+.slick-slide.slick-active  > div {
+  padding:13px !important;
+  /* background-color: red !important; */
+}

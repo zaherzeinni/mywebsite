@@ -15,10 +15,11 @@ const OfferSlider = ({offerProducts}) => {
     speed: 1000,
     autoplaySpeed: 5000,
     cssEase: "linear",
-    className: "md:w-[75%] mx-auto !h-full ",
+    className: "md:w-[75%] mx-auto !h-full  ",
     nextArrow: <CustomSliderArrow direction={"next"} />,
     prevArrow: <CustomSliderArrow />,
     swipeToSlide: true,
+    
 
   };
   console.log("imagesssOfferrr ====>" ,offerProducts[0].images)
@@ -34,84 +35,85 @@ const OfferSlider = ({offerProducts}) => {
   <Carousel {...settings} >
     {offerProducts?.map((item, index) => {
       return (
+       
         <div
-                className="bg-cover bg-no-repeat bg-center
-                bg-[url('/forsale.jpg')]
-                
-                "
-                
 
-                // style={{
-                //   backgroundImage: `url(${item?.images[0]})`,
-                  
-                // }}
+        key={index}
+        className="bg-cover  rounded-xl bg-no-repeat bg-center
+        
+
+        bg-[url('/forsale.jpg')]"
+
+      >
+       
+     
+
+
+        <div className="bg-blac bg-opacity-20 h-full text-gray-200 py-16 lg:py-40">
+
+
+   
+
+          <div className="max-w-7xl mx-auto font-content">
+
+
+
+          
+
+
+            <div className="max-w-3xl space-y-4 px-4 sm:px-6 lg:px-8 py-6 rounded-lg">
+          
+            <motion.div
+                initial={{ y: "100%" }}
+                whileInView={{ y: 0 }}
+                transition={{ duration: 1, ease: "easeInOut" }}
+                className="text-4xl md:text-8xl font-bold uppercase bg-gray-950 bg-opacity-20 rounded-xl"
+                
               >
-               
+         
 
-                <div className="bg-black bg-opacity-20 h-full text-gray-200 py-16 lg:py-40">
-
-
-           
-
-                  <div className="max-w-7xl mx-auto font-content">
-
-
- 
-                  
-
-
-                    <div className="max-w-3xl space-y-4 px-4 sm:px-6 lg:px-8 py-6 rounded-lg">
-                  
-                    <motion.div
-                        initial={{ y: "100%" }}
-                        whileInView={{ y: 0 }}
-                        transition={{ duration: 1, ease: "easeInOut" }}
-                        className="text-4xl md:text-8xl font-bold uppercase bg-gray-950 bg-opacity-20 rounded-xl"
-                        
-                      >
-                 
-
-                        <div className="text-xl space-y-3">
-                          <div className="flex">
-                            <div className="font-content rounded-md bg-gray-300 px-3 py-2 bg-opacity-20">
-                              Join Hands for Infertility Free Karnataka
-                            </div>
-                          </div>
-                          <div>
-                            Even today many people believe that infertility is a
-                            curse. Garbhagudi IVF Center through the{" "}
-                            <span className="font-bold underline">
-                              Ghar Ghar GarbhaGudi initiative
-                            </span>{" "}
-                            has taken a bold step to overcome that and create
-                            awareness that every woman can achieve motherhood
-                            through modern reproductive treatment.
-                          </div>
-                        </div>
-
-
-
-
-
-                      
-                        </motion.div>
-
-
-
+                <div className="text-xl space-y-3">
+                  <div className="flex">
+                    <div className="font-content rounded-md bg-gray-300 px-3 py-2 bg-opacity-20">
+                      Join Hands for Infertility Free Karnataka
                     </div>
-
-             
-                
-
-
-
                   </div>
-
-                 
-
+                  <div>
+                    Even today many people believe that infertility is a
+                    curse. Garbhagudi IVF Center through the{" "}
+                    <span className="font-bold underline">
+                      Ghar Ghar GarbhaGudi initiative
+                    </span>{" "}
+                    has taken a bold step to overcome that and create
+                    awareness that every woman can achieve motherhood
+                    through modern reproductive treatment.
+                  </div>
                 </div>
-                
-              </div>
+
+
+
+
+
+              
+                </motion.div>
+
+
+
+            </div>
+
+     
+        
+
+
+
+          </div>
+
+         
+
+        </div>
+        
+      </div>
+
       );
     })}
   </Carousel>
