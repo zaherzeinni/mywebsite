@@ -1,10 +1,9 @@
 import React from "react";
 import Carousel from "react-slick";
 import CustomSliderArrow from "../../products/customSliderArrow";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 
-
-const OfferSlider = ({offerProducts}) => {
+const OfferSlider = ({ offerProducts }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -19,138 +18,77 @@ const OfferSlider = ({offerProducts}) => {
     nextArrow: <CustomSliderArrow direction={"next"} />,
     prevArrow: <CustomSliderArrow />,
     swipeToSlide: true,
-    
-
   };
-  console.log("imagesssOfferrr ====>" ,offerProducts[0].images)
+  console.log("imagesssOfferrr ====>", offerProducts[0].images);
   return (
+    <div className=" grid gap-1 mt-12 mb-8 px-12  grid-cols-1 lg:!h-[600px] h-full overflow-hidde   lg:grid-cols-7   place-items-center !w-[100%] ">
+      {/* ---- parent of slider ---- */}
 
-
-
-<div className=" grid gap-1 mt-12 mb-8 px-12  grid-cols-1 lg:!h-[600px] h-full overflow-hidde   lg:grid-cols-7   place-items-center !w-[100%] ">
-{/* ---- parent of slider ---- */}
-
-
-<div className=" w-full lg:col-span-5 col-span-2 sm:!h-[600px] !h-[100%] ">
-  <Carousel {...settings} >
-    {offerProducts?.map((item, index) => {
-      return (
-       
-        <div
-
-        key={index}
-        className="bg-cover  rounded-xl bg-no-repeat bg-center
+      <div className=" w-full lg:col-span-5 col-span-2 sm:!h-[600px] !h-[100%] ">
+        <Carousel {...settings}>
+          {offerProducts?.map((item, index) => {
+            return (
+              <div
+                key={index}
+                className="bg-cover  rounded-xl bg-no-repeat bg-center
         
 
         bg-[url('/forsale.jpg')]"
-
-      >
-       
-     
-
-
-        <div className="bg-blac bg-opacity-20 h-full text-gray-200 py-16 lg:py-40">
-
-
-   
-
-          <div className="max-w-7xl mx-auto font-content">
-
-
-
-          
-
-
-            <div className="max-w-3xl space-y-4 px-4 sm:px-6 lg:px-8 py-6 rounded-lg">
-          
-            <motion.div
-                initial={{ y: "100%" }}
-                whileInView={{ y: 0 }}
-                transition={{ duration: 1, ease: "easeInOut" }}
-                className="text-4xl md:text-8xl font-bold uppercase bg-gray-950 bg-opacity-20 rounded-xl"
-                
               >
-         
-
-                <div className="text-xl space-y-3">
-                  <div className="flex">
-                    <div className="font-content rounded-md bg-gray-300 px-3 py-2 bg-opacity-20">
-                      Join Hands for Infertility Free Karnataka
+                <div className="bg-blac bg-opacity-20 h-full text-gray-200 py-16 lg:py-40">
+                  <div className="max-w-7xl mx-auto font-content">
+                    <div className="max-w-3xl space-y-4 px-4 sm:px-6 lg:px-8 py-6 rounded-lg">
+                      <motion.div
+                        initial={{ y: "100%" }}
+                        whileInView={{ y: 0 }}
+                        transition={{ duration: 1, ease: "easeInOut" }}
+                        className="text-4xl md:text-8xl font-bold uppercase bg-gray-950 bg-opacity-20 rounded-xl"
+                      >
+                        <div className="text-xl space-y-3">
+                          <div className="flex">
+                            <div className="font-content rounded-md bg-gray-300 px-3 py-2 bg-opacity-20">
+                              Join Hands for Infertility Free Karnataka
+                            </div>
+                          </div>
+                          <div>
+                            Even today many people believe that infertility is a
+                            curse. Garbhagudi IVF Center through the{" "}
+                            <span className="font-bold underline">
+                              Ghar Ghar GarbhaGudi initiative
+                            </span>{" "}
+                            has taken a bold step to overcome that and create
+                            awareness that every woman can achieve motherhood
+                            through modern reproductive treatment.
+                          </div>
+                        </div>
+                      </motion.div>
                     </div>
                   </div>
-                  <div>
-                    Even today many people believe that infertility is a
-                    curse. Garbhagudi IVF Center through the{" "}
-                    <span className="font-bold underline">
-                      Ghar Ghar GarbhaGudi initiative
-                    </span>{" "}
-                    has taken a bold step to overcome that and create
-                    awareness that every woman can achieve motherhood
-                    through modern reproductive treatment.
-                  </div>
                 </div>
-
-
-
-
-
-              
-                </motion.div>
-
-
-
-            </div>
-
-     
-        
-
-
-
-          </div>
-
-         
-
-        </div>
-        
+              </div>
+            );
+          })}
+        </Carousel>
       </div>
 
-      );
-    })}
-  </Carousel>
-</div>
+      {/* ----- parent of sideoffer images --- */}
 
+      <div className="md:col-span-2 !h-full  flex justify-center lg:grid lg:grid-cols-1  lg:place-items-center gap-4 mt-[50px] lg:mt-[1px]">
+        <img
+          className="rounded-xl object-cover object-center h-full w-[50%] lg:w-full"
+          src="https://i.pcmag.com/imagery/reviews/04jlYF4fsF2M5cejiU8lw7G-2.fit_lim.size_840x473.v1685028816.jpg"
+        />
 
-{/* ----- parent of sideoffer images --- */}
-
-
-<div className="md:col-span-2 !h-full  flex justify-center lg:grid lg:grid-cols-1  lg:place-items-center gap-4 mt-[50px] lg:mt-[1px]">
-  <img
-    className="rounded-xl object-cover object-center h-full w-[50%] lg:w-full"
-    src="https://i.pcmag.com/imagery/reviews/04jlYF4fsF2M5cejiU8lw7G-2.fit_lim.size_840x473.v1685028816.jpg"
-  />
-
-
-  <img
-    className="rounded-xl object-cover object-center h-full w-[50%] lg:w-full"
-    src="https://i.pcmag.com/imagery/reviews/04jlYF4fsF2M5cejiU8lw7G-2.fit_lim.size_840x473.v1685028816.jpg"
-  />
-</div>
-</div>
-
+        <img
+          className="rounded-xl object-cover object-center h-full w-[50%] lg:w-full"
+          src="https://i.pcmag.com/imagery/reviews/04jlYF4fsF2M5cejiU8lw7G-2.fit_lim.size_840x473.v1685028816.jpg"
+        />
+      </div>
+    </div>
   );
 };
 
 export default OfferSlider;
-
-
-
-
-
-
-
-
-
-
 
 // import React from "react";
 // import { Carousel } from "react-responsive-carousel";
@@ -158,10 +96,8 @@ export default OfferSlider;
 
 // import Image from "next/image";
 
-
 // import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 // import { Box, HStack, Icon, Link as LinkUI, Text } from "@chakra-ui/react";
-
 
 // const SliderArrowRight = ({ onClick }) => (
 //   <Box
@@ -183,7 +119,6 @@ export default OfferSlider;
 //   </Box>
 // );
 
-
 // const SliderArrowLeft = ({ onClick }) => (
 //   <Box
 //     bgColor="#d3d3d3cc"
@@ -204,16 +139,13 @@ export default OfferSlider;
 //   </Box>
 // );
 
-
 // const renderArrowPrev = (clickHandler, hasPrev) => (
 //   <SliderArrowLeft isDisabled={!hasPrev} onClick={clickHandler} type="prev" />
 // );
 
-
 // const renderArrowNext = (clickHandler, hasNext) => (
 //   <SliderArrowRight isDisabled={!hasNext} onClick={clickHandler} type="next" />
 // );
-
 
 // export default function Test({ offerProducts }) {
 //   return (
@@ -240,7 +172,6 @@ export default OfferSlider;
 //               <Image
 //                 //   className="w-full h-full object-cove   brightness-50   rounded-lg "
 
-
 //                 fill
 //                 id="background-image"
 //                 style={{ objectFit: "cover" }}
@@ -251,10 +182,8 @@ export default OfferSlider;
 //                 src={item?.images[0]}
 //               />
 
-
 //               <div className="  z-0 absolute  inset-0   text-3xl top-1/2   text-center  text-whit ">
 //                 {/* TEXT */}
-
 
 //                 <img src="./Testt.jpg"
 //                 className=""
@@ -267,4 +196,3 @@ export default OfferSlider;
 //     </div>
 //   );
 // }
-
