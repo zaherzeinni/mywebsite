@@ -145,3 +145,9 @@ body {
   padding:13px !important;
   /* background-color: red !important; */
 }
+/* .slick-list */
+
+.slick-slider .slick-list  {
+
+height: 100% !important;
+}
