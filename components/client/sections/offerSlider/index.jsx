@@ -3,7 +3,6 @@ import Carousel from "react-slick";
 import CustomSliderArrow from "../../products/customSliderArrow";
 import { motion } from "framer-motion";
 
-
 const OfferSlider = ({ offerProducts }) => {
   const settings = {
     dots: true,
@@ -11,9 +10,9 @@ const OfferSlider = ({ offerProducts }) => {
     arrows: false,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     speed: 1000,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 7000,
     cssEase: "linear",
     className: "md:w-[75%] mx-auto !h-full  ",
     nextArrow: <CustomSliderArrow direction={"next"} />,
@@ -25,82 +24,65 @@ const OfferSlider = ({ offerProducts }) => {
     <div className=" grid gap-1 mt-12 mb-8 px-12  grid-cols-1 lg:!h-[700px] h-full overflow-y-hidde   lg:grid-cols-7   place-items-center !w-[100%] ">
       {/* ---- parent of slider ---- */}
 
-
       <div className=" w-full lg:col-span-5 col-span-2 sm:!h-[700px] !h-[100%] ">
         <Carousel {...settings}>
           {offerProducts?.map((item, index) => {
             return (
-
-
-
-
-<div className="w-full h-full relative  " key={index}>
-                  <img                  className="w-full !h-full object-center  xs:!h-[700px]  !object-fit xs:object-cover    brightnes-50   rounded-lg
+              <div className="w-full h-full relative  " key={index}>
+                <img
+                  className=" p-[13px] relative lg:-top-[13px] w-full !h-full object-center  xs:!h-[700px]  !object-fit xs:object-cover    brightnes-50   rounded-[4%]
                    "
-                   src={item?.images[0]}
-                   alt=""
-                 />
+                  src={item?.images[0]}
+                  alt=""
+                />
 
-
-                 <div className="  z-10 absolute  inset-0   text-3xl flex items-cente     text-center  text-white ">
-                 <div className="max-w-3xl space-y-4 px-4 mt-[100px] sm:px-6 lg:px-8 py-6 rounded-lg">
-                       <motion.div
-                         initial={{ y: "300%" }}
-                         whileInView={{ y: 0 }}
-                         transition={{ duration: 1, ease: "easeInOut" }}
-                         className="text-4xl md:text-8xl font-bold uppercase bg-gray-950 bg-opacity-20 rounded-xl"
-                       >
-                         <div className="text-xl space-y-3">
-                           <div className="flex">
-                             <div className="font-content rounded-md bg-gray-300 px-3 py-2 bg-opacity-20">
-                               Join Hands for Infertility Free Karnataka
-                             </div>
-                           </div>
-                           <div>
-                             Even today many people believe that infertility is a
-                             curse. Garbhagudi IVF Center through the{" "}
-                             <span className="font-bold underline">
-                               Ghar Ghar GarbhaGudi initiative
-                             </span>{" "}
-                             {/* has taken a bold step to overcome that and create
-                             awareness that every woman can achieve motherhood
-                             through modern reproductive treatment. */}
-                           </div>
-                         </div>
-
-
-
-
-                       </motion.div>
-                     </div>            
-                   
-                    </div>
-               </div>
-
-
-
-
-
-
-
-
-
-
+                <div className="  z-10 absolute  inset-0   text-3xl flex items-cente     text-center  text-white ">
+                  <div className="max-w-3xl space-y-4 px-4 mt-[100px] sm:px-6 lg:px-8 py-6 rounded-lg">
+                    <motion.div
+                      initial={{ y: "300%" }}
+                      whileInView={{ y: 0 }}
+                      transition={{ duration: 1, ease: "easeInOut" }}
+                      className="text-4xl md:text-8xl font-bold uppercase bg-gray-950 bg-opacity-20 rounded-xl"
+                    >
+                      <div className="text-xl space-y-3">
+                        <div className="flex">
+                          <div className="font-content rounded-md bg-gray-300 px-3 py-2 bg-opacity-20">
+                            {item.title}
+                          </div>
+                        </div>
+                        <div>
+                          {item.desc}
+                          <div className="font-bold underline animate-pulse">
+                            {item.discount === 0 ? (
+                              false
+                            ) : (
+                              <div>
+                                {item.discount}%
+                                <img
+                                  src="Sale-image.png"
+                                  className="w-[100%] h-[75px] rounded-lg"
+                                />
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
             );
           })}
         </Carousel>
       </div>
 
-
       {/* ----- parent of sideoffer images --- */}
-
 
       <div className="md:col-span-2 !h-full  flex justify-center lg:grid lg:grid-cols-1  lg:place-items-center gap-4 mt-[50px] lg:mt-[1px]">
         <img
           className="rounded-xl object-cover object-center h-full w-[50%] lg:w-full"
           src="https://i.pcmag.com/imagery/reviews/04jlYF4fsF2M5cejiU8lw7G-2.fit_lim.size_840x473.v1685028816.jpg"
         />
-
 
         <img
           className="rounded-xl object-cover object-center h-full w-[50%] lg:w-full"
@@ -111,34 +93,7 @@ const OfferSlider = ({ offerProducts }) => {
   );
 };
 
-
 export default OfferSlider;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React from "react";
 // import Carousel from "react-slick";
@@ -173,7 +128,6 @@ export default OfferSlider;
 //               <div
 //                 key={index}
 //                 className="bg-cover  rounded-xl bg-no-repeat bg-center
-        
 
 //         bg-[url('/forsale.jpg')]"
 //               >

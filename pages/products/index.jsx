@@ -6,6 +6,10 @@ import OfferSlider from "@/components/client/sections/offerSlider";
 import Navbar from "@/components/client/layout/navbar";
 import ProjectsMain from "@/components/admin/project/projects";
 import ProjectSlider from "@/components/client/sections/projectSlider";
+import { useState,useEffect } from "react";
+import FireWork from "@/components/common/startFire";
+import AdvertiseBar from "@/components/common/advertiseBar";
+
 
 export default function ProductsPage({
   products,
@@ -54,8 +58,34 @@ export default function ProductsPage({
 
   console.log("Result Products ====>", resultProducts);
 
+
+
+
+
+
+
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+
+  useEffect(() =>
+  {
+        setTimeout(() =>
+        {
+              setModalOpen(true)
+        }, 2000)
+  }, []);
+
+
+
+
+
+
   return (
     <div className="">
+      {/* {modalOpen === true && 
+      <FireWork/> } */}
+      <AdvertiseBar />
       <Navbar />
 
 

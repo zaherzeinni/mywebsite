@@ -18,6 +18,36 @@ module.exports = {
     },
     extend: {
 
+      animation : {
+marquee : "marquee 30s linear  infinite",
+
+marquee2 : "marquee2  50s linear  infinite "
+
+
+      }
+
+      ,
+
+      keyframes : {
+
+        marquee : {
+
+          "0%" : {transform :"translateX(50%)"},
+          "100%" : {transform :"translateX(-300%)"},
+
+
+        }
+,
+        marquee2 :{
+          "0%" : {transform :"translateX(100%)"},
+          "100%" : {transform :"translateX(0%)"},
+
+
+        }
+
+      }
+
+
     },
   },
   plugins: [],
