@@ -44,8 +44,8 @@ const OfferSlider = ({ offerProducts }) => {
                       transition={{ duration: 1, ease: "easeInOut" }}
                       className="text-4xl md:text-8xl font-bold uppercase bg-gray-950 bg-opacity-20 rounded-xl"
                     >
-                      <div className="text-xl space-y-3">
-                        <div className="flex">
+                      <div className="text-xl space-y-3" key={index}>
+                        <div className="flex" >
                           <div className="font-content rounded-md bg-gray-300 px-3 py-2 bg-opacity-20">
                             {item.title}
                           </div>
