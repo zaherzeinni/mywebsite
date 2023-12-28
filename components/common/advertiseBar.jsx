@@ -6,7 +6,7 @@ const AdvertiseBar = () => {
       <Marquee pauseOnHover>
         <span className="mx-2">
           The iPhone 15 and 15 Plus have some notable upgrades, too, including
-          the Dynamic Island that debuted with last year's Pro lineup and a
+          the Dynamic Island that debuted with last years Pro lineup and a
           matte finish on the back glass
         </span>
         <span className="mx-2">•</span>
