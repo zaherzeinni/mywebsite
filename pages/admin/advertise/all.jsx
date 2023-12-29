@@ -1,5 +1,5 @@
 import React from 'react';
-import AdvertisesMain from '@/components/admin/advertise/Advertises';
+import AdvertisesMain from '@/components/admin/advertise/advertises';
 import { getDocuments } from '@/functions/firebase/getData';
 
 const All = ({adverts}) => {
