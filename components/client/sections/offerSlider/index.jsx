@@ -37,7 +37,7 @@ const OfferSlider = ({ offerProducts }) => {
                 />
 
                 <div className="  z-10 absolute  inset-0   text-3xl flex items-cente     text-center  text-white ">
-                  <div className="max-w-3xl space-y-4 px-4 mt-[100px] sm:px-6 lg:px-8 py-6 rounded-lg">
+                  <div className="max-w-3xl z-10 space-y-4 px-4 mt-[100px] sm:px-6 lg:px-8 py-6 rounded-lg">
                     <motion.div
                       initial={{ y: "300%" }}
                       whileInView={{ y: 0 }}
@@ -47,24 +47,29 @@ const OfferSlider = ({ offerProducts }) => {
                       <div className="text-xl space-y-3" key={index}>
                         <div className="flex" >
                           <div className="font-content rounded-md bg-gray-300 px-3 py-2 bg-opacity-20">
-                            {item.title}
+                            adsa {item.title} kjasdjabdksabdjk
                           </div>
                         </div>
                         <div>
-                          {item.desc}
+                          {item.desc}                    
                           <div className="font-bold underline animate-pulse">
-                            {item.discount === 0 ? (
-                              false
-                            ) : (
+                            {item.discount !== 0 && (
+                           
+                             
                               <div>
                                 {item.discount}%
                                 <img
                                   src="Sale-image.png"
-                                  className="w-[100%] h-[75px] rounded-lg"
+                                  className="w-[120px] h-[70px] m-auto object-content rounded-lg"
                                 />
                               </div>
-                            )}
+                             )
+                            
+                            }
                           </div>
+
+
+
                         </div>
                       </div>
                     </motion.div>

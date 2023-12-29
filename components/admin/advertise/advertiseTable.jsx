@@ -3,34 +3,15 @@ import { Table } from "antd";
 import Link from "next/link";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { handleDeleteGlobal } from "@/functions/firebase/getData";
-import Image from "next/image";
 
-const CategoryTable = ({ cats }) => {
+const AdvertiseTable = ({ adverts}) => {
   const columns = [
     {
-      title: "Categories",
+      title: "Advertises",
       // same name from database   // category={title ,....}
       dataIndex: "title",
     },
 
-    {
-      title: "image",
-      // single category {record} --> record.image.url === category.image.url
-      render: (record) => {
-        return (
-          <>
-                   <Image
-            width={50}
-            height={50}
-              className="  relative  w-24 h-24 object-cover object-center rounded-full  "
-              src={record?.image}
-              alt=""
-              
-            />
-          </>
-        );
-      },
-    },
 
     {
       title: "Actions",
@@ -44,15 +25,15 @@ const CategoryTable = ({ cats }) => {
             <div className=" flex gap-4  items-center">
               <div>
                 <AiFillDelete
-                  // send collection name and single category data to delete
-                  onClick={() => handleDeleteGlobal("cats", record)}
+                
+                  onClick={() => handleDeleteGlobal("adverts", record)}
                   className=" hover:text-red-700 text-red-500 cursor-pointer"
                   size={"25"}
                 />
               </div>
 
               <div>
-                <Link href={`/admin/category/edit/${record?.id}`}>
+                <Link href={`/admin/advertise/edit/${record?.id}`}>
                   <AiFillEdit
                     className="hover:text-blue-700 text-blue-500 cursor-pointer"
                     size={"25"}
@@ -68,9 +49,9 @@ const CategoryTable = ({ cats }) => {
 
   return (
     <div className=" w-[90%]  md:w-[70%] mx-auto">
-      <Table columns={columns} dataSource={cats} />
+      <Table columns={columns} dataSource={adverts} />
     </div>
   );
 };
 
-export default CategoryTable;
+export default AdvertiseTable;
