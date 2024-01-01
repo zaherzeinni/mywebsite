@@ -9,7 +9,7 @@ import ProjectSlider from "@/components/client/sections/projectSlider";
 import { useState,useEffect } from "react";
 import FireWork from "@/components/common/startFire";
 import AdvertiseBar from "@/components/common/advertiseBar";
-
+import AllProducts from "/components/client/products";
 
 export default function ProductsPage({
   products,
@@ -100,6 +100,10 @@ export default function ProductsPage({
         <div>
           
           <ProjectSlider projects ={projects}/>
+        </div>
+
+        <div>
+          <AllProducts products={products}/>
         </div>
       </div>
     </div>

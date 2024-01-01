@@ -4,6 +4,7 @@ import {
   Form,
   Input,
 } from "antd";
+const { TextArea } = Input;
 
 const AdvertiseForm = ({ onFinish, initialValues, isupdate = false }) => {
   return (
@@ -23,7 +24,7 @@ const AdvertiseForm = ({ onFinish, initialValues, isupdate = false }) => {
           }}
         >
           <Form.Item name="title" label="Add Advertise Title">
-            <Input />
+          <TextArea rows={4} />
           </Form.Item>
 
           <div className=" grid gap-3 md:grid-cols-4 grid-cols-1"></div>
