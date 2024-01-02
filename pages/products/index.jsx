@@ -10,6 +10,7 @@ import { useState,useEffect } from "react";
 import FireWork from "@/components/common/startFire";
 import AdvertiseBar from "@/components/common/advertiseBar";
 import AllProducts from "/components/client/products";
+import Support from "@/components/client/sections/support";
 
 export default function ProductsPage({
   products,
@@ -104,6 +105,10 @@ export default function ProductsPage({
 
         <div>
           <AllProducts products={products}/>
+        </div>
+
+        <div>
+          <Support />
         </div>
       </div>
     </div>
