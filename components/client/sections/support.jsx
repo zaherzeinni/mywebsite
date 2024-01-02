@@ -4,9 +4,9 @@ import Image from "next/image";
 const Support = () => {
   return (
     <div>
-      <SimpleGrid spacing={10} columns={[1, 1, 2, 3]} mb={50}>
+      <SimpleGrid spacing={10} columns={[1, 1, 2, 3]} mb={10}>
 
-<Card p={22} className=" !shadow-lg">
+        <Card p={22} className=" !shadow-lg">
           <Flex gap={10} mx={15}>
             <Box >
               <Image

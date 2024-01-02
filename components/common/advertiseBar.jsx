@@ -27,7 +27,7 @@ const AdvertiseBar = () => {
       <Marquee pauseOnHover>
        
           {advert.map((item,index)=> (
-            <div>
+            <div key={index}>
               {item.title}
               <span className="mx-2 text-red-400">•</span>
               

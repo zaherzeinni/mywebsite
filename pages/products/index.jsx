@@ -6,7 +6,7 @@ import OfferSlider from "@/components/client/sections/offerSlider";
 import Navbar from "@/components/client/layout/navbar";
 import ProjectsMain from "@/components/admin/project/projects";
 import ProjectSlider from "@/components/client/sections/projectSlider";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import FireWork from "@/components/common/startFire";
 import AdvertiseBar from "@/components/common/advertiseBar";
 import AllProducts from "/components/client/products";
@@ -59,28 +59,13 @@ export default function ProductsPage({
 
   console.log("Result Products ====>", resultProducts);
 
-
-
-
-
-
-
-
   const [modalOpen, setModalOpen] = useState(false);
 
-
-  useEffect(() =>
-  {
-        setTimeout(() =>
-        {
-              setModalOpen(true)
-        }, 2000)
+  useEffect(() => {
+    setTimeout(() => {
+      setModalOpen(true);
+    }, 2000);
   }, []);
-
-
-
-
-
 
   return (
     <div className="">
@@ -89,22 +74,18 @@ export default function ProductsPage({
       <AdvertiseBar />
       <Navbar />
 
-
       <OfferSlider offerProducts={offerProducts} />
       {condition !== null && (
         <ProdSlider data={condition} linkText={conditionText} />
       )}
 
       <div className=" container1">
-        
-
         <div>
-          
-          <ProjectSlider projects ={projects}/>
+          <ProjectSlider projects={projects} />
         </div>
 
         <div>
-          <AllProducts products={products}/>
+          <AllProducts products={products} />
         </div>
 
         <div>
