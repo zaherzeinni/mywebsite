@@ -12,6 +12,8 @@ import AdvertiseBar from "@/components/common/advertiseBar";
 import AllProducts from "/components/client/products";
 import Support from "@/components/client/sections/support";
 
+
+
 export default function ProductsPage({
   products,
   cats,
@@ -66,6 +68,10 @@ export default function ProductsPage({
       setModalOpen(true);
     }, 2000);
   }, []);
+
+
+
+
 
   return (
     <div className="">
