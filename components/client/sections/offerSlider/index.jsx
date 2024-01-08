@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "react-slick";
 import CustomSliderArrow from "../../products/customSliderArrow";
 import { motion } from "framer-motion";
-import { Fade } from 'react-reveal'
+//import { Fade } from 'react-reveal'
 const OfferSlider = ({ offerProducts }) => {
   const settings = {
     dots: true,
