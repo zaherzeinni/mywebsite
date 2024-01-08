@@ -125,7 +125,7 @@ const Navbar = () => {
                   className="flex w-full items-center rounded-xl px-3 py-2 duration-200 ease-in-out hover:bg-green-50 hover:text-green-700 md:w-auto"
                   href="/"
                 >
-                  <StaggeringText text="home" />
+                  <StaggeringText text="Home" />
                 </Link>
               </li>
               <li className="w-full px-6 py-1 lg:w-auto lg:py-0 lg:px-0">
@@ -134,7 +134,7 @@ const Navbar = () => {
                   className="relative flex w-full origin-top-left cursor-pointer items-center rounded-xl px-3 py-2 duration-200 hover:bg-green-50 hover:text-green-700 focus:stroke-green-700 focus:text-green-700 md:w-auto"
                 >
                   <div className="flex items-center justify-start sm:justify-center">
-                    <StaggeringText text="category" />
+                    <StaggeringText text="Category" />
                     <ChevronRight
                       style={{
                         transform: dropdown ? "rotate(90deg)" : "rotate(0deg)",
@@ -169,9 +169,9 @@ const Navbar = () => {
                 </div>
               </li>
               {[
-                ["products", "/products"],
-                ["bulk & corporate", "/bulk-corporate"],
-                ["about us", "/about-us"],
+                ["Products", "/products"],
+                ["Contact Us", "/contact-us"],
+                ["About Us", "/about-us"],
               ].map((item, index) => {
                 return (
                   <li
@@ -253,7 +253,7 @@ const Navbar = () => {
             </>
           ) : (
             <Link
-              href="/user/login"
+              href="/auth/login"
               className="inline-block cursor-pointer rounded-xl bg-white px-4 py-3 font-medium text-black duration-150  hover:bg-gray-100 active:scale-90 active:bg-green-200"
             >
               <User className="inline-block w-5 stroke-black" />

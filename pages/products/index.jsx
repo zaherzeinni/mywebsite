@@ -97,6 +97,30 @@ export default function ProductsPage({
         <div>
           <Support />
         </div>
+        {/* <div>
+          <CustomInput 
+          value={firstName}
+          setValue={setFirstName}
+          lable={"First Name"}
+          placeHolder={"Enter your First Name"}
+          type={"text"}
+          />
+          <CustomInput 
+          value={lastName}
+          setValue={setLastName}
+          lable={"Last Name"}
+          placeHolder={"Enter your Last Name"}
+          type={"text"}
+          />
+          <CustomInput 
+          value={email}
+          setValue={setEmail}
+          lable={"Enter your Email"}
+          placeHolder={"Enter your Email"}
+          type={"email"}
+
+          />
+        </div> */}
       </div>
     </div>
   );

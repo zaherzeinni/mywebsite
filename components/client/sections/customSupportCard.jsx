@@ -1,8 +1,6 @@
 import React from "react";
-import { Box, Card, Button, Input } from "@chakra-ui/react";
-import { IoChatboxEllipsesSharp } from "react-icons/io5";
-import { FaPhone } from "react-icons/fa6";
-import { FaCalendar } from "react-icons/fa";
+import { Box, Card, Button } from "@chakra-ui/react";
+
 
 const CustomSupportCard = ({ title, desc, icon, buttonText }) => {
   return (

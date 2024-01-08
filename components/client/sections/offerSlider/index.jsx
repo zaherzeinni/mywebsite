@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "react-slick";
 import CustomSliderArrow from "../../products/customSliderArrow";
 import { motion } from "framer-motion";
-
+import { Fade } from 'react-reveal'
 const OfferSlider = ({ offerProducts }) => {
   const settings = {
     dots: true,
@@ -36,18 +36,18 @@ const OfferSlider = ({ offerProducts }) => {
                   alt=""
                 />
 
-                <div className="  z-10 absolute  inset-0   text-3xl flex items-cente     text-center  text-white ">
-                  <div className="max-w-3xl z-10 space-y-4 px-4 mt-[100px] sm:px-6 lg:px-8 py-6 rounded-lg">
+                <div className="  z-10 absolute  inset-0   text-3xl flex  text-center  text-white ">
+                  <div className="max-w-3xl z-10 space-y-4 px-4 mt-[65px] sm:px-6 lg:px-8 py-6 rounded-lg">
                     <motion.div
-                      initial={{ y: "300%" }}
+                      initial={{ y: "100%" }}
                       whileInView={{ y: 0 }}
                       transition={{ duration: 1, ease: "easeInOut" }}
-                      className="text-4xl md:text-8xl font-bold uppercase bg-gray-950 bg-opacity-20 rounded-xl"
+                      className="text-4xl md:text-8xl font-bold uppercase bg-gray-950 bg-opacity-20 rounded-xl "
                     >
-                      <div className="text-xl space-y-3" key={index}>
+                      <div className="text-sm md:text-xl space-y-3" key={index}>
                         <div className="flex" >
                           <div className="font-content rounded-md bg-gray-300 px-3 py-2 bg-opacity-20">
-                            adsa {item.title} kjasdjabdksabdjk
+                             {item.title} 
                           </div>
                         </div>
                         <div>
@@ -60,7 +60,7 @@ const OfferSlider = ({ offerProducts }) => {
                                 {item.discount}%
                                 <img
                                   src="Sale-image.png"
-                                  className="w-[120px] h-[70px] m-auto object-content rounded-lg"
+                                  className="w-[120px] h-[60px] m-auto object-content rounded-lg"
                                 />
                               </div>
                              )
