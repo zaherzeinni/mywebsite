@@ -270,7 +270,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* ----Hamburger Menu--- */}
+        {/* ----Hamburger Menu---- */}
 
             
         <div
