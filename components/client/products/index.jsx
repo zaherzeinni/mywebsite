@@ -40,8 +40,6 @@ const AllProducts = ({ products }) => {
                     </div>
                   </div>
                
-               
-                  
                   <div className="face face2 medikal-ön" 
                   style={{backgroundImage: `linear-gradient( #42424246, #42424246),url(${data.images})`,backgroundSize:'cover' }} 
                   > 
