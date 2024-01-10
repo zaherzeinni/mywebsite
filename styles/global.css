@@ -5,111 +5,92 @@
 /* #42A5F5 */
 
 @layer utilities {
-
-
   .container1 {
-    @apply   mx-12 px-2 ;
-    
-  
+    @apply mx-12 px-2;
   }
-
-
 }
 
-
-
 body {
-    font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
-      'Arial', sans-serif;
-    margin: 0 auto;
-    font-size: 16px;
-    line-height: 1.65;
-    word-break: break-word;
-    font-kerning: auto;
-    font-variant: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    hyphens: auto;
-  }
-  
-  
+  font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.65;
+  word-break: break-word;
+  font-kerning: auto;
+  font-variant: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  hyphens: auto;
+}
+
 @font-face {
-  font-family:DroidSansMono;
-  src:url('../public/Header.ttf');
+  font-family: DroidSansMono;
+  src: url("../public/Header.ttf");
+}
+
+div.CodeMirror {
+  height: 100%;
+  /* background:#fff; */
+  /* color:"#42A5F5"; */
+  padding: 0px;
+  margin: 0px;
+  font: 12px/55px DroidSansMono;
+  /* font-size: 44px; */
+}
+
+.gradient {
+  background: linear-gradient(
+    90deg,
+    rgba(10, 78, 113, 1) 16%,
+    rgba(13, 13, 157, 1) 52%,
+    rgba(132, 234, 255, 1) 90%
+  );
+  width: 100%;
+  animation: animateHeader 7s linear infinite;
+  background-size: 250% 150%;
+}
+
+@keyframes animateHeader {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 50%;
   }
 
-  div.CodeMirror {
-    height:100%;
-    /* background:#fff; */
-    /* color:"#42A5F5"; */
-    padding:0px;
-    margin:0px;
-    font:12px/55px DroidSansMono;
-    /* font-size: 44px; */
-    }
-  
-    .gradient {
-      background: linear-gradient(
-      90deg, rgba(10,78,113,1) 16%, rgba(13,13,157,1) 52%, rgba(132,234,255,1) 90%
-      );
-      width: 100%;
-      animation: animateHeader 7s linear infinite;
-      background-size: 250% 150%;
-    }
-    
+  100% {
+    background-position: 100%;
+  }
+}
 
-
-    @keyframes animateHeader {
-
-      0% {
-        background-position: 0%;
-      }
-      50% {
-        background-position: 50%;
-      }
-
-      100% {
-        background-position: 100%;
-      }
-    }
-
-
-
-    .slick-dots li.slick-active button:before {
-      color: #1520ed !important;
-      /* display: flex; */
-      justify-content: center;
-      font-size: 16px !important;
-      align-items: center;
-      padding-top: 0;
-      padding-left: 0;
-      opacity: 1 !important;
-    }
-    .slick-dots li button:before {
-      width: 18px !important;
-      height: 18px !important;
-      font-size: 16px !important;
-      color: #1520ed !important;
-      border: 1px solid rgb(15, 52, 96);
-      border-radius: 10px;
-      opacity: 0.5 !important;
-    }
-    
-    
-    
+.slick-dots li.slick-active button:before {
+  color: #1520ed !important;
+  /* display: flex; */
+  justify-content: center;
+  font-size: 16px !important;
+  align-items: center;
+  padding-top: 0;
+  padding-left: 0;
+  opacity: 1 !important;
+}
+.slick-dots li button:before {
+  width: 18px !important;
+  height: 18px !important;
+  font-size: 16px !important;
+  color: #1520ed !important;
+  border: 1px solid rgb(15, 52, 96);
+  border-radius: 10px;
+  opacity: 0.5 !important;
+}
 
 @media screen and (max-width: 480px) {
-
-
   .slick-dots li.slick-active button:before {
-   
-   
     justify-content: center;
     font-size: 8px !important;
     align-items: center;
     border: none;
-   
   }
   .slick-dots li button:before {
     width: 8px !important;
@@ -117,22 +98,242 @@ body {
     font-size: 8px !important;
     border: none;
   }
-  
+
   .slick-dots li {
     margin: 0px !important;
   }
-
-
 }
 
-.slick-slide.slick-active  > div {
-  padding:13px !important;
+.slick-slide.slick-active > div {
+  padding: 13px !important;
   /* background-color: red !important; */
 }
 /* .slick-list */
 
-.slick-slider .slick-list  {
-
-height: 100% !important;
+.slick-slider .slick-list {
+  height: 100% !important;
 }
 
+
+
+/* -------------------------------------------- */
+
+
+
+
+.container {
+  width: 100%;
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  grid-gap: 35px; */
+  margin: 0 auto;
+  padding: 20px 0;
+  scroll-behavior: smooth;
+}
+.container .card {
+  position: relative;
+  /* width: 300px; */
+  height: 400px;
+  margin: 0 auto;
+  background: linear-gradient(to top, #09203f 0%, #537895 100%);
+  border-radius: 15px;
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.5);
+}
+.container .card .face {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+}
+.container .card .face.face1 {
+  box-sizing: border-box;
+  padding: 20px;
+  /* background-image: linear-gradient(#424242bd, #424242bd),
+      url('https://i.hizliresim.com/czgac6m.jpg') !important; */
+  background-size: cover;
+  backdrop-filter: opacity(0.5);
+  border-radius: 20px;
+}
+.container .card .face.face1 h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 2em;
+  color: #fff;
+  text-align: center;
+}
+.container .card .face.face1 {
+  color: #f4f4f4;
+}
+/* .container .card .face.face1 .python {
+  background-color: #00fffc;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.container .card .face.face1 .cSharp {
+  background-color: #fc00ff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
+.container .card .face.face2 {
+  transition: 0.5s;
+}
+.container .card .face.face2 h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 4em;
+  transition: 0.5s;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.container .card:nth-child(2) .face.face2 h2 {
+  font-size: 3.3em;
+  transition: 0.5s;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.container .card:nth-child(3) .face.face2 h2 {
+  font-size: 3em;
+  text-align: center;
+  transition: 0.5s;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.container .card:nth-child(4) .face.face2 h2 {
+  font-size: 3em;
+  text-align: center;
+  transition: 0.5s;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+.face2 h2 {
+  color: #fff;
+}
+.container .card:hover .face.face2 {
+  height: 60px;
+}
+.container .card:hover .face.face2 h2 {
+  color: #fff;
+  background-color: #42424246;
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease;
+  font-size: 2em;
+}
+.container .card .sıhhitesisat-ön {
+  /* background-image: linear-gradient(#42424246, #42424246),
+      url('https://i.hizliresim.com/czgac6m.jpg') !important; */
+  backdrop-filter: blur(5px) !important;
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  border-radius: 15px;
+}
+.container .card .sıhhitesisat-iç {
+  box-sizing: border-box;
+  padding: 20px;
+  /* background-image: linear-gradient(#424242bd, #424242bd),
+      url('https://i.hizliresim.com/czgac6m.jpg') !important; */
+  background-size: cover;
+  backdrop-filter: opacity(0.5);
+  border-radius: 20px;
+}
+
+.container .card .medikal-ön {
+  /* background-image: linear-gradient(#42424246, #42424246),
+      url('https://i.hizliresim.com/cj1godb.jpg') !important; */
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  border-radius: 15px;
+}
+
+.container .card .face.medikal-iç {
+  box-sizing: border-box;
+  padding: 20px;
+  /* background-image: linear-gradient(#424242bd, #424242bd),
+      url('https://i.hizliresim.com/cj1godb.jpg') !important; */
+  background-size: cover;
+  backdrop-filter: opacity(0.5);
+  border-radius: 20px;
+}
+
+
+.container .card .endüstriyel-ön {
+  /* background-image: linear-gradient(#42424246, #42424246),
+      url('https://i.hizliresim.com/7wu2bhj.png') !important; */
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  border-radius: 15px;
+}
+
+.container .card .face.endüstriyel-iç {
+  box-sizing: border-box;
+  padding: 20px;
+  /* background-image: linear-gradient(#424242bd, #424242bd),
+      url('https://i.hizliresim.com/7wu2bhj.png') !important; */
+  background-size: cover;
+  backdrop-filter: opacity(0.5);
+  border-radius: 20px;
+}
+.container .card .klima-ön {
+  /* background-image: linear-gradient(#42424246, #42424246),
+      url('https://i.hizliresim.com/1g7lr9o.png') !important; */
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  border-radius: 15px;
+}
+
+.container .card .face.klima-iç {
+  box-sizing: border-box;
+  padding: 20px;
+  /* background-image: linear-gradient(#424242bd, #424242bd),
+      url('https://i.hizliresim.com/1g7lr9o.png') !important; */
+  background-size: cover;
+  backdrop-filter: opacity(0.5);
+  border-radius: 20px;
+}
+
+.we-use-title {
+  font-size: 3.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 5rem;
+  letter-spacing: 2px;
+  transition: all 0.3s ease-in-out;
+  
+}
+
+.we-use-title:hover {
+  letter-spacing: 5px;
+}
+
+.we-use-title::after {
+  content: 'Features Products';
+  display: block;
+  margin: -1.7rem auto 0;
+  opacity: 0.4;
+  letter-spacing: 2px;
+  font-size: 4rem;
+  position: relative;
+  z-index: -1;
+  color: #4242423f;
+  text-shadow: 0 5px 5px #4242423f;
+  transition: all 0.3s ease-in-out;
+}

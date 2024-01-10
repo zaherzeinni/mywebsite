@@ -1,8 +1,9 @@
 import React from "react";
 import { Box, Card, Button } from "@chakra-ui/react";
+import Link from "next/link";
 
 
-const CustomSupportCard = ({ title, desc, icon, buttonText }) => {
+const CustomSupportCard = ({ title, desc, icon, buttonText,linkText }) => {
   return (
     <Card
       flexDirection={"column"}
@@ -10,6 +11,7 @@ const CustomSupportCard = ({ title, desc, icon, buttonText }) => {
       gap={5}
       className="!bg-[#F3F8FF] !my-5 md:my-0 !shadow-2xl !rounded-3xl"
     >
+      
       <Box flexGrow={1}>
         {icon}
         <Box padding={5}>
@@ -17,6 +19,7 @@ const CustomSupportCard = ({ title, desc, icon, buttonText }) => {
           <p>{desc}</p>
         </Box>
       </Box>
+
       <Button
         py="25"
         borderRadius={"0px 0px 9px 9px"}
@@ -25,8 +28,16 @@ const CustomSupportCard = ({ title, desc, icon, buttonText }) => {
         bg={"red"}
         textColor={"white"}
         _hover={{ bg: "red.600" }}
+        
       >
-        {buttonText}
+        {linkText 
+        ? 
+        <a href={linkText} target='_blank'> 
+        <div>{buttonText} </div> 
+        </a> 
+        : 
+        <div>{buttonText}</div> }
+        
       </Button>
     </Card>
   );
