@@ -39,7 +39,7 @@ const AllProducts = ({ products }) => {
                       
                     </div>
                   </div>
-                  {/*  */}
+               
                
                   
                   <div className="face face2 medikal-ön" 
