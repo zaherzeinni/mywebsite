@@ -14,10 +14,10 @@ const AllProducts = ({ products }) => {
             <h1 className="md:text-5xl text-3xl tracking-wide md:tracking-wider font-bold we-use-title">
               Features Products
             </h1>
-            <div className="container !grid !grid-cols-1 sm:!grid-cols-2 md:!grid-cols-3 lg:!grid-cols-4 !gap-12">
+            <div className="container !grid !grid-cols-1 sm:!grid-cols-2 md:!grid-cols-3 xl:!grid-cols-4 !gap-12">
               {products.map((data,index)=>(
               <Fade bottom>
-                <div key={index} className="card w-[95%] ">
+                <div key={index} className="card w-[95%] hover:cursor-pointer ">
                   <div className="face  face1 medikal-iç"  
                   style={{backgroundImage: `linear-gradient( #424242bd, #424242bd),url(${data.images[0]})`,backgroundSize:'contain',backgroundRepeat: 'no-repeat' }}
                   >
