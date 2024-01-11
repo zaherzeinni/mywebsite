@@ -57,6 +57,7 @@ export const StateContextProvider = ({ children }) => {
           imageAsset:imageAsset,
           imageId:imageId,
           role: "admin",
+          wishList: [],
         });
         setPageLoading(false);
         // while loading data from firebase start spinner

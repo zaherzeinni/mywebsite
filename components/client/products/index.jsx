@@ -1,6 +1,8 @@
 import React from "react";
 import { Fade } from "react-awesome-reveal";
 import Link from "next/link";
+import { GoHeartFill } from "react-icons/go";
+import { FiHeart } from "react-icons/fi";
 
 //https://intercool-navy.vercel.app/
 //https://github.dev/AKT41/Intercool/tree/3d3336effbbc5b1ac5b2a77b3862ef4726abdb53/src
@@ -16,19 +18,22 @@ const AllProducts = ({ products }) => {
             </h1>
             <div className="container !grid !grid-cols-1 sm:!grid-cols-2 md:!grid-cols-3 xl:!grid-cols-4 !gap-12">
               {products.map((data,index)=>(
+                
               <Fade key={index} bottom>
-                <div  className="card w-[95%] hover:cursor-pointer ">
+                <div  className="card w-[95%]  ">
+                
                   <div className="face  face1 medikal-iç"  
                   style={{backgroundImage: `linear-gradient( #424242bd, #424242bd),url(${data.images[0]})`,backgroundSize:'contain',backgroundRepeat: 'no-repeat' }}
                   >
-               
+                    <FiHeart className="text-3xl text-white absolute top-5 right-4" />
+                    {/* <GoHeartFill className="text-3xl text-red-600 absolute top-5 right-4" /> */}
                     <div className="conten ">
                       <h2 className="jav ">{data.title}</h2>
                       <p className="java line-clamp-3 ">
                         {data.desc}
                       </p>
                       <p>${data.price}</p>
-                      <p className=" text-xs font-medium mt-4 bg-slate-500 p-2 w-max rounded-md hover:bg-green-400">
+                      <p className=" text-xs font-medium mt-4 bg-slate-500 p-2 w-max rounded-md hover:bg-green-400 hover:cursor-pointer">
                         <Link
                           href="/products/product-categoris/medikal"
                           className=" w-max  text-[14px] hover:text-red-500"
@@ -47,87 +52,7 @@ const AllProducts = ({ products }) => {
                   </div>
                 </div>
               </Fade>
-  ))}
-  
-  
-              {/* <Fade bottom>
-                <div className="card w-[100%]">
-                  <div className="face face1 endüstriyel-iç">
-                    <div className="content">
-                      <span className="stars"></span>
-                      <h2 className="python">Endüstriyel</h2>
-                      <p className="python">
-                        Endüstriyel, İntercool PE İzolasyonlu Bakır Boru üretimi
-                        ve ihracatı yapmaktadır endüstriyel alanda yaptığı
-                        ürünler ile birlikte sizlere hizmet vermektedir.
-                      </p>
-                      <p className=" text-xs font-medium  bg-slate-500 p-2 w-max rounded-md">
-                        <Link
-                          href="/products/product-categoris/endüstriyel"
-                          className="text-white w-max"
-                        >
-                          Kategoriyi Göster
-                        </Link>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="face face2 endüstriyel-ön">
-                    <h2>Endüstriyel</h2>
-                  </div>
-                </div>
-              </Fade>
-              <Fade bottom>
-                <div className="card w-[100%]">
-                  <div className="face face1 sıhhitesisat-iç">
-                    <div className="content">
-                      <h2 className="java">Sıhhi Tesisat </h2>
-                      <p className="java line-clamp-3">
-                        Sıhhi Tesisat, Pe İzolasyonlu Bakır Boruları Sıhhi
-                        Tesisat alanında sıkça kullanılmaktadır. Sıhhi Tesisat
-                        sektöründe İntercool markası adını duyurmuştur.
-                      </p>
-                      <p className=" text-xs font-medium  bg-slate-500 p-2 w-max rounded-md">
-                        <Link
-                          href="/products/product-categoris/sihhitesisat"
-                          className="text-white w-max"
-                        >
-                          Kategoriyi Göster
-                        </Link>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="face face2 sıhhitesisat-ön">
-                    <h2 className="">Sıhhi Tesisat </h2>
-                  </div>
-                </div>
-              </Fade>
-              <Fade bottom>
-                <div className="card w-[100%]">
-                  <div className="face face1 klima-iç">
-                    <div className="content">
-                      <span className="stars"></span>
-                      <h2 className="python">Klima</h2>
-                      <p className="python">
-                        Klima, İntercool markası olarak klima sektöründe oldukça
-                        tanınan, sektörün lider markalarından birisidir.
-                        İntercool Bakır Boru Sektörünün lider markası.
-                      </p>
-                      <p className=" text-xs font-medium  bg-slate-500 p-2 w-max rounded-md">
-                        <Link
-                          href="/products/product-categoris/klima"
-                          className="text-white w-max"
-                        >
-                          Kategoriyi Göster
-                        </Link>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="face face2 klima-ön">
-                    <h2>Klima</h2>
-                  </div>
-                </div>
-              </Fade> */}
-              
+  ))}    
             </div>
           </div>
         </div>

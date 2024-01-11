@@ -79,7 +79,7 @@ export default function ProductsPage({
       <FireWork/> } */}
       <AdvertiseBar />
       <Navbar />
-
+      {resultProducts.length}
       <OfferSlider offerProducts={offerProducts} />
       {condition !== null && (
         <ProdSlider data={condition} linkText={conditionText} />
