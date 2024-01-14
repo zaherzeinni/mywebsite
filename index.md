@@ -20,3 +20,4 @@ dark mode
 - [ ]  Register or Login Button
 - [ ]  Add to Cart
 - [ ]  Search to view products
+- [ ]  Reservation Button

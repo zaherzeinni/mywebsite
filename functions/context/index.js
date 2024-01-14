@@ -17,6 +17,8 @@ import {
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 
 
+
+
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
@@ -153,9 +155,13 @@ const logout = () => {
   };
 
 
+
+const [inputt,setInputt] = useState()
+
+
   return (
     <StateContext.Provider value={{ name, register, signInUser,forgetPassword,
-    pageLoading,profile,userData,logout,setPageLoading,setName }}>
+    pageLoading,profile,userData,logout,setPageLoading,setName , inputt,setInputt }}>
       
       {children}
     </StateContext.Provider>

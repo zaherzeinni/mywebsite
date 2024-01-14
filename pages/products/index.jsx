@@ -61,6 +61,10 @@ export default function ProductsPage({
 
   console.log("Result Products ====>", resultProducts);
 
+
+
+  // -----FireWork-----
+
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
@@ -79,7 +83,9 @@ export default function ProductsPage({
       <FireWork/> } */}
       <AdvertiseBar />
       <Navbar />
+      <div className=" text-end text-4xl mr-32">
       {resultProducts.length}
+      </div>
       <OfferSlider offerProducts={offerProducts} />
       {condition !== null && (
         <ProdSlider data={condition} linkText={conditionText} />

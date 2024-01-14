@@ -44,9 +44,9 @@ const AllProducts = ({ products }) => {
                       
                     </div>
                   </div>
-               
+                  {/* linear-gradient( #42424246, #42424246), */}
                   <div className="face face2 medikal-ön" 
-                  style={{backgroundImage: `linear-gradient( #42424246, #42424246),url(${data.images})`,backgroundSize:'cover' }} 
+                  style={{backgroundImage: `url(${data.images})`,backgroundSize:'cover' }} 
                   > 
               <h2 className="!text-3xl sm:!text-4xl ">{data.title}</h2>
                   </div>
