@@ -15,7 +15,7 @@ dark mode
 - [ ]  Booking sell and buy   ( trade in  )
 - [ ]  call support only in small screen size
 - [ ]  table in dashboard make filter
-- [ ]  google authentication
+- [ ]  google authentication or SMS
 - [ ]  Logout
 - [ ]  Register or Login Button
 - [ ]  Add to Cart

@@ -97,7 +97,7 @@ export default function ProductsPage({
         </div>
 
         <div>
-          <AllProducts products={products} />
+          <AllProducts resultProducts={resultProducts} />
         </div>
 
         <div>
