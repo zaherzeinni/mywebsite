@@ -14,7 +14,8 @@ const SearchInput = () => {
   const handleFind = () => {
 
     if (search === "") {
-        toast.error("please enter a value")
+        toast.error("please enter a product name")
+        
     }
 
     // ?search ---> context.query.search --> in products page

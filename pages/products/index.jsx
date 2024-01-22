@@ -61,7 +61,8 @@ export default function ProductsPage({
 
   console.log("Result Products ====>", resultProducts);
 
-
+ const showProduct = products.length=4
+ console.log("show only last 4 products",showProduct)
 
   // -----FireWork-----
 
@@ -83,8 +84,8 @@ export default function ProductsPage({
       <FireWork/> } */}
       <AdvertiseBar />
       <Navbar />
-      <div className=" text-end text-4xl mr-32">
-      {resultProducts.length}
+      <div className=" text-end text-2xl mr-32    scroll-smooth">
+      {resultProducts.length >0 ? `${resultProducts.length} products found` : "no products found" }
       </div>
       <OfferSlider offerProducts={offerProducts} />
       {condition !== null && (
@@ -149,7 +150,7 @@ ProductsPage.getInitialProps = async (context) => {
 
   products = await getDocumentsOrder(
     "products",
-    orderBy("timeStamp", "asc"),
+    orderBy("timeStamp", "desc"),
 
     //category i am searching for all products that have a category name / same as subcategory , else null nothing (filteration)
     category
@@ -163,7 +164,7 @@ ProductsPage.getInitialProps = async (context) => {
 
   const offerProducts = await getDocumentsOrder(
     "products",
-    orderBy("timeStamp", "asc"),
+    orderBy("timeStamp", "desc"),
 
     //category i am searching for all products that have a category name / same as subcategory , else null nothing (filteration)
 
@@ -173,14 +174,14 @@ ProductsPage.getInitialProps = async (context) => {
 
   //console.log("productsssssss", products);
 
-  const cats = await getDocumentsOrder("cats", orderBy("title", "asc"));
+  const cats = await getDocumentsOrder("cats", orderBy("title", "desc"));
   //console.log("catssssssssssss", cats);
 
   // sub cats  if category filter subcats else filter all subcats
 
   const subcats = await getDocumentsOrder(
     "subcats",
-    orderBy("timeStamp", "asc"),
+    orderBy("timeStamp", "desc"),
 
     //category i am searching for all products that have a category name / same as subcategory , else null nothing (filteration)
     //contextquery.query  // null all subcategories , category parent te3 subcategories ( sub cat limited)
@@ -191,7 +192,7 @@ ProductsPage.getInitialProps = async (context) => {
 
   const projects = await getDocumentsOrder(
     "projects",
-    orderBy("timeStamp", "asc")
+    orderBy("timeStamp", "desc")
   );
 
   console.log("projectsss", projects);
