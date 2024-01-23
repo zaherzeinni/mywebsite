@@ -23,16 +23,16 @@ const AllProducts = ({ resultProducts }) => {
                 <div  className="card w-[95%]  ">
                 
                   <div className="face  face1 medikal-iç"  
-                  style={{backgroundImage: `linear-gradient( #424242bd, #424242bd),url(${data.images[0]})`,backgroundSize:'contain',backgroundRepeat: 'no-repeat' }}
+                  style={{backgroundImage: `linear-gradient( #424242bd, #424242bd),url(${data?.images[0]})`,backgroundSize:'contain',backgroundRepeat: 'no-repeat' }}
                   >
                     <FiHeart className="text-3xl text-white absolute top-5 right-4" />
                     {/* <GoHeartFill className="text-3xl text-red-600 absolute top-5 right-4" /> */}
                     <div className="conten ">
-                      <h2 className="jav ">{data.title}</h2>
+                      <h2 className="jav ">{data?.title}</h2>
                       <p className="java line-clamp-3 ">
-                        {data.desc}
+                        {data?.desc}
                       </p>
-                      <p>${data.price}</p>
+                      <p>${data?.price}</p>
                       <p className=" text-xs font-medium mt-4 bg-slate-500 p-2 w-max rounded-md hover:bg-green-400 hover:cursor-pointer">
                         <Link
                           href="/products/product-categoris/medikal"
@@ -46,9 +46,9 @@ const AllProducts = ({ resultProducts }) => {
                   </div>
                   {/* linear-gradient( #42424246, #42424246), */}
                   <div className="face face2 medikal-ön" 
-                  style={{backgroundImage: `url(${data.images})`,backgroundSize:'cover' }} 
+                  style={{backgroundImage: `url(${data?.images})`,backgroundSize:'cover' }} 
                   > 
-              <h2 className="!text-3xl sm:!text-4xl ">{data.title}</h2>
+              <h2 className="!text-3xl sm:!text-4xl ">{data?.title}</h2>
                   </div>
                 </div>
               </Fade>

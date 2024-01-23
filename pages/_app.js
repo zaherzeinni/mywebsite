@@ -13,6 +13,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { StateContextProvider } from '@/functions/context'
 
+import { Provider } from 'react-redux';
+import store from '@/redux/store';
+
 
 export default function MyApp({ Component, pageProps }) {
 
@@ -39,10 +42,11 @@ export default function MyApp({ Component, pageProps }) {
         <>
     <ChakraProvider>
     <StateContextProvider>
-    
+    <Provider store={store}>
     <Component {...pageProps} />
     <ToastContainer />
     <ProgressBar/>
+    </Provider>
     </StateContextProvider>
     </ChakraProvider>
     </>
