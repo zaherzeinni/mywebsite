@@ -116,18 +116,13 @@ div.CodeMirror {
 
 
 
-/* -------------------------------------------- */
+/* ----------------------css for products card---------------------- */
 
 
 
 
 .container {
   width: 100%;
-  /* display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  grid-gap: 35px; */
   margin: 0 auto;
   padding: 20px 0;
   scroll-behavior: smooth;
@@ -157,9 +152,10 @@ div.CodeMirror {
   padding: 20px;
   /* background-image: linear-gradient(#424242bd, #424242bd),
       url('https://i.hizliresim.com/czgac6m.jpg') !important; */
-  background-size: cover;
+  background-size:cover;
   backdrop-filter: opacity(0.5);
   border-radius: 20px;
+  
 }
 .container .card .face.face1 h2 {
   margin: 0;
@@ -167,22 +163,16 @@ div.CodeMirror {
   font-size: 2em;
   color: #fff;
   text-align: center;
+  
 }
 .container .card .face.face1 {
   color: #f4f4f4;
+  
 }
-/* .container .card .face.face1 .python {
-  background-color: #00fffc;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.container .card .face.face1 .cSharp {
-  background-color: #fc00ff;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-} */
+
 .container .card .face.face2 {
   transition: 0.5s;
+  
 }
 .container .card .face.face2 h2 {
   margin: 0;
@@ -191,6 +181,7 @@ div.CodeMirror {
   transition: 0.5s;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 10;
+  
 }
 
 .container .card:nth-child(2) .face.face2 h2 {
@@ -198,6 +189,7 @@ div.CodeMirror {
   transition: 0.5s;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 10;
+  
 }
 
 .container .card:nth-child(3) .face.face2 h2 {
@@ -206,6 +198,7 @@ div.CodeMirror {
   transition: 0.5s;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 10;
+  
 }
 
 .container .card:nth-child(4) .face.face2 h2 {
@@ -214,12 +207,17 @@ div.CodeMirror {
   transition: 0.5s;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 10;
+  
 }
 .face2 h2 {
-  color: #fff;
+  color: white;
+  background-color: darkgray;
+  border-radius: 10px 10px 10px 10px;
+  
 }
 .container .card:hover .face.face2 {
   height: 60px;
+  
 }
 .container .card:hover .face.face2 h2 {
   color: #fff;
@@ -233,25 +231,10 @@ div.CodeMirror {
   align-items: center;
   transition: all 0.5s ease;
   font-size: 2em;
+  
+  
 }
-.container .card .sıhhitesisat-ön {
-  /* background-image: linear-gradient(#42424246, #42424246),
-      url('https://i.hizliresim.com/czgac6m.jpg') !important; */
-  backdrop-filter: blur(5px) !important;
-  background-size: cover;
-  background-position: right;
-  background-repeat: no-repeat;
-  border-radius: 15px;
-}
-.container .card .sıhhitesisat-iç {
-  box-sizing: border-box;
-  padding: 20px;
-  /* background-image: linear-gradient(#424242bd, #424242bd),
-      url('https://i.hizliresim.com/czgac6m.jpg') !important; */
-  background-size: cover;
-  backdrop-filter: opacity(0.5);
-  border-radius: 20px;
-}
+
 
 .container .card .medikal-ön {
   /* background-image: linear-gradient(#42424246, #42424246),
@@ -260,6 +243,7 @@ div.CodeMirror {
   background-position: right;
   background-repeat: no-repeat;
   border-radius: 15px;
+  
 }
 
 .container .card .face.medikal-iç {
@@ -270,45 +254,9 @@ div.CodeMirror {
   background-size: cover;
   backdrop-filter: opacity(0.5);
   border-radius: 20px;
+  
 }
 
-
-.container .card .endüstriyel-ön {
-  /* background-image: linear-gradient(#42424246, #42424246),
-      url('https://i.hizliresim.com/7wu2bhj.png') !important; */
-  background-size: cover;
-  background-position: right;
-  background-repeat: no-repeat;
-  border-radius: 15px;
-}
-
-.container .card .face.endüstriyel-iç {
-  box-sizing: border-box;
-  padding: 20px;
-  /* background-image: linear-gradient(#424242bd, #424242bd),
-      url('https://i.hizliresim.com/7wu2bhj.png') !important; */
-  background-size: cover;
-  backdrop-filter: opacity(0.5);
-  border-radius: 20px;
-}
-.container .card .klima-ön {
-  /* background-image: linear-gradient(#42424246, #42424246),
-      url('https://i.hizliresim.com/1g7lr9o.png') !important; */
-  background-size: cover;
-  background-position: right;
-  background-repeat: no-repeat;
-  border-radius: 15px;
-}
-
-.container .card .face.klima-iç {
-  box-sizing: border-box;
-  padding: 20px;
-  /* background-image: linear-gradient(#424242bd, #424242bd),
-      url('https://i.hizliresim.com/1g7lr9o.png') !important; */
-  background-size: cover;
-  backdrop-filter: opacity(0.5);
-  border-radius: 20px;
-}
 
 .we-use-title {
   font-size: 3.5rem;

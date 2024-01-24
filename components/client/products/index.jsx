@@ -46,9 +46,9 @@ const AllProducts = ({ resultProducts }) => {
                   </div>
                   {/* linear-gradient( #42424246, #42424246), */}
                   <div className="face face2 medikal-ön" 
-                  style={{backgroundImage: `url(${data?.images})`,backgroundSize:'cover' }} 
+                  style={{backgroundImage: `url(${data?.images})`,backgroundSize:'cover',backgroundPosition:'center' }} 
                   > 
-              <h2 className="!text-3xl sm:!text-4xl ">{data?.title}</h2>
+              <h2 className="!text-2xl sm:!text-3xl !mb-auto   !p-0.5  !rounded-md ">{data?.title}</h2>
                   </div>
                 </div>
               </Fade>
