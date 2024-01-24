@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = { 
 
-    products:[]
-    
+    products:[],
+    currentuser:{},
 
  }
 
@@ -16,13 +16,19 @@ const ProductSlice = createSlice({
         PostAdd: (state, action) => {
             console.log("action payload", action.payload);
             // state.products(action.payload);
-            state.products=action.payload
+            state.products=action.payload },
+
+            GetCurrentUser: (state, action) => {
+                console.log("action payload", action.payload);
+                
+                state.currentuser=action.payload ;
+
     }  }
 })
 
 //array of products 
 export const selectAllProducts = (state)=>state.products
 
-export const { PostAdd } = ProductSlice.actions; // functions
+export const { PostAdd,GetCurrentUser } = ProductSlice.actions; // functions
 
 export default ProductSlice.reducer

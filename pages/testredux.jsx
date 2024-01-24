@@ -4,7 +4,8 @@ import { getDocs,collection } from '@firebase/firestore';
 import { db } from '@/functions/firebase';
 import { useDispatch,useSelector } from "react-redux";
 import { useEffect } from 'react';
-import {PostAdd} from '../redux/productSlice'
+import {PostAdd,GetCurrentUser} from '../redux/productSlice'
+
 
 import {SimpleGrid, Card, CardHeader, CardBody, CardFooter,Image,Stack,Heading,Text,Divider,ButtonGroup,Button } from '@chakra-ui/react'
 
@@ -13,7 +14,10 @@ import {SimpleGrid, Card, CardHeader, CardBody, CardFooter,Image,Stack,Heading,T
 const Test = () => {
     const dispatch = useDispatch();
 
-    const resultRedux = useSelector((state) => state.products);
+    // useSelector write the state names in initialState
+
+    // esta3de el state bil useSelector , esta3de el function bil import wil excute bil useDispatch
+    const {products,currentuser} = useSelector((state) => state.products);
     
     const  getProducts= async () => {
         await getDocs(collection(db, "products")).then((querySnapshot) => {
@@ -24,6 +28,7 @@ const Test = () => {
           );
           console.log("resultsss",results)
           dispatch(PostAdd(results))
+          
         });
       };
     
@@ -33,13 +38,15 @@ const Test = () => {
     }, []);
 
     
-    console.log("resultRedux===>",resultRedux)
+    console.log("resultRedux===>",products)
     
     return (
         <div>
-{resultRedux.products.length}
+          {currentuser.displayName}
+      
+{products.length}
 <SimpleGrid columns={[1,1,2,3,4]} gap={15}>
-{resultRedux.products.map((data,index)=>(
+{products.map((data,index)=>(
 
 <Card key={index} maxW='sm'>
   <CardBody>

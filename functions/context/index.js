@@ -15,9 +15,16 @@ import {
 
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 
+
+import { useDispatch } from "react-redux";
+import {GetCurrentUser} from '../../redux/productSlice'
+
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
+
+  const dispatch = useDispatch();
+
   const [name, setName] = useState("zaher");
   const router = useRouter();
   const [pageLoading, setPageLoading] = useState(false);
@@ -178,6 +185,7 @@ export const StateContextProvider = ({ children }) => {
         if (docSnap.exists()) {
           console.log("firstore Data of user--->", docSnap.data());
           setProfile(docSnap.data());
+          dispatch(GetCurrentUser(docSnap.data()))
         }
       }
 
