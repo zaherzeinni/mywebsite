@@ -21,7 +21,7 @@ const AllProducts = ({ resultProducts }) => {
               {resultProducts.map((data,index)=>(
                 
                   <ProductCard data={data}
-                  index={index}
+                  key={index}
 
                   />
   ))}    
