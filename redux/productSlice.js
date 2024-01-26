@@ -18,12 +18,12 @@ const ProductSlice = createSlice({
             // state.products(action.payload);
             state.products=action.payload },
 
-            GetCurrentUser: (state, action) => {
-                console.log("action payload", action.payload);
+        GetCurrentUser: (state, action) => {
+            console.log("action payload", action.payload);
                 
-                state.currentuser=action.payload ;
+            state.currentuser=action.payload }
 
-    }  }
+      }
 })
 
 //array of products 

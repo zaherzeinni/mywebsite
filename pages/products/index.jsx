@@ -61,8 +61,8 @@ export default function ProductsPage({
 
   console.log("Result Products ====>", resultProducts);
 
- const showProduct = products.length=4
- console.log("show only last 4 products",showProduct)
+//  const showProduct = products.length=4
+//  console.log("show only last 4 products",showProduct)
 
   // -----FireWork-----
 

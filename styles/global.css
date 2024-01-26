@@ -211,10 +211,11 @@ div.CodeMirror {
 }
 .face2 h2 {
   color: white;
-  background-color: darkgray;
-  border-radius: 10px 10px 10px 10px;
+  /* background-color: #42A5F5; */
+  /* border-radius: 10px 10px 10px 10px; */
   
 }
+
 .container .card:hover .face.face2 {
   height: 60px;
   

@@ -57,9 +57,9 @@ export const StateContextProvider = ({ children }) => {
 
   // create wishlist and cart document when user has registered
 
-  const createCollections = async (user) => {
-    const wishRef = doc(collection(db, "wishlist"), user?.uid);
-    const cartRef = doc(collection(db, "cart"), user?.uid);
+  const createCollections = async (uid) => {
+    const wishRef = doc(collection(db, "wishlist"), uid);
+    const cartRef = doc(collection(db, "cart"), uid);
     try {
       await setDoc(wishRef, {
         wishList: [],
@@ -178,7 +178,10 @@ export const StateContextProvider = ({ children }) => {
         localStorage.setItem("isLogged", true);
         // specify path for get Auth user Data from firestore
         const userRef = doc(db, "users", user?.uid);
-
+        wishListSnapShot(user?.uid)
+        cartSnapShot(user?.uid)
+        console.log('wishlist==>',wishList)
+        console.log('carttt==>',cart)
         const docSnap = await getDoc(userRef);
 
         // if AuthUser have data in firestore set his data in setProfile
@@ -216,6 +219,10 @@ export const StateContextProvider = ({ children }) => {
         setName,
         inputt,
         setInputt,
+        wishList,
+        setWishList,
+        cart,
+        setCart
       }}
     >
       {children}
