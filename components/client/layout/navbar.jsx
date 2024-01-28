@@ -170,8 +170,8 @@ const Navbar = () => {
               </li>
               {[
                 ["Products", "/products"],
-                ["Contact Us", "/contact-us"],
-                ["About Us", "/about-us"],
+                ["Contact Us", "/contactus"],
+                ["About Us", "/aboutus"],
               ].map((item, index) => {
                 return (
                   <li

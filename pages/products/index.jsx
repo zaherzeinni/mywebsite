@@ -11,7 +11,7 @@ import FireWork from "@/components/common/startFire";
 import AdvertiseBar from "@/components/common/advertiseBar";
 import AllProducts from "/components/client/products";
 import Support from "@/components/client/sections/support";
-
+import Footer from "@/components/client/layout/footer";
 
 
 export default function ProductsPage({
@@ -103,6 +103,9 @@ export default function ProductsPage({
 
         <div>
           <Support />
+        </div>
+        <div>
+        <Footer />
         </div>
         {/* <div>
           <CustomInput 
