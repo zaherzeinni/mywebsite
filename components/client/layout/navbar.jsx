@@ -57,7 +57,7 @@ const Navbar = () => {
 
 
 
-  const productCategory = [
+  const Category = [
     "Office Bag",
     "Backpack",
     "Briefcase",

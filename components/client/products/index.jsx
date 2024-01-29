@@ -28,13 +28,7 @@ const AllProducts = ({ resultProducts }) => {
             </div>
           </div>
         </div>
-        <style>
-          {`
-                body{
-                    scroll-behavior: smooth;
-                }
-                `}
-        </style>
+
       </span>
     </div>
   );

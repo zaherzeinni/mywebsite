@@ -1,3 +1,19 @@
+share button 
+
+https://www.youtube.com/watch?v=OouXSXHXitY
+
+
+to center any icon or text in the middle
+
+
+min-height: 100vh;
+display:flex;
+justify-content:center;
+algin-items:center;
+
+
+
+
 https://www.realgood.tv/shop
 animation text offer
 
@@ -47,5 +63,5 @@ share icon svg
 
 <svg style="color: white" width="45" height="45" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26 4L44 22L26 39V28C12 28 6 43 6 43C6 26 11 15 26 15V4Z" fill="white" stroke="#333" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 
-
+web share api
 

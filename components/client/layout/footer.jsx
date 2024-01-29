@@ -3,10 +3,16 @@ import React from 'react'
 import { Fade } from 'react-awesome-reveal'
 import Link from 'next/link'
 
+import {WhatsappShareButton,WhatsappIcon} from 'react-share'
+
 export default function Footer() {
+
+    const shareUrl = "url";
+    const title = "Title";
+    
     return (
-        <>
-            <section className='bg-sky-700  bottom-0 left-0 right-0'>
+
+            <div className='bg-sky-700  bottom-0 left-0 right-0 m-[-56px] '>
                 <h1
                     className='
                     text-2xl font-bold tracking-wide text-center pt-6 text-gray-100 sm:text-3xl md:text-4xl
@@ -28,7 +34,7 @@ export default function Footer() {
 
                             <div className='px-5 py-2'>
                                 <Link
-                                    href='/category'
+                                    href={'/products?category'}
                                     className='text-base leading-6 text-gray-100 hover:text-gray-100 hover:bg-sky-500 px-3 py-2 rounded-md transition-all duration-300'
                                 >
                                     Category
@@ -64,7 +70,7 @@ export default function Footer() {
                     <div className='flex justify-center mt-8 space-x-6'>
                         <Fade left>
                             <a
-                                href='https://www.facebook.com/BuyAndSellInBeirutOnline'
+                                href='https://www.facebook.com/BuyAndSellInBeirutOnline' target="_blank" rel="noreferrer"
                                 className='text-gray-200 hover:text-[#E1306C] transition-all duration-300 p-3 rounded-full'
                             >
                                 <span className='sr-only'>Facebook</span>
@@ -85,7 +91,7 @@ export default function Footer() {
 
                         <Fade left>
                             <a
-                                href='https://www.instagram.com/itpromax.beirut/'
+                                href='https://www.instagram.com/itpromax.beirut/' target="_blank" rel="noreferrer"
                                 className='text-gray-200  hover:text-[#E1306C] transition-all duration-300 p-3 rounded-full'
                             >
                                 <span className='sr-only'>Instagram</span>
@@ -105,7 +111,8 @@ export default function Footer() {
                         </Fade>
                         <Fade right>
                             <a
-                                href='tel:70480041' target="_blank" rel="noreferrer"
+                                href='https://wa.me/96170480041' target="_blank" rel="noreferrer" 
+                                
                                 className='text-gray-200 hover:text-[#E1306C] transition-all duration-300 p-3 rounded-full'
                             >
                                 <span className='sr-only'>WhatsApp</span>
@@ -119,31 +126,39 @@ export default function Footer() {
                                 </svg>
                             </a>
                         </Fade>
+
                         <Fade right>
                             <a
-                                href='tel:70480041' target="_blank" rel="noreferrer"
-                                className='text-gray-200 hover:text-[#E1306C] transition-all duration-300 p-3 rounded-full'
+                                href='tel:+96170480041' target="_blank" rel="noreferrer" 
+                                
+                                className='text-gray-200 hover:text-[#E1306C] transition-all duration-300 p-3 rounded-full relative right-2'
                             >
-                                <span className='sr-only'>WhatsApp</span>
+                                <span className='sr-only'>Phone Call</span>
                                 <svg
-                                    className='w-10 h-10'
+                                    className='w-8 h-8'
                                     aria-hidden='true'
                                     fill='currentColor'
                                     viewBox='0 0 24 24'
                                 >
-                                    <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"></path>
+                                    <path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="white"></path>
                                 </svg>
-                            </a>     
+                            </a>
                         </Fade>
-                        <Fade right>
-                            <a
-                                href='tel:70480041' target="_blank" rel="noreferrer"
-                                className='text-gray-200 hover:text-[#E1306C] transition-all duration-300 p-3 rounded-full'
-                            >
-                                <span className='sr-only'>WhatsApp</span>
-            
-                            </a>     
-                        </Fade>
+
+                    {/* whatsApp icon to share link and title */}
+                        {/* <div className="Demo__some-network">
+        <WhatsappShareButton
+          url={shareUrl}
+          title={title}
+          separator=":: "
+          className="Demo__some-network__share-button"
+        >
+          <WhatsappIcon size={32} round />
+        </WhatsappShareButton>
+      </div> */}
+
+
+
                     </div>
                     <Fade bottom>
                         <p className='mt-8 text-base leading-6 text-center text-gray-200'>
@@ -151,7 +166,7 @@ export default function Footer() {
                         </p>
                     </Fade>
                 </div>
-            </section>
-        </>
+            </div>
+        
     )
 }
