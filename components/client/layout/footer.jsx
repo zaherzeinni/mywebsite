@@ -15,15 +15,14 @@ export default function Footer() {
             <div className='bg-sky-700  bottom-0 left-0 right-0 m-[-56px] '>
                 <h1
                     className='
-                    text-2xl font-bold tracking-wide text-center pt-6 text-gray-100 sm:text-3xl md:text-4xl
-                '
+                    text-2xl font-bold tracking-wide text-center pt-6 text-gray-100 sm:text-3xl md:text-4xl h-2'
                 >
                     <Link href='/'>IT PRO MAX</Link>
                 </h1>
-                <div className='max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8'>
+                <div className='max-w-screen-xl px-4 py-14 mx-auto 1space-y-6  overflow-hidden sm:px-6 lg:px-8'>
                     <Fade bottom>
-                        <nav className='flex flex-wrap justify-center -mx-5 -my-2'>
-                            <div className='px-5 py-2'>
+                        <nav className='flex flex-wrap justify-center -mx-5 mt-1'>
+                            <div className='sm:px-5 px-5 py-2'>
                                 <Link
                                     href='/'
                                     className='text-base leading-6 text-gray-100 hover:text-gray-100 hover:bg-sky-500 px-3 py-2 rounded-md transition-all duration-300'
@@ -41,7 +40,7 @@ export default function Footer() {
                                 </Link>
                             </div>
 
-                            <div className='px-5 py-2'>
+                            <div className='px-6 py-2'>
                                 <Link
                                     href='/products'
                                     className='text-base leading-6 text-gray-100 hover:text-gray-100 hover:bg-sky-500 px-3 py-2 rounded-md transition-all duration-300'
@@ -51,13 +50,21 @@ export default function Footer() {
                             </div>
                             <div className='px-5 py-2'>
                                 <Link
+                                    href='/tradein'
+                                    className='text-base leading-6 text-gray-100 hover:text-gray-100 hover:bg-sky-500 px-3 py-2 rounded-md transition-all duration-300'
+                                >
+                                    Trade In
+                                </Link>
+                            </div>
+                            <div className='px-2 py-2'>
+                                <Link
                                     href='/contactus'
                                     className='text-base leading-6 text-gray-100 hover:text-gray-100 hover:bg-sky-500 px-3 py-2 rounded-md transition-all duration-300'
                                 >
                                     Contact Us
                                 </Link>
                             </div>
-                            <div className='px-5 py-2'>
+                            <div className='px-6 py-2'>
                                 <Link
                                     href='/aboutus'
                                     className='text-base leading-6 text-gray-100 hover:text-gray-100 hover:bg-sky-500 px-3 py-2 rounded-md transition-all duration-300'
@@ -67,7 +74,10 @@ export default function Footer() {
                             </div>
                         </nav>
                     </Fade>
-                    <div className='flex justify-center mt-8 space-x-6'>
+
+                    {/* --------------------------------------Social Media Icons----------------------------------------- */}
+
+                    <div className='flex justify-center mt-1 space-x-6 '>
                         <Fade left>
                             <a
                                 href='https://www.facebook.com/BuyAndSellInBeirutOnline' target="_blank" rel="noreferrer"
@@ -131,7 +141,7 @@ export default function Footer() {
                             <a
                                 href='tel:+96170480041' target="_blank" rel="noreferrer" 
                                 
-                                className='text-gray-200 hover:text-[#E1306C] transition-all duration-300 p-3 rounded-full relative right-2'
+                                className='text-gray-200 hover:text-[#E1306C] transition-all duration-300 p-3 rounded-full relative right-3'
                             >
                                 <span className='sr-only'>Phone Call</span>
                                 <svg
@@ -140,7 +150,7 @@ export default function Footer() {
                                     fill='currentColor'
                                     viewBox='0 0 24 24'
                                 >
-                                    <path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="white"></path>
+                                    <path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                                 </svg>
                             </a>
                         </Fade>
@@ -161,7 +171,7 @@ export default function Footer() {
 
                     </div>
                     <Fade bottom>
-                        <p className='mt-8 text-base leading-6 text-center text-gray-200'>
+                        <p className='relative top-8 text-base leading-6 text-center text-gray-200'>
                             © 2024 ITPROMAX Lebanon, Inc. All rights reserved.
                         </p>
                     </Fade>
