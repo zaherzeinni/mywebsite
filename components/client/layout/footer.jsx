@@ -12,7 +12,7 @@ export default function Footer() {
     
     return (
 
-            <div className='bg-sky-700  bottom-0 left-0 right-0 m-[-56px] '>
+            <div className='bg-sky-700  bottom-0 left-0 right-0 sm:mx-[-56px]1 mx-[-56px] '>
                 <h1
                     className='
                     text-2xl font-bold tracking-wide text-center pt-6 text-gray-100 sm:text-3xl md:text-4xl h-2'
