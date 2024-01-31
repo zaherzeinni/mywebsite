@@ -13,16 +13,21 @@ import {
   sendEmailVerification,
 } from "firebase/auth";
 
-import { collection, doc, getDoc, setDoc } from "firebase/firestore";
-
+import {
+  arrayUnion,
+  collection,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 
 import { useDispatch } from "react-redux";
-import {GetCurrentUser} from '../../redux/productSlice'
+import { GetCurrentUser } from "../../redux/productSlice";
 
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
-
   const dispatch = useDispatch();
 
   const [name, setName] = useState("zaher");
@@ -71,6 +76,37 @@ export const StateContextProvider = ({ children }) => {
     } catch (error) {}
   };
 
+  // send product when click heart icon
+  const addToWishList = async (item) => {
+    // {product}
+
+    try {
+      if (profile) {
+        // specefic user wishlist get
+        const updateWishList = doc(db, "wishlist", profile?.uid);
+
+        /// update current user wishlist and add new product to array
+
+        await updateDoc(updateWishList, {
+          wishList: arrayUnion({
+            ...item,
+          }),
+        });
+        console.log(updateWishList,"updatewishlisttttttttt")
+
+      } else {
+        toast.error("Please Login Or Register");
+      
+      }
+    } catch (error) {
+
+      console.log(error?.message)
+      toast.error(error)
+    }
+
+
+  };
+
   const register = (
     email,
     password,
@@ -101,7 +137,7 @@ export const StateContextProvider = ({ children }) => {
           role: "admin",
         });
 
-        createCollections(res.user?.uid)
+        createCollections(res.user?.uid);
 
         setPageLoading(false);
         // while loading data from firebase start spinner
@@ -165,6 +201,7 @@ export const StateContextProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
 
   const [profile, setProfile] = useState(null);
+  console.log(profile, "profileee");
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
@@ -178,17 +215,17 @@ export const StateContextProvider = ({ children }) => {
         localStorage.setItem("isLogged", true);
         // specify path for get Auth user Data from firestore
         const userRef = doc(db, "users", user?.uid);
-        wishListSnapShot(user?.uid)
-        cartSnapShot(user?.uid)
-        console.log('wishlist==>',wishList)
-        console.log('carttt==>',cart)
+        wishListSnapShot(user?.uid);
+        cartSnapShot(user?.uid);
+        console.log("wishlist==>", wishList);
+        console.log("carttt==>", cart);
         const docSnap = await getDoc(userRef);
 
         // if AuthUser have data in firestore set his data in setProfile
         if (docSnap.exists()) {
           console.log("firstore Data of user--->", docSnap.data());
           setProfile(docSnap.data());
-          dispatch(GetCurrentUser(docSnap.data()))
+          dispatch(GetCurrentUser(docSnap.data()));
         }
       }
 
@@ -222,7 +259,8 @@ export const StateContextProvider = ({ children }) => {
         wishList,
         setWishList,
         cart,
-        setCart
+        setCart,
+        addToWishList,
       }}
     >
       {children}

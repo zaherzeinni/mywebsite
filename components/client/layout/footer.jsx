@@ -6,29 +6,32 @@ import {WhatsappShareButton,WhatsappIcon} from 'react-share'
 
 export default function Footer() {
 
-
+        const TopButton = ()=> {
+            window.scrollTo(0,0)
+        }
 
 
     const shareUrl = "url";
     const title = "Title";
     
     return (
-            <div className=''>
+            <div>
             
             <svg xmlns="http://www.w3.org/2000/svg" 
             width="32" 
             height="32" 
             fill="currentColor"
-            className="bi bi-arrow-up-circle mb-1  ml-auto hover:cursor-pointer hover:scroll-mt-80" 
-            viewBox="0 0 16 16"> 
+            className="bi bi-arrow-up-circle mb-2   ml-auto -mx-11 hover:cursor-pointer  " 
+            viewBox="0 0 16 16"
+            onClick={TopButton}
+            > 
             
             <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" fill="blue"></path> 
             </svg>
             
-            <div className='bg-sky-700  bottom-0 left-0 right-0 mx-[-60px] lg:mx-[-65px]  '>
+            <div className='bg-sky-700  bottom-0 left-0 right-0 mx-[-56px] sm:mx-[-70px] lg:mx-[-56px]  '>
                 <h1
-                    className='
-                    text-2xl font-bold tracking-wide text-center pt-6 text-gray-100 sm:text-3xl md:text-4xl h-2'
+                    className='text-2xl font-bold tracking-wide text-center pt-6 text-gray-100 sm:text-3xl md:text-4xl h-2'
                 >
                     <Link href='/'>IT PRO MAX</Link>
                 </h1>

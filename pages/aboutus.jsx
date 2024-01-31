@@ -5,15 +5,15 @@ function AboutUs() {
   return (
     <>
       <NextSeo title="itpromax | ITPRO | IT PROMAX | IT PRO MAX" />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid sm:grid-cols-2 grid-cols-1 gap-5 py-8  md:py-12 ">
-          <section className="grid gap-4 xs:py-10 py-2">
-            <h1 className="text-4xl font-bold tracking-tight text-rose-600 sm:text-5xl md:text-6xl mt-9 xs:mt-5">
+      
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-5 py-8  md:py-12 ">
+          <section className=" gap-4 xs:py-10 py-2 px-6">
+            <h1 className="text-6xl font-bold tracking-tight text-rose-600 sm:text-5xl md:text-6xl mt-9 xs:mt-5">
               About Us
             </h1>
-            <article className="grid gap-2 grid-cols-1">
+            <article className="grid gap-2 grid-cols-1 mt-10">
               <p>
-              <b>IT PRO MAX</b> it’s a small business located in Lebanon,Beirut <b>ITPROMAX</b> provide you to buy and sell any product such as smart phones, desktops and laptops. Moreover, we have many Services: Network Communications, Data Cabling, General IT Services, Website Hosting, Web Development using REACT & Next JS ,HTML,CSS,JS ,also we install Surveillance Systems CCTV cameras.
+              <b>IT PRO MAX</b> is a small business company located in Lebanon,Beirut. It provides you to buy and sell any product such as smart phones, desktops and laptops. Moreover, we have many Services: Network Communications, Data Cabling, General IT Services, Website Hosting, Web Development using REACT & Next JS ,HTML,CSS,JS ,also we install Surveillance Systems CCTV cameras.
               </p>
               <h2 className="text-2xl font-bold text-rose-600">
               After-Sales Service Support;
@@ -38,9 +38,10 @@ function AboutUs() {
               </p>
             </article>
           </section>
-          <section className="shadow_image_left relative md:top-56 order-first h-64 md:order-none md:h-full">
+
+          <section className="  justify-center mx-auto flex  items-center shadow_image_left order-first h-64 md:order-none md:h-full">
             <img
-              className="absolute rounded-xl"
+              className=" rounded-3xl md:rounded-4xl w-[500px] lg:w-[700px] px-2    "
               src={
                 "/aboutusIMG.jpg"
               }
@@ -48,11 +49,12 @@ function AboutUs() {
               layout="fill"
               objectFit="cover"
               priority={true}
+              width={"50%"}
               
             />
           </section>
         </div>
-      </div>
+   
     </>
   );
 }

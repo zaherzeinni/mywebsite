@@ -10,6 +10,10 @@
   }
 }
 
+*{
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica",
     "Arial", sans-serif;
@@ -23,6 +27,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   hyphens: auto;
+
 }
 
 @font-face {

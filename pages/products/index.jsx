@@ -79,7 +79,7 @@ export default function ProductsPage({
 
 
   return (
-    <div className="">
+    <div className="scroll-smooth">
       {/* {modalOpen === true && 
       <FireWork/> } */}
       <AdvertiseBar />

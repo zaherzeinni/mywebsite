@@ -15,7 +15,8 @@ const Support = () => {
             icon={ <IoChatboxEllipsesSharp className='mt-2 w-14 h-14 text-white bg-red-500 rounded-2xl p-3 relative -top-8 -right-8' />}
             
             buttonText= {"Chat now"} 
-            linkText ={"http://api.whatsapp.com"} 
+            linkText ={'https://wa.me/96170480041'} 
+            target="_blank" rel="noreferrer" 
             />
             
             <CustomSupportCard 
