@@ -21,17 +21,17 @@ export default function Footer() {
             width="32" 
             height="32" 
             fill="currentColor"
-            className="bi bi-arrow-up-circle mb-2   ml-auto -mx-11 hover:cursor-pointer  " 
+            className="bi bi-arrow-up-circle mb-2   ml-auto -mx-11 hover:cursor-pointer bg-white text-sky-700   hover:scale-125 duration-500" 
             viewBox="0 0 16 16"
             onClick={TopButton}
             > 
             
-            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" fill="blue"></path> 
+            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" fill=""></path> 
             </svg>
             
             <div className='bg-sky-700  bottom-0 left-0 right-0 mx-[-56px] sm:mx-[-70px] lg:mx-[-56px]  '>
                 <h1
-                    className='text-2xl font-bold tracking-wide text-center pt-6 text-gray-100 sm:text-3xl md:text-4xl h-2'
+                    className='text-2xl font-bold tracking-wide text-center pt-6 text-gray-100 sm:text-3xl md:text-4xl h-2 hover:animate-pulse '
                 >
                     <Link href='/'>IT PRO MAX</Link>
                 </h1>
@@ -93,15 +93,15 @@ export default function Footer() {
 
                     {/* --------------------------------------Social Media Icons----------------------------------------- */}
 
-                    <div className='flex justify-center mt-1 space-x-6 '>
+                    <div className='flex justify-center mt-3 space-x-6 '>
                         <Fade left>
                             <a
                                 href='https://www.facebook.com/BuyAndSellInBeirutOnline' target="_blank" rel="noreferrer"
-                                className='text-gray-200 hover:text-[#E1306C] transition-all duration-300 p-3 rounded-full'
+                                className='text-gray-200 '
                             >
                                 <span className='sr-only'>Facebook</span>
                                 <svg
-                                    className='w-8 h-8'
+                                    className='w-8 h-8 hover:scale-125 duration-500'
                                     aria-hidden='true'
                                     fill='currentColor'
                                     viewBox='0 0 24 24'
@@ -118,11 +118,11 @@ export default function Footer() {
                         <Fade left>
                             <a
                                 href='https://www.instagram.com/itpromax.beirut/' target="_blank" rel="noreferrer"
-                                className='text-gray-200  hover:text-[#E1306C] transition-all duration-300 p-3 rounded-full'
+                                className='text-gray-200 '
                             >
                                 <span className='sr-only'>Instagram</span>
                                 <svg
-                                    className='w-8 h-8'
+                                    className='w-8 h-8 hover:scale-125 duration-500'
                                     aria-hidden='true'
                                     fill='currentColor'
                                     viewBox='0 0 24 24'
@@ -139,11 +139,11 @@ export default function Footer() {
                             <a
                                 href='https://wa.me/96170480041' target="_blank" rel="noreferrer" 
                                 
-                                className='text-gray-200 hover:text-[#E1306C] transition-all duration-300 p-3 rounded-full'
+                                className='text-gray-200 '
                             >
                                 <span className='sr-only'>WhatsApp</span>
                                 <svg
-                                    className='w-10 h-11'
+                                    className='w-10 h-11 hover:scale-125 duration-500'
                                     aria-hidden='true'
                                     fill='currentColor'
                                     viewBox='0 0 24 24'
@@ -157,11 +157,11 @@ export default function Footer() {
                             <a
                                 href='tel:+96170480041' target="_blank" rel="noreferrer" 
                                 
-                                className='text-gray-200 hover:text-[#E1306C] transition-all duration-300 p-3 rounded-full relative right-3'
+                                className='text-gray-200 relative right-3'
                             >
                                 <span className='sr-only'>Phone Call</span>
                                 <svg
-                                    className='w-8 h-8'
+                                    className='w-8 h-8 hover:scale-125 duration-500'
                                     aria-hidden='true'
                                     fill='currentColor'
                                     viewBox='0 0 24 24'

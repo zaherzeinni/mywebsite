@@ -12,7 +12,7 @@ const ProductCard = ({data,index}) => {
 
 const [wishListExist,setWishListExist] = useState (true)
 
-const {wishList,setWishList,cart,setCart,addToWishList} = useAuth()
+const {wishList,setWishList,cart,setCart,addToWishList,removeFromWishList} = useAuth()
 
 // console.log("wishlist========>",wishList,data)
 
@@ -40,10 +40,10 @@ if (findItemInWishList !== undefined) {
           >
            
            {wishListExist ? 
-            <FiHeart onClick={()=>addToWishList(data)} className="text-3xl text-white absolute top-5 right-4" />
+            <FiHeart onClick={()=>addToWishList(data)} className="text-3xl text-white absolute top-5 right-4 hover:cursor-pointer" />
             :
             
-            <GoHeartFill className="text-3xl text-red-600 absolute top-5 right-4" /> }
+            <GoHeartFill onClick={()=>removeFromWishList(data)} className="text-3xl text-red-600 absolute top-5 right-4 hover:cursor-pointer" /> }
             <div className="conten ">
               <h2 className="jav ">{data?.title}</h2>
               <p className="java line-clamp-3 ">

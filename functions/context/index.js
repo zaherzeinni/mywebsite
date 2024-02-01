@@ -14,6 +14,7 @@ import {
 } from "firebase/auth";
 
 import {
+  arrayRemove,
   arrayUnion,
   collection,
   doc,
@@ -92,8 +93,11 @@ export const StateContextProvider = ({ children }) => {
             ...item,
           }),
         });
-        console.log(updateWishList,"updatewishlisttttttttt")
+        console.log(updateWishList,"updatewishlistttttttttaddtowishlist")
 
+        // add product  to  wishlist array state then checke if product exist or not in single product cart component
+        setWishList((prev)=>[...prev ,item])
+        toast.info("product added to wishlist")
       } else {
         toast.error("Please Login Or Register");
       
@@ -103,9 +107,54 @@ export const StateContextProvider = ({ children }) => {
       console.log(error?.message)
       toast.error(error)
     }
-
-
   };
+
+
+
+    // remove red heart when clicked on single product
+    const removeFromWishList = async (item) => {
+      // {product}
+  
+      try {
+        if (profile) {
+          // specefic user wishlist get
+          const updateWishList = doc(db, "wishlist", profile?.uid);
+  
+          /// update current user wishlist and add new product to array
+  
+          await updateDoc(updateWishList, {
+            wishList: arrayRemove({
+              ...item,
+            }),
+          });
+          console.log(updateWishList,"updatewishlistttttttttremove")
+  
+          // remove from product single card the read heart
+          
+          const removeItem  = wishList.filter((product) =>
+          product.id !== item.id 
+          
+        );
+
+        console.log("removeitemmm===>",removeItem)
+
+          setWishList(removeItem)
+          toast.info("product removed from wishlist")
+
+  
+        } else {
+          toast.error("Please Login Or Register");
+        
+        }
+      } catch (error) {
+  
+        console.log(error?.message)
+        toast.error(error)
+      }
+    };
+
+
+
 
   const register = (
     email,
@@ -261,6 +310,7 @@ export const StateContextProvider = ({ children }) => {
         cart,
         setCart,
         addToWishList,
+        removeFromWishList,
       }}
     >
       {children}
