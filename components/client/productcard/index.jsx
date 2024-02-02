@@ -5,14 +5,15 @@ import Link from "next/link";
 import { GoHeartFill } from "react-icons/go";
 import { FiHeart } from "react-icons/fi";
 import { useAuth } from "@/functions/context";
-
+import { Button } from "@chakra-ui/react";
 
 const ProductCard = ({data,index}) => {
 
 
 const [wishListExist,setWishListExist] = useState (true)
-
-const {wishList,setWishList,cart,setCart,addToWishList,removeFromWishList} = useAuth()
+const [cartExist,setCartExist] = useState (true)
+const {wishList,setWishList,cart,setCart,addToWishList,removeFromWishList,addToCart,        
+  removeFromCartList} = useAuth()
 
 // console.log("wishlist========>",wishList,data)
 
@@ -30,6 +31,23 @@ if (findItemInWishList !== undefined) {
 }, [wishList]);
 
 
+
+//cart useEffect
+useEffect(() => {
+  const findItemInCart = cart.find((item)=>item.id===data.id)
+  
+  console.log("findItemInCart==>",findItemInCart)
+  if (findItemInCart !== undefined) {
+      return setCartExist(false)
+  } else
+  
+  {setCartExist(true)}
+  
+  }, [cart]);
+
+
+
+
     return (
         
         <Fade key={index} bottom>
@@ -44,6 +62,15 @@ if (findItemInWishList !== undefined) {
             :
             
             <GoHeartFill onClick={()=>removeFromWishList(data)} className="text-3xl text-red-600 absolute top-5 right-4 hover:cursor-pointer" /> }
+            
+            {cartExist ? 
+            <Button p={'20px'} bg={'blue.400'} textColor={'white'} _hover={{bg:'blue'}} onClick={()=>addToCart(data)}>Add to Cart</Button>
+            :
+            <Button p={'20px'} bg={'red'} textColor={'white'} onClick={()=>removeFromCartList(data)}>Remove</Button>
+            }
+            
+           
+            
             <div className="conten ">
               <h2 className="jav ">{data?.title}</h2>
               <p className="java line-clamp-3 ">

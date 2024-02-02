@@ -156,6 +156,92 @@ export const StateContextProvider = ({ children }) => {
 
 
 
+
+
+    
+
+
+  // send product when click on addtocart icon
+  const addToCart = async (item) => {
+    // {product}
+
+    try {
+      if (profile) {
+        // specefic user cart get
+        const updateCartList = doc(db, "cart", profile?.uid);
+
+        /// update current user cart and add new product to array
+
+        await updateDoc(updateCartList, {
+          cart: arrayUnion({
+            ...item,
+          }),
+        });
+        console.log(updateCartList,"updateAddToCartListttt")
+
+        // add product  to  Cart array state then checke if product exist or not in single product cart component
+        setCart((prev)=>[...prev ,item])
+        toast.info("product added to Cart")
+      } else {
+        toast.error("Please Login Or Register");
+      
+      }
+    } catch (error) {
+
+      console.log(error?.message)
+      toast.error(error)
+    }
+  };
+
+
+    // remove addtocart when clicked on single product
+    const removeFromCartList = async (item) => {
+      // {product}
+  
+      try {
+        if (profile) {
+          // specefic user wishlist get
+          const updateCartList = doc(db, "cart", profile?.uid);
+  
+          /// update current user cart and add new product to array
+  
+          await updateDoc(updateCartList, {
+            cart: arrayRemove({
+              ...item,
+            }),
+          });
+          console.log(updateCartList,"updateCartlisttttttttt  remove")
+  
+          // remove from product single card the AddtoCart
+          
+          const removeItem  = cart.filter((product) =>
+          product.id !== item.id 
+          
+        );
+
+        console.log("removeitemmm===>addtoCart",removeItem)
+
+          setCart(removeItem)
+          toast.info("product removed from AddtoCart")
+
+  
+        } else {
+          toast.error("Please Login Or Register");
+        
+        }
+      } catch (error) {
+  
+        console.log(error?.message)
+        toast.error(error)
+      }
+    };
+
+
+
+
+
+
+
   const register = (
     email,
     password,
@@ -286,6 +372,7 @@ export const StateContextProvider = ({ children }) => {
     signOut(auth);
     setProfile(null);
     setPageLoading(false);
+    router.push("/");
   };
 
   const [inputt, setInputt] = useState();
@@ -311,6 +398,9 @@ export const StateContextProvider = ({ children }) => {
         setCart,
         addToWishList,
         removeFromWishList,
+        addToCart,        
+        removeFromCartList,
+        logout
       }}
     >
       {children}

@@ -13,6 +13,7 @@ import StaggeringText from "./staggeringText";
 
 import { getDocuments } from "@/functions/firebase/getData";
 import SearchInput from "./searchInput";
+import { FaUserCheck,FaUserSlash } from "react-icons/fa";
 
 
 const Navbar = () => {
@@ -21,7 +22,7 @@ const Navbar = () => {
   const [dropdown2, setDropdown2] = useState(false);
   const router = useRouter();
   const navbar = useRef(null);
-  const { profile } = useAuth();
+  const { profile,logout } = useAuth();
 
   useEffect(() => {
     setDropdown(false);
@@ -122,7 +123,7 @@ const Navbar = () => {
             <ul className="box-shadow-hover z-[500] m-0 flex w-full flex-col items-center gap-1 border bg-white py-8 font-sora text-sm font-medium lg:right-auto lg:z-auto lg:w-auto lg:flex-row lg:rounded-2xl lg:border-none lg:bg-transparent lg:px-2 lg:py-1.5 lg:shadow-none">
               <li className="w-full px-6 py-1 lg:w-auto lg:py-0 lg:px-0">
                 <Link
-                  className="flex w-full items-center rounded-xl px-3 py-2 duration-200 ease-in-out hover:bg-green-50 hover:text-green-700 md:w-auto"
+                  className="flex w-full items-center rounded-xl px-3 py-2 duration-200 ease-in-out hover:bg-blue-50 hover:text-blue-700 md:w-auto"
                   href="/"
                 >
                   <StaggeringText text="Home" />
@@ -131,7 +132,7 @@ const Navbar = () => {
               <li className="w-full px-6 py-1 lg:w-auto lg:py-0 lg:px-0">
                 <div
                   onClick={dropdownClick}
-                  className="relative flex w-full origin-top-left cursor-pointer items-center rounded-xl px-3 py-2 duration-200 hover:bg-green-50 hover:text-green-700 focus:stroke-green-700 focus:text-green-700 md:w-auto"
+                  className="relative flex w-full origin-top-left cursor-pointer items-center rounded-xl px-3 py-2 duration-200 hover:bg-blue-50 hover:text-blue-700 focus:stroke-blue-700 focus:text-blue-700 md:w-auto"
                 >
                   <div className="flex items-center justify-start sm:justify-center">
                     <StaggeringText text="Category" />
@@ -139,7 +140,7 @@ const Navbar = () => {
                       style={{
                         transform: dropdown ? "rotate(90deg)" : "rotate(0deg)",
                       }}
-                      className="ml-1 inline-block h-4 w-4 rotate-90 stroke-[3px] transition-transform duration-100 hover:stroke-green-700"
+                      className="ml-1 inline-block h-4 w-4 rotate-90 stroke-[3px] transition-transform duration-100 hover:stroke-blue-700"
                     />
                     <div className="relative inline-block">
                       <div
@@ -150,14 +151,14 @@ const Navbar = () => {
                             : "scale(.8) translateY(-10px)",
                           visibility: dropdown ? "visible" : "hidden",
                         }}
-                        className="absolute -left-24 top-full z-20 mt-6 w-40 origin-top-left overflow-hidden rounded-xl border bg-gray-50 p-2 py-2 font-semibold shadow-xl duration-200"
+                        className="absolute -left-24 top-full z-20 mt-6 w-40 origin-top-left overflow-hidden rounded-xl border bg-blue-50 p-2 py-2 font-semibold shadow-xl duration-200"
                       >
                         {cats.map((item, index) => {
                           return (
                             <Link
                               key={index}
                               href={`/products?category=${item.title}`}
-                              className="hover:text-brandBlack block transform rounded-lg px-4 py-2 text-xs font-normal capitalize text-black  duration-300 hover:bg-gray-200"
+                              className="hover:text-brandBlack block transform rounded-lg px-4 py-2 text-xs font-normal capitalize text-black  duration-300 hover:bg-blue-200"
                             >
                               {item.title}
                             </Link>
@@ -179,7 +180,7 @@ const Navbar = () => {
                     className="w-full px-6 py-1 lg:w-auto lg:py-0 lg:px-0"
                   >
                     <Link
-                      className="flex w-full items-center rounded-xl px-3 py-2 duration-200 hover:bg-green-50 hover:text-green-700 md:w-auto"
+                      className="flex w-full items-center rounded-xl px-3 py-2 duration-200 hover:bg-blue-50 hover:text-blue-700 md:w-auto"
                       href={item[1]}
                     >
                       {<StaggeringText text={item[0]} />}
@@ -193,7 +194,7 @@ const Navbar = () => {
 
         {/* ---Right Side--- */}
         <div className="flex flex-row flex-wrap justify-center items-center">
-          <div >
+          <div  className=" hover:scale-105 duration-300">
             <SearchInput />
           </div>
           {profile ? (
@@ -203,9 +204,9 @@ const Navbar = () => {
                 
                 <p
                   onClick={toggleUserMenu}
-                  className="relative z-[99] inline-block cursor-pointer select-none rounded-xl px-4 py-3 font-medium lowercase duration-150 hover:bg-green-50 hover:text-green-700 active:scale-95 active:bg-green-200"
+                  className="relative z-[99] inline-block cursor-pointer select-none rounded-xl px-4 py-3 font-medium lowercase duration-150 hover:bg-blue-50 active:scale-95 active:bg-blue-200"
                 >
-                  <User className="-mt-1 inline-block w-5" />
+                  <FaUserCheck className="-mt-1 inline-block w-5" />
                 </p>
 
                 <div
@@ -218,15 +219,15 @@ const Navbar = () => {
                   }}
                   className="absolute    max-w-[200px] w-[200px]      sm:!max-w-[300px]  sm:!w-[300px]  top-[125%] -left-24 z-[101] flex origin-top scale-75 flex-col rounded-xl border bg-white shadow-xl duration-200 md:left-auto md:right-0"
                 >
-                  <div className="border-b border-b-gray-200 px-4 py-4 pr-12 text-sm">
+                  <div className="border-b border-b-blue-200 px-4 py-4 pr-12 text-sm">
                     <p>
                       <span className="font-semibold">
-                        <span className=" text-green-600">Username :</span>{" "}
+                        <span className=" text-blue-600">Username :</span>{" "}
                         {profile?.displayName}
                       </span>
                     </p>
                     <p className="font-semibold">
-                      <span className=" text-green-600">Email :</span>{" "}
+                      <span className=" text-blue-600">Email :</span>{" "}
                       {profile?.email}
                     </p>
                   </div>
@@ -234,12 +235,13 @@ const Navbar = () => {
                     {[
                       ["Account", `/user/profile`],
                       ["Orders", `/user/orders/`],
-                      ["Logout", `/user/logout/`],
+                     
                       profile?.role === "admin" && ["Dashboard", "/admin"],
                     ].map((item, index) => {
+                      
                       return (
                         <Link
-                          className="inline-block rounded-lg px-3 py-2 text-left text-sm duration-100 hover:bg-gray-100"
+                          className="inline-block rounded-lg px-3 py-2 text-left text-sm duration-100 hover:bg-blue-100"
                           href={item[1]}
                           key={index}
                         >
@@ -247,24 +249,83 @@ const Navbar = () => {
                         </Link>
                       );
                     })}
+                         
+                         <div 
+                         className="inline-block rounded-lg px-3 py-2 text-left text-sm duration-100 hover:bg-blue-100 cursor-pointer"
+                         onClick={logout}
+                         >
+                          
+                          Logout
+                          
+
+                         </div>
+
+
+
+
                   </div>
+
                 </div>
               </div>
             </>
           ) : (
-            <Link
-              href="/auth/login"
-              className="inline-block cursor-pointer rounded-xl bg-white px-4 py-3 font-medium text-black duration-150  hover:bg-gray-100 active:scale-90 active:bg-green-200"
+
+
+            <div className="group relative">
+                
+            <p
+              onClick={toggleUserMenu}
+              className="relative z-[99] inline-block cursor-pointer select-none rounded-xl px-4 py-3 font-medium lowercase duration-150
+               hover:bg-blue-50 active:scale-95 active:bg-blue-200"
             >
-              <User className="inline-block w-5 stroke-black" />
-            </Link>
+              <FaUserSlash  className="-mt-1 inline-block w-5" />
+            </p>
+
+            <div
+              style={{
+                opacity: dropdown2 ? 1 : 0,
+                transform: dropdown2
+                  ? "scale(1) translateY(0px)"
+                  : "scale(.8) translateY(-10px)",
+                visibility: dropdown2 ? "visible" : "hidden",
+              }}
+              className="absolute    max-w-[100px] w-[100px]      sm:!max-w-[100px]  sm:!w-[100px]  top-[125%] -left-24 z-[101] flex origin-top scale-75 flex-col rounded-xl border bg-white shadow-xl duration-200 md:left-auto md:right-0"
+            >
+
+              <div className="flex flex-col border-b px-2 py-4 text-sm ">
+                {[
+                  ["Login", `/auth/login`],
+                  ["Register", `/auth/register/`],
+                 
+                 
+                ].map((item, index) => {
+                  
+                  return (
+                    <Link
+                      className="inline-block rounded-lg px-3 py-2 text-left text-sm duration-100 hover:bg-blue-100"
+                      href={item[1]}
+                      key={index}
+                    >
+                      {item[0]}
+                    </Link>
+                  );
+                })}
+                     
+              </div>
+
+            </div>
+          </div>
+
+
+
           )}
           <a
             onClick={() => setShowCart(true)}
-            className="relative inline-block cursor-pointer select-none rounded-xl px-4 py-3  text-black duration-150 hover:bg-gray-100 active:scale-90 active:bg-gray-200"
+            className="relative inline-block cursor-pointer select-none rounded-xl px-4 py-3  text-black duration-150 
+            hover:bg-blue-50 active:scale-95 active:bg-blue-200"
           >
             <Cart className="inline-block w-5 stroke-black" />
-            <div className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-gray-700 text-xs text-white">
+            <div className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-blue-700 text-xs text-white">
               12
             </div>
           </a>
