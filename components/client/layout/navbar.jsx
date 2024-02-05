@@ -22,7 +22,7 @@ const Navbar = () => {
   const [dropdown2, setDropdown2] = useState(false);
   const router = useRouter();
   const navbar = useRef(null);
-  const { profile,logout } = useAuth();
+  const { profile,logout,cart } = useAuth();
 
   useEffect(() => {
     setDropdown(false);
@@ -326,7 +326,7 @@ const Navbar = () => {
           >
             <Cart className="inline-block w-5 stroke-black" />
             <div className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-blue-700 text-xs text-white">
-              12
+            {cart.length}
             </div>
           </a>
         </div>

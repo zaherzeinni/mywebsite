@@ -52,7 +52,7 @@ useEffect(() => {
         
         <Fade key={index} bottom>
         <div  className="card w-[95%]  ">
-        
+       
           <div className="face  face1 medikal-iç"  
           style={{backgroundImage: `linear-gradient( #424242bd, #424242bd),url(${data?.images[0]})`,backgroundSize:'contain',backgroundRepeat: 'no-repeat' }}
           >
@@ -62,14 +62,21 @@ useEffect(() => {
             :
             
             <GoHeartFill onClick={()=>removeFromWishList(data)} className="text-3xl text-red-600 absolute top-5 right-4 hover:cursor-pointer" /> }
-            
+{/*             
             {cartExist ? 
             <Button p={'20px'} bg={'blue.400'} textColor={'white'} _hover={{bg:'blue'}} onClick={()=>addToCart(data)}>Add to Cart</Button>
             :
             <Button p={'20px'} bg={'red'} textColor={'white'} onClick={()=>removeFromCartList(data)}>Remove</Button>
-            }
+            } */}
             
-           
+
+                        
+            
+            <Button p={'20px'} bg={'blue.400'} textColor={'white'} _hover={{bg:'blue'}} onClick={()=>addToCart(data)}>Add to Cart</Button>
+            
+            <Button p={'20px'} bg={'red'} textColor={'white'} onClick={()=>removeFromCartList(data)}>Remove</Button>
+            
+          
             
             <div className="conten ">
               <h2 className="jav ">{data?.title}</h2>

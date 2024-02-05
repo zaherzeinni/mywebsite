@@ -25,6 +25,7 @@ import {
 
 import { useDispatch } from "react-redux";
 import { GetCurrentUser } from "../../redux/productSlice";
+import { message } from "antd";
 
 const StateContext = createContext();
 
@@ -168,25 +169,87 @@ export const StateContextProvider = ({ children }) => {
     try {
       if (profile) {
         // specefic user cart get
-        const updateCartList = doc(db, "cart", profile?.uid);
+        // const updateCartList = doc(db, "cart", profile?.uid);
 
         /// update current user cart and add new product to array
 
-        await updateDoc(updateCartList, {
-          cart: arrayUnion({
-            ...item,
-          }),
-        });
-        console.log(updateCartList,"updateAddToCartListttt")
+        // await updateDoc(updateCartList, {
+        //   cart: arrayUnion({
+        //     ...item,
+        //   }),
+        // });
+        // console.log(updateCartList,"updateAddToCartListttt")
 
         // add product  to  Cart array state then checke if product exist or not in single product cart component
-        setCart((prev)=>[...prev ,item])
-        toast.info("product added to Cart")
-      } else {
+        // setCart((prev)=>[...prev ,item])
+        // toast.info("product added to Cart")
+
+
+        // ------------------------------------  new item added addtoCart ----------------------------------------
+
+        const updateCartList = doc(db, "cart", profile?.uid);
+const isExist = cart.find((e)=>e.id === item.id)
+
+if (isExist === undefined){
+
+const obj = {...item,quantity:1}
+
+await updateDoc(updateCartList, {
+    cart: arrayUnion({
+      ...obj,
+    }),
+  });
+
+setCart((prev)=>[...prev,obj])
+toast.info('new item added')
+
+}
+
+// product is already exist in cart so increase product quantity
+else if ( isExist !== undefined)
+{
+
+let obj = [ ...cart]
+
+for (let i =0 ; i < obj.length ; i++) {
+
+if(obj[i].id === item.id){
+obj[i].quantity += 1
+
+
+}
+
+
+}
+
+
+setCart(obj)
+
+await setDoc(updateCartList,{
+  basket:cart
+})
+
+
+toast.info("item is exist increase quantity")
+
+}
+
+
+
+
+
+      }
+      
+      
+      else {
         toast.error("Please Login Or Register");
       
       }
-    } catch (error) {
+
+
+    }
+    
+    catch (error) {
 
       console.log(error?.message)
       toast.error(error)
@@ -201,31 +264,50 @@ export const StateContextProvider = ({ children }) => {
       try {
         if (profile) {
           // specefic user wishlist get
-          const updateCartList = doc(db, "cart", profile?.uid);
+        //   const updateCartList = doc(db, "cart", profile?.uid);
   
-          /// update current user cart and add new product to array
+        //   /// update current user cart and add new product to array
   
-          await updateDoc(updateCartList, {
-            cart: arrayRemove({
-              ...item,
-            }),
-          });
-          console.log(updateCartList,"updateCartlisttttttttt  remove")
+        //   await updateDoc(updateCartList, {
+        //     cart: arrayRemove({
+        //       ...item,
+        //     }),
+        //   });
+        //   console.log(updateCartList,"updateCartlisttttttttt  remove")
   
-          // remove from product single card the AddtoCart
+        //   // remove from product single card the AddtoCart
           
-          const removeItem  = cart.filter((product) =>
-          product.id !== item.id 
+        //   const removeItem  = cart.filter((product) =>
+        //   product.id !== item.id 
           
-        );
+        // );
 
-        console.log("removeitemmm===>addtoCart",removeItem)
+        // console.log("removeitemmm===>addtoCart",removeItem)
 
-          setCart(removeItem)
-          toast.info("product removed from AddtoCart")
+        //   setCart(removeItem)
+        //   toast.info("product removed from AddtoCart")
 
-  
-        } else {
+  // ---------------------------------------------------------------
+
+
+  const updateCartList = doc(db, "cart", profile?.uid);
+
+
+  const isExist = cart.find((e)=>e.id === item.id)
+
+  console.log("EXIST--->" ,isExist)
+          if (isExist === undefined) {
+            toast.info("item not found to remove")
+          } 
+
+          else ( isExist.quantity === 1 ) 
+            //hazaf el 3onsor niha2e
+            //akbar min wahad tan2is quantity wahed
+
+
+        }
+        
+        else {
           toast.error("Please Login Or Register");
         
         }
