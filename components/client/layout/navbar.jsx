@@ -326,7 +326,7 @@ const Navbar = () => {
           >
             <Cart className="inline-block w-5 stroke-black" />
             <div className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-blue-700 text-xs text-white">
-            {cart.length}
+             {cart?.length}
             </div>
           </a>
         </div>

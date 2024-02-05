@@ -263,7 +263,7 @@ toast.info("item is exist increase quantity")
   
       try {
         if (profile) {
-          // specefic user wishlist get
+          // specefic user addtocart get
         //   const updateCartList = doc(db, "cart", profile?.uid);
   
         //   /// update current user cart and add new product to array
@@ -302,6 +302,11 @@ toast.info("item is exist increase quantity")
 
           else ( isExist.quantity === 1 ) 
             //hazaf el 3onsor niha2e
+
+ 
+
+
+
             //akbar min wahad tan2is quantity wahed
 
 

@@ -32,9 +32,11 @@ if (findItemInWishList !== undefined) {
 
 
 
-//cart useEffect
+//cart useEffect for item
+
+
 useEffect(() => {
-  const findItemInCart = cart.find((item)=>item.id===data.id)
+  const findItemInCart = cart?.find((item)=>item.id===data.id)
   
   console.log("findItemInCart==>",findItemInCart)
   if (findItemInCart !== undefined) {
