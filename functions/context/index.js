@@ -94,73 +94,54 @@ export const StateContextProvider = ({ children }) => {
             ...item,
           }),
         });
-        console.log(updateWishList,"updatewishlistttttttttaddtowishlist")
+        console.log(updateWishList, "updatewishlistttttttttaddtowishlist");
 
         // add product  to  wishlist array state then checke if product exist or not in single product cart component
-        setWishList((prev)=>[...prev ,item])
-        toast.info("product added to wishlist")
+        setWishList((prev) => [...prev, item]);
+        toast.info("product added to wishlist");
       } else {
         toast.error("Please Login Or Register");
-      
       }
     } catch (error) {
-
-      console.log(error?.message)
-      toast.error(error)
+      console.log(error?.message);
+      toast.error(error);
     }
   };
 
+  // remove red heart when clicked on single product
+  const removeFromWishList = async (item) => {
+    // {product}
 
+    try {
+      if (profile) {
+        // specefic user wishlist get
+        const updateWishList = doc(db, "wishlist", profile?.uid);
 
-    // remove red heart when clicked on single product
-    const removeFromWishList = async (item) => {
-      // {product}
-  
-      try {
-        if (profile) {
-          // specefic user wishlist get
-          const updateWishList = doc(db, "wishlist", profile?.uid);
-  
-          /// update current user wishlist and add new product to array
-  
-          await updateDoc(updateWishList, {
-            wishList: arrayRemove({
-              ...item,
-            }),
-          });
-          console.log(updateWishList,"updatewishlistttttttttremove")
-  
-          // remove from product single card the read heart
-          
-          const removeItem  = wishList.filter((product) =>
-          product.id !== item.id 
-          
-        );
+        /// update current user wishlist and add new product to array
 
-        console.log("removeitemmm===>",removeItem)
+        await updateDoc(updateWishList, {
+          wishList: arrayRemove({
+            ...item,
+          }),
+        });
+        console.log(updateWishList, "updatewishlistttttttttremove");
 
-          setWishList(removeItem)
-          toast.info("product removed from wishlist")
+        // remove from product single card the read heart
 
-  
-        } else {
-          toast.error("Please Login Or Register");
-        
-        }
-      } catch (error) {
-  
-        console.log(error?.message)
-        toast.error(error)
+        const removeItem = wishList.filter((product) => product.id !== item.id);
+
+        console.log("removeitemmm===>", removeItem);
+
+        setWishList(removeItem);
+        toast.info("product removed from wishlist");
+      } else {
+        toast.error("Please Login Or Register");
       }
-    };
-
-
-
-
-
-
-    
-
+    } catch (error) {
+      console.log(error?.message);
+      toast.error(error);
+    }
+  };
 
   // send product when click on addtocart icon
   const addToCart = async (item) => {
@@ -169,117 +150,173 @@ export const StateContextProvider = ({ children }) => {
     try {
       if (profile) {
         // specefic user cart get
-        // const updateCartList = doc(db, "cart", profile?.uid);
-
-        /// update current user cart and add new product to array
-
-        // await updateDoc(updateCartList, {
-        //   cart: arrayUnion({
-        //     ...item,
-        //   }),
-        // });
-        // console.log(updateCartList,"updateAddToCartListttt")
-
-        // add product  to  Cart array state then checke if product exist or not in single product cart component
-        // setCart((prev)=>[...prev ,item])
-        // toast.info("product added to Cart")
-
-
-        // ------------------------------------  new item added addtoCart ----------------------------------------
-
         const updateCartList = doc(db, "cart", profile?.uid);
-const isExist = cart.find((e)=>e.id === item.id)
 
-if (isExist === undefined){
+        // update current user cart and add new product to array
 
-const obj = {...item,quantity:1}
+        await updateDoc(updateCartList, {
+          cart: arrayUnion({
+            ...item,
+          }),
+        });
+        console.log(updateCartList,"updateAddToCartListttt")
 
-await updateDoc(updateCartList, {
-    cart: arrayUnion({
-      ...obj,
-    }),
-  });
+        //add product  to  Cart array state then checke if product exist or not in single product cart component
+        setCart((prev)=>[...prev ,item])
+        toast.info("product added to Cart") }} 
+        
+        catch (error) {
+              console.log(error?.message);
+              toast.error(error);
+            }
+          }
 
-setCart((prev)=>[...prev,obj])
-toast.info('new item added')
+        // ------------------------------------  new item added addtoCart with Quantity ----------------------------------------
 
-}
+        // const updateCartList = doc(db, "cart", profile?.uid);
+        // const isExist = cart.find((e) => e.id === item.id);
 
-// product is already exist in cart so increase product quantity
-else if ( isExist !== undefined)
-{
+        // if (isExist === undefined) {
+        //   const obj = { ...item, quantity: 1 };
+        //   console.log("object added", obj);
+        //   await updateDoc(updateCartList, {
+        //     cart: arrayUnion({
+        //       ...obj,
+        //     }),
+        //   });
 
-let obj = [ ...cart]
+        //   setCart((prev) => [...prev, obj]);
+        //   toast.info("new item added");
+        // }
 
-for (let i =0 ; i < obj.length ; i++) {
+        //// product is already exist in cart so increase product quantity
+  //       else if (isExist !== undefined) {
+  //         let obj = [...cart];
 
-if(obj[i].id === item.id){
-obj[i].quantity += 1
+  //         for (let i = 0; i < obj.length; i++) {
+  //           if (obj[i].id === item.id) {
+  //             obj[i].quantity += 1;
+  //           }
+  //         }
 
+  //         setCart(obj);
 
-}
+  //         await setDoc(updateCartList, {
+  //           cart: cart,
+  //         });
 
+  //         toast.info("item is exist increase quantity");
+  //       }
+  //     } else {
+  //       toast.error("Please Login Or Register");
+  //     }
+  //   } catch (error) {
+  //     console.log(error?.message);
+  //     toast.error(error);
+  //   }
+  // };
 
-}
-
-
-setCart(obj)
-
-await setDoc(updateCartList,{
-  basket:cart
-})
-
-
-toast.info("item is exist increase quantity")
-
-}
-
-
-
-
-
-      }
-      
-      
-      else {
-        toast.error("Please Login Or Register");
-      
-      }
-
-
-    }
-    
-    catch (error) {
-
-      console.log(error?.message)
-      toast.error(error)
-    }
-  };
 
 
     // remove addtocart when clicked on single product
-    const removeFromCartList = async (item) => {
-      // {product}
+    // const removeFromCartList = async (item) => {
+    //   // {product}
   
-      try {
-        if (profile) {
-          // specefic user addtocart get
+    //   try {
+    //     if (profile) {
+    //       // specefic user addtocart get
+    //          const updateCartList = doc(db, "cart", profile?.uid);
+  
+    //       //   /// update current user cart and add new product to array
+  
+    //         await updateDoc(updateCartList, {
+    //           cart: arrayRemove({
+    //             ...item,
+    //           }),
+    //         });
+    //          console.log(updateCartList,"updateCartlisttttttttt  remove")
+  
+    //       //   // remove from product single card the AddtoCart
+  
+    //          const removeItem  = cart.filter((product) =>
+    //          product.id !== item.id
+  
+    //        );
+  
+    //        console.log("removeitemmm===>addtoCart",removeItem)
+  
+    //          setCart(removeItem)
+    //          toast.info("product removed from AddtoCart")
+  
+          // ---------------------------------------------------------------
+  
+      
+
+
+  // remove from cart when clicked on single product
+  const removeFromCartList = async (item) => {
+    // {product}
+
+    try {
+      if (profile) {
+        // specefic user wishlist get
+        const updateCartList = doc(db, "cart", profile?.uid);
+
+        /// update current user cart and add new product to array
+
+        await updateDoc(updateCartList, {
+          cart: arrayRemove({
+            ...item,
+          }),
+        });
+        console.log(updateCartList, "updateCartListttt");
+
+        // remove product from cart
+
+        const removeItem = cart.filter((product) => product.id !== item.id);
+
+        console.log("removeitemmm===>", removeItem);
+
+        setCart(removeItem);
+        toast.success("product removed from cart");
+
+
+
+        } else {
+          toast.error("Please Login Or Register");
+        }
+      } catch (error) {
+        console.log(error?.message);
+        toast.error(error);
+      }
+    };
+
+
+
+
+  // remove addtocart when clicked on single product
+  // const removeFromCartList2 = async (item) => {
+    // {product}
+
+    // try {
+    //   if (profile) {
+        // specefic user addtocart get
         //   const updateCartList = doc(db, "cart", profile?.uid);
-  
+
         //   /// update current user cart and add new product to array
-  
+
         //   await updateDoc(updateCartList, {
         //     cart: arrayRemove({
         //       ...item,
         //     }),
         //   });
         //   console.log(updateCartList,"updateCartlisttttttttt  remove")
-  
+
         //   // remove from product single card the AddtoCart
-          
+
         //   const removeItem  = cart.filter((product) =>
-        //   product.id !== item.id 
-          
+        //   product.id !== item.id
+
         // );
 
         // console.log("removeitemmm===>addtoCart",removeItem)
@@ -287,44 +324,57 @@ toast.info("item is exist increase quantity")
         //   setCart(removeItem)
         //   toast.info("product removed from AddtoCart")
 
-  // ---------------------------------------------------------------
+        // ---------------------------------------------------------------
 
+  //       const updateCartList = doc(db, "cart", profile?.uid);
 
-  const updateCartList = doc(db, "cart", profile?.uid);
+  //       const isExist = cart.find((e) => e.id === item.id);
 
+  //       console.log("EXIST--->", isExist);
+  //       if (isExist === undefined) {
+  //         toast.info("item not found to remove");
+  //       } else if (isExist.quantity === 1) {
+  //         let obj = [...cart];
+  //         // !== this item i don't want to include it in my list array
+  //         const filterItem = obj.filter((e) => e.id !== item.id);
+  //         setCart(obj);
 
-  const isExist = cart.find((e)=>e.id === item.id)
+  //         await updateDoc(updateCartList, {
+  //           cart: arrayRemove({
+  //             ...item,
+  //           }),
+  //         });
 
-  console.log("EXIST--->" ,isExist)
-          if (isExist === undefined) {
-            toast.info("item not found to remove")
-          } 
+  //         // await setDoc(updateCartList, {
+  //         //   cart: cart,
+  //         // });
 
-          else ( isExist.quantity === 1 ) 
-            //hazaf el 3onsor niha2e
+  //         toast.info("item removed successfully");
+  //       } else if (isExist.quantity > 1) {
+  //         let obj = [...cart];
 
- 
+  //         for (let i = 0; i < obj.length; i++) {
+  //           if (obj[i].id === item.id) {
+  //             obj[i].quantity -= 1;
+  //           }
+  //         }
 
+  //         setCart(obj);
 
+  //         await setDoc(updateCartList, {
+  //           cart: cart,
+  //         });
 
-            //akbar min wahad tan2is quantity wahed
-
-
-        }
-        
-        else {
-          toast.error("Please Login Or Register");
-        
-        }
-      } catch (error) {
-  
-        console.log(error?.message)
-        toast.error(error)
-      }
-    };
-
-
-
+  //         toast.info("item is exist decrease quantity");
+  //       }
+  //     } else {
+  //       toast.error("Please Login Or Register");
+  //     }
+  //   } catch (error) {
+  //     console.log(error?.message);
+  //     toast.error(error);
+  //   }
+  // };
 
 
 
@@ -485,9 +535,9 @@ toast.info("item is exist increase quantity")
         setCart,
         addToWishList,
         removeFromWishList,
-        addToCart,        
+        addToCart,
         removeFromCartList,
-        logout
+        logout,
       }}
     >
       {children}
