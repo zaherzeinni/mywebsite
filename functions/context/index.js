@@ -163,13 +163,19 @@ export const StateContextProvider = ({ children }) => {
 
         //add product  to  Cart array state then checke if product exist or not in single product cart component
         setCart((prev)=>[...prev ,item])
-        toast.info("product added to Cart") }} 
+        toast.info("product added to Cart")  
         
-        catch (error) {
+      } else {
+        toast.error("Please Login Or Register");
+              }
+            
+             } catch (error) {
               console.log(error?.message);
               toast.error(error);
             }
-          }
+            
+          };
+          
 
         // ------------------------------------  new item added addtoCart with Quantity ----------------------------------------
 
