@@ -3,6 +3,10 @@ import Carousel from "react-slick";
 import CustomSliderArrow from "../../products/customSliderArrow";
 import { motion } from "framer-motion";
 //import { Fade } from 'react-reveal'
+
+
+// ------------------------- offer slider the big one top of the page--------------------
+
 const OfferSlider = ({ offerProducts }) => {
   const settings = {
     dots: true,
@@ -81,7 +85,7 @@ const OfferSlider = ({ offerProducts }) => {
         </Carousel>
       </div>
 
-      {/* ----- parent of sideoffer images --- */}
+      {/* -----two images  the right section of offer slider--- */}
 
       <div className="md:col-span-2 !h-full  flex justify-center lg:grid lg:grid-cols-1  lg:place-items-center gap-4 mt-[50px] lg:mt-[1px]">
         <img

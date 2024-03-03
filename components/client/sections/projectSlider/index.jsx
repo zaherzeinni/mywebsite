@@ -2,7 +2,12 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
+
+
+// ---------------------------- project Slider after Categories------------------
+
 const ProjectSlider = ({ projects }) => {
+
   return (
     <div className=" p-5 bg-white rounded-xl ">
       <Marquee pauseOnHover>
