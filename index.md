@@ -8,20 +8,17 @@ dark mode
 #1E88E5 blue
 
 
-- [ ]  Wishlist
 - [ ]  Navbar click outside
-- [ ]  Footer
-- [ ]  Contact Us
-- [ ]  About Us
 - [ ]  Booking sell and buy   ( trade in  )
 - [ ]  call support only in small screen size
 - [ ]  table in dashboard make filter
 - [ ]  google authentication or SMS
-- [ ]  Logout
-- [ ]  Register or Login Button
-- [ ]  Add to Cart
 - [ ]  Search to view products
 - [ ]  Reservation Button
+- [ ]  Emails and user Profile
+- [ ]  User Profile and Checkout Page
+- [ ] wishlist page and addtocart page 
+
 
 
 
