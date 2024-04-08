@@ -89,7 +89,7 @@ const OfferSlider = ({ offerProducts }) => {
 
       <div className="md:col-span-2 !h-full  flex justify-center lg:grid lg:grid-cols-1  lg:place-items-center gap-4 mt-[50px] lg:mt-[1px]">
         <img
-          className="rounded-xl object-cover object-center h-full w-[50%] lg:w-full "
+          className="rounded-xl object-cover object-center h-full w-[50%] lg:w-full  "
           src="USDT.jpg"
         />
         <a
@@ -97,10 +97,10 @@ const OfferSlider = ({ offerProducts }) => {
                                 
                                 className='text-gray-200 '
                             >
-        <img src="whatsApp.png" alt="whatsapp" width={30} height={30} className="absolute top-19 right-14"/>
+        <img src="whatsApp.png" alt="whatsapp" width={30} height={30} className="absolute top-28 right-14 md:top-60 md:left-40"/>
         </a>
         <img
-          className="rounded-xl object-cover object-center h-full w-[50%] lg:w-full"
+          className="rounded-xl object-cover object-center h-full w-[50%] lg:w-full relative"
           src="https://i.pcmag.com/imagery/reviews/04jlYF4fsF2M5cejiU8lw7G-2.fit_lim.size_840x473.v1685028816.jpg"
         />
         
