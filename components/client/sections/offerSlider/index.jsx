@@ -23,7 +23,7 @@ const OfferSlider = ({ offerProducts }) => {
     prevArrow: <CustomSliderArrow />,
     swipeToSlide: true,
   };
-  console.log("imagesssOfferrr ====>", offerProducts[0].images);
+  console.log("imagesssOfferrr ====>", offerProducts.images);
   return (
     <div className=" grid gap-1 mt-12 mb-8 px-12  grid-cols-1 lg:!h-[700px] h-full overflow-y-hidde   lg:grid-cols-7   place-items-center !w-[100%] ">
       {/* ---- parent of slider ---- */}
@@ -92,16 +92,16 @@ const OfferSlider = ({ offerProducts }) => {
           className="rounded-xl object-cover object-center h-full w-[50%] lg:w-full  "
           src="USDT.jpg"
         />
-        <a
+        {/* <a
                                 href='https://wa.me/96170480041' target="_blank" rel="noreferrer" 
                                 
                                 className='text-gray-200 '
                             >
         <img src="whatsApp.png" alt="whatsapp" width={30} height={30} className="absolute top-28 right-14 md:top-60 md:left-40"/>
-        </a>
+        </a> */}
         <img
-          className="rounded-xl object-cover object-center h-full w-[50%] lg:w-full relative"
-          src="https://i.pcmag.com/imagery/reviews/04jlYF4fsF2M5cejiU8lw7G-2.fit_lim.size_840x473.v1685028816.jpg"
+          className="rounded-xl object-fit object-center h-full w-[50%] lg:w-full relative"
+          src="https://comerciolimited.com.ng/wp-content/uploads/2023/01/hand-3108175_1920-1.jpg"
         />
         
       </div>

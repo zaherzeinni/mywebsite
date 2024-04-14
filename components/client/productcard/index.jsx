@@ -124,8 +124,8 @@ const ProductCard = ({ data, index }) => {
           </ButtonGroup>
           
         ) : (
-          <div className="text-center m-auto ">
-            <img src="/soldout.jpg" className="h-10 w-32 " />
+          <div className="text-center m-auto w-auto h-auto ">
+            <img src="/soldout.png" className="h-11 w-56 m-auto" />
           </div>
         )}
         {/* ---------------------------wishlist and zoom product details-------------------------------- */}
@@ -145,7 +145,7 @@ const ProductCard = ({ data, index }) => {
           )}
 
           <Link href="/products/product-categoris/medikal">
-            <FaSearchPlus className="  absolute text-xl top-14 right-2 text-red-400  hover:scale-125   duration-700 " />
+            <FaSearchPlus className="  absolute text-xl top-14 right-2 text-gray-400  !font-light  hover:scale-125   duration-700 " />
           </Link>
         </div>
       

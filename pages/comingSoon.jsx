@@ -140,19 +140,21 @@ const Countdown = ({}) => {
               Coming Soon{" "}
             </span>
             <div>
+              <a href="www.itpromax.com">
               <span className="text-blue-300 text-3xl hover:text-orange-400   ">
                 ITPROMAX.COM
               </span>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
       <img
-        className="absolute object-cover w-full h-full top-0 left-0 -mt-32"
+        className="absolute object-fit w-full h-full top-0 left-0 -mt-32"
         alt="img"
         src={
-          "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1640&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          "/comingsoon.avif"
         }
       />
     </div>

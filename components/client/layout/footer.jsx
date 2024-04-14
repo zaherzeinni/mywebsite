@@ -21,7 +21,7 @@ export default function Footer() {
             width="32" 
             height="32" 
             fill="currentColor"
-            className="bi bi-arrow-up-circle mb-2   ml-auto -mx-11 hover:cursor-pointer bg-white text-sky-700   hover:scale-125 duration-500" 
+            className="bi bi-arrow-up-circle mb-2   ml-auto  hover:cursor-pointer bg-white text-sky-700   hover:scale-125 duration-500" 
             viewBox="0 0 16 16"
             onClick={TopButton}
             > 
@@ -29,7 +29,7 @@ export default function Footer() {
             <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" fill=""></path> 
             </svg>
             
-            <div className='bg-sky-700  bottom-0 left-0 right-0 mx-[-56px] sm:mx-[-70px] lg:mx-[-56px]  '>
+            <div className='bg-sky-700  bottom-0 left-0 right-0   '>
                 <h1
                     className='text-2xl font-bold tracking-wide text-center pt-6 text-gray-100 sm:text-3xl md:text-4xl h-2 hover:animate-pulse '
                 >
@@ -187,9 +187,11 @@ export default function Footer() {
 
                     </div>
                     <Fade bottom>
+                        <a href='www.itpromax.com'>
                         <p className='relative top-8 text-base leading-6 text-center text-gray-200'>
                             © 2024 ITPROMAX Lebanon, Inc. All rights reserved.
                         </p>
+                        </a>
                     </Fade>
                 </div>
             </div>

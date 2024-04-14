@@ -4,6 +4,27 @@
 
 /* #42A5F5 */
 
+
+
+/* --------------fonts-------------- */
+
+
+
+.anton-regular {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ultra-regular {
+  font-family: "Ultra", serif;
+  font-weight: 200;
+  font-style: normal;
+  font-size: larger;
+}
+
+
+
 @layer utilities {
   .container1 {
     @apply mx-12 px-2;

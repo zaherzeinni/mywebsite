@@ -43,7 +43,7 @@ export default function MyApp({ Component, pageProps }) {
     <ChakraProvider>
     <Provider store={store}>
     <StateContextProvider>
-    
+
     <Component {...pageProps} />
     <ToastContainer />
     <ProgressBar/>

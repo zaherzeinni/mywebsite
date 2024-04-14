@@ -3,6 +3,8 @@ import { useForm } from "@formcarry/react";
 
 import { CheckCircleIcon } from "@heroicons/react/outline";
 import { NextSeo } from "next-seo";
+import Navbar from "@/components/client/layout/navbar";
+import Footer from "@/components/client/layout/footer";
 
 const FORM_ID = process.env.NEXT_PUBLIC_FORM_ID;
 
@@ -14,9 +16,23 @@ function ContactUs() {
   return (
     <>
       <NextSeo
-        title="itpromax | ITPRO | IT PROMAX | IT PRO MAX"
+        title="Contactus | ITPRO | IT PROMAX | IT PRO MAX"
         description="ITPROMAX is a small business "
       />
+      <Navbar/>
+      <div>
+        {/* group-hover:scale-105 transition-all duration-700 ease-in-out */}
+        <img
+          src="/contactus.jpg"
+          alt="contactus-image"
+          className=" relative  h-[100%]  max-w-screen-3xl w-full    md:!h-[800px] object-fit mx-auto "
+        />
+      </div>
+      <div>
+        <h1 className="anton-regular  opacity-70 absolute md:top-[8%] mx-2 sm:top-[30%] lg:top-[10%] top-[10%] md:right-[35%] lg:right-[45%]   w-96 text-white md:mx-32 md:!text-7xl !text-3xl  font-bold ">
+          Contact Us
+        </h1>
+      </div>
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 md:py-16 lg:px-8">
         <section>
           <h1 className="text-4xl font-bold tracking-tight text-rose-600 sm:text-5xl md:text-6xl">
@@ -149,8 +165,9 @@ function ContactUs() {
             </div>
           </section>
         </div>
-        
+     
       </div>
+      <Footer/>
     </>
   );
 }
