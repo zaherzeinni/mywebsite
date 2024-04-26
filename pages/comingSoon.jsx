@@ -140,7 +140,7 @@ const Countdown = ({}) => {
               Coming Soon{" "}
             </span>
             <div>
-              <a href="www.itpromax.com" target='_blank' rel="noreferrer">
+              <a href="https://itpromax.com" target='_blank' rel="noreferrer">
               <span className="text-blue-300 text-3xl hover:text-orange-400   ">
                 ITPROMAX.COM
               </span>
