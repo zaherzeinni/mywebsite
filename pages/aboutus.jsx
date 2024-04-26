@@ -77,7 +77,8 @@ export default function AboutUs() {
   return (
     <div>
       <Navbar />
-      <NextSeo title="aboutus | ITPRO | IT PROMAX | IT PRO MAX" />
+      <NextSeo title="ITPROMAX-AboutUs" 
+      description="about us"/>
       <div>
         {/* group-hover:scale-105 transition-all duration-700 ease-in-out */}
         <img

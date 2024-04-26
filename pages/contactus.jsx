@@ -16,7 +16,7 @@ function ContactUs() {
   return (
     <>
       <NextSeo
-        title="Contactus | ITPRO | IT PROMAX | IT PRO MAX"
+        title="ITPROMAX-Contactus"
         description="ITPROMAX is a small business "
       />
       <Navbar/>
@@ -29,7 +29,7 @@ function ContactUs() {
         />
       </div>
       <div>
-        <h1 className="anton-regular  opacity-70 absolute md:top-[8%] mx-2 sm:top-[30%] lg:top-[10%] top-[10%] md:right-[35%] lg:right-[45%]   w-96 text-white md:mx-32 md:!text-7xl !text-3xl  font-bold ">
+        <h1 className="anton-regular   opacity-70 absolute md:top-[8%] mx-2 sm:top-[30%] lg:top-[10%] top-[10%] md:right-[35%] lg:right-[45%]   w-96 text-white md:mx-32 md:!text-7xl !text-3xl  font-bold ">
           Contact Us
         </h1>
       </div>

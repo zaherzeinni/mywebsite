@@ -258,3 +258,22 @@ export const updateUserRole = async (userId, updatedRole) => {
     );
   }
 };
+
+
+
+
+
+export  async function getDocBySlug(collection, id) {
+  let result = null;
+  let error = null;
+
+  try {
+      const docRef = doc(db, collection, id);
+      const data = await getDoc(docRef);
+      return { ...data.data(), id: id };
+  } catch (e) {
+      error = e;
+  }
+
+  return { result, error };
+}

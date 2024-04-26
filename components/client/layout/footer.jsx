@@ -18,10 +18,10 @@ export default function Footer() {
             <div>
             
             <svg xmlns="http://www.w3.org/2000/svg" 
-            width="32" 
-            height="32" 
+            width="30" 
+            height="30" 
             fill="currentColor"
-            className="bi bi-arrow-up-circle mb-2   ml-auto  hover:cursor-pointer bg-white text-sky-700   hover:scale-125 duration-500" 
+            className="bi bi-arrow-up-circle mb-2 mr-2  ml-auto  hover:cursor-pointer bg-white text-sky-700   hover:scale-125 duration-500" 
             viewBox="0 0 16 16"
             onClick={TopButton}
             > 

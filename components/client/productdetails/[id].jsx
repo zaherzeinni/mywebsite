@@ -13,11 +13,12 @@ import { FlexBox, FlexRowCenter } from "components/ProjectComponents/flex-box";
 import { currency } from "lib";
 import productVariants from "data/product-variants";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
+import Postcard from "./postcard";
 import { loadBundle } from "firebase/firestore";
 import {
   getDocuments,
   getDocument,
+  getDocBySlug
 } from "../../src/functions/firebase/getData";
 import MainLayout from "components/ProjectComponents/mainLayout";
 
@@ -68,7 +69,7 @@ export default function ProductInfo({}) {
     type: "type 1",
   });
 
-  // HANDLE CHAMGE TYPE AND OPTIONS
+  // HANDLE CHANGE TYPE AND OPTIONS
   const handleChangeVariant = (variantName, value) => () => {
     setSelectVariants((state) => ({
       ...state,
@@ -139,6 +140,11 @@ export default function ProductInfo({}) {
                     ))}
                 </FlexBox>
               </Grid>
+                      
+
+
+                    <Postcard postData={postData}/>
+
 
               <Grid item md={6} xs={12} alignItems="center">
                 <H1 mb={1}>{product?.title}</H1>
@@ -244,13 +250,16 @@ export async function getStaticPaths({ locales }) {
   return { paths, fallback: false };
 }
 
-export const getStaticProps = async (ctx) => {
+postDetailsPage.getInitialProps = async (context) => {
+  
+  const data = await getDocBySlug("blog", context.query.id);
+
+  getDocBySlug("blog", context.query.slug);
+
   return {
-    revalidate: 1,
-    props: {
-      ...(await serverSideTranslations(ctx.locale, ["common"])),
-    },
+    postData: data,
   };
 };
+
 
 // export default ProductInfo;

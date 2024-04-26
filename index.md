@@ -10,7 +10,6 @@ dark mode
 
 - [ ]  Navbar click outside
 - [ ]  Booking sell and buy   ( trade in  )
-- [ ]  call support only in small screen size
 - [ ]  table in dashboard make filter
 - [ ]  google authentication or SMS
 - [ ]  Search to view products

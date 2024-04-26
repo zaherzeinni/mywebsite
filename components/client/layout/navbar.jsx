@@ -13,8 +13,7 @@ import StaggeringText from "./staggeringText";
 
 import { getDocuments } from "@/functions/firebase/getData";
 import SearchInput from "./searchInput";
-import { FaUserCheck,FaUserSlash } from "react-icons/fa";
-
+import { FaUserCheck, FaUserSlash } from "react-icons/fa";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -22,7 +21,7 @@ const Navbar = () => {
   const [dropdown2, setDropdown2] = useState(false);
   const router = useRouter();
   const navbar = useRef(null);
-  const { profile,logout,cart } = useAuth();
+  const { profile, logout, cart } = useAuth();
 
   useEffect(() => {
     setDropdown(false);
@@ -40,23 +39,17 @@ const Navbar = () => {
     }
   }, [router.asPath]);
 
-
   const [cats, setCats] = useState([]);
 
-    useEffect(() => {
-        const getCategories = async () => {
-            setCats([]);
-            const data = await getDocuments('cats');
-            console.log(data,"fetch categories ====>>>>")
-            setCats(data)
-          }
-          getCategories();
-      }, []);
-
-    
-
-
-
+  useEffect(() => {
+    const getCategories = async () => {
+      setCats([]);
+      const data = await getDocuments("cats");
+      console.log(data, "fetch categories ====>>>>");
+      setCats(data);
+    };
+    getCategories();
+  }, []);
 
   const Category = [
     "Office Bag",
@@ -74,13 +67,13 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setOpen((prev) => !prev);
-    setDropdown2(false)
+    setDropdown2(false);
   };
 
   const toggleUserMenu = () => {
     setDropdown2((prev) => !prev);
-    setOpen(false)
-  }
+    setOpen(false);
+  };
   const dropdownClick = () => {
     setDropdown((prev) => !prev);
   };
@@ -88,8 +81,6 @@ const Navbar = () => {
     setDropdown(false);
     setOpen(false);
   }, [router.asPath]);
-
-
 
   return (
     <>
@@ -194,14 +185,13 @@ const Navbar = () => {
 
         {/* ---Right Side--- */}
         <div className="flex flex-row flex-wrap justify-center items-center">
-          <div  className=" hover:scale-105 duration-300">
+          <div className=" hover:scale-105 duration-300">
             <SearchInput />
           </div>
           {profile ? (
             //create a dropdown
             <>
               <div className="group relative">
-                
                 <p
                   onClick={toggleUserMenu}
                   className="relative z-[99] inline-block cursor-pointer select-none rounded-xl px-4 py-3 font-medium lowercase duration-150 hover:bg-blue-50 active:scale-95 active:bg-blue-200"
@@ -235,10 +225,9 @@ const Navbar = () => {
                     {[
                       ["Account", `/user/profile`],
                       ["Orders", `/user/orders/`],
-                     
+
                       profile?.role === "admin" && ["Dashboard", "/admin"],
                     ].map((item, index) => {
-                      
                       return (
                         <Link
                           className="inline-block rounded-lg px-3 py-2 text-left text-sm duration-100 hover:bg-blue-100"
@@ -249,75 +238,55 @@ const Navbar = () => {
                         </Link>
                       );
                     })}
-                         
-                         <div 
-                         className="inline-block rounded-lg px-3 py-2 text-left text-sm duration-100 hover:bg-blue-100 cursor-pointer"
-                         onClick={logout}
-                         >
-                          
-                          Logout
-                          
 
-                         </div>
-
-
-
-
+                    <div
+                      className="inline-block rounded-lg px-3 py-2 text-left text-sm duration-100 hover:bg-blue-100 cursor-pointer"
+                      onClick={logout}
+                    >
+                      Logout
+                    </div>
                   </div>
-
                 </div>
               </div>
             </>
           ) : (
-
-
             <div className="group relative">
-                
-            <p
-              onClick={toggleUserMenu}
-              className="relative z-[99] inline-block cursor-pointer select-none rounded-xl px-4 py-3 font-medium lowercase duration-150
+              <p
+                onClick={toggleUserMenu}
+                className="relative z-[99] inline-block cursor-pointer select-none rounded-xl px-4 py-3 font-medium lowercase duration-150
                hover:bg-blue-50 active:scale-95 active:bg-blue-200"
-            >
-              <FaUserSlash  className="-mt-1 inline-block w-5" />
-            </p>
+              >
+                <FaUserSlash className="-mt-1 inline-block w-5" />
+              </p>
 
-            <div
-              style={{
-                opacity: dropdown2 ? 1 : 0,
-                transform: dropdown2
-                  ? "scale(1) translateY(0px)"
-                  : "scale(.8) translateY(-10px)",
-                visibility: dropdown2 ? "visible" : "hidden",
-              }}
-              className="absolute    max-w-[100px] w-[100px]      sm:!max-w-[100px]  sm:!w-[100px]  top-[125%] -left-24 z-[101] flex origin-top scale-75 flex-col rounded-xl border bg-white shadow-xl duration-200 md:left-auto md:right-0"
-            >
-
-              <div className="flex flex-col border-b px-2 py-4 text-sm ">
-                {[
-                  ["Login", `/auth/login`],
-                  ["Register", `/auth/register/`],
-                 
-                 
-                ].map((item, index) => {
-                  
-                  return (
-                    <Link
-                      className="inline-block rounded-lg px-3 py-2 text-left text-sm duration-100 hover:bg-blue-100"
-                      href={item[1]}
-                      key={index}
-                    >
-                      {item[0]}
-                    </Link>
-                  );
-                })}
-                     
+              <div
+                style={{
+                  opacity: dropdown2 ? 1 : 0,
+                  transform: dropdown2
+                    ? "scale(1) translateY(0px)"
+                    : "scale(.8) translateY(-10px)",
+                  visibility: dropdown2 ? "visible" : "hidden",
+                }}
+                className="absolute    max-w-[100px] w-[100px]      sm:!max-w-[100px]  sm:!w-[100px]  top-[125%] -left-24 z-[101] flex origin-top scale-75 flex-col rounded-xl border bg-white shadow-xl duration-200 md:left-auto md:right-0"
+              >
+                <div className="flex flex-col border-b px-2 py-4 text-sm ">
+                  {[
+                    ["Login", `/auth/login`],
+                    ["Register", `/auth/register/`],
+                  ].map((item, index) => {
+                    return (
+                      <Link
+                        className="inline-block rounded-lg px-3 py-2 text-left text-sm duration-100 hover:bg-blue-100"
+                        href={item[1]}
+                        key={index}
+                      >
+                        {item[0]}
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
-
             </div>
-          </div>
-
-
-
           )}
           <a
             onClick={() => setShowCart(true)}
@@ -326,21 +295,19 @@ const Navbar = () => {
           >
             <Cart className="inline-block w-5 stroke-black" />
             <div className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-blue-700 text-xs text-white">
-             {cart?.length}
+              {cart?.length}
             </div>
           </a>
         </div>
 
         {/* ----Hamburger Menu---- */}
 
-            
         <div
           onClick={toggleMenu}
-
-
-          className="group/menu block h-auto max-w-[50px] cursor-pointer pr-3 lg:hidden"
+          className="group/menu block h-auto max-w-[50px] cursor-pointer pr-3 lg:hidden  duration-150 
+          hover:bg-blue-50 active:scale-95 active:bg-blue-200 !text-black "
         >
-          <Image alt="menu-button" src="/menu.svg" width={30} height={30} />
+          <Image alt="menu-button" src="/menu.svg" width={30} height={30}  className="!text-black" />
         </div>
       </div>
 

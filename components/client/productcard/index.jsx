@@ -101,8 +101,28 @@ const ProductCard = ({ data, index }) => {
         
           <ButtonGroup spacing="1" m={"auto"} className="flex flex-row sm:flex-col lg:flex-row" >
             <Button variant="solid" colorScheme="blue">
-              <Link href="/products/product-categoris/medikal">Buy now</Link>
+              <Link href={`/productdetails/single`}>Buy now</Link>
             </Button>
+
+            {/* href="/products/product-categoris/medikal" */}
+            {/* `/shop/single?id=${item.id}` */}
+            
+            {/* <Link href={`/productdetails/single?id=${item.id}`}>
+              <a>
+                <Avatar
+                  alt={item.name}
+                  src={item.imgUrl}
+                  sx={{
+                    mx: 2,
+                    width: 76,
+                    height: 76,
+                  }}
+                />
+              </a>
+            </Link> */}
+
+
+
 
             {cartExist ? (
               <Button
