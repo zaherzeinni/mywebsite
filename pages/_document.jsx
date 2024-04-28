@@ -7,7 +7,12 @@ export default class Bazaar extends Document {
         <Head>
           <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
           {/* <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" /> */}
-          <link rel="icon" href="/assets/logo.png" />
+          
+          
+          
+          {/* ---------------------------ICON OF THE WEBSITE ICONWEBSITE change it here--------------------------------- */}
+          
+          <link rel="icon" href="/icon.png" />
 
           <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>

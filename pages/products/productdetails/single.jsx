@@ -1,26 +1,25 @@
+// product details of singleproduct
+
 import Link from "next/link";
 import { useState, useEffect } from "react";
+
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
-import Loader from "../../src/components/admin/common/Loader";
-import { Add, Remove } from "@mui/icons-material";
+import Loader from "@/components/common/Loader";
 import { Avatar, Box, Button, Chip, Grid, Container } from "@mui/material";
 import LazyImage from "components/LazyImage";
-import BazaarRating from "components/BazaarRating";
+//import BazaarRating from "components/BazaarRating";
 import { H1, H2, H3, H6 } from "components/Typography";
-import { useAppContext } from "contexts/AppContext";
+//import { useAppContext } from "function/context/AppContext";
 import { FlexBox, FlexRowCenter } from "components/ProjectComponents/flex-box";
-import { currency } from "lib";
-import productVariants from "data/product-variants";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Postcard from "./postcard";
-import { loadBundle } from "firebase/firestore";
-import {
-  getDocuments,
-  getDocument,
-  getDocBySlug
-} from "../../src/functions/firebase/getData";
-import MainLayout from "components/ProjectComponents/mainLayout";
+//import { currency } from "lib";
+//import productVariants from "data/product-variants";
+//import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
+//import { loadBundle } from "firebase/firestore";
+import { getDocument,getDocuments,getDocumentsOrder } from "@/functions/firebase/getData";
+import { orderBy, where } from "firebase/firestore";
+//import MainLayout from "components/ProjectComponents/mainLayout";
 
 // ================================================================
 
@@ -29,27 +28,19 @@ import MainLayout from "components/ProjectComponents/mainLayout";
 const ProductDescription = () => {
   return (
     <Box>
-      <H3 mb={2}>Specification:</H3>
-      <Box>
-        Brand: Beats <br />
-        Model: S450 <br />
-        Wireless Bluetooth Headset <br />
-        FM Frequency Response: 87.5 – 108 MHz <br />
-        Feature: FM Radio, Card Supported (Micro SD / TF) <br />
-        Made in China <br />
-      </Box>
     </Box>
   );
 };
 
-export default function ProductInfo({}) {
+export default function ProductSingle() {
   const [product, setProduct] = useState({});
-  console.log("🎭🎭🎭>", product.title);
-  const [loacding, setLoading] = useState(false);
+  console.log("🎭🎭🎭=>product.title", product.title);
+  
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
+  const locale =router.locale
   const id = router.query.id;
-
   useEffect(() => {
     const getProduct = async () => {
       setLoading(true);
@@ -57,7 +48,9 @@ export default function ProductInfo({}) {
       const data = await getDocument("products", id);
       console.log(data, "fetch categories ====>>> 🎭🎭🎭>", data);
       setProduct(data);
+      console.log(data.length,'data lengthhhh')
       setLoading(false);
+    
     };
 
     if (id) getProduct();
@@ -69,7 +62,7 @@ export default function ProductInfo({}) {
     type: "type 1",
   });
 
-  // HANDLE CHANGE TYPE AND OPTIONS
+  // HANDLE CHAMGE TYPE AND OPTIONS
   const handleChangeVariant = (variantName, value) => () => {
     setSelectVariants((state) => ({
       ...state,
@@ -81,14 +74,15 @@ export default function ProductInfo({}) {
   const handleImageClick = (ind) => () => setSelectedImage(ind);
 
   return (
-    <MainLayout>
+    <div>
       <Container
         sx={{
           mb: 6,
         }}
       >
+
         <Box className=" mt-[66px]" width="100%">
-          {loacding ? (
+          {loading ? (
             <Loader />
           ) : (
             <Grid container spacing={3} justifyContent="space-around">
@@ -97,8 +91,8 @@ export default function ProductInfo({}) {
                   {product?.images && product?.images[0] && (
                     <LazyImage
                       alt={product?.title}
-                      width={300}
-                      height={300}
+                      width={500}
+                      height={500}
                       loading="eager"
                       objectFit="contain"
                       src={product?.images && product?.images[selectedImage]}
@@ -140,22 +134,23 @@ export default function ProductInfo({}) {
                     ))}
                 </FlexBox>
               </Grid>
-                      
-
-
-                    <Postcard postData={postData}/>
-
 
               <Grid item md={6} xs={12} alignItems="center">
-                <H1 mb={1}>{product?.title}</H1>
+                <H1 mb={1}>{product.title}</H1>
 
-                {product?.desc && (
-                  <FlexBox className="mx-4 md:mx-2" alignItems="center" mb={1}>
-                    {parse(product?.desc)}
-                  </FlexBox>
-                )}
 
-                {/* <FlexBox alignItems="center" mb={1}>
+                <div>
+  
+   
+                    <Box className="mx-4 md:mx-2" alignItems="center" mb={1}>
+                    {product?.desc}
+                    </Box>
+                  
+  </div>
+
+
+
+                 <FlexBox alignItems="center" mb={1}>
             <Box>Brand:</Box>
             <H6>Xiaomi</H6>
           </FlexBox>
@@ -163,14 +158,14 @@ export default function ProductInfo({}) {
           <FlexBox alignItems="center" mb={2}>
             <Box lineHeight="1">Rated:</Box>
             <Box mx={1} lineHeight="1">
-              <BazaarRating color="warn" fontSize="1.25rem" value={4} readOnly />
+              <Box color="warn" fontSize="1.25rem" value={4} readOnly />
             </Box>
             <H6 lineHeight="1">(50)</H6>
-          </FlexBox> */}
+          </FlexBox> 
 
-                {/* <Box pt={1} mb={3}>
+                 <Box pt={1} mb={3}>
             <H2 color="primary.main" mb={0.5} lineHeight="1">
-              {currency(price)}
+              $ {product.price}
             </H2>
             <Box color="inherit">Stock Available</Box>
           </Box>
@@ -180,86 +175,27 @@ export default function ProductInfo({}) {
           <FlexBox alignItems="center" mb={2}>
             <Box>Sold By:</Box>
             <Link href="/shops/scarlett-beauty" passHref>
-              <a>
+             
                 <H6 ml={1}>Mobile Store</H6>
-              </a>
+             
             </Link>
-          </FlexBox> */}
+          </FlexBox> 
               </Grid>
+
+
+
+
+
             </Grid>
           )}
 
           {/* <ProductDescription /> */}
         </Box>
       </Container>
-    </MainLayout>
+    </div>
   );
 }
 
-// export async function getStaticPaths() {
-
-//   const posts = [];
-//   try {
-//     const postDocs = await getDocuments("products")
-//     postDocs.forEach((doc) => {
-//       posts.push(doc.id);
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-
-//   const paths = posts.map((id) => {
-//     return ['en' , 'tr' ,'ar'].map((locale) => {
-//         return {
-//             params: { id: id },
-//             locale: locale,
-//         };
-//     });
-// });
-
-//   return {
-//     paths: paths,
-//     // posts.map((post) => ({
-//     //   params: {
-//     //     id: post,
-//     //   },
-//     // })),
-//     fallback: false,
-//   };
-// }
-
-export async function getStaticPaths({ locales }) {
-  let blogs = [];
-  try {
-    blogs = await getDocuments("products");
-  } catch (error) {
-    //
-  }
-  const paths = [];
-  blogs.forEach((blog) => {
-    locales.forEach((locale) => {
-      const path = {
-        params: {
-          id: blog.id,
-        },
-        locale: locale,
-      };
-      paths.push(path);
-    });
-  });
-  return { paths, fallback: false };
-}
-
-postDetailsPage.getInitialProps = async (context) => {
-  
-  const data = await getDocBySlug("blog", context.query.id);
-
-  getDocBySlug("blog", context.query.slug);
-
-  return {
-    postData: data,
-  };
-};
 
 
-// export default ProductInfo;
+

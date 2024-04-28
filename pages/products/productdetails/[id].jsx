@@ -1,26 +1,22 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
-
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
-import Loader from "../../src/components/admin/common/Loader";
-import { Add, Remove } from "@mui/icons-material";
+import Loader from "@/components/common/Loader";
+
 import { Avatar, Box, Button, Chip, Grid, Container } from "@mui/material";
 import LazyImage from "components/LazyImage";
-import BazaarRating from "components/BazaarRating";
+//import BazaarRating from "components/BazaarRating";
 import { H1, H2, H3, H6 } from "components/Typography";
-import { useAppContext } from "contexts/AppContext";
+//import { useAppContext } from "contexts/AppContext";
 import { FlexBox, FlexRowCenter } from "components/ProjectComponents/flex-box";
-import { currency } from "lib";
-import productVariants from "data/product-variants";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+//import { currency } from "lib";
+//import productVariants from "data/product-variants";
+//import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import { loadBundle } from "firebase/firestore";
-import {
-  getDocuments,
-  getDocument,
-} from "../../src/functions/firebase/getData";
-import MainLayout from "components/ProjectComponents/mainLayout";
+//import { loadBundle } from "firebase/firestore";
+import { getDocument,getDocuments } from "@/functions/firebase/getData";
+//import MainLayout from "components/ProjectComponents/mainLayout";
 
 // ================================================================
 
@@ -42,13 +38,12 @@ const ProductDescription = () => {
   );
 };
 
-export default function ProductSingle({}) {
+export default function ProductInfo({}) {
   const [product, setProduct] = useState({});
-  console.log("🎭🎭🎭>", product.title);
-  const [loading, setLoading] = useState(false);
+  console.log("🎭🎭🎭>IDDDD", product.title);
+  const [loacding, setLoading] = useState(false);
 
   const router = useRouter();
-  const locale =router.locale
   const id = router.query.id;
 
   useEffect(() => {
@@ -82,14 +77,14 @@ export default function ProductSingle({}) {
   const handleImageClick = (ind) => () => setSelectedImage(ind);
 
   return (
-    <MainLayout>
+    <div>
       <Container
         sx={{
           mb: 6,
         }}
       >
         <Box className=" mt-[66px]" width="100%">
-          {loading ? (
+          {loacding ? (
             <Loader />
           ) : (
             <Grid container spacing={3} justifyContent="space-around">
@@ -98,8 +93,8 @@ export default function ProductSingle({}) {
                   {product?.images && product?.images[0] && (
                     <LazyImage
                       alt={product?.title}
-                      width={500}
-                      height={500}
+                      width={300}
+                      height={300}
                       loading="eager"
                       objectFit="contain"
                       src={product?.images && product?.images[selectedImage]}
@@ -143,19 +138,13 @@ export default function ProductSingle({}) {
               </Grid>
 
               <Grid item md={6} xs={12} alignItems="center">
-                <H1 mb={1}>{ locale === 'en' ?  product.title : locale === 'ar' ? product?.titlear : product?.titletr}</H1>
+                <H1 mb={1}>{product?.title}</H1>
 
-
-                <div>
-  
-  {product?.desc && (
-                    <Box className="mx-4 md:mx-2" alignItems="center" mb={1}>
-                      {parse(locale === 'en' ?  product.desc : locale === 'ar' ? product?.descar : product?.desctr)}
-                    </Box>
-                  )}
-  </div>
-
-
+                {product?.desc && (
+                  <FlexBox className="mx-4 md:mx-2" alignItems="center" mb={1}>
+                    {parse(product?.desc)}
+                  </FlexBox>
+                )}
 
                 {/* <FlexBox alignItems="center" mb={1}>
             <Box>Brand:</Box>
@@ -188,19 +177,68 @@ export default function ProductSingle({}) {
             </Link>
           </FlexBox> */}
               </Grid>
-
-
-
-
-
             </Grid>
           )}
 
           {/* <ProductDescription /> */}
         </Box>
       </Container>
-    </MainLayout>
+    </div>
   );
+}
+
+// export async function getStaticPaths() {
+
+//   const posts = [];
+//   try {
+//     const postDocs = await getDocuments("products")
+//     postDocs.forEach((doc) => {
+//       posts.push(doc.id);
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+
+//   const paths = posts.map((id) => {
+//     return ['en' , 'tr' ,'ar'].map((locale) => {
+//         return {
+//             params: { id: id },
+//             locale: locale,
+//         };
+//     });
+// });
+
+//   return {
+//     paths: paths,
+//     // posts.map((post) => ({
+//     //   params: {
+//     //     id: post,
+//     //   },
+//     // })),
+//     fallback: false,
+//   };
+// }
+
+export async function getStaticPaths({ locales }) {
+  let blogs = [];
+  try {
+    blogs = await getDocuments("products");
+  } catch (error) {
+    //
+  }
+  const paths = [];
+  blogs.forEach((blog) => {
+    locales.forEach((locale) => {
+      const path = {
+        params: {
+          id: blog.id,
+        },
+        locale: locale,
+      };
+      paths.push(path);
+    });
+  });
+  return { paths, fallback: false };
 }
 
 export const getStaticProps = async (ctx) => {

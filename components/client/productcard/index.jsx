@@ -101,7 +101,7 @@ const ProductCard = ({ data, index }) => {
         
           <ButtonGroup spacing="1" m={"auto"} className="flex flex-row sm:flex-col lg:flex-row" >
             <Button variant="solid" colorScheme="blue">
-              <Link href={`/productdetails/single`}>Buy now</Link>
+              <Link href={`/products/productdetails/single?id=${data.id}`}>Buy now</Link>
             </Button>
 
             {/* href="/products/product-categoris/medikal" */}
@@ -164,7 +164,7 @@ const ProductCard = ({ data, index }) => {
             />
           )}
 
-          <Link href="/products/product-categoris/medikal">
+          <Link href={`/products/productdetails/single?id=${data.id}`}>
             <FaSearchPlus className="  absolute text-xl top-14 right-2 text-gray-400  !font-light  hover:scale-125   duration-700 " />
           </Link>
         </div>

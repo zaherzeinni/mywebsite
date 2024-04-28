@@ -104,9 +104,7 @@ export default function ProductsPage({
         <div>
           <Support />
         </div>
-        <div>
-        <Footer />
-        </div>
+
         {/* <div>
           <CustomInput 
           value={firstName}
@@ -132,6 +130,9 @@ export default function ProductsPage({
           />
         </div> */}
       </div>
+      <div>
+        <Footer />
+        </div>
     </div>
   );
 }
