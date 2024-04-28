@@ -4,7 +4,7 @@ import Link from "next/link";
 import { GoHeartFill } from "react-icons/go";
 import { FiHeart } from "react-icons/fi";
 import { useAuth } from "@/functions/context";
-import { Button } from "@chakra-ui/react";
+import { Button } from "antd";
 
 import {
   Card,

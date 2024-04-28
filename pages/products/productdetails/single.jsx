@@ -20,6 +20,8 @@ import { FlexBox, FlexRowCenter } from "components/ProjectComponents/flex-box";
 import { getDocument,getDocuments,getDocumentsOrder } from "@/functions/firebase/getData";
 import { orderBy, where } from "firebase/firestore";
 //import MainLayout from "components/ProjectComponents/mainLayout";
+import ClientLayout from "@/components/client/layout/clientLayout";
+import Footer from "@/components/client/layout/footer";
 
 // ================================================================
 
@@ -28,9 +30,19 @@ import { orderBy, where } from "firebase/firestore";
 const ProductDescription = () => {
   return (
     <Box>
+      <H3 mb={2}>Specification:</H3>
+      <Box>
+        Brand: Beats <br />
+        Model: S450 <br />
+        Wireless Bluetooth Headset <br />
+        FM Frequency Response: 87.5 – 108 MHz <br />
+        Feature: FM Radio, Card Supported (Micro SD / TF) <br />
+        Made in China <br />
+      </Box>
     </Box>
   );
 };
+
 
 export default function ProductSingle() {
   const [product, setProduct] = useState({});
@@ -75,6 +87,7 @@ export default function ProductSingle() {
 
   return (
     <div>
+      <ClientLayout/>
       <Container
         sx={{
           mb: 6,
@@ -91,8 +104,8 @@ export default function ProductSingle() {
                   {product?.images && product?.images[0] && (
                     <LazyImage
                       alt={product?.title}
-                      width={500}
-                      height={500}
+                      width={600}
+                      height={600}
                       loading="eager"
                       objectFit="contain"
                       src={product?.images && product?.images[selectedImage]}
@@ -189,9 +202,10 @@ export default function ProductSingle() {
             </Grid>
           )}
 
-          {/* <ProductDescription /> */}
+          <ProductDescription />
         </Box>
       </Container>
+      <Footer/>
     </div>
   );
 }
