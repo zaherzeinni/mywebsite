@@ -56,5 +56,9 @@
     "eslint-config-next": "latest",
     "postcss": "latest",
     "tailwindcss": "latest"
-  }
+  },
+  "peerDependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+}
 }
