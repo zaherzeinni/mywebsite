@@ -220,35 +220,35 @@ export default function ProductInfo({}) {
 //   };
 // }
 
-export async function getStaticPaths({ locales }) {
-  let blogs = [];
-  try {
-    blogs = await getDocuments("products");
-  } catch (error) {
-    //
-  }
-  const paths = [];
-  blogs.forEach((blog) => {
-    locales.forEach((locale) => {
-      const path = {
-        params: {
-          id: blog.id,
-        },
-        locale: locale,
-      };
-      paths.push(path);
-    });
-  });
-  return { paths, fallback: false };
-}
+// export async function getStaticPaths({ locales }) {
+//   let blogs = [];
+//   try {
+//     blogs = await getDocuments("products");
+//   } catch (error) {
+//     //
+//   }
+//   const paths = [];
+//   blogs.forEach((blog) => {
+//     locales.forEach((locale) => {
+//       const path = {
+//         params: {
+//           id: blog.id,
+//         },
+//         locale: locale,
+//       };
+//       paths.push(path);
+//     });
+//   });
+//   return { paths, fallback: false };
+// }
 
-export const getStaticProps = async (ctx) => {
-  return {
-    revalidate: 1,
-    props: {
-      ...(await serverSideTranslations(ctx.locale, ["common"])),
-    },
-  };
-};
+// export const getStaticProps = async (ctx) => {
+//   return {
+//     revalidate: 1,
+//     props: {
+//       ...(await serverSideTranslations(ctx.locale, ["common"])),
+//     },
+//   };
+// };
 
 // export default ProductInfo;
