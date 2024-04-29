@@ -76,11 +76,11 @@ export const H5 = ({
   textTransform,
   ...props
 }) => {
-  return <StyledBox textTransformStyle={textTransform} ellipsis={ellipsis ? 1 : undefined} className={clsx({
+  return <Box textTransformStyle={textTransform} ellipsis={ellipsis ? 1 : undefined} className={clsx({
     [className || ""]: true
   })} component="h5" mb={0} mt={0} fontSize="16px" fontWeight="600" lineHeight="1.5" {...props}>
       {children}
-    </StyledBox>;
+    </Box>;
 };
 export const H6 = ({
   children,
