@@ -16,11 +16,10 @@ import { StateContextProvider } from '@/functions/context'
 
 import { Provider } from 'react-redux';
 import store from '@/redux/store';
-//import { ThemeProvider } from '@material-ui/core/styles'
-import MuiTheme from './theme/MuiTheme';
+
 
 import Head from "next/head";
-import OpenGraphTags from './utils/OpenGraphTags';
+
 
 
 export default function MyApp({ Component, pageProps }) {
@@ -51,13 +50,13 @@ export default function MyApp({ Component, pageProps }) {
         <meta name="description" content="ITPROMAX STORE" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-        <OpenGraphTags />
+
         <title>ITPROMAX</title>
       </Head>
 
     <ChakraProvider>
     <Provider store={store}>
-    {/* <MuiTheme> */}
+
     <StateContextProvider>
 
     <Component {...pageProps} />
