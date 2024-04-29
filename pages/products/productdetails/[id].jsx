@@ -4,12 +4,12 @@ import { useRouter } from "next/router";
 import parse from "html-react-parser";
 import Loader from "@/components/common/Loader";
 
-import { Avatar, Box, Button, Chip, Grid, Container } from "@mui/material";
-import LazyImage from "components/LazyImage";
+import { Img, Box, Button, Grid, Container ,Flex} from "@chakra-ui/react";
+//import LazyImage from "components/LazyImage";
 //import BazaarRating from "components/BazaarRating";
 import { H1, H2, H3, H6 } from "components/Typography";
 //import { useAppContext } from "contexts/AppContext";
-import { FlexBox, FlexRowCenter } from "components/ProjectComponents/flex-box";
+//import { FlexBox, FlexRowCenter } from "components/ProjectComponents/flex-box";
 //import { currency } from "lib";
 //import productVariants from "data/product-variants";
 //import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -89,9 +89,9 @@ export default function ProductInfo({}) {
           ) : (
             <Grid container spacing={3} justifyContent="space-around">
               <Grid item md={6} xs={12} alignItems="center">
-                <FlexBox justifyContent="center" mb={6}>
+                <Box justifyContent="center" mb={6}>
                   {product?.images && product?.images[0] && (
-                    <LazyImage
+                    <Img
                       alt={product?.title}
                       width={300}
                       height={300}
@@ -100,12 +100,12 @@ export default function ProductInfo({}) {
                       src={product?.images && product?.images[selectedImage]}
                     />
                   )}
-                </FlexBox>
+                </Box>
 
-                <FlexBox overflow="auto">
+                <Box overflow="auto">
                   {product?.images &&
                     product?.images.map((url, ind) => (
-                      <FlexRowCenter
+                      <Flex
                         key={ind}
                         width={64}
                         height={64}
@@ -125,25 +125,25 @@ export default function ProductInfo({}) {
                           selectedImage === ind ? "primary.main" : "grey.400"
                         }
                       >
-                        <Avatar
+                        <Img
                           src={url}
                           variant="square"
-                          sx={{
-                            height: 40,
-                          }}
+                          w={40}
+                          h={40}
+                          
                         />
-                      </FlexRowCenter>
+                      </Flex>
                     ))}
-                </FlexBox>
+                </Box>
               </Grid>
 
               <Grid item md={6} xs={12} alignItems="center">
                 <H1 mb={1}>{product?.title}</H1>
 
                 {product?.desc && (
-                  <FlexBox className="mx-4 md:mx-2" alignItems="center" mb={1}>
+                  <Box className="mx-4 md:mx-2" alignItems="center" mb={1}>
                     {parse(product?.desc)}
-                  </FlexBox>
+                  </Box>
                 )}
 
                 {/* <FlexBox alignItems="center" mb={1}>

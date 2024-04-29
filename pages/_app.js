@@ -57,14 +57,14 @@ export default function MyApp({ Component, pageProps }) {
 
     <ChakraProvider>
     <Provider store={store}>
-    <MuiTheme>
+    {/* <MuiTheme> */}
     <StateContextProvider>
 
     <Component {...pageProps} />
     <ToastContainer />
     <ProgressBar/>
     </StateContextProvider>
-    </MuiTheme>
+    {/* </MuiTheme> */}
     </Provider>
     
     </ChakraProvider>

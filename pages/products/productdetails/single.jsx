@@ -6,12 +6,13 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
 import Loader from "@/components/common/Loader";
-import { Avatar, Box, Button, Chip, Grid, Container } from "@mui/material";
-import LazyImage from "components/LazyImage";
+//import { Avatar, Box, Button, Chip, Grid, Container } from "@mui/material";
+import {Img,Box,Button,Grid,Container,Flex} from '@chakra-ui/react'
+//import LazyImage from "components/LazyImage";
 //import BazaarRating from "components/BazaarRating";
 import { H1, H2, H3, H6 } from "components/Typography";
 //import { useAppContext } from "function/context/AppContext";
-import { FlexBox, FlexRowCenter } from "components/ProjectComponents/flex-box";
+//import { FlexBox, FlexRowCenter } from "components/ProjectComponents/flex-box";
 //import { currency } from "lib";
 //import productVariants from "data/product-variants";
 //import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -22,6 +23,7 @@ import { orderBy, where } from "firebase/firestore";
 //import MainLayout from "components/ProjectComponents/mainLayout";
 import ClientLayout from "@/components/client/layout/clientLayout";
 import Footer from "@/components/client/layout/footer";
+import { chakra } from "@chakra-ui/react";
 
 // ================================================================
 
@@ -100,9 +102,9 @@ export default function ProductSingle() {
           ) : (
             <Grid container spacing={3} justifyContent="space-around">
               <Grid item md={6} xs={12} alignItems="center">
-                <FlexBox justifyContent="center" mb={6}>
+                <Box justifyContent="center" mb={6}>
                   {product?.images && product?.images[0] && (
-                    <LazyImage
+                    <Img
                       alt={product?.title}
                       width={600}
                       height={600}
@@ -111,15 +113,15 @@ export default function ProductSingle() {
                       src={product?.images && product?.images[selectedImage]}
                     />
                   )}
-                </FlexBox>
+                </Box>
 
-                <FlexBox overflow="auto">
+                <Box overflow="auto">
                   {product?.images &&
                     product?.images.map((url, ind) => (
-                      <FlexRowCenter
+                      <Flex
                         key={ind}
-                        width={64}
-                        height={64}
+                        w={64}
+                        h={64}
                         minWidth={64}
                         bgcolor="white"
                         border="1px solid"
@@ -136,16 +138,15 @@ export default function ProductSingle() {
                           selectedImage === ind ? "primary.main" : "grey.400"
                         }
                       >
-                        <Avatar
+                        <Img
                           src={url}
                           variant="square"
-                          sx={{
-                            height: 40,
-                          }}
+                          h={40}
+                          w={40}
                         />
-                      </FlexRowCenter>
+                      </Flex>
                     ))}
-                </FlexBox>
+                </Box>
               </Grid>
 
               <Grid item md={6} xs={12} alignItems="center">
@@ -163,18 +164,18 @@ export default function ProductSingle() {
 
 
 
-                 <FlexBox alignItems="center" mb={1}>
+                 <Box alignItems="center" mb={1}>
             <Box>Brand:</Box>
             <H6>Xiaomi</H6>
-          </FlexBox>
+          </Box>
 
-          <FlexBox alignItems="center" mb={2}>
+          <Box alignItems="center" mb={2}>
             <Box lineHeight="1">Rated:</Box>
             <Box mx={1} lineHeight="1">
               <Box color="warn" fontSize="1.25rem" value={4} readOnly />
             </Box>
             <H6 lineHeight="1">(50)</H6>
-          </FlexBox> 
+          </Box> 
 
                  <Box pt={1} mb={3}>
             <H2 color="primary.main" mb={0.5} lineHeight="1">
@@ -185,14 +186,14 @@ export default function ProductSingle() {
 
       
 
-          <FlexBox alignItems="center" mb={2}>
+          <Box alignItems="center" mb={2}>
             <Box>Sold By:</Box>
             <Link href="/shops/scarlett-beauty" passHref>
              
                 <H6 ml={1}>Mobile Store</H6>
              
             </Link>
-          </FlexBox> 
+          </Box> 
               </Grid>
 
 
