@@ -20,14 +20,15 @@ const CustomSupportCard = ({ title, desc, icon, buttonText,linkText }) => {
         </Box>
       </Box>
 
-      <Button
-        py="25"
+      <Button className="bg-[#ff0000] py-3 text-white text-lg  font-semibold"
+        //py="25"
         borderRadius={"0px 0px 9px 9px"}
-        fontSize={18}
+        //fontSize={18}
         mt="4"
-        bg={"red"}
-        textColor={"white"}
+        //bg={"red"}
+        //textColor={"white"}
         _hover={{ bg: "red.600" }}
+       
         
       >
         {linkText 

@@ -133,7 +133,7 @@ const ProductCard = ({ data, index }) => {
                 Add to cart
               </Button>
             ) : (
-              <Button
+              <Button className="text-red-500"
                 onClick={() => removeFromCartList(data)}
                 variant="ghost"
                 colorScheme="red"
