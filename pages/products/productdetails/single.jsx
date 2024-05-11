@@ -36,7 +36,7 @@ import { chakra } from "@chakra-ui/react";
 
 const ProductDescription = () => {
   return (
-    <Box>
+    <Box className="mx-5 ">
       <H3 mb={2}>Specification:</H3>
       <Box>
         Brand: Beats <br />
@@ -106,22 +106,49 @@ export default function ProductSingle() {
                
 
                 
-        <Box className="flex justify-center align-middle space-x-10 ">
+        <Box className="grid md:flex justify-center align-middle space-x-10 ">
 
-
+              <Box className="lg:grid">
                 {/* -------------------Product Image---------------------- */}
-                <Box  mb={2} className="mx-1 rounded-xl mt-20 ml-5 ">
+                <Box  mb={2} className=" rounded-xl md:mt-10 mt-2 mx-5 ">
                   {product?.images && product?.images[0] && (
                     <Image
                       alt={product?.title}
                       src={product?.images && product?.images[selectedImage]}
-                      className="md:w-[50vw] md:h-[400px] rounded-lg object-contain"
+                      className="sm:w-[30vw]  rounded-lg object-contain"
                     />
                   )}
                 </Box>
                     
+
+         {/* --------------small images to select----------------- */}
+
+         <Box className="flex justify-center m-auto md:w-[500px] w-auto my-6 ">
+                  {product?.images &&
+                    product?.images.map((url, ind) => (
+                      <Box
+                      className="w-[40px] md:w-[60px]  m-auto   rounded-2xl  border-[1px] cursor-pointer"
+                        key={ind}
+                        ml={ind === 0 ? "auto" : 0}
+                        
+                        onClick={handleImageClick(ind)}
+                        mr={
+                          ind === product?.images.length - 1 ? "auto" : "10px"
+                        }
+                        borderColor={
+                          selectedImage === ind ? "primary.main" : "grey.400"
+                        }
+                      >
+                        <Image  className=' rounded-lg  ' src={url}  />
+                      </Box>
+                    ))}
+                </Box>
+                
+              </Box>
+
+
                     {/* --------------Title and Details----------------- */}
-                  <Box className="  text-justify m-auto ">
+                  <Box className=" justify-center m-auto">
                
                 <H1 mb={1} className='text-justify w-[70%] md:w-auto'>{product.title}</H1>
 
@@ -159,31 +186,12 @@ export default function ProductSingle() {
                 </Box>
           
                   </Box>
+
+                  
         </Box>
        
-         {/* --------------small images to select----------------- */}
-
-        <Box className="flex justify-center m-auto md:w-[500px] w-auto h-[200px] ">
-                  {product?.images &&
-                    product?.images.map((url, ind) => (
-                      <Box
-                      className="w-[40px] md:w-[60px]  m-auto   rounded-2xl  border-[1px] cursor-pointer"
-                        key={ind}
-                        ml={ind === 0 ? "auto" : 0}
-                        
-                        onClick={handleImageClick(ind)}
-                        mr={
-                          ind === product?.images.length - 1 ? "auto" : "10px"
-                        }
-                        borderColor={
-                          selectedImage === ind ? "primary.main" : "grey.400"
-                        }
-                      >
-                        <Image  className=' rounded-lg  ' src={url}  />
-                      </Box>
-                    ))}
-                </Box>
-                <ProductDescription />
+                    
+                {/* <ProductDescription  /> */}
         </Box>
             
      
