@@ -1,3 +1,4 @@
+
 // product details of singleproduct
 
 import Link from "next/link";
@@ -6,8 +7,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
 import Loader from "@/components/common/Loader";
-//import { Avatar, Box, Button, Chip, Grid, Container } from "@mui/material";
-import {Img,Box,Button,Grid,Container,Flex} from '@chakra-ui/react'
+//import { Avatar, Box, Button, Chip, SimpleGrid, Container } from "@mui/material";
+import { Box, Button, SimpleGrid, Container, Flex, Image } from "@chakra-ui/react";
 //import LazyImage from "components/LazyImage";
 //import BazaarRating from "components/BazaarRating";
 import { H1, H2, H3, H6 } from "components/Typography";
@@ -18,7 +19,11 @@ import { H1, H2, H3, H6 } from "components/Typography";
 //import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 //import { loadBundle } from "firebase/firestore";
-import { getDocument,getDocuments,getDocumentsOrder } from "@/functions/firebase/getData";
+import {
+  getDocument,
+  getDocuments,
+  getDocumentsOrder,
+} from "@/functions/firebase/getData";
 import { orderBy, where } from "firebase/firestore";
 //import MainLayout from "components/ProjectComponents/mainLayout";
 import ClientLayout from "@/components/client/layout/clientLayout";
@@ -45,15 +50,14 @@ const ProductDescription = () => {
   );
 };
 
-
 export default function ProductSingle() {
   const [product, setProduct] = useState({});
   console.log("🎭🎭🎭=>product.title", product.title);
-  
+
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-  const locale =router.locale
+  const locale = router.locale;
   const id = router.query.id;
   useEffect(() => {
     const getProduct = async () => {
@@ -62,9 +66,8 @@ export default function ProductSingle() {
       const data = await getDocument("products", id);
       console.log(data, "fetch categories ====>>> 🎭🎭🎭>", data);
       setProduct(data);
-      console.log(data.length,'data lengthhhh')
+      console.log(data.length, "data lengthhhh");
       setLoading(false);
-    
     };
 
     if (id) getProduct();
@@ -89,47 +92,87 @@ export default function ProductSingle() {
 
   return (
     <div>
-      <ClientLayout/>
-      <Container
-        sx={{
-          mb: 6,
-        }}
-      >
+      <ClientLayout />
 
-        <Box className=" mt-[66px]" width="100%">
+        <Box className="">
           {loading ? (
             <Loader />
           ) : (
-            <Grid container spacing={3} justifyContent="space-around">
-              <Grid item md={6} xs={12} alignItems="center">
-                <Box justifyContent="center" mb={6}>
+            <Box>
+            <SimpleGrid   gap={5}>
+           
+        <Box className=" justify-center items-center m-auto space-x-1 md:space-x-10 ">                         
+
+               
+
+                
+        <Box className="flex justify-center align-middle space-x-10 ">
+
+
+                {/* -------------------Product Image---------------------- */}
+                <Box  mb={2} className="mx-1 rounded-xl mt-20 ml-5 ">
                   {product?.images && product?.images[0] && (
-                    <Img
+                    <Image
                       alt={product?.title}
-                      width={600}
-                      height={600}
                       loading="eager"
                       objectFit="contain"
                       src={product?.images && product?.images[selectedImage]}
+                      className="w-[400px] h-[500px]"
                     />
                   )}
                 </Box>
+                    
+                    {/* --------------Title and Details----------------- */}
+                  <Box className="  text-justify m-auto ">
+               
+                <H1 mb={1}>{product.title}</H1>
 
-                <Box overflow="auto">
+        
+                  <Box className="text-start w-[50%]  ">
+                    {product?.desc}
+                  </Box>
+        
+
+                <Box alignItems="center" mb={1}>
+                  <Box>Brand:</Box>
+                  <H6>{product.subcategory}</H6>
+                </Box>
+
+                <Box alignItems="center" mb={2}>
+                  <Box lineHeight="1">Rated:</Box>
+                  <Box mx={1} lineHeight="1">
+                    <Box color="warn" fontSize="1.25rem" value={4} readOnly />
+                  </Box>
+                  <H6 lineHeight="1">(50)</H6>
+                </Box>
+
+                <Box pt={1} mb={3}>
+                  <H2 color="primary.main" mb={0.5} lineHeight="1">
+                    $ {product.price}
+                  </H2>
+                  <Box color="inherit">In Stock Available</Box>
+                </Box>
+
+                <Box alignItems="center" mb={2}>
+                  <Box>Sold By:</Box>
+                  <Link href="/shops/scarlett-beauty" passHref>
+                    <H6 ml={1}>Mobile Store</H6>
+                  </Link>
+                </Box>
+          
+                  </Box>
+        </Box>
+       
+         {/* --------------small images to select----------------- */}
+
+        <Box className="flex justify-center m-auto md:w-[500px] w-auto h-[200px] ">
                   {product?.images &&
                     product?.images.map((url, ind) => (
-                      <Flex
+                      <Box
+                      className="w-[50px]  m-auto   rounded-2xl  border-[1px] cursor-pointer"
                         key={ind}
-                        w={64}
-                        h={64}
-                        minWidth={64}
-                        bgcolor="white"
-                        border="1px solid"
-                        borderRadius="10px"
                         ml={ind === 0 ? "auto" : 0}
-                        style={{
-                          cursor: "pointer",
-                        }}
+                        
                         onClick={handleImageClick(ind)}
                         mr={
                           ind === product?.images.length - 1 ? "auto" : "10px"
@@ -138,79 +181,24 @@ export default function ProductSingle() {
                           selectedImage === ind ? "primary.main" : "grey.400"
                         }
                       >
-                        <Img
-                          src={url}
-                          variant="square"
-                          h={40}
-                          w={40}
-                        />
-                      </Flex>
+                        <Image  className=' rounded-lg  ' src={url}  />
+                      </Box>
                     ))}
                 </Box>
-              </Grid>
-
-              <Grid item md={6} xs={12} alignItems="center">
-                <H1 mb={1}>{product.title}</H1>
-
-
-                <div>
-  
-   
-                    <Box className="mx-4 md:mx-2" alignItems="center" mb={1}>
-                    {product?.desc}
-                    </Box>
-                  
-  </div>
-
-
-
-                 <Box alignItems="center" mb={1}>
-            <Box>Brand:</Box>
-            <H6>Xiaomi</H6>
-          </Box>
-
-          <Box alignItems="center" mb={2}>
-            <Box lineHeight="1">Rated:</Box>
-            <Box mx={1} lineHeight="1">
-              <Box color="warn" fontSize="1.25rem" value={4} readOnly />
-            </Box>
-            <H6 lineHeight="1">(50)</H6>
-          </Box> 
-
-                 <Box pt={1} mb={3}>
-            <H2 color="primary.main" mb={0.5} lineHeight="1">
-              $ {product.price}
-            </H2>
-            <Box color="inherit">Stock Available</Box>
-          </Box>
-
+                <ProductDescription />
+        </Box>
+            
+     
       
-
-          <Box alignItems="center" mb={2}>
-            <Box>Sold By:</Box>
-            <Link href="/shops/scarlett-beauty" passHref>
-             
-                <H6 ml={1}>Mobile Store</H6>
-             
-            </Link>
-          </Box> 
-              </Grid>
-
-
-
-
-
-            </Grid>
+            </SimpleGrid>
+           
+            </Box>
           )}
 
-          <ProductDescription />
+  
         </Box>
-      </Container>
-      <Footer/>
+  
+      <Footer />
     </div>
   );
 }
-
-
-
-
