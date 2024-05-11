@@ -92,51 +92,85 @@ export default function ProductSingle() {
 
   return (
     <div>
-      <ClientLayout />
+      <ClientLayout/>
+      <Container
+        sx={{
+          mb: 6,
+        }}
+      >
 
-        <Box className="">
+        <Box className=" mt-[66px]" width="100%">
           {loading ? (
             <Loader />
           ) : (
-            <Box>
-            <SimpleGrid   gap={5}>
-           
-        <Box className=" justify-center items-center m-auto space-x-1 md:space-x-10 ">                         
-
-               
-
-                
-        <Box className="flex justify-center align-middle space-x-10 ">
-
-
-                {/* -------------------Product Image---------------------- */}
-                <Box  mb={2} className="mx-1 rounded-xl mt-20 ml-5 ">
+            <Grid container spacing={3} justifyContent="space-around">
+              <Grid item md={6} xs={12} alignItems="center">
+                <Box justifyContent="center" mb={6}>
                   {product?.images && product?.images[0] && (
-                    <Image
+                    <Img
                       alt={product?.title}
+                      width={600}
+                      height={600}
                       loading="eager"
                       objectFit="contain"
                       src={product?.images && product?.images[selectedImage]}
-                      className="w-[400px] h-[500px]"
                     />
                   )}
                 </Box>
-                    
-                    {/* --------------Title and Details----------------- */}
-                  <Box className="  text-justify m-auto ">
-               
+
+                <Box overflow="auto">
+                  {product?.images &&
+                    product?.images.map((url, ind) => (
+                      <Flex
+                        key={ind}
+                        w={64}
+                        h={64}
+                        minWidth={64}
+                        bgcolor="white"
+                        border="1px solid"
+                        borderRadius="10px"
+                        ml={ind === 0 ? "auto" : 0}
+                        style={{
+                          cursor: "pointer",
+                        }}
+                        onClick={handleImageClick(ind)}
+                        mr={
+                          ind === product?.images.length - 1 ? "auto" : "10px"
+                        }
+                        borderColor={
+                          selectedImage === ind ? "primary.main" : "grey.400"
+                        }
+                      >
+                        <Img
+                          src={url}
+                          variant="square"
+                          h={40}
+                          w={40}
+                        />
+                      </Flex>
+                    ))}
+                </Box>
+              </Grid>
+
+              <Grid item md={6} xs={12} alignItems="center">
                 <H1 mb={1}>{product.title}</H1>
 
-        
-                  <Box className="text-start w-[50%]  ">
-                    {product?.desc}
-                  </Box>
-        
 
-                <Box alignItems="center" mb={1}>
-                  <Box>Brand:</Box>
-                  <H6>{product.subcategory}</H6>
-                </Box>
+                <div>
+  
+   
+                    <Box className="mx-4 md:mx-2" alignItems="center" mb={1}>
+                    {product?.desc}
+                    </Box>
+                  
+  </div>
+
+
+
+                 <Box alignItems="center" mb={1}>
+            <Box>Brand:</Box>
+            <H6>Xiaomi</H6>
+          </Box>
 
                 <Box alignItems="center" mb={2}>
                   <Box lineHeight="1">Rated:</Box>
@@ -153,52 +187,27 @@ export default function ProductSingle() {
                   <Box color="inherit">In Stock Available</Box>
                 </Box>
 
-                <Box alignItems="center" mb={2}>
-                  <Box>Sold By:</Box>
-                  <Link href="/shops/scarlett-beauty" passHref>
-                    <H6 ml={1}>Mobile Store</H6>
-                  </Link>
-                </Box>
-          
-                  </Box>
-        </Box>
-       
-         {/* --------------small images to select----------------- */}
+          <Box alignItems="center" mb={2}>
+            <Box>Sold By:</Box>
+            <Link href="/shops/scarlett-beauty" passHref>
+             
+                <H6 ml={1}>Mobile Store</H6>
+             
+            </Link>
+          </Box> 
+              </Grid>
 
-        <Box className="flex justify-center m-auto md:w-[500px] w-auto h-[200px] ">
-                  {product?.images &&
-                    product?.images.map((url, ind) => (
-                      <Box
-                      className="w-[50px]  m-auto   rounded-2xl  border-[1px] cursor-pointer"
-                        key={ind}
-                        ml={ind === 0 ? "auto" : 0}
-                        
-                        onClick={handleImageClick(ind)}
-                        mr={
-                          ind === product?.images.length - 1 ? "auto" : "10px"
-                        }
-                        borderColor={
-                          selectedImage === ind ? "primary.main" : "grey.400"
-                        }
-                      >
-                        <Image  className=' rounded-lg  ' src={url}  />
-                      </Box>
-                    ))}
-                </Box>
-                <ProductDescription />
-        </Box>
-            
-     
-      
-            </SimpleGrid>
-           
-            </Box>
+
+
+
+
+            </Grid>
           )}
 
-  
+          <ProductDescription />
         </Box>
-  
-      <Footer />
+      </Container>
+      <Footer/>
     </div>
   );
 }
