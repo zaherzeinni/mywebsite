@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import parse from "html-react-parser";
 import Loader from "@/components/common/Loader";
 //import { Avatar, Box, Button, Chip, SimpleGrid, Container } from "@mui/material";
-import { Box, Button, SimpleGrid, Container, Flex, Image } from "@chakra-ui/react";
+import { Box, Button, SimpleGrid, Container, Flex, Image,Grid } from "@chakra-ui/react";
 //import LazyImage from "components/LazyImage";
 //import BazaarRating from "components/BazaarRating";
 import { H1, H2, H3, H6 } from "components/Typography";
@@ -92,85 +92,49 @@ export default function ProductSingle() {
 
   return (
     <div>
-      <ClientLayout/>
-      <Container
-        sx={{
-          mb: 6,
-        }}
-      >
+      <ClientLayout />
 
-        <Box className=" mt-[66px]" width="100%">
+        <Box className="">
           {loading ? (
             <Loader />
           ) : (
-            <Grid container spacing={3} justifyContent="space-around">
-              <Grid item md={6} xs={12} alignItems="center">
-                <Box justifyContent="center" mb={6}>
+            <Box>
+            <SimpleGrid   gap={5}>
+           
+        <Box className=" justify-center items-center m-auto space-x-1 md:space-x-10 ">                         
+
+               
+
+                
+        <Box className="flex justify-center align-middle space-x-10 ">
+
+
+                {/* -------------------Product Image---------------------- */}
+                <Box  mb={2} className="mx-1 rounded-xl mt-20 ml-5 ">
                   {product?.images && product?.images[0] && (
-                    <Img
+                    <Image
                       alt={product?.title}
-                      width={600}
-                      height={600}
-                      loading="eager"
-                      objectFit="contain"
                       src={product?.images && product?.images[selectedImage]}
+                      className="md:w-[50vw] md:h-[400px] rounded-lg object-contain"
                     />
                   )}
                 </Box>
+                    
+                    {/* --------------Title and Details----------------- */}
+                  <Box className="  text-justify m-auto ">
+               
+                <H1 mb={1} className='text-justify w-[70%] md:w-auto'>{product.title}</H1>
 
-                <Box overflow="auto">
-                  {product?.images &&
-                    product?.images.map((url, ind) => (
-                      <Flex
-                        key={ind}
-                        w={64}
-                        h={64}
-                        minWidth={64}
-                        bgcolor="white"
-                        border="1px solid"
-                        borderRadius="10px"
-                        ml={ind === 0 ? "auto" : 0}
-                        style={{
-                          cursor: "pointer",
-                        }}
-                        onClick={handleImageClick(ind)}
-                        mr={
-                          ind === product?.images.length - 1 ? "auto" : "10px"
-                        }
-                        borderColor={
-                          selectedImage === ind ? "primary.main" : "grey.400"
-                        }
-                      >
-                        <Img
-                          src={url}
-                          variant="square"
-                          h={40}
-                          w={40}
-                        />
-                      </Flex>
-                    ))}
-                </Box>
-              </Grid>
-
-              <Grid item md={6} xs={12} alignItems="center">
-                <H1 mb={1}>{product.title}</H1>
-
-
-                <div>
-  
-   
-                    <Box className="mx-4 md:mx-2" alignItems="center" mb={1}>
+        
+                  <Box className=" text-justify w-[70%] ">
                     {product?.desc}
-                    </Box>
-                  
-  </div>
+                  </Box>
+        
 
-
-
-                 <Box alignItems="center" mb={1}>
-            <Box>Brand:</Box>
-            <H6>Xiaomi</H6>
-          </Box>
+                <Box alignItems="center" mb={1}>
+                  <Box>Brand:</Box>
+                  <H6>{product.subcategory}</H6>
+                </Box>
 
                 <Box alignItems="center" mb={2}>
                   <Box lineHeight="1">Rated:</Box>
@@ -187,27 +151,52 @@ export default function ProductSingle() {
                   <Box color="inherit">In Stock Available</Box>
                 </Box>
 
-          <Box alignItems="center" mb={2}>
-            <Box>Sold By:</Box>
-            <Link href="/shops/scarlett-beauty" passHref>
-             
-                <H6 ml={1}>Mobile Store</H6>
-             
-            </Link>
-          </Box> 
-              </Grid>
+                <Box alignItems="center" mb={2}>
+                  <Box>Sold By:</Box>
+                  <Link href="/shops/scarlett-beauty" passHref>
+                    <H6 ml={1}>Mobile Store</H6>
+                  </Link>
+                </Box>
+          
+                  </Box>
+        </Box>
+       
+         {/* --------------small images to select----------------- */}
 
-
-
-
-
-            </Grid>
+        <Box className="flex justify-center m-auto md:w-[500px] w-auto h-[200px] ">
+                  {product?.images &&
+                    product?.images.map((url, ind) => (
+                      <Box
+                      className="w-[40px] md:w-[60px]  m-auto   rounded-2xl  border-[1px] cursor-pointer"
+                        key={ind}
+                        ml={ind === 0 ? "auto" : 0}
+                        
+                        onClick={handleImageClick(ind)}
+                        mr={
+                          ind === product?.images.length - 1 ? "auto" : "10px"
+                        }
+                        borderColor={
+                          selectedImage === ind ? "primary.main" : "grey.400"
+                        }
+                      >
+                        <Image  className=' rounded-lg  ' src={url}  />
+                      </Box>
+                    ))}
+                </Box>
+                <ProductDescription />
+        </Box>
+            
+     
+      
+            </SimpleGrid>
+           
+            </Box>
           )}
 
-          <ProductDescription />
+  
         </Box>
-      </Container>
-      <Footer/>
+  
+      <Footer />
     </div>
   );
 }
