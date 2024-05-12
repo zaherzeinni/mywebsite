@@ -3,7 +3,7 @@ import AdvertiseForm from "./advertiseForm";
 import { useAuth } from "@/functions/context";
 import { db } from "@/functions/firebase";
 import { addDoc, collection,serverTimestamp } from "firebase/firestore";
-import { message } from "antd";
+//import { message } from "antd";
 import AdminLayout from "../AdminLayout";
 
 const AddAdvertiseMain = () => {
@@ -16,7 +16,7 @@ const AddAdvertiseMain = () => {
 
       values.timeStamp = serverTimestamp()
       await addDoc(collection(db, "adverts"), values);
-      message.success("advertise added  successfully");
+      //message.success("advertise added  successfully");
   };
 
   return (
