@@ -1,9 +1,10 @@
 import React from 'react';
+import { getDocuments } from "@/functions/firebase/getData";
 import AddCategoryMain from '@/components/admin/category/addCategory';
-const Add = () => {
+const Add = ({cats}) => {
     return (
         <div>
-            <AddCategoryMain/>
+            <AddCategoryMain cats={cats}/>
         </div>
     );
 }
