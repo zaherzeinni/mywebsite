@@ -5,18 +5,124 @@ import { CheckCircleIcon } from "@heroicons/react/outline";
 import { NextSeo } from "next-seo";
 import Navbar from "@/components/client/layout/navbar";
 import Footer from "@/components/client/layout/footer";
+import Link from "next/link";
 
-const FORM_ID = process.env.NEXT_PUBLIC_FORM_ID;
+import { db } from "@/functions/firebase";
+import { addDoc,collection,serverTimestamp } from "@firebase/firestore";
 
-function ContactUs() {
-  const { state, submit } = useForm({
-    id: FORM_ID,
+import * as yup from "yup";
+import { useFormik } from "formik";
+
+
+import { Button, Card } from "@chakra-ui/react";
+
+// const FORM_ID = process.env.NEXT_PUBLIC_FORM_ID;
+
+// function ContactUs() {
+//   const { state, submit } = useForm({
+//     id: FORM_ID,
+//   });
+
+  export const Wrapper = (
+    ({
+      children,
+  
+      ...rest
+    }) => <Card {...rest}>{children}</Card>
+  )(({ theme, passwordVisibility }) => ({
+    width: 500,
+    padding: "2rem 3rem",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
+
+    ".googleButton": {
+      ...googleStyle,
+      "&:hover": googleStyle,
+    },
+    ".agreement": {
+      marginTop: 12,
+      marginBottom: 24,
+    },
+  }));
+
+  const ContactUs = () => {
+    const sitekey = "6Ldcb5cpAAAAAPWrd2Kk_YCIWOjIVd6lfbsLZ1D9";
+
+
+const initialValues = {
+  email: "",
+  name: "",
+  subject: "",
+  description: "",
+
+  phone: "",
+  newsletter: "",
+};
+
+const formSchema = yup.object().shape({
+  name: yup.string().required("name is required"),
+  description: yup.string().required("message is required"),
+  subject: yup.string().required("subject is required"),
+
+  phone: yup.number().required("phone number is required"),
+  email: yup.string().email("invalid email").required("Email is required"),
+  //agreements: yup.Boolean().required("agreements is required"),
+});
+
+const handleFormSubmit = async (values) => {
+  console.log(values);
+
+  if (news) {
+    // add user to firebase
+
+    const data = {
+      name: values.name,
+      email: values.email,
+      phone: values.phone,
+    };
+
+    await addDoc(collection(db, "news"), data);
+    enqueueSnackbar("Added to newsletter users", {
+      variant: "success",
+    });
+  }
+
+  const res = await fetch(`/api/contact`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+
+    body: JSON.stringify({
+      ...values,
+    }),
   });
+
+  console.log("RESPONSE", res);
+
+  if (res?.status === 200) {
+    enqueueSnackbar("your form message has sended successfully", {
+      variant: "success",
+    });
+  } else {
+    enqueueSnackbar("Some thing wrong", {
+      variant: "error",
+    });
+  }
+
+  //resetForm();
+};
+
+const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+useFormik({
+  initialValues,
+  onSubmit: handleFormSubmit,
+  validationSchema: formSchema,
+});
 
   return (
     <>
       <NextSeo
-        title="ITPROMAX-Contactus"
+        title="Contact Us | ITPROMAX"
         description="ITPROMAX is a small business "
       />
       <Navbar/>
@@ -29,15 +135,13 @@ function ContactUs() {
         />
       </div>
       <div>
-        <h1 className="anton-regular   opacity-70 absolute md:top-[8%] mx-2 sm:top-[30%] lg:top-[10%] top-[10%] md:right-[35%] lg:right-[45%]   w-96 text-white md:mx-32 md:!text-7xl !text-3xl  font-bold ">
+        <h1 className="anton-regular   opacity-70 absolute md:top-[8%] mx-2 sm:top-[30%] lg:top-[10%] top-[10%] md:right-[35%] lg:right-[65%]   w-96 text-white md:mx-32 md:!text-7xl !text-3xl  font-bold ">
           Contact Us
         </h1>
       </div>
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 md:py-16 lg:px-8">
         <section>
-          <h1 className="text-4xl font-bold tracking-tight text-rose-600 sm:text-5xl md:text-6xl">
-            Contact Us
-          </h1>
+          <div className=" font-semibold text-lg text-justify">We are here to answer all your questions and help you with everything you need.You can reach us by phone or email at any time.We promise to provide support and advice to get the most out of our products.</div>
           <p className="my-4 text-lg duration-200 hover:text-rose-600 md:justify-start">
             <a
               target={"_blank"}
@@ -63,27 +167,9 @@ function ContactUs() {
           </section>
           <section className="">
             <div className="rounded-lg bg-white p-8 drop-shadow-lg lg:col-span-3 lg:p-12">
-              {state.submitted ? (
-                <div
-                  className="rounded-b border-t-4 border-teal-500 bg-teal-100 px-4 py-3 text-teal-900 shadow-md"
-                  role="alert"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="py-1">
-                      <CheckCircleIcon className="h-8 w-8" />
-                    </div>
-                    <div>
-                      <p className="font-bold">
-                      Your message has been sent successfully.
-                      </p>
-                      <p className="text-sm">
-                      You will be contacted as soon as possible.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <form className="space-y-4" onSubmit={submit}>
+             
+            
+                <form className="space-y-4" onSubmit={handleSubmit}>
                   <div>
                     <label className="sr-only" htmlFor="name">
                       Name
@@ -95,6 +181,11 @@ function ContactUs() {
                       id="name"
                       name="name"
                       required
+                      onBlur={handleBlur}
+                      value={values.name}
+                      onChange={handleChange}
+                      error={!!touched.name && !!errors.name}
+                      helperText={touched.name && errors.name}
                     />
                   </div>
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -109,6 +200,11 @@ function ContactUs() {
                         id="email"
                         name="email"
                         required
+                        onBlur={handleBlur}
+                        value={values.email}
+                        onChange={handleChange}
+                        error={!!touched.email && !!errors.email}
+                        helperText={touched.email && errors.email}
                       />
                     </div>
                     <div>
@@ -121,6 +217,12 @@ function ContactUs() {
                         type="tel"
                         id="phone"
                         name="phone"
+                        required
+                        onBlur={handleBlur}
+                        value={values.phone}
+                        onChange={handleChange}
+                        error={!!touched.phone && !!errors.phone}
+                        helperText={touched.phone && errors.phone}
                       />
                     </div>
                   </div>
@@ -133,14 +235,20 @@ function ContactUs() {
                       placeholder="Message"
                       rows={8}
                       id="message"
-                      name="message"
+                      name="description"
                       defaultValue={""}
                       required
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      value={values.description}
+                      error={Boolean(errors.description && touched.description)}
+                      helperText={touched.description && errors.description}
                     />
                   </div>
                   <div className="mt-4">
-                    <button
+                    <Button
                       type="submit"
+                      variant="contained"
                       className="inline-flex w-full items-center justify-center rounded-lg bg-rose-600 px-5 py-3 text-white sm:w-auto"
                     >
                       <span className="font-medium"> Submit </span>
@@ -158,10 +266,10 @@ function ContactUs() {
                           d="M14 5l7 7m0 0l-7 7m7-7H3"
                         />
                       </svg>
-                    </button>
+                    </Button>
                   </div>
                 </form>
-              )}
+              
             </div>
           </section>
         </div>

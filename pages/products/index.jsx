@@ -93,15 +93,20 @@ export default function ProductsPage({
       )}
 
       <div className=" container1">
+        
+        
+      <div>
+          <AllProducts resultProducts={resultProducts} />
+        </div>
+        
         <div>
+          
           <ProjectSlider projects={projects} />
         </div>
 
-        <div>
-          <AllProducts resultProducts={resultProducts} />
-        </div>
+ 
 
-        <div>
+        <div className="md:mt-16 ">
           <Support />
         </div>
 

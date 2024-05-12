@@ -154,7 +154,7 @@ const RegisterPage = () => {
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"} textAlign={"center"}>
-            Sign up dev branch
+            Sign up to ITPROMAX
           </Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
             to enjoy all of our cool features ✌️
@@ -398,7 +398,7 @@ const RegisterPage = () => {
               </Stack>
               <Stack pt={6}>
                 <Text align={"center"}>
-                  Already a user?{" "}
+                  Already a user?
                   <Link href="/auth/login">
                     
                     <span style={{color:"blue"}}>Login</span>
