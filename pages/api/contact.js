@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
     // user: "itesa.getViral@gmail.com",
     // pass: "rtspkviskcrhorey",
 
-    user: email, // generated ethereal user
+    user: email, // generated ethereal userr
     pass: passw, // generated ethereal password
   },
 });
