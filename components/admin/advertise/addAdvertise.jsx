@@ -5,6 +5,7 @@ import { db } from "@/functions/firebase";
 import { addDoc, collection,serverTimestamp } from "firebase/firestore";
 //import { message } from "antd";
 import AdminLayout from "../AdminLayout";
+import { message } from "antd";
 
 const AddAdvertiseMain = () => {
   const { setPageLoading, pageLoading } = useAuth();
@@ -16,7 +17,7 @@ const AddAdvertiseMain = () => {
 
       values.timeStamp = serverTimestamp()
       await addDoc(collection(db, "adverts"), values);
-      //message.success("advertise added  successfully");
+      message.success("advertise added  successfully");
   };
 
   return (
