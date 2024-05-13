@@ -17,4 +17,4 @@ Add.getInitialProps = async (context) => {
     // props from serverside will go to props in clientside
     cats: Categories,
   };
-};
+}; 
