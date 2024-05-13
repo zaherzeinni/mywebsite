@@ -1,24 +1,24 @@
-import React from "react";
-import CategoriesMain from "@/components/admin/category/Categories";
-import { getDocuments } from "@/functions/firebase/getData";
+// import React from "react";
+// import CategoriesMain from "@/components/admin/category/Categories";
+// import { getDocuments } from "@/functions/firebase/getData";
 
-const All = ({ cats }) => {
-  return (
-    <div>
-      <CategoriesMain cats={cats} />
-    </div>
-  );
-};
-export default All;
+// const All = ({ cats }) => {
+//   return (
+//     <div>
+//       <CategoriesMain cats={cats} />
+//     </div>
+//   );
+// };
+// export default All;
 
-// serverside
-All.getInitialProps = async (context) => {
-  const Categories = await getDocuments("cats"); //  []
+// // serverside
+// All.getInitialProps = async (context) => {
+//   const Categories = await getDocuments("cats"); //  []
 
-  //console.log("data", Categories);
+//   //console.log("data", Categories);
 
-  return {
-    // props from serverside will go to props in clientside
-    cats: Categories,
-  };
-};
+//   return {
+//     // props from serverside will go to props in clientside
+//     cats: Categories,
+//   };
+// };
