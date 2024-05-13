@@ -3,7 +3,7 @@ import React from "react";
 import { Box, Card, Button } from "@chakra-ui/react";
 import Link from "next/link";
 
-
+ 
 const CustomSupportCard = ({ title, desc, icon, buttonText,linkText }) => {
   return (
     <Card
