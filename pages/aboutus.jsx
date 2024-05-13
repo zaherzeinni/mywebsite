@@ -1,26 +1,7 @@
 import React from "react";
-import Image from "next/image";
 import { NextSeo } from "next-seo";
 import Navbar from "@/components/client/layout/navbar";
 import Footer from "@/components/client/layout/footer";
-//import { H1, Paragraph, H4 } from "components/Typography";
-//import { Box, Button, Grid, styled } from "@mui/material";
-
-// styled component
-// const TitleBox = styled(Box)(({ theme }) => ({
-//   textAlign: "center",
-//   "& h1": {
-//     fontSize: 40,
-//     fontWeight: 600,
-//     marginBottom: "10px",
-//   },
-//   "& div": {
-//     width: 200,
-//     height: "2px",
-//     margin: "auto",
-//     background: theme.palette.primary.main,
-//   },
-// }));
 
 const aboutusdata = [
   {
@@ -77,10 +58,8 @@ export default function AboutUs() {
   return (
     <div>
       <Navbar />
-      <NextSeo title="ITPROMAX-AboutUs" 
-      description="about us"/>
+      <NextSeo title="AboutUs | ITPROMAX" description="about us"/>
       <div>
-        {/* group-hover:scale-105 transition-all duration-700 ease-in-out */}
         <img
           src="/aboutusIMG.jpg"
           alt="about-image"
@@ -175,7 +154,6 @@ export default function AboutUs() {
               ))}
             </ul>
           </section>
-
         </div>
       </section>
       <Footer />
