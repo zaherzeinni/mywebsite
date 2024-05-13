@@ -9,14 +9,13 @@ const All = ({ cats }) => {
     </div>
   );
 };
-
 export default All;
 
 // serverside
 All.getInitialProps = async (context) => {
   const Categories = await getDocuments("cats"); //  []
 
-  console.log("data", Categories);
+  //console.log("data", Categories);
 
   return {
     // props from serverside will go to props in clientside
