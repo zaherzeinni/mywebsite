@@ -7,6 +7,9 @@ import CustomSupportCard from './customSupportCard';
 const Support = () => {
     return (
         <div className='my-18 sm:w-[75%] sm:m-auto '>
+            <h1 className="we-use-title2 sm:text-3xl md:text-5xl text-3xl tracking-wide md:tracking-wider font-bold  md:mt-24 md:mb-10 ">
+             Customer Service
+            </h1>
             <SimpleGrid columns={[1,1,2,3]} gap={5} mb={14} >
             
             <CustomSupportCard 

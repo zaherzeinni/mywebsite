@@ -68,17 +68,21 @@ const ProductCard = ({ data, index }) => {
       <SimpleGrid  >
     <Card key={index} maxW="xs" h={'500px'}  >
       <Box className="flex-col justify-center h-[80%]  ">
+      
+      <Link href={`/products/productdetails/single?id=${data.id}`}>
         <Image
           src={data?.images[0]}
           alt="img"
-          borderRadius="lg"
+          borderRadius="10px 10px 0px 0px"
           width={"100%"}
-          height={"55%"}
+          height={"71%"}
           className="hover:scale-110   duration-700 cursor-pointer "
         />
+      </Link>
+      
         <Stack mt="6" spacing="3" ml={5}>
           <Heading size="md">{data?.title}</Heading>
-          <Text>{data?.desc}</Text>
+          {/* <Text>{data?.desc}</Text> */}
           <Text color="blue.600" fontSize="2xl">
             ${data?.price}
           </Text>
@@ -100,7 +104,7 @@ const ProductCard = ({ data, index }) => {
       <CardFooter >
         {data?.instock ? (
         
-          <ButtonGroup spacing="1" m={"auto"} className="flex flex-row sm:flex-col lg:flex-row" >
+          <ButtonGroup spacing="1" m={"auto"} className="flex flex-row sm:flex-col lg:flex-row !-mb-14" >
             <Button variant="solid" colorScheme="blue">
               <Link href={`/products/productdetails/single?id=${data.id}`}>Buy now</Link>
             </Button>
@@ -145,8 +149,8 @@ const ProductCard = ({ data, index }) => {
           </ButtonGroup>
           
         ) : (
-          <div className="text-center m-auto w-auto h-auto ">
-            <img src="/soldout.png" className="h-11 w-56 m-auto" />
+          <div className="text-center m-auto w-auto h-auto !-mb-14 ">
+            <img src="/soldout.png" className="h-11 w-56 m-auto " />
           </div>
         )}
         {/* ---------------------------wishlist and zoom product details-------------------------------- */}
@@ -165,9 +169,9 @@ const ProductCard = ({ data, index }) => {
             />
           )}
 
-          <Link href={`/products/productdetails/single?id=${data.id}`}>
-            <FaSearchPlus className="  absolute text-xl top-14 right-2 text-gray-400  !font-light  hover:scale-125   duration-700 " />
-          </Link>
+          {/* <Link href={`/products/productdetails/single?id=${data.id}`}> */}
+            {/* <FaSearchPlus className="  absolute text-xl top-14 right-2 text-gray-400  !font-light  hover:scale-125   duration-700 " /> */}
+          {/* </Link> */}
         </div>
       
       </CardFooter>

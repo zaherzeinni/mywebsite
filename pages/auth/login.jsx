@@ -62,7 +62,7 @@ const {signInUser} = useAuth()
                 </Text>
                 </Stack>
 
-                {/* form text Zaher Zeinni to Mohammad */}
+                {/* form text Zaher Zeinni */}
 
                 <Box px="20px" py="35px" rounded={"lg"} bg="white" boxShadow={"xl"}>
                 <form onSubmit={formik.handleSubmit}>

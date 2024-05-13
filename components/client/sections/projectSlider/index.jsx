@@ -9,13 +9,19 @@ import Marquee from "react-fast-marquee";
 const ProjectSlider = ({ projects }) => {
 
   return (
-    <div className=" p-5 bg-white rounded-xl ">
+
+
+    <div  className=" p-5  rounded-xl  ">
+            <h1 className="we-use-title1 sm:text-3xl md:text-5xl text-3xl tracking-wide md:tracking-wider font-bold  mb-5 ">
+             Our Projects
+            </h1>
+  
       <Marquee pauseOnHover>
         {projects?.map((item, index) => {
           return (
             <div
               key={index}
-              className="   relative h-44 m-4 hover:scale-[1.02]  hover:drop-shadow-none hover:transform  shadow-xl hover:outline-[1px]  duration-150   "
+              className="   relative h-44 m-4 hover:scale-[1.02]  hover:drop-shadow-none hover:transform  shadow-2xl hover:outline-[1px]  duration-150   "
             >
               <div className="">
                 <Image
@@ -31,7 +37,11 @@ const ProjectSlider = ({ projects }) => {
           );
         })}
       </Marquee>
+      
     </div>
+
+
+ 
   );
 };
 

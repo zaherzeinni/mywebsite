@@ -5,6 +5,11 @@ import { CheckCircleIcon } from "@heroicons/react/outline";
 import { NextSeo } from "next-seo";
 import Navbar from "@/components/client/layout/navbar";
 import Footer from "@/components/client/layout/footer";
+import Link from "next/link";
+
+import { db } from "@/functions/firebase";
+import { addDoc,collection,serverTimestamp } from "@firebase/firestore";
+
 
 const FORM_ID = process.env.NEXT_PUBLIC_FORM_ID;
 
@@ -16,7 +21,7 @@ function ContactUs() {
   return (
     <>
       <NextSeo
-        title="ITPROMAX-Contactus"
+        title="ITPROMAX-Contact Us"
         description="ITPROMAX is a small business "
       />
       <Navbar/>
@@ -29,15 +34,16 @@ function ContactUs() {
         />
       </div>
       <div>
-        <h1 className="anton-regular   opacity-70 absolute md:top-[8%] mx-2 sm:top-[30%] lg:top-[10%] top-[10%] md:right-[35%] lg:right-[45%]   w-96 text-white md:mx-32 md:!text-7xl !text-3xl  font-bold ">
+        <h1 className="anton-regular   opacity-70 absolute md:top-[8%] mx-2 sm:top-[30%] lg:top-[10%] top-[10%] md:right-[35%] lg:right-[65%]   w-96 text-white md:mx-32 md:!text-7xl !text-3xl  font-bold ">
           Contact Us
         </h1>
       </div>
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 md:py-16 lg:px-8">
         <section>
-          <h1 className="text-4xl font-bold tracking-tight text-rose-600 sm:text-5xl md:text-6xl">
+          {/* <h1 className="text-4xl font-bold tracking-tight text-rose-600 sm:text-5xl md:text-6xl">
             Contact Us
-          </h1>
+          </h1> */}
+          <div className=" font-semibold text-lg text-justify">We are here to answer all your questions and help you with everything you need.You can reach us by phone or email at any time.We promise to provide support and advice to get the most out of our products.</div>
           <p className="my-4 text-lg duration-200 hover:text-rose-600 md:justify-start">
             <a
               target={"_blank"}
