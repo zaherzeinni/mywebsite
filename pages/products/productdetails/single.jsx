@@ -115,7 +115,7 @@ export default function ProductSingle() {
                     <Image
                       alt={product?.title}
                       src={product?.images && product?.images[selectedImage]}
-                      className="sm:w-[30vw]  rounded-lg object-contain"
+                      className="md:w-[30vw]  rounded-lg object-contain"
                     />
                   )}
                 </Box>
