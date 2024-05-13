@@ -11,7 +11,7 @@ import Loader from "@/components/common/Loader";
 import { Box, Button, SimpleGrid, Container, Flex, Image,Grid } from "@chakra-ui/react";
 //import LazyImage from "components/LazyImage";
 //import BazaarRating from "components/BazaarRating";
-import { H1, H2, H3, H6 } from "components/Typography";
+import { H1, H2, H3,H4,H5, H6 } from "components/Typography";
 //import { useAppContext } from "function/context/AppContext";
 //import { FlexBox, FlexRowCenter } from "components/ProjectComponents/flex-box";
 //import { currency } from "lib";
@@ -29,6 +29,10 @@ import { orderBy, where } from "firebase/firestore";
 import ClientLayout from "@/components/client/layout/clientLayout";
 import Footer from "@/components/client/layout/footer";
 import { chakra } from "@chakra-ui/react";
+import { FcCheckmark } from "react-icons/fc";
+import { VscClose } from "react-icons/vsc";
+
+//import { usePathname, useSearchParams } from 'next/navigation'
 
 // ================================================================
 
@@ -90,6 +94,23 @@ export default function ProductSingle() {
   // HANDLE SELECT IMAGE
   const handleImageClick = (ind) => () => setSelectedImage(ind);
 
+
+  const [getUrl,setGetUrl]=useState()
+  const [whatsappUrl,setWhatsappUrl] = useState()
+
+  useEffect(() => {
+    const currentUrl = window.location.href;
+    console.log(currentUrl,"urlllllllll");
+    setGetUrl(currentUrl);
+    const getUrlWhatsapp = "https://api.whatsapp.com/send?phone=96170480041&amp;text=Hello%2C+I+want+reserve+this+product%0D%0A%0D%0A**%0D%0A%2F%0D%0AThank+you%21";
+    setWhatsappUrl(getUrlWhatsapp)
+    console.log("urll whatsapp",getUrlWhatsapp)
+},[])
+
+
+
+
+
   return (
     <div>
       <ClientLayout />
@@ -110,12 +131,12 @@ export default function ProductSingle() {
 
               <Box className="lg:grid">
                 {/* -------------------Product Image---------------------- */}
-                <Box  mb={2} className=" rounded-xl md:mt-10 mt-2 mx-5 ">
+                <Box  mb={2} className=" rounded-xl md:mt-3 mt-2 mx-5 ">
                   {product?.images && product?.images[0] && (
                     <Image
                       alt={product?.title}
                       src={product?.images && product?.images[selectedImage]}
-                      className="md:w-[30vw]  rounded-lg object-contain"
+                      className="sm:w-[30vw] md:w-[30vw] justify-center flex m-auto rounded-lg object-contain"
                     />
                   )}
                 </Box>
@@ -152,41 +173,56 @@ export default function ProductSingle() {
                
                 <H1 mb={1} className='text-justify w-[70%] md:w-auto'>{product.title}</H1>
 
-        
-                  <Box className=" text-justify w-[70%] ">
+                <Box alignItems="center" mb={1}>
+                  <Box>Brand:</Box>
+                  <H3>{product.subcategory}</H3>
+                </Box>
+
+                  <Box className=" lg:w-[56%] w-[40%] ">
                     {product?.desc}
                   </Box>
         
 
-                <Box alignItems="center" mb={1}>
-                  <Box>Brand:</Box>
-                  <H6>{product.subcategory}</H6>
-                </Box>
 
-                <Box alignItems="center" mb={2}>
-                  <Box lineHeight="1">Rated:</Box>
-                  <Box mx={1} lineHeight="1">
-                    <Box color="warn" fontSize="1.25rem" value={4} readOnly />
-                  </Box>
-                  <H6 lineHeight="1">(50)</H6>
-                </Box>
 
-                <Box pt={1} mb={3}>
-                  <H2 color="primary.main" mb={0.5} lineHeight="1">
+           
+
+                <Box pt={1} my={5}>
+                  <H4 color="primary.main" mb={0.5} lineHeight="1">
                     $ {product.price}
-                  </H2>
-                  <Box color="inherit">In Stock Available</Box>
+                  </H4>
+                  <Box color="inherit">{product.instock===true ? <Flex gap={1}><FcCheckmark className="text-lg top-1 relative" /><H5>In stock</H5></Flex> : <Flex gap={1}><VscClose className="text-red-600 text-lg top-1 relative" /><H5 className="text-red-600">Out of stock</H5></Flex>}</Box>
                 </Box>
 
                 <Box alignItems="center" mb={2}>
-                  <Box>Sold By:</Box>
-                  <Link href="/shops/scarlett-beauty" passHref>
-                    <H6 ml={1}>Mobile Store</H6>
+                  <Box></Box>
+                  {product.instock===true ? 
+                  <Link  href={whatsappUrl} target="_blank">
+                  
+                  <Button bg={"green.400"}  
+                  className=" hover:!bg-green-700 hover:animate-ping1 !text-white"  ml={1}>Reserve this Product</Button >
+                  
                   </Link>
+                    : 
+                    <Button className=" hidden hover:!bg-white !bg-white cursor-default"></Button>}
                 </Box>
-          
-                  </Box>
+{/* 
+                "https://api.whatsapp.com/send?phone=96170480041&amp;text=Hello%2C+I+want+reserve+this+product%0D%0A%0D%0A**%0D%0A%2F%0D%0AThank+you%21" */}
 
+
+                {/* href={`/products/productdetails/single?id=${data.id}`} */}
+
+
+                  </Box>
+                  {/* in whatsApp */}
+                  {/* one space */}
+                  {/* %0D%0A */}
+                  {/* skip line  */}
+                  {/* %0D%0A%0D%0A */}
+                  {/* comma */}
+                  {/* %2C */}
+                  {/* space */}
+                  {/* + */}
                   
         </Box>
        
@@ -208,3 +244,9 @@ export default function ProductSingle() {
     </div>
   );
 }
+
+
+
+
+
+// <a href="https://api.whatsapp.com/send?phone=96170480041&amp;text=Hello%2C+I+want+reserve+this+product%0D%0A%0D%0A*Open+Box+iPhone+15+Plus+Collection*%0D%0A*Price:* 995%C2%A0%24%0D%0A*URL:* https%3A%2F%2Fwww.khatwtelephone.com%2Flb%2Fproduct%2Fopen-box-iphone-15-plus-collection%2F%0D%0AThank+you%21" target="_blank"><Button bg={"green.400"}  className=" hover:!bg-green-700 hover:animate-ping1 !text-white"  ml={1}>Reserve this Product</Button ></a>

@@ -379,3 +379,18 @@ div.CodeMirror {
   text-shadow: 0 5px 5px #4242423f;
   transition: all 0.3s ease-in-out;
 }
+
+
+
+
+/* -------ping hover------------ */
+
+@keyframes ping1 {
+  50%, 80% {
+      transform: scale(2);
+      opacity: 0;
+  }
+}
+.hover\:animate-ping1:hover {
+  animation: ping 1.5s cubic-bezier(0, 0, 0, 0.2) infinite;
+}
