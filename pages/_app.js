@@ -14,8 +14,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { StateContextProvider } from '@/functions/context'
 
-import { Provider } from 'react-redux';
-import store from '@/redux/store';
+// import { Provider } from 'react-redux';
+// import store from '@/redux/store';
 
 
 import Head from "next/head";
@@ -24,20 +24,20 @@ import Head from "next/head";
 export default function MyApp({ Component, pageProps }) {
 
 
-    useEffect(() => {
-        if('serviceWorker' in navigator) {
-          window.addEventListener('load', function () {
-            navigator.serviceWorker.register('/service-worker.js').then(
-              function (registration) {
-                console.log('Service Worker registration successful with scope: ', registration.scope)
-              },
-              function (err) {
-                console.error('Service Worker registration failed: ', err)
-              }
-            )
-          })
-        }
-      }, [])
+    // useEffect(() => {
+    //     if('serviceWorker' in navigator) {
+    //       window.addEventListener('load', function () {
+    //         navigator.serviceWorker.register('/service-worker.js').then(
+    //           function (registration) {
+    //             console.log('Service Worker registration successful with scope: ', registration.scope)
+    //           },
+    //           function (err) {
+    //             console.error('Service Worker registration failed: ', err)
+    //           }
+    //         )
+    //       })
+    //     }
+    //   }, [])
 
       
 
@@ -54,7 +54,7 @@ export default function MyApp({ Component, pageProps }) {
       </Head>
 
     <ChakraProvider>
-    <Provider store={store}>
+    {/* <Provider store={store}> */}
 
     <StateContextProvider>
 
@@ -63,7 +63,7 @@ export default function MyApp({ Component, pageProps }) {
     <ProgressBar/>
     </StateContextProvider>
     {/* </MuiTheme> */}
-    </Provider>
+    {/* </Provider> */}
     
     </ChakraProvider>
     </>
