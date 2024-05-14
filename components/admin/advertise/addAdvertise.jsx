@@ -3,7 +3,7 @@ import AdvertiseForm from "./advertiseForm";
 import { useAuth } from "@/functions/context";
 import { db } from "@/functions/firebase";
 import { addDoc, collection,serverTimestamp } from "firebase/firestore";
-import { message } from "antd";
+//import { message } from "antd";
 import AdminLayout from "../AdminLayout";
 
 const AddAdvertiseMain = () => {
