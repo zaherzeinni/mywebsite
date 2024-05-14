@@ -198,7 +198,7 @@ export default function ProductSingle() {
                     <Box alignItems="center" mb={2}>
                       <Box></Box>
                       {product.instock === true ? (
-                        <Link href={`https://api.whatsapp.com/send?phone=96170480041&text=Salam, I want to reserve this product %0D%0A *${product.title}* %0D%0A *Price:* ${product.price} $ %0D%0A *URL:* ${getUrl} %0D%0A Thank you 😊   `} 
+                        <Link href={`https://api.whatsapp.com/send?phone=96170480041&text=Salam, I want to reserve this product %0D%0A *${product.title}* %0D%0A *Price:* ${product.price} $ %0D%0A *URL:* ${getUrl} %0D%0A Thank you😊   `} 
                         
                         target="_blank">
                           
