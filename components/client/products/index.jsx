@@ -10,7 +10,7 @@ const AllProducts = ({ resultProducts }) => {
       <span id="cards" className="scroll-smooth">
         <div className=" flex flex-col justify-center items-center min-h-screen">
           <div className="flex flex-col w-full  items-center justify-center gap-6 md:gap-10 py-6 px-5">
-            <h1 className="sm:text-3xl md:text-5xl text-3xl tracking-wide md:tracking-wider font-bold we-use-title">
+            <h1 className="sm:text-lg md:text-5xl text-3xl tracking-wide md:tracking-wider font-bold we-use-title">
               Features Products
             </h1>
             <div className="container !grid !grid-cols-1 sm:!grid-cols-2 md:!grid-cols-3 xl:!grid-cols-4 !gap-12">

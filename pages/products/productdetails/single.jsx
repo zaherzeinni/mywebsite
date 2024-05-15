@@ -39,7 +39,6 @@ import { chakra } from "@chakra-ui/react";
 import { FcCheckmark } from "react-icons/fc";
 import { VscClose } from "react-icons/vsc";
 
-
 // ================================================================
 
 // ================================================================
@@ -107,7 +106,6 @@ export default function ProductSingle() {
     const currentUrl = window.location.href;
     console.log(currentUrl, "urlllllllll");
     setGetUrl(currentUrl);
-  
   }, []);
 
   return (
@@ -165,6 +163,7 @@ export default function ProductSingle() {
 
                   {/* --------------Title and Details----------------- */}
                   <Box className=" justify-center m-auto">
+                  <Box>Product Name:</Box>
                     <H1 mb={1} className="text-justify w-[70%] md:w-auto">
                       {product.title}
                     </H1>
@@ -172,19 +171,21 @@ export default function ProductSingle() {
                     <Box alignItems="center" mb={1}>
                       <Box>Brand:</Box>
                       <H3>{product.subcategory}</H3>
+                      <Box my={2}>Description:</Box>
                     </Box>
 
-                    <Box className=" lg:w-[56%] w-[40%] ">{product?.desc}</Box>
+                    <Box className=" lg:w-[70%] w-[40%] font-semibold">{product?.desc}</Box>
 
-                    <Box pt={1} my={5}>
+                    <Box pt={1} my={1}>
+                    <Box my={2}>Price:</Box>
                       <H4 color="primary.main" mb={0.5} lineHeight="1">
                         $ {product.price}
                       </H4>
                       <Box color="inherit">
                         {product.instock === true ? (
                           <Flex gap={1}>
-                            <FcCheckmark className="text-lg top-1 relative" />
-                            <H5>In stock</H5>
+                            <FcCheckmark className="text-lg top-3 relative" />
+                            <H5 className="!my-2">In stock</H5>
                           </Flex>
                         ) : (
                           <Flex gap={1}>
@@ -198,11 +199,10 @@ export default function ProductSingle() {
                     <Box alignItems="center" mb={2}>
                       <Box></Box>
                       {product.instock === true ? (
-                        <Link href={`https://api.whatsapp.com/send?phone=96170480041&text=Salam, I want to reserve this product %0D%0A *${product.title}* %0D%0A *Price:* ${product.price} $ %0D%0A *URL:* ${getUrl} %0D%0A Thank you😊   `} 
-                        
-                        target="_blank">
-                          
-                          
+                        <Link
+                          href={`https://api.whatsapp.com/send?phone=96170480041&text=Salam, I want to reserve this product. %0D%0A *${product.title}* %0D%0A *Price:* ${product.price} $ %0D%0A *URL:* ${getUrl} %0D%0A Thank you!   `}
+                          target="_blank"
+                        >
                           <Button
                             bg={"green.400"}
                             className=" hover:!bg-green-700 hover:animate-ping1 !text-white"
