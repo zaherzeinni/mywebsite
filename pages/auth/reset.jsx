@@ -18,6 +18,10 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useAuth } from "@/functions/context";
 
+import AdvertiseBar from "@/components/common/advertiseBar";
+import Navbar from "@/components/client/layout/navbar";
+import Footer from "@/components/client/layout/footer";
+
 const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("invalid email address")
@@ -46,12 +50,15 @@ const Reset = () => {
 
   
   return (
-    <Flex minH={"100vh"} align={"center"} justify={"center"} bg="grey.100">
+    <div>
+      <AdvertiseBar/>
+      <Navbar/>
+    <Flex minH={"60vh"} align={"center"} justify={"center"} bg="grey.100">
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
           <Heading fontSize={"2xl"}>Forget your Email Password ?</Heading>
         </Stack>
-        <Box rounded={"lg"} bg="white" boxShadow={"lg"} p={8}>
+        <Box rounded={"lg"} bg="white" boxShadow={"2xl"} p={8}>
           <form onSubmit={formik.handleSubmit}>
             <Stack spacing={4}>
               <FormControl
@@ -103,6 +110,8 @@ const Reset = () => {
         </Box>
       </Stack>
     </Flex>
+    <Footer/>
+    </div>
   );
 };
 

@@ -10,7 +10,10 @@ import { useFormik } from "formik";
 import Link from "next/link";
 
 import { useAuth } from '@/functions/context';
-    
+import AdvertiseBar from '@/components/common/advertiseBar';
+import Navbar from "@/components/client/layout/navbar";
+import Footer from "@/components/client/layout/footer";
+
 const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("invalid email address")
@@ -46,25 +49,32 @@ const {signInUser} = useAuth()
 
     return (
         <div>
+          <AdvertiseBar/>
+          <Navbar/>
         <Flex 
-        minH={"100vh"} 
+        minH={"55vh"} 
         align={"center"} 
         justify={"center"} 
-        bg={"gray.100"}>
-            <Stack mx={"auto"} maxW={"lg"} py={12} px={6} >
+        bg={"white"}>
+
+        
+            <Stack mx={"auto"} maxW={"lg"} py={5} px={6} >
+
+            {/* <img src='/icon.png' className='w-[20%] h-[20%] justify-center m-auto' alt='logo' /> */}
+
             {/* ----header--- */}
             <Stack align={"center"}>
             <Heading fontSize={"4xl"} textAlign={"center"}>                
                 Sign in to your account
                 </Heading>
-                <Text fontSize={"lg"} color={"blue.400"}>
+                <Text fontSize={"lg"} color={"gray.600"}>
                 to enjoy all of our cool features
                 </Text>
                 </Stack>
 
                 {/* form text Zaher Zeinni */}
 
-                <Box px="20px" py="35px" rounded={"lg"} bg="white" boxShadow={"xl"}>
+                <Box px="20px" py="35px" rounded={"lg"} bg="white" boxShadow={"2xl"}>
                 <form onSubmit={formik.handleSubmit}>
 
                 <Stack spacing={4}>
@@ -173,6 +183,7 @@ const {signInUser} = useAuth()
                 
             </Stack>
         </Flex>
+        <Footer/>
         </div>
     );
 }

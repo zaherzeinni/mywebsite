@@ -35,6 +35,10 @@ import {
 } from "firebase/storage";
 
 import Loader from "@/components/common/Loader";
+import AdvertiseBar from "@/components/common/advertiseBar";
+import Navbar from "@/components/client/layout/navbar";
+import Footer from "@/components/client/layout/footer";
+
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -149,18 +153,22 @@ const RegisterPage = () => {
     {pageLoading ?
     <Loader />
     :  
-  
-    <Flex align={"center"} justify={"center"} bg={"white"}>
-      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+    <div>
+      <AdvertiseBar/>
+      <Navbar/>
+    
+    <Flex minH={"50vh"} align={"center"} justify={"center"} bg={"white"} >
+      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={2} px={6}>
+      {/* <img src='/icon.png' className='w-[20%] h-[20%] -my-2 justify-center m-auto' alt='logo' /> */}
         <Stack align={"center"}>
-          <Heading fontSize={"4xl"} textAlign={"center"}>
-            Sign up dev branch
+          <Heading fontSize={"3xl"} textAlign={"center"}>
+            Sign up here
           </Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
-            to enjoy all of our cool features ✌️
+            to enjoy all of our cool features
           </Text>
         </Stack>
-        <Box rounded={"lg"} bg={"white"} boxShadow={"lg"} p={8}>
+        <Box rounded={"lg"} bg={"white"} boxShadow={"2xl"} p={8}>
           <form onSubmit={formik.handleSubmit}>
             {/* ---------image Upload--- */}
             <>
@@ -206,7 +214,7 @@ const RegisterPage = () => {
 
 
                           <Button
-                          mt={'10px'}
+                          mt={'8px'}
                           color={'red'}
                          
                             onClick={DeleteImage}
@@ -241,7 +249,7 @@ const RegisterPage = () => {
 
 
             <Stack spacing={4}>
-              <HStack className="!h-[120px]">
+              <HStack className="!h-[110px]">
                 <Box h={"full"}>
                   <FormControl
                     py={"2"}
@@ -396,7 +404,7 @@ const RegisterPage = () => {
                   Sign up
                 </Button>
               </Stack>
-              <Stack pt={6}>
+              <Stack pt={0}>
                 <Text align={"center"}>
                   Already a user?{" "}
                   <Link href="/auth/login">
@@ -410,7 +418,11 @@ const RegisterPage = () => {
         </Box>
       </Stack>
     </Flex>
+    <Footer/>
+    </div>
 }
+
+
     </>
   );
 };
