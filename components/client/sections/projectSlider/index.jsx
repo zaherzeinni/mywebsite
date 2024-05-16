@@ -12,7 +12,7 @@ const ProjectSlider = ({ projects }) => {
 
 
     <div  className=" p-5  rounded-xl  ">
-            <h1 className="we-use-title1 sm:text-lg md:text-5xl text-3xl tracking-wide md:tracking-wider font-bold  mb-5 ">
+            <h1 className="we-use-title1 sm:text-md md:text-5xl text-3xl tracking-wide md:tracking-wider font-bold  mb-5 ">
              Our Projects
             </h1>
   

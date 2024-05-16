@@ -26,7 +26,7 @@ const OfferSlider = ({ offerProducts }) => {
   };
   console.log("imagesssOfferrr ====>", offerProducts.images);
   return (
-    <div className=" grid gap-1 mt-8 mb-8 px-12  grid-cols-1 lg:!h-[700px] h-full overflow-y-hidde   lg:grid-cols-7   place-items-center !w-[100%] ">
+    <div className=" grid gap-1 mt-2 mb-8 px-12  grid-cols-1 lg:!h-[700px] h-full overflow-y-hidde   lg:grid-cols-7   place-items-center !w-[100%] ">
       {/* ---- parent of slider ---- */}
 
       <div className=" w-full lg:col-span-5 col-span-2 sm:!h-[700px] !h-[100%] ">

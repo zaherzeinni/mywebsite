@@ -64,7 +64,7 @@ const {signInUser} = useAuth()
 
             {/* ----header--- */}
             <Stack align={"center"}>
-            <Heading fontSize={"4xl"} textAlign={"center"}>                
+            <Heading fontSize={"3xl"} textAlign={"center"}>                
                 Sign in to your account
                 </Heading>
                 <Text fontSize={"lg"} color={"gray.600"}>

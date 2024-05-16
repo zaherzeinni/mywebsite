@@ -84,7 +84,7 @@ export default function ProductsPage({
       <FireWork/> } */}
       <AdvertiseBar />
       <Navbar />
-      <div className=" text-end text-2xl mr-32    scroll-smooth">
+      <div className=" text-end text-lg mr-32    scroll-smooth">
       {resultProducts.length >0 ? `${resultProducts.length} products found` : "no products found" }
       </div>
       <OfferSlider offerProducts={offerProducts} />

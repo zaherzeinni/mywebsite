@@ -87,7 +87,7 @@ const Navbar = () => {
       <div
         ref={navbar}
         className={
-          "group/header header relative top-0 z-[500] flex w-full flex-row flex-wrap items-center justify-between md:py-3 md:px-3 text-black duration-150 lg:px-8 bg-white"
+          "group/header header relative top-0 z-[500] flex w-full flex-row flex-wrap items-center justify-between md:py-0 md:px-3 text-black duration-150 lg:px-8 bg-white"
           //     cn(
           //   'group/header header relative top-0 z-[500] flex w-full flex-row flex-wrap items-center justify-between py-3 px-3 text-black duration-150 lg:px-8',
           // )
