@@ -30,7 +30,6 @@ const CustomSupportCard = ({ title, desc, icon, buttonText,linkText }) => {
         textColor={"white"}
         _hover={{ bg: "blue.600" }}
        
-        
       >
         {linkText 
         ? 
