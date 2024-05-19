@@ -15,7 +15,7 @@ const Support = () => {
             <CustomSupportCard 
             title={"Chat Support"}
             desc={"Chat online with our team now from anywhere. We provide you with a seamless and hassle-free online chat experience from the comfort of your home. Get the proper assistance now!"}
-            icon={ <IoChatboxEllipsesSharp className='mt-2 w-14 h-14 text-white bg-red-500 rounded-2xl p-3 relative -top-8 -right-8' />}
+            icon={ <IoChatboxEllipsesSharp className='mt-2 w-14 h-14 text-white bg-blue-500 rounded-2xl p-3 relative -top-8 -right-8' />}
             
             buttonText= {"Chat now"} 
             linkText ={'https://wa.me/96170480041'} 
@@ -25,7 +25,7 @@ const Support = () => {
             <CustomSupportCard 
             title={"Call Support"}
             desc={"Reach out to us with your questions, concerns, or challenges. We’ll be happy to help you at any time, and we’re always trying to make things easier for you!"}
-            icon={ <FaPhone className='mt-2 w-14 h-14 text-white bg-red-500 rounded-2xl p-3 relative -top-8 -right-8' />}
+            icon={ <FaPhone className='mt-2 w-14 h-14 text-white bg-blue-500 rounded-2xl p-3 relative -top-8 -right-8' />}
             buttonText={"Call expert support"}
             linkText={"tel:+96170480041"}
             />
@@ -34,7 +34,7 @@ const Support = () => {
             <CustomSupportCard 
             title={"Buy and Sell your Product"}
             desc={"Looking for a new phone or new Laptop? Sell your old phone here for the most cash!"}
-            icon={ <FaCalendar className='mt-2 w-14 h-14 text-white bg-red-500 rounded-2xl p-3 relative -top-8 -right-8' />}
+            icon={ <FaCalendar className='mt-2 w-14 h-14 text-white bg-blue-500 rounded-2xl p-3 relative -top-8 -right-8' />}
             buttonText={"Submit an application "}
             />
 

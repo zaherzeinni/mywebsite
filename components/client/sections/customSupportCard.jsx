@@ -26,9 +26,9 @@ const CustomSupportCard = ({ title, desc, icon, buttonText,linkText }) => {
         borderRadius={"0px 0px 9px 9px"}
         fontSize={18}
         mt="4"
-        bg={"red"}
+        bg={"blue"}
         textColor={"white"}
-        _hover={{ bg: "red.600" }}
+        _hover={{ bg: "blue.600" }}
        
         
       >

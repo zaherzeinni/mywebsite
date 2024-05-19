@@ -188,7 +188,7 @@ export default function ProductSingle() {
                             <H5 className="!my-2">In stock</H5>
                           </Flex>
                         ) : (
-                          <Flex gap={1}>
+                          <Flex gap={1} mt={5}>
                             <VscClose className="text-red-600 text-lg top-1 relative" />
                             <H5 className="text-red-600">Out of stock</H5>
                           </Flex>
