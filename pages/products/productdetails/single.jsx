@@ -129,7 +129,7 @@ export default function ProductSingle() {
                           src={
                             product?.images && product?.images[selectedImage]
                           }
-                          className="sm:w-[30vw] md:w-[30vw] justify-center flex m-auto rounded-lg object-contain"
+                          className="sm:w-[30vw] md:w-[27vw] justify-center flex m-auto rounded-lg object-contain"
                         />
                       )}
                     </Box>
@@ -230,15 +230,15 @@ export default function ProductSingle() {
                         <img src="/whatsapp-s.png" alt="whatsapp" width={55} height={50}/>
                         </Link>
 
-                        <Link href={`https://www.facebook.com/sharer/sharer.php?${getUrl} %0D%0A  `}
+                        <Link href={`https://www.facebook.com/send?${getUrl} %0D%0A  `}
                           target="_blank" >
                         
-                        <img src="/facebook-s.jpg" alt="facebook" width={50} height={40}/>
+                        <img src="/facebook-s.jpg" alt="facebook" width={50} height={45}/>
                         </Link>                        
                         
-                        <img src="/instagram-s.jpg" alt="instagram" width={45} height={40}/>
-                        <img src="/tiktok-s.jpg" alt="tiktok" width={45} height={40}/>
-                        <img src="/copylink-s.jpg" alt="copylink" width={55} height={40}/>
+                        <img src="/instagram-s.jpg" alt="instagram" width={40} height={40}/>
+                        <img src="/tiktok-s.jpg" alt="tiktok" width={50} height={40}/>
+                        <img src="/copylink-s.jpg" alt="copylink" width={50} height={40}/>
                       </Flex>
                     </Box>
                   
