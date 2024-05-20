@@ -197,38 +197,53 @@ export default function ProductSingle() {
                     </Box>
 
                     <Box alignItems="center" mb={2}>
-                      <Box></Box>
+                    
                       {product.instock === true ? (
                         <Link
                           href={`https://api.whatsapp.com/send?phone=96170480041&text=Salam, I want to reserve this product. %0D%0A *${product.title}* %0D%0A *Price:* ${product.price} $ %0D%0A *URL:* ${getUrl} %0D%0A Thank you!   `}
                           target="_blank"
                         >
                           <Button
-                            bg={"green.400"}
-                            className=" hover:!bg-green-700 hover:animate-ping1 !text-white"
+                            bg={"green"}
+                            className=" hover:!bg-green-700 hover:animate-pulse !text-white"
                             ml={1}
                           >
                             Reserve this Product
                           </Button>
                         </Link>
+                        
                       ) : (
                         <Button className=" hidden hover:!bg-white !bg-white cursor-default"></Button>
                       )}
                     </Box>
-                    {/* 
-                "https://api.whatsapp.com/send?phone=96170480041&amp;text=Hello%2C+I+want+reserve+this+product%0D%0A%0D%0A**%0D%0A%2F%0D%0AThank+you%21" */}
 
-                    {/* href={`/products/productdetails/single?id=${data.id}`} */}
+                        {/* ------------------Social Media Icons------------------ */}
+
+
+
+
+                    <Box>
+                      <Flex>
+                        <Link href={`https://api.whatsapp.com/send?phone=&text=Salam, please check this product. %0D%0A *${product.title}* %0D%0A *Price:* ${product.price} $ %0D%0A *URL:* ${getUrl} %0D%0A Thank you!   `}
+                          target="_blank" >
+
+                        <img src="/whatsapp-s.png" alt="whatsapp" width={55} height={50}/>
+                        </Link>
+
+                        <Link href={`https://www.facebook.com/sharer/sharer.php?${getUrl} %0D%0A  `}
+                          target="_blank" >
+                        
+                        <img src="/facebook-s.jpg" alt="facebook" width={50} height={40}/>
+                        </Link>                        
+                        
+                        <img src="/instagram-s.jpg" alt="instagram" width={45} height={40}/>
+                        <img src="/tiktok-s.jpg" alt="tiktok" width={45} height={40}/>
+                        <img src="/copylink-s.jpg" alt="copylink" width={55} height={40}/>
+                      </Flex>
+                    </Box>
+                  
+                  
                   </Box>
-                  {/* in whatsApp */}
-                  {/* one space */}
-                  {/* %0D%0A */}
-                  {/* skip line  */}
-                  {/* %0D%0A%0D%0A */}
-                  {/* comma */}
-                  {/* %2C */}
-                  {/* space */}
-                  {/* + */}
                 </Box>
 
                 {/* <ProductDescription  /> */}
