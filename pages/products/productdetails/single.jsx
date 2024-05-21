@@ -235,7 +235,10 @@ export default function ProductSingle() {
 
 
                     <Box className="my-2">
-                      <Flex>
+                      <Box className="mx-1">
+                      Share:
+                      </Box>
+                    <Flex>
                         <Link href={`https://api.whatsapp.com/send?phone=&text=Salam, please check this product. %0D%0A *${product.title}* %0D%0A *Price:* ${product.price} $ %0D%0A *URL:* ${getUrl} %0D%0A Thank you!   `}
                           target="_blank" >
 
