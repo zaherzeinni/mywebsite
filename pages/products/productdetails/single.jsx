@@ -39,6 +39,18 @@ import { chakra } from "@chakra-ui/react";
 import { FcCheckmark } from "react-icons/fc";
 import { VscClose } from "react-icons/vsc";
 
+
+import { FacebookShareButton, FacebookIcon } from 'react-share';
+
+const Facebook = ({ url, quotes, hashtag }) => {
+  return (
+    <>
+    
+       
+    
+    </>
+  )}
+  
 // ================================================================
 
 // ================================================================
@@ -222,7 +234,7 @@ export default function ProductSingle() {
 
 
 
-                    <Box>
+                    <Box className="my-2">
                       <Flex>
                         <Link href={`https://api.whatsapp.com/send?phone=&text=Salam, please check this product. %0D%0A *${product.title}* %0D%0A *Price:* ${product.price} $ %0D%0A *URL:* ${getUrl} %0D%0A Thank you!   `}
                           target="_blank" >
@@ -230,15 +242,17 @@ export default function ProductSingle() {
                         <img src="/whatsapp-s.png" alt="whatsapp" width={55} height={50}/>
                         </Link>
 
-                        <Link href={`https://www.facebook.com/send?${getUrl} %0D%0A  `}
-                          target="_blank" >
-                        
-                        <img src="/facebook-s.jpg" alt="facebook" width={50} height={45}/>
-                        </Link>                        
-                        
-                        <img src="/instagram-s.jpg" alt="instagram" width={40} height={40}/>
-                        <img src="/tiktok-s.jpg" alt="tiktok" width={50} height={40}/>
-                        <img src="/copylink-s.jpg" alt="copylink" width={50} height={40}/>
+                        <FacebookShareButton
+                          url={getUrl}     //eg. https://www.example.com
+                          quotes='qoutess'  //"Your Quotes"
+                          hashtag='@' // #hashTag
+                          >
+                            <FacebookIcon className="w-[45px] h-[45px] mx-2" />
+                          </FacebookShareButton>                         
+                                            
+                        <img src="/instagram-s.jpg" alt="instagram" width={50} height={30}/>
+                        <img src="/tiktok-s.jpg" alt="tiktok" width={45} height={35}/>
+                        <img src="/copylink-s.jpg" alt="copylink" width={60} height={40}/>
                       </Flex>
                     </Box>
                   
