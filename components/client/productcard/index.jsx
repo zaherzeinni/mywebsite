@@ -84,8 +84,11 @@ const ProductCard = ({ data, index }) => {
           <Heading size="md">{data?.title}</Heading>
           {/* <Text>{data?.desc}</Text> */}
           <Text color="blue.600" fontSize="2xl">
-            ${data?.price}
+            ${data?.price}   <span>
+          {data.discount > 1 && <span className="text-red-500 !text-sm  font-serif font-semibold">on sale %{data.discount}</span>}
+          </span>
           </Text>
+        
           {/* ------------------------------------instock out of stock--------------------------------------- */}
           <Text>
             {data?.instock ? (

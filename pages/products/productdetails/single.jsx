@@ -41,6 +41,7 @@ import { VscClose } from "react-icons/vsc";
 
 
 import { FacebookShareButton, FacebookIcon,FacebookMessengerShareButton,FacebookMessengerIcon,EmailShareButton,EmailIcon,WhatsappIcon,TelegramShareButton,TelegramIcon} from 'react-share';
+import { message } from "antd";
 
   
 // ================================================================
@@ -86,6 +87,8 @@ export default function ProductSingle() {
     if (id) getProduct();
   }, [id]);
 
+  
+
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectVariants, setSelectVariants] = useState({
     option: "option 1",
@@ -104,13 +107,23 @@ export default function ProductSingle() {
   const handleImageClick = (ind) => () => setSelectedImage(ind);
 
   const [getUrl, setGetUrl] = useState();
-  const [whatsappUrl, setWhatsappUrl] = useState();
+ 
 
   useEffect(() => {
     const currentUrl = window.location.href;
     console.log(currentUrl, "urlllllllll");
     setGetUrl(currentUrl);
   }, []);
+
+
+
+
+  const copyToClipboard = e => {
+    navigator.clipboard.writeText(window.location.toString())
+    message.info("URL copied to clipboard successfully")
+  }
+
+  const priceAsale = (product.discount/100)*(product.price)
 
   return (
     <div>
@@ -168,13 +181,17 @@ export default function ProductSingle() {
                   {/* --------------Title and Details----------------- */}
                   <Box className=" justify-center m-auto">
                   <Box>Product Name:</Box>
-                    <H1 mb={1} className="text-justify w-[70%] md:w-auto">
+                    <H1 mb={1} className="text-justify w-[70%] md:w-auto   font-sans">
                       {product.title}
                     </H1>
 
-                    <Box alignItems="center" mb={1}>
+                    <Box alignItems="center " mb={1}>
+                    
                       <Box>Brand:</Box>
                       <H3>{product.subcategory}</H3>
+                      <Box>Condition:</Box>
+                      <H3>{product.category}</H3>
+                      
                       <Box my={2}>Description:</Box>
                     </Box>
 
@@ -182,9 +199,16 @@ export default function ProductSingle() {
 
                     <Box pt={1} my={1}>
                     <Box my={2}>Price:</Box>
+                      {product.discount > 1 ? 
                       <H4 color="primary.main" mb={0.5} lineHeight="1">
-                        $ {product.price}
+                        <span className=" line-through">$ {product.price}</span>  <span className="text-red-500">${product.price-priceAsale} (on sale)</span>
                       </H4>
+                        :
+                        <H4 color="primary.main" mb={0.5} lineHeight="1">
+                        <span>$ {product.price}</span>
+                      </H4>
+                        }
+
                       <Box color="inherit">
                         {product.instock === true ? (
                           <Flex gap={1}>
@@ -227,7 +251,7 @@ export default function ProductSingle() {
 
 
                     <Box className="my-2">
-                      <Box className="mx-1">
+                      <Box className="mx-1 my-1">
                       Share:
                       </Box>
                     <Flex>
@@ -235,7 +259,7 @@ export default function ProductSingle() {
                        
                         <Link href={`https://api.whatsapp.com/send?phone=&text=Salam, please check this product. %0D%0A *${product.title}* %0D%0A *Price:* ${product.price} $ %0D%0A *URL:* ${getUrl} %0D%0A Thank you!   `}
                           target="_blank">
-                        <WhatsappIcon className="w-[45px] h-[45px] mx-1" />
+                        <WhatsappIcon className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
                         </Link>
 
                         <FacebookShareButton
@@ -243,7 +267,7 @@ export default function ProductSingle() {
                           quotes='qoutess'  //"Your Quotes"
                           hashtag='@' // #hashTag
                           >
-                            <FacebookIcon className="w-[45px] h-[45px] mx-1" />
+                            <FacebookIcon className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
                           </FacebookShareButton>                         
                                             
                           <FacebookMessengerShareButton
@@ -251,7 +275,7 @@ export default function ProductSingle() {
                           quotes='qoutess'  //"Your Quotes"
                           hashtag='@' // #hashTag
                           >
-                            <FacebookMessengerIcon className="w-[45px] h-[45px] mx-1" />
+                            <FacebookMessengerIcon className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
                           </FacebookMessengerShareButton>    
                           
                           
@@ -260,7 +284,7 @@ export default function ProductSingle() {
                           quotes='qoutess'  //"Your Quotes"
                           hashtag='@' // #hashTag
                           >
-                            <EmailIcon className="w-[45px] h-[45px] mx-1" />
+                            <EmailIcon className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
                           </EmailShareButton>    
 
 
@@ -269,19 +293,16 @@ export default function ProductSingle() {
                           quotes='qoutess'  //"Your Quotes"
                           hashtag='@' // #hashTag
                           >
-                            <TelegramIcon className="w-[45px] h-[45px] mx-1" />
+                            <TelegramIcon className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
                           </TelegramShareButton>    
 
 
 
 
-                        <Link href={'${getUrl}'}>
-                        <img src="/instagram-s.jpg" alt="instagram" width={50} height={30}/>
-                        </Link>
+                        <button onClick={copyToClipboard} className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500">
+                        <img src="/copylink-s.jpg" alt="copylink" />
+                        </button>
 
-
-                        <img src="/tiktok-s.jpg" alt="tiktok" width={45} height={35}/>
-                        <img src="/copylink-s.jpg" alt="copylink" width={60} height={40}/>
                       </Flex>
                     </Box>
                   
