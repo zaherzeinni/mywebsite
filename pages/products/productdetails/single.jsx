@@ -40,16 +40,8 @@ import { FcCheckmark } from "react-icons/fc";
 import { VscClose } from "react-icons/vsc";
 
 
-import { FacebookShareButton, FacebookIcon } from 'react-share';
+import { FacebookShareButton, FacebookIcon,FacebookMessengerShareButton,FacebookMessengerIcon,EmailShareButton,EmailIcon,WhatsappIcon,TelegramShareButton,TelegramIcon} from 'react-share';
 
-const Facebook = ({ url, quotes, hashtag }) => {
-  return (
-    <>
-    
-       
-    
-    </>
-  )}
   
 // ================================================================
 
@@ -239,10 +231,11 @@ export default function ProductSingle() {
                       Share:
                       </Box>
                     <Flex>
+                       
+                       
                         <Link href={`https://api.whatsapp.com/send?phone=&text=Salam, please check this product. %0D%0A *${product.title}* %0D%0A *Price:* ${product.price} $ %0D%0A *URL:* ${getUrl} %0D%0A Thank you!   `}
-                          target="_blank" >
-
-                        <img src="/whatsapp-s.png" alt="whatsapp" width={55} height={50}/>
+                          target="_blank">
+                        <WhatsappIcon className="w-[45px] h-[45px] mx-1" />
                         </Link>
 
                         <FacebookShareButton
@@ -250,10 +243,43 @@ export default function ProductSingle() {
                           quotes='qoutess'  //"Your Quotes"
                           hashtag='@' // #hashTag
                           >
-                            <FacebookIcon className="w-[45px] h-[45px] mx-2" />
+                            <FacebookIcon className="w-[45px] h-[45px] mx-1" />
                           </FacebookShareButton>                         
                                             
+                          <FacebookMessengerShareButton
+                          url={getUrl}     //eg. https://www.example.com
+                          quotes='qoutess'  //"Your Quotes"
+                          hashtag='@' // #hashTag
+                          >
+                            <FacebookMessengerIcon className="w-[45px] h-[45px] mx-1" />
+                          </FacebookMessengerShareButton>    
+                          
+                          
+                          <EmailShareButton
+                          url={getUrl}     //eg. https://www.example.com
+                          quotes='qoutess'  //"Your Quotes"
+                          hashtag='@' // #hashTag
+                          >
+                            <EmailIcon className="w-[45px] h-[45px] mx-1" />
+                          </EmailShareButton>    
+
+
+                          <TelegramShareButton
+                          url={getUrl}     //eg. https://www.example.com
+                          quotes='qoutess'  //"Your Quotes"
+                          hashtag='@' // #hashTag
+                          >
+                            <TelegramIcon className="w-[45px] h-[45px] mx-1" />
+                          </TelegramShareButton>    
+
+
+
+
+                        <Link href={getUrl}>
                         <img src="/instagram-s.jpg" alt="instagram" width={50} height={30}/>
+                        </Link>
+
+
                         <img src="/tiktok-s.jpg" alt="tiktok" width={45} height={35}/>
                         <img src="/copylink-s.jpg" alt="copylink" width={60} height={40}/>
                       </Flex>
