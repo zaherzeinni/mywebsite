@@ -275,7 +275,7 @@ export default function ProductSingle() {
 
 
 
-                        <Link href={getUrl}>
+                        <Link href={'${getUrl}'}>
                         <img src="/instagram-s.jpg" alt="instagram" width={50} height={30}/>
                         </Link>
 
