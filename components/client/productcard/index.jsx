@@ -112,26 +112,6 @@ const ProductCard = ({ data, index }) => {
               <Link href={`/products/productdetails/single?id=${data.id}`}>Buy now</Link>
             </Button>
 
-            {/* href="/products/product-categoris/medikal" */}
-            {/* `/shop/single?id=${item.id}` */}
-            
-            {/* <Link href={`/productdetails/single?id=${item.id}`}>
-              <a>
-                <Avatar
-                  alt={item.name}
-                  src={item.imgUrl}
-                  sx={{
-                    mx: 2,
-                    width: 76,
-                    height: 76,
-                  }}
-                />
-              </a>
-            </Link> */}
-
-
-
-
             {cartExist ? (
               <Button
                 onClick={() => addToCart(data)}

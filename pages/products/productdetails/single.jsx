@@ -44,6 +44,30 @@ import { message } from "antd";
 
 
 
+
+
+
+
+
+import { useAuth } from "@/functions/context";
+// import { Button } from "antd";
+
+import {
+  Card,
+  CardFooter,
+  Stack,
+  Heading,
+  ButtonGroup,
+  Text,
+} from "@chakra-ui/react";
+
+import { FaSearchPlus } from "react-icons/fa";
+import { RxCross2 } from "react-icons/rx";
+import { FiHeart } from "react-icons/fi";
+
+
+
+
 // ================================================================
 
 // ================================================================
@@ -64,7 +88,7 @@ const ProductDescription = () => {
   );
 };
 
-export default function ProductSingle({products}) {
+export default function ProductSingle({products,data,index}) {
   const [product, setProduct] = useState({});
   console.log("🎭🎭🎭=>product.title", product.title);
 
@@ -127,6 +151,58 @@ export default function ProductSingle({products}) {
 
 
   products.length=4
+
+
+
+
+
+
+  const [wishListExist, setWishListExist] = useState(true);
+  const [cartExist, setCartExist] = useState(true);
+  const {
+    wishList,
+    setWishList,
+    cart,
+    setCart,
+    addToWishList,
+    removeFromWishList,
+    addToCart,
+    removeFromCartList,
+  } = useAuth();
+
+
+
+
+  useEffect(() => {
+    const findItemInWishList = wishList.find((item) => item.id === products.id);
+
+    console.log("findItemInWishList==>", findItemInWishList);
+    if (findItemInWishList !== undefined) {
+      return setWishListExist(false);
+    } else {
+      setWishListExist(true);
+    }
+  }, [wishList]);
+
+  //cart useEffect for item
+
+  useEffect(() => {
+    const findItemInCart = cart?.find((item) => item.id === products.id);
+
+    console.log("findItemInCart==>", findItemInCart);
+    if (findItemInCart !== undefined) {
+      return setCartExist(false);
+    } else {
+      setCartExist(true);
+    }
+  }, [cart]);
+
+
+
+
+
+
+
 
   return (
     <div>
@@ -329,14 +405,114 @@ export default function ProductSingle({products}) {
         )}
       </Box>
 
-        Related Products
 
+
+
+
+
+      <h4 className="sm:text-lg md:text-5xl text-3xl tracking-wide md:tracking-wider font-bold we-use-title3">
+              Related Products
+            </h4>
         
           <div>
           
          {products.map((item,index)=>(
           <div key={index}>
-            {item.title}
+              <SimpleGrid column={[1,1,3]} >
+    <Card key={index} maxW="2xs" h={'450px'}  >
+      <Box className="flex-col justify-center h-[80%]  ">
+      
+      <Link href={`/products/productdetails/single?id=${products.id}`}>
+        <Image
+          src={item.images}
+          alt="img"
+          borderRadius="10px 10px 0px 0px"
+          width={"100%"}
+          height={"71%"}
+          className="hover:scale-110   duration-700 cursor-pointer "
+        />
+      </Link>
+      
+        <Stack mt="6" spacing="3" ml={5}>
+          <Heading size="md">{item?.title}</Heading>
+          {/* <Text>{data?.desc}</Text> */}
+          <Text color="blue.600" fontSize="2xl">
+            ${item?.price}   <span>
+          {item.discount > 1 && <span className="text-red-500 !text-sm  font-serif font-semibold">on sale %{item.discount}</span>}
+          </span>
+          </Text>
+        
+          {/* ------------------------------------instock out of stock--------------------------------------- */}
+          <Text>
+            {item?.instock ? (
+              <span className="flex flex-row gap-2 ">
+                <FcCheckmark className="text-xl " /> In stock
+              </span>
+            ) : (
+              <span className="flex flex-row gap-2 ">
+                <RxCross2 className="text-red-600 text-xl" /> Out of stock
+              </span>
+            )}
+          </Text>
+        </Stack>
+      </Box>
+      {/* <Divider my={3}/> */}
+      <CardFooter >
+        {item?.instock ? (
+        
+          <ButtonGroup spacing="1" m={"auto"} className="flex flex-row sm:flex-col lg:flex-row !-mb-14" >
+            <Button variant="solid" colorScheme="blue">
+              <Link href={`/products/productdetails/single?id=${item.id}`}>Buy now</Link>
+            </Button>
+
+            {cartExist ? (
+              <Button
+                onClick={() => addToCart(products)}
+                variant="ghost"
+                colorScheme="blue"
+              >
+                Add to cart
+              </Button>
+            ) : (
+              <Button className="text-red-500"
+                onClick={() => removeFromCartList(products)}
+                variant="ghost"
+                colorScheme="red"
+              >
+                Remove
+              </Button>
+            )}
+          </ButtonGroup>
+          
+        ) : (
+          <div className="text-center m-auto w-auto h-auto !-mb-14 ">
+            <img src="/soldout.png" className="h-11 w-56 m-auto " />
+          </div>
+        )}
+        {/* ---------------------------wishlist and zoom product details-------------------------------- */}
+          
+         
+        <div >
+          {wishListExist ? (
+            <FiHeart
+              onClick={() => addToWishList(data)}
+              className="text-2xl text-red-400 absolute top-5 right-2 hover:cursor-pointer hover:scale-125   duration-700 "
+            />
+          ) : (
+            <GoHeartFill
+              onClick={() => removeFromWishList(data)}
+              className="text-2xl text-red-600 absolute top-5 right-2 hover:cursor-pointer hover:scale-125   duration-700 "
+            />
+          )}
+
+          {/* <Link href={`/products/productdetails/single?id=${data.id}`}> */}
+            {/* <FaSearchPlus className="  absolute text-xl top-14 right-2 text-gray-400  !font-light  hover:scale-125   duration-700 " /> */}
+          {/* </Link> */}
+        </div>
+      
+      </CardFooter>
+    </Card>
+    </SimpleGrid>
           </div>
          ))}
           </div>
