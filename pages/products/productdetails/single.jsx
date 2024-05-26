@@ -335,7 +335,7 @@ export default function ProductSingle({products}) {
           <div>
           
          {products.map((item,index)=>(
-          <div>
+          <div key={index}>
             {item.title}
           </div>
          ))}
