@@ -407,10 +407,10 @@ export default function ProductSingle({products,data,index}) {
 
 
 
+            {/* ----------------------------RELATED PRODUCTS------------------------------------ */}
 
 
-
-      <h4 className="sm:text-lg md:text-5xl text-3xl tracking-wide md:tracking-wider font-bold we-use-title3">
+            <h4 className="sm:text-lg md:text-5xl text-3xl tracking-wide md:tracking-wider font-bold we-use-title3">
               Related Products
             </h4>
         
@@ -418,7 +418,9 @@ export default function ProductSingle({products,data,index}) {
           
          {products.map((item,index)=>(
           <div key={index}>
-              <SimpleGrid column={[1,1,3]} >
+            
+              <Box className="!flex justify-center items-center"  >
+      
     <Card key={index} maxW="2xs" h={'450px'}  >
       <Box className="flex-col justify-center h-[80%]  ">
       
@@ -512,7 +514,9 @@ export default function ProductSingle({products,data,index}) {
       
       </CardFooter>
     </Card>
-    </SimpleGrid>
+
+    </Box>
+ 
           </div>
          ))}
           </div>
