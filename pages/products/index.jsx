@@ -61,8 +61,6 @@ export default function ProductsPage({
 
   console.log("Result Products ====>", resultProducts);
 
-//  const showProduct = products.length=4
-//  console.log("show only last 4 products",showProduct)
 
   // -----FireWork-----
 
@@ -76,12 +74,16 @@ export default function ProductsPage({
 
 
 
+  
+
 
 
   return (
     <div className="scroll-smooth">
+      
       {/* {modalOpen === true && 
       <FireWork/> } */}
+
       <AdvertiseBar />
       <Navbar />
       <div className=" text-end text-lg mr-32    scroll-smooth">

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
 import Loader from "@/components/common/Loader";
@@ -43,7 +42,8 @@ import { VscClose } from "react-icons/vsc";
 import { FacebookShareButton, FacebookIcon,FacebookMessengerShareButton,FacebookMessengerIcon,EmailShareButton,EmailIcon,WhatsappIcon,TelegramShareButton,TelegramIcon} from 'react-share';
 import { message } from "antd";
 
-  
+
+
 // ================================================================
 
 // ================================================================
@@ -64,7 +64,7 @@ const ProductDescription = () => {
   );
 };
 
-export default function ProductSingle() {
+export default function ProductSingle({products}) {
   const [product, setProduct] = useState({});
   console.log("🎭🎭🎭=>product.title", product.title);
 
@@ -125,10 +125,12 @@ export default function ProductSingle() {
 
   const priceAsale = (product.discount/100)*(product.price)
 
+
+  products.length=4
+
   return (
     <div>
       <ClientLayout />
-
       <Box className="">
         {loading ? (
           <Loader />
@@ -138,8 +140,12 @@ export default function ProductSingle() {
               <Box className=" justify-center items-center m-auto space-x-1 md:space-x-10 ">
                 <Box className="grid md:flex justify-center align-middle space-x-10 ">
                   <Box className="lg:grid">
+                    
+                    
                     {/* -------------------Product Image---------------------- */}
-                    <Box mb={2} className=" rounded-xl md:mt-3 mt-2 mx-5 ">
+
+            
+                    <Box mb={2} className=" rounded-xl md:mt-3 mt-2 mx-5 imgbox ">
                       {product?.images && product?.images[0] && (
                         <Image
                           alt={product?.title}
@@ -150,14 +156,16 @@ export default function ProductSingle() {
                         />
                       )}
                     </Box>
-
+               
+                 
                     {/* --------------small images to select----------------- */}
 
                     <Box className="flex justify-center m-auto md:w-[500px] w-auto my-6 ">
+             
                       {product?.images &&
                         product?.images.map((url, ind) => (
                           <Box
-                            className="w-[40px] md:w-[60px]  m-auto   rounded-2xl  border-[1px] cursor-pointer"
+                            className="w-[40px] md:w-[60px]  m-auto   rounded-2xl p-1 border-[1px] cursor-pointer imgbox"
                             key={ind}
                             ml={ind === 0 ? "auto" : 0}
                             onClick={handleImageClick(ind)}
@@ -168,14 +176,16 @@ export default function ProductSingle() {
                             }
                             borderColor={
                               selectedImage === ind
-                                ? "primary.main"
-                                : "grey.400"
+                                ? "red"
+                                : "primary.main"
                             }
                           >
                             <Image className=" rounded-lg  " src={url} />
                           </Box>
                         ))}
+                      
                     </Box>
+                 
                   </Box>
 
                   {/* --------------Title and Details----------------- */}
@@ -223,7 +233,8 @@ export default function ProductSingle() {
                         )}
                       </Box>
                     </Box>
-
+                    
+                        {/* --------------------Social Media to Share:---------------------- */}
                     <Box alignItems="center" mb={2}>
                     
                       {product.instock === true ? (
@@ -245,9 +256,10 @@ export default function ProductSingle() {
                       )}
                     </Box>
 
+
+
+
                         {/* ------------------Social Media Icons------------------ */}
-
-
 
 
                     <Box className="my-2">
@@ -317,9 +329,53 @@ export default function ProductSingle() {
         )}
       </Box>
 
+        Related Products
+
+        
+          <div>
+          
+         {products.map((item,index)=>(
+          <div>
+            {item.title}
+          </div>
+         ))}
+          </div>
+      
+
       <Footer />
     </div>
   );
 }
 
-// <a href="https://api.whatsapp.com/send?phone=96170480041&amp;text=Hello%2C+I+want+reserve+this+product%0D%0A%0D%0A*Open+Box+iPhone+15+Plus+Collection*%0D%0A*Price:* 995%C2%A0%24%0D%0A*URL:* https%3A%2F%2Fwww.khatwtelephone.com%2Flb%2Fproduct%2Fopen-box-iphone-15-plus-collection%2F%0D%0AThank+you%21" target="_blank"><Button bg={"green.400"}  className=" hover:!bg-green-700 hover:animate-ping1 !text-white"  ml={1}>Reserve this Product</Button ></a>
+
+
+// serverside
+ProductSingle.getInitialProps = async (context) => {
+  let products = [];
+  //navbar.jsx href={`/products?category=${item.title.toLowerCase()}`}
+  const category = context.query.category;
+  const subcategory = context.query.subcategory;
+  // step 1
+  const search = context.query.search;
+
+  //console.log("categoryyyyy", category);
+
+  //console.log("subcategoryyyyy", subcategory);
+
+  //    where("fieldname", "==", fieldValue)
+
+  products = await getDocumentsOrder(
+    "products",
+    orderBy("timeStamp", "desc"),
+
+    //category i am searching for all products that have a category name / same as subcategory , else null nothing (filteration)
+    category
+      ? where("category", "==", category)
+      : subcategory
+      ? where("subcategory", "==", subcategory)
+      : null
+  )
+  return {
+    products:products
+  }
+  }
