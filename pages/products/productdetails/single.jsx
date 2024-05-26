@@ -64,7 +64,7 @@ import {
 import { FaSearchPlus } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import { FiHeart } from "react-icons/fi";
-
+import { GoHeartFill } from "react-icons/go";
 
 
 
