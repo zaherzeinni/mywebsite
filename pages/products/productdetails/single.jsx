@@ -88,9 +88,9 @@ const ProductDescription = () => {
   );
 };
 
-export default function ProductSingle({products,data,index}) {
+export default function ProductSingle({products,category,subcategory,data,index}) {
   const [product, setProduct] = useState({});
-  console.log("🎭🎭🎭=>product.title", product.title);
+ 
 
   const [loading, setLoading] = useState(false);
 
@@ -149,6 +149,9 @@ export default function ProductSingle({products,data,index}) {
 
   const priceAsale = (product.discount/100)*(product.price)
 
+  
+  
+  
 
   products.length=4
 
@@ -221,7 +224,7 @@ export default function ProductSingle({products,data,index}) {
                     {/* -------------------Product Image---------------------- */}
 
             
-                    <Box mb={2} className=" rounded-xl md:mt-3 mt-2 mx-5 imgbox ">
+                    <Box mb={2} className=" rounded-xl md:mt-3 mt-2 mx-5 imgbox  ">
                       {product?.images && product?.images[0] && (
                         <Image
                           alt={product?.title}
@@ -407,22 +410,25 @@ export default function ProductSingle({products,data,index}) {
 
 
 
+
+
             {/* ----------------------------RELATED PRODUCTS------------------------------------ */}
-
-
+              <br/>
+            <hr></hr>
             <h4 className="sm:text-lg md:text-5xl text-3xl tracking-wide md:tracking-wider font-bold we-use-title3">
               Related Products
             </h4>
-        
-          <div>
+          
+          <div className="flex justify-center">
+          <SimpleGrid columns={[1,1,2,4]} gap={3} >
           
          {products.map((item,index)=>(
           <div key={index}>
             
               <Box className="!flex justify-center items-center"  >
       
-    <Card key={index} maxW="2xs" h={'450px'}  >
-      <Box className="flex-col justify-center h-[80%]  ">
+    <Card key={index} maxW="2xs" h={'480px'} gap={1} mx={2}  >
+      <Box className="flex-col justify-center h-[80%] overflow-hidden ">
       
       <Link href={`/products/productdetails/single?id=${products.id}`}>
         <Image
@@ -431,7 +437,7 @@ export default function ProductSingle({products,data,index}) {
           borderRadius="10px 10px 0px 0px"
           width={"100%"}
           height={"71%"}
-          className="hover:scale-110   duration-700 cursor-pointer "
+          className="hover:scale-110   duration-700 cursor-pointer  "
         />
       </Link>
       
@@ -469,7 +475,7 @@ export default function ProductSingle({products,data,index}) {
 
             {cartExist ? (
               <Button
-                onClick={() => addToCart(products)}
+                onClick={() => addToCart(item)}
                 variant="ghost"
                 colorScheme="blue"
               >
@@ -477,7 +483,7 @@ export default function ProductSingle({products,data,index}) {
               </Button>
             ) : (
               <Button className="text-red-500"
-                onClick={() => removeFromCartList(products)}
+                onClick={() => removeFromCartList(item)}
                 variant="ghost"
                 colorScheme="red"
               >
@@ -497,12 +503,12 @@ export default function ProductSingle({products,data,index}) {
         <div >
           {wishListExist ? (
             <FiHeart
-              onClick={() => addToWishList(data)}
+              onClick={() => addToWishList(item)}
               className="text-2xl text-red-400 absolute top-5 right-2 hover:cursor-pointer hover:scale-125   duration-700 "
             />
           ) : (
             <GoHeartFill
-              onClick={() => removeFromWishList(data)}
+              onClick={() => removeFromWishList(item)}
               className="text-2xl text-red-600 absolute top-5 right-2 hover:cursor-pointer hover:scale-125   duration-700 "
             />
           )}
@@ -519,8 +525,9 @@ export default function ProductSingle({products,data,index}) {
  
           </div>
          ))}
+            </SimpleGrid>
           </div>
-      
+   
 
       <Footer />
     </div>
@@ -556,6 +563,8 @@ ProductSingle.getInitialProps = async (context) => {
       : null
   )
   return {
-    products:products
+    products:products,
+    category:category,
+    subcategory:subcategory
   }
   }

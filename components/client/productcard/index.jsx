@@ -66,8 +66,11 @@ const ProductCard = ({ data, index }) => {
   return (
     
       <SimpleGrid  >
-    <Card key={index} maxW="xs" h={'500px'}  >
-      <Box className="flex-col justify-center h-[80%]  ">
+
+         {/* ------------------------------------Product Cards--------------------------------------- */}
+
+    <Card key={index} maxW="2xs" h={'450px'}   >
+      <Box className="flex-col justify-center h-[85%] overflow-hidden  ">
       
       <Link href={`/products/productdetails/single?id=${data.id}`}>
         <Image
@@ -75,8 +78,8 @@ const ProductCard = ({ data, index }) => {
           alt="img"
           borderRadius="10px 10px 0px 0px"
           width={"100%"}
-          height={"71%"}
-          className="hover:scale-110   duration-700 cursor-pointer "
+          height={"60%"}
+          className="hover:scale-110   duration-700 cursor-pointer  "
         />
       </Link>
       
@@ -107,7 +110,7 @@ const ProductCard = ({ data, index }) => {
       <CardFooter >
         {data?.instock ? (
         
-          <ButtonGroup spacing="1" m={"auto"} className="flex flex-row sm:flex-col lg:flex-row !-mb-14" >
+          <ButtonGroup spacing="1" m={"auto"} className="flex flex-row sm:flex-col lg:flex-row !-mb-5" >
             <Button variant="solid" colorScheme="blue">
               <Link href={`/products/productdetails/single?id=${data.id}`}>Buy now</Link>
             </Button>
@@ -132,7 +135,7 @@ const ProductCard = ({ data, index }) => {
           </ButtonGroup>
           
         ) : (
-          <div className="text-center m-auto w-auto h-auto !-mb-14 ">
+          <div className="text-center m-auto w-auto h-auto !-mb-5 ">
             <img src="/soldout.png" className="h-11 w-56 m-auto " />
           </div>
         )}
