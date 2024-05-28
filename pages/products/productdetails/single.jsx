@@ -88,7 +88,7 @@ const ProductDescription = () => {
   );
 };
 
-export default function ProductSingle({products,category,subcategory,data,index}) {
+export default function ProductSingle({products,category,subcategory}) {
   const [product, setProduct] = useState({});
  
 
@@ -153,7 +153,7 @@ export default function ProductSingle({products,category,subcategory,data,index}
   
   
 
-  products.length=4
+  //products.length=4
 
 
 
@@ -177,7 +177,7 @@ export default function ProductSingle({products,category,subcategory,data,index}
 
 
   useEffect(() => {
-    const findItemInWishList = wishList.find((item) => item.id === products.id);
+    const findItemInWishList = wishList.find((item) => item.id === product.id);
 
     console.log("findItemInWishList==>", findItemInWishList);
     if (findItemInWishList !== undefined) {
@@ -186,11 +186,11 @@ export default function ProductSingle({products,category,subcategory,data,index}
       setWishListExist(true);
     }
   }, [wishList]);
-
+ 
   //cart useEffect for item
 
   useEffect(() => {
-    const findItemInCart = cart?.find((item) => item.id === products.id);
+    const findItemInCart = cart?.find((item) => item.id === product.id);
 
     console.log("findItemInCart==>", findItemInCart);
     if (findItemInCart !== undefined) {
@@ -436,7 +436,7 @@ export default function ProductSingle({products,category,subcategory,data,index}
     <Card key={index} maxW="2xs" h={'480px'} gap={1} mx={2}  >
       <Box className="flex-col justify-center h-[80%] overflow-hidden ">
       
-      <Link href={`/products/productdetails/single?id=${products.id}`}>
+      <Link href={`/products/productdetails/single?id=${product.id}`}>
         <Image
           src={item.images}
           alt="img"

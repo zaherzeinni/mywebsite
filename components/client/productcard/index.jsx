@@ -23,6 +23,8 @@ import { FaSearchPlus } from "react-icons/fa";
 import { FcCheckmark } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
 
+
+
 const ProductCard = ({ data, index }) => {
   const [wishListExist, setWishListExist] = useState(true);
   const [cartExist, setCartExist] = useState(true);
@@ -36,13 +38,16 @@ const ProductCard = ({ data, index }) => {
     addToCart,
     removeFromCartList,
   } = useAuth();
-
+ 
   // console.log("wishlist========>",wishList,data)
 
   useEffect(() => {
     const findItemInWishList = wishList.find((item) => item.id === data.id);
 
     console.log("findItemInWishList==>", findItemInWishList);
+
+
+
     if (findItemInWishList !== undefined) {
       return setWishListExist(false);
     } else {
@@ -56,15 +61,22 @@ const ProductCard = ({ data, index }) => {
     const findItemInCart = cart?.find((item) => item.id === data.id);
 
     console.log("findItemInCart==>", findItemInCart);
+
+   
+
+
     if (findItemInCart !== undefined) {
       return setCartExist(false);
     } else {
       setCartExist(true);
     }
   }, [cart]);
-
-  return (
     
+
+
+  console.log(data,"dataaaaaaaaa")
+  return (
+      
       <SimpleGrid  >
 
          {/* ------------------------------------Product Cards--------------------------------------- */}
