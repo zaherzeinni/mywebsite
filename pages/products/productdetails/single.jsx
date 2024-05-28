@@ -209,6 +209,11 @@ export default function ProductSingle({products,category,subcategory,data,index}
 
   return (
     <div>
+              {/* <pre></pre>—Monospaced text, preserving spaces and line breaks */}
+              {/* <pre> hi       no       100$    <br/>  
+              by       yes      200%
+        </pre> */}
+
       <ClientLayout />
       <Box className="">
         {loading ? (
@@ -418,7 +423,8 @@ export default function ProductSingle({products,category,subcategory,data,index}
             <h4 className="sm:text-lg md:text-5xl text-3xl tracking-wide md:tracking-wider font-bold we-use-title3">
               Related Products
             </h4>
-          
+        
+  
           <div className="flex justify-center">
           <SimpleGrid columns={[1,1,2,4]} gap={3} >
           
