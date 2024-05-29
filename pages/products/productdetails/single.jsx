@@ -153,7 +153,7 @@ export default function ProductSingle({products,category,subcategory}) {
   
   
 
-  //products.length=4
+  products.length=4
 
 
 
@@ -430,7 +430,7 @@ export default function ProductSingle({products,category,subcategory}) {
         
   
           <div className="flex justify-center">
-          <SimpleGrid columns={[1,1,2,4]} gap={3} >
+          <SimpleGrid columns={[1,1,2,4]} gap={3} m={5} >
           
          {products.map((item,index)=>(
           <div key={index}>
@@ -475,22 +475,26 @@ export default function ProductSingle({products,category,subcategory}) {
         </Stack>
       </Box>
       {/* <Divider my={3}/> */}
-      <CardFooter >
+      <Box >
         {item?.instock ? (
         <Box>
-          <Box>In Stock</Box>
+           <Flex className="!flex !justify-center !m-auto !w-auto !my-1" gap={1}>
+                            <FcCheckmark className="text-lg top-1 relative" />
+                            <H5 >In stock</H5>
+                          </Flex>
+          
           <Link href={`/products/productdetails/single?id=${item.id}`}>
-          <Button className="!text-center !flex !justify center !m-auto !w-auto">More Details</Button>
+          <Button className="!flex !justify-center !m-auto !w-auto">More Details</Button>
           </Link>
           </Box>
         ) : (
-          <div className="text-center m-auto w-auto h-auto !-mb-14 ">
-            <img src="/soldout.png" className="h-11 w-56 m-auto " />
+          <div className="text-center m-auto w-auto h-auto !-mb-20 ">
+            <img src="/soldout.png" className="h-14 w-56 m-auto " />
           </div>
         )}
  
       
-      </CardFooter>
+      </Box>
     </Card>
 
     </Box>
