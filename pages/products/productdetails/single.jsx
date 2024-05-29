@@ -104,7 +104,6 @@ export default function ProductSingle({products,category,subcategory}) {
       const data = await getDocument("products", id);
       console.log(data, "fetch categories ====>>> 🎭🎭🎭>", data);
       setProduct(data);
-      console.log(data.length, "data lengthhhh");
       setLoading(false);
     };
 
@@ -203,9 +202,14 @@ export default function ProductSingle({products,category,subcategory}) {
 
 
 
+console.log(product.category,"product categoryyy")
+console.log(product.subcategory,"product SUB categoryyy")
+console.log(product.title,"product Titleee")
 
-
-
+useEffect(()  => {
+const filterProduct = category?.find((item) => item.id === product.id);
+console.log(filterProduct,"filter productttt")
+})
 
   return (
     <div>
@@ -220,7 +224,9 @@ export default function ProductSingle({products,category,subcategory}) {
           <Loader />
         ) : (
           <Box>
+            
             <SimpleGrid gap={5}>
+              
               <Box className=" justify-center items-center m-auto space-x-1 md:space-x-10 ">
                 <Box className="grid md:flex justify-center align-middle space-x-10 ">
                   <Box className="lg:grid">
@@ -274,7 +280,13 @@ export default function ProductSingle({products,category,subcategory}) {
 
                   {/* --------------Title and Details----------------- */}
                   <Box className=" justify-center m-auto">
-                  <Box>Product Name:</Box>
+                  <Box className="flex  font-semibold">
+                  <Link href='/'><Box className=" underline">Home</Box></Link>&nbsp;/
+                  &nbsp;<Link href=''><Box className="underline">{product.category}</Box></Link>&nbsp;/
+                  &nbsp;<Link href=''><Box className="underline">{product.subcategory}</Box></Link>&nbsp;/
+                  &nbsp;<Box>{product.title}</Box>
+                  </Box>
+                  <Box mt={4}>Product Name:</Box>
                     <H1 mb={1} className="text-justify w-[70%] md:w-auto   font-sans">
                       {product.title}
                     </H1>
@@ -289,7 +301,7 @@ export default function ProductSingle({products,category,subcategory}) {
                       <Box my={2}>Description:</Box>
                     </Box>
 
-                    <Box className=" lg:w-[70%] w-[40%] font-semibold">{product?.desc}</Box>
+                    <H3 className=" lg:w-[70%] w-[40%] font-semibold">{product?.desc}</H3>
 
                     <Box pt={1} my={1}>
                     <Box my={2}>Price:</Box>
@@ -308,6 +320,20 @@ export default function ProductSingle({products,category,subcategory}) {
                           <Flex gap={1}>
                             <FcCheckmark className="text-lg top-3 relative" />
                             <H5 className="!my-2">In stock</H5>
+                            <div className="mt-2 mx-2">
+          {wishListExist ? (
+            <FiHeart
+              onClick={() => addToWishList(product)}
+              className="text-2xl text-red-400  hover:cursor-pointer hover:scale-125   duration-700 "
+            />
+          ) : (
+            <GoHeartFill
+              onClick={() => removeFromWishList(product)}
+              className="text-2xl text-red-600   hover:cursor-pointer hover:scale-125   duration-700 "
+            />
+          )}
+        </div>
+
                           </Flex>
                         ) : (
                           <Flex gap={1} mt={5}>
@@ -335,8 +361,26 @@ export default function ProductSingle({products,category,subcategory}) {
                             Reserve this Product
                           </Button>
                         </Link>
+                        
                         <Box my={1}>
-                        <span><Button className="!bg-blue-600 !text-white hover:!bg-blue-500" mx={1}>Buy Now</Button><Button className="!bg-blue-600 !text-white hover:!bg-blue-500">Add to Cart</Button></span>
+                        <span>
+                          <Button className="!bg-blue-600 !text-white hover:!bg-blue-500" mx={1}>Buy Now</Button>
+                        
+                        {cartExist ? (
+                        <Button onClick={()=> addToCart(product)} className="!bg-blue-600 !text-white hover:!bg-blue-500">Add to Cart</Button>
+                         ) : (
+
+                        <Button className="text-red-500"
+                onClick={() => removeFromCartList(product)}
+                variant="ghost"
+                colorScheme="red"
+              >
+                Remove
+              </Button>
+                      )}
+
+                        </span>
+
                         </Box>
                         </Box>
                       ) : (
@@ -437,7 +481,7 @@ export default function ProductSingle({products,category,subcategory}) {
             
               <Box className="!flex justify-center items-center"  >
       
-    <Card key={index} maxW="2xs" h={'480px'} gap={1} mx={2}  >
+    <Card key={index} maxW="2xs" h={'490px'} gap={1} mx={2}  >
       <Box className="flex-col justify-center h-[80%] overflow-hidden ">
       
       <Link href={`/products/productdetails/single?id=${item.id}`}>
@@ -451,7 +495,7 @@ export default function ProductSingle({products,category,subcategory}) {
         />
       </Link>
       
-        <Stack mt="6" spacing="3" ml={5}>
+        <Stack mt="3" spacing="3" ml={5}>
           <Heading size="md">{item?.title}</Heading>
           {/* <Text>{data?.desc}</Text> */}
           <Text color="blue.600" fontSize="2xl">
@@ -477,19 +521,17 @@ export default function ProductSingle({products,category,subcategory}) {
       {/* <Divider my={3}/> */}
       <Box >
         {item?.instock ? (
-        <Box>
-           <Flex className="!flex !justify-center !m-auto !w-auto !my-1" gap={1}>
-                            <FcCheckmark className="text-lg top-1 relative" />
-                            <H5 >In stock</H5>
-                          </Flex>
+        <Box> 
+   
           
           <Link href={`/products/productdetails/single?id=${item.id}`}>
-          <Button className="!flex !justify-center !m-auto !w-auto">More Details</Button>
+          <Button className="!flex !justify-center !m-auto !w-auto !mt-8">More Details</Button>
           </Link>
           </Box>
         ) : (
-          <div className="text-center m-auto w-auto h-auto !-mb-20 ">
-            <img src="/soldout.png" className="h-14 w-56 m-auto " />
+          <div className="text-center m-auto w-auto h-auto !mt-8 ">
+
+            <img src="/soldout.png" className="h-10 w-40 mx-auto  " />
           </div>
         )}
  

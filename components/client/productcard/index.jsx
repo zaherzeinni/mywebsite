@@ -90,7 +90,7 @@ const ProductCard = ({ data, index }) => {
           alt="img"
           borderRadius="10px 10px 0px 0px"
           width={"100%"}
-          height={"60%"}
+          height={"62%"}
           className="hover:scale-110   duration-700 cursor-pointer  "
         />
       </Link>
@@ -122,7 +122,7 @@ const ProductCard = ({ data, index }) => {
       <CardFooter >
         {data?.instock ? (
         
-          <ButtonGroup spacing="1" m={"auto"} className="flex flex-row sm:flex-col lg:flex-row !-mb-5" >
+          <ButtonGroup spacing="1" m={"auto"} className="flex flex-row sm:flex-col lg:flex-row !mt-5" >
             <Button variant="solid" colorScheme="blue">
               <Link href={`/products/productdetails/single?id=${data.id}`}>Buy now</Link>
             </Button>
@@ -147,8 +147,8 @@ const ProductCard = ({ data, index }) => {
           </ButtonGroup>
           
         ) : (
-          <div className="text-center m-auto w-auto h-auto !-mb-5 ">
-            <img src="/soldout.png" className="h-11 w-56 m-auto " />
+          <div className="text-center m-auto w-auto h-auto !mt-8 ">
+            <img src="/soldout.png" className="h-10 w-40 m-auto " />
           </div>
         )}
         {/* ---------------------------wishlist and zoom product details-------------------------------- */}
@@ -166,10 +166,6 @@ const ProductCard = ({ data, index }) => {
               className="text-2xl text-red-600 absolute top-5 right-2 hover:cursor-pointer hover:scale-125   duration-700 "
             />
           )}
-
-          {/* <Link href={`/products/productdetails/single?id=${data.id}`}> */}
-            {/* <FaSearchPlus className="  absolute text-xl top-14 right-2 text-gray-400  !font-light  hover:scale-125   duration-700 " /> */}
-          {/* </Link> */}
         </div>
       
       </CardFooter>
