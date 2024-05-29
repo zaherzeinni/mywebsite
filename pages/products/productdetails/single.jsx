@@ -322,6 +322,7 @@ export default function ProductSingle({products,category,subcategory}) {
                     <Box alignItems="center" mb={2}>
                     
                       {product.instock === true ? (
+                        <Box>
                         <Link
                           href={`https://api.whatsapp.com/send?phone=96170480041&text=Salam, I want to reserve this product. %0D%0A *${product.title}* %0D%0A *Price:* ${product.price} $ %0D%0A *URL:* ${getUrl} %0D%0A Thank you!   `}
                           target="_blank"
@@ -334,7 +335,10 @@ export default function ProductSingle({products,category,subcategory}) {
                             Reserve this Product
                           </Button>
                         </Link>
-                        
+                        <Box my={1}>
+                        <span><Button className="!bg-blue-600 !text-white hover:!bg-blue-500" mx={1}>Buy Now</Button><Button className="!bg-blue-600 !text-white hover:!bg-blue-500">Add to Cart</Button></span>
+                        </Box>
+                        </Box>
                       ) : (
                         <Button className=" hidden hover:!bg-white !bg-white cursor-default"></Button>
                       )}
@@ -436,7 +440,7 @@ export default function ProductSingle({products,category,subcategory}) {
     <Card key={index} maxW="2xs" h={'480px'} gap={1} mx={2}  >
       <Box className="flex-col justify-center h-[80%] overflow-hidden ">
       
-      <Link href={`/products/productdetails/single?id=${product.id}`}>
+      <Link href={`/products/productdetails/single?id=${item.id}`}>
         <Image
           src={item.images}
           alt="img"
@@ -473,56 +477,18 @@ export default function ProductSingle({products,category,subcategory}) {
       {/* <Divider my={3}/> */}
       <CardFooter >
         {item?.instock ? (
-        
-          <ButtonGroup spacing="1" m={"auto"} className="flex flex-row sm:flex-col lg:flex-row !-mb-14" >
-            <Button variant="solid" colorScheme="blue">
-              <Link href={`/products/productdetails/single?id=${item.id}`}>Buy now</Link>
-            </Button>
-
-            {cartExist ? (
-              <Button
-                onClick={() => addToCart(item)}
-                variant="ghost"
-                colorScheme="blue"
-              >
-                Add to cart
-              </Button>
-            ) : (
-              <Button className="text-red-500"
-                onClick={() => removeFromCartList(item)}
-                variant="ghost"
-                colorScheme="red"
-              >
-                Remove
-              </Button>
-            )}
-          </ButtonGroup>
-          
+        <Box>
+          <Box>In Stock</Box>
+          <Link href={`/products/productdetails/single?id=${item.id}`}>
+          <Button className="!text-center !flex !justify center !m-auto !w-auto">More Details</Button>
+          </Link>
+          </Box>
         ) : (
           <div className="text-center m-auto w-auto h-auto !-mb-14 ">
             <img src="/soldout.png" className="h-11 w-56 m-auto " />
           </div>
         )}
-        {/* ---------------------------wishlist and zoom product details-------------------------------- */}
-          
-         
-        <div >
-          {wishListExist ? (
-            <FiHeart
-              onClick={() => addToWishList(item)}
-              className="text-2xl text-red-400 absolute top-5 right-2 hover:cursor-pointer hover:scale-125   duration-700 "
-            />
-          ) : (
-            <GoHeartFill
-              onClick={() => removeFromWishList(item)}
-              className="text-2xl text-red-600 absolute top-5 right-2 hover:cursor-pointer hover:scale-125   duration-700 "
-            />
-          )}
-
-          {/* <Link href={`/products/productdetails/single?id=${data.id}`}> */}
-            {/* <FaSearchPlus className="  absolute text-xl top-14 right-2 text-gray-400  !font-light  hover:scale-125   duration-700 " /> */}
-          {/* </Link> */}
-        </div>
+ 
       
       </CardFooter>
     </Card>
