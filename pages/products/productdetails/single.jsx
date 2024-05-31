@@ -490,7 +490,7 @@ console.log(filterProduct,"filter productttt")
             
               <Box className="!flex justify-center items-center"  >
       
-    <Card key={index} maxW="2xs" h={'490px'} gap={1} mx={2}  >
+    <Card key={index} maxW="xs" w={250} h={'420px'} gap={1} mx={2}  >
       <Box className="flex-col justify-center h-[80%] overflow-hidden ">
       
       <Link href={`/products/productdetails/single?id=${item.id}`}>
@@ -499,12 +499,12 @@ console.log(filterProduct,"filter productttt")
           alt="img"
           borderRadius="10px 10px 0px 0px"
           width={"100%"}
-          height={"60%"}
+          height={"55%"}
           className="hover:scale-110   duration-700 cursor-pointer  "
         />
       </Link>
       
-        <Stack mt="3" spacing="3" ml={5}>
+        <Stack mt="10" spacing="3" ml={5}>
           <Heading size="md">{item?.title}</Heading>
           {/* <Text>{data?.desc}</Text> */}
           <Text color="blue.600" fontSize="2xl">
@@ -534,7 +534,7 @@ console.log(filterProduct,"filter productttt")
    
           
           <Link href={`/products/productdetails/single?id=${item.id}`}>
-          <Button className="!flex !justify-center !m-auto !w-auto !mt-8">More Details</Button>
+          <Button className="!flex !justify-center !m-auto !w-auto !mt-5">More Details</Button>
           </Link>
           </Box>
         ) : (
