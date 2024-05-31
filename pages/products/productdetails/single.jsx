@@ -280,7 +280,7 @@ console.log(filterProduct,"filter productttt")
 
                   {/* --------------Title and Details----------------- */}
                   <Box className=" justify-center m-auto">
-                  <Box className="flex  font-semibold">
+                  <Box className="flex  font-semibold text-xs lg:text-lg">
                   <Link href='/'><Box className=" underline">Home</Box></Link>&nbsp;/
                   &nbsp;<Link href=''><Box className="underline">{product.category}</Box></Link>&nbsp;/
                   &nbsp;<Link href=''><Box className="underline">{product.subcategory}</Box></Link>&nbsp;/
