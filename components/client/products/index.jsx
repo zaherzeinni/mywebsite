@@ -5,6 +5,11 @@ import ProductCard from "../productcard";
 
 
 const AllProducts = ({ resultProducts }) => {
+
+
+  console.log(resultProducts.length,"result productss")
+  
+
   return (
     <div className="my-1 grid grid-rows-5* grid-flow-col  gap-2">
       <span id="cards" className="scroll-smooth">
@@ -13,16 +18,27 @@ const AllProducts = ({ resultProducts }) => {
             <h1 className="sm:text-lg md:text-5xl text-3xl tracking-wide md:tracking-wider font-bold we-use-title">
               Features Products
             </h1>
+            {resultProducts.length===0 ? "Sorry, no products found" :
             <div className="container !grid !grid-cols-1 sm:!grid-cols-2 md:!grid-cols-3 xl:!grid-cols-4 !gap-12">
               {resultProducts.map((data,index)=>(
-                
+                  <div>
+                  
+                  <div>
+                  
                   <ProductCard data={data}
                   key={index}
-
                   />
+                
+                  </div>
+
+                  
+                    
+                    </div>
+
   ))}    
             </div>
-          </div>
+    }
+         </div>
         </div>
 
       </span>

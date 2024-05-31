@@ -206,20 +206,29 @@ console.log(product.category,"product categoryyy")
 console.log(product.subcategory,"product SUB categoryyy")
 console.log(product.title,"product Titleee")
 
-useEffect(()  => {
-const filterProduct = category?.find((item) => item.id === product.id);
+
+const filterProduct = products?.find((item) => item.subcategory === product.subcategory)
 console.log(filterProduct,"filter productttt")
-})
+
+//console.log(products.subcategory,"single product is my SUB category")
+//console.log(filterProduct,"related product is my SUB category")
+
+
 
   return (
     <div>
-              {/* <pre></pre>—Monospaced text, preserving spaces and line breaks */}
+      
+  
+                {/* <pre></pre>—Monospaced text, preserving spaces and line breaks */}
               {/* <pre> hi       no       100$    <br/>  
               by       yes      200%
         </pre> */}
 
       <ClientLayout />
       <Box className="">
+          
+
+
         {loading ? (
           <Loader />
         ) : (
@@ -295,7 +304,7 @@ console.log(filterProduct,"filter productttt")
                     
                       <Box>Brand:</Box>
                       <H3>{product.subcategory}</H3>
-                      <Box>Condition:</Box>
+                      <Box mt={1}>Type:</Box>
                       <H3>{product.category}</H3>
                       
                       <Box my={2}>Description:</Box>
@@ -490,7 +499,7 @@ console.log(filterProduct,"filter productttt")
           alt="img"
           borderRadius="10px 10px 0px 0px"
           width={"100%"}
-          height={"71%"}
+          height={"60%"}
           className="hover:scale-110   duration-700 cursor-pointer  "
         />
       </Link>
