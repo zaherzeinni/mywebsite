@@ -21,19 +21,13 @@ const AllProducts = ({ resultProducts }) => {
             {resultProducts.length===0 ? "Sorry, no products found" :
             <div className="container !grid !grid-cols-1 sm:!grid-cols-2 md:!grid-cols-3 xl:!grid-cols-4 !gap-12">
               {resultProducts.map((data,index)=>(
-                  <div>
-                  
-                  <div>
+              
                   
                   <ProductCard data={data}
                   key={index}
                   />
                 
-                  </div>
-
-                  
-                    
-                    </div>
+               
 
   ))}    
             </div>
