@@ -23,7 +23,7 @@ import { FaSearchPlus } from "react-icons/fa";
 import { FcCheckmark } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
 
-
+import { useRouter } from "next/router";
 
 const ProductCard = ({ data, index }) => {
   const [wishListExist, setWishListExist] = useState(true);
@@ -39,7 +39,11 @@ const ProductCard = ({ data, index }) => {
     removeFromCartList,
   } = useAuth();
  
-  // console.log("wishlist========>",wishList,data)
+  console.log("wishlist========>",wishList,data)
+
+  const router = useRouter();
+  const locale = router.locale;
+  const id = router.query.id;
 
   useEffect(() => {
     const findItemInWishList = wishList.find((item) => item.id === data.id);
