@@ -399,7 +399,7 @@ div.CodeMirror {
 }
 
 .we-use-title3::after {
-  content: 'Related Products';
+  content: 'Latest Products';
   display: block;
   margin: -1.7rem auto 0;
   opacity: 0.4;

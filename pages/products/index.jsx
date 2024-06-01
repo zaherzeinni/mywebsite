@@ -166,7 +166,7 @@ ProductsPage.getInitialProps = async (context) => {
 
     //category i am searching for all products that have a category name / same as subcategory , else null nothing (filteration)
     //contextquery.query  // null all subcategories , category parent te3 subcategories ( sub cat limited)
-    category ? where("category", "==", category) : null
+    category && where("category", "==", category) 
   );
 
   //console.log("subcats", subcats);

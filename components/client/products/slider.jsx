@@ -24,7 +24,7 @@ const ProdSlider = ({ data ,linkText }) => {
     speed: 500,
     slidesToShow: conditionSlider  ,
     slidesToScroll: 1,
-    className: "md:w-[750px] mx-auto mt-4 w-[95%] md:mt-3",
+    className: "md:w-[750px] mx-auto mt-4 w-[95%] md:mt-3 h-[190px] -sm:-mb-28",
     nextArrow: <CustomSliderArrow direction={"next"} />,
     prevArrow: <CustomSliderArrow />,
   

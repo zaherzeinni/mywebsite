@@ -211,7 +211,7 @@ const filterProduct = products?.find((item) => item.subcategory === product.subc
 console.log(filterProduct,"filter productttt")
 
 //console.log(products.subcategory,"single product is my SUB category")
-//console.log(filterProduct,"related product is my SUB category")
+//console.log(filterProduct,"Latest product is my SUB category")
 
 
 
@@ -289,12 +289,16 @@ console.log(filterProduct,"filter productttt")
 
                   {/* --------------Title and Details----------------- */}
                   <Box className=" justify-center m-auto">
+
+                  {/* --------------------PATH OF PRODUCT---------------------- */}
                   <Box className="flex  font-semibold text-xs lg:text-lg">
                   <Link href='/'><Box className=" underline">Home</Box></Link>&nbsp;/
-                  &nbsp;<Link href=''><Box className="underline">{product.category}</Box></Link>&nbsp;/
-                  &nbsp;<Link href=''><Box className="underline">{product.subcategory}</Box></Link>&nbsp;/
+                  &nbsp;<Link href={`/products?${product.category}=${product.title}`}><Box className="underline">{product.category}</Box></Link>&nbsp;/
+                  &nbsp;<Link href={`/products?${product.subcategory}=${product.category}`}><Box className="underline">{product.subcategory}</Box></Link>&nbsp;/
                   &nbsp;<Box>{product.title}</Box>
                   </Box>
+
+
                   <Box mt={4}>Product Name:</Box>
                     <H1 mb={1} className="text-justify w-[70%] md:w-auto   font-sans">
                       {product.title}
@@ -474,11 +478,11 @@ console.log(filterProduct,"filter productttt")
 
 
 
-            {/* ----------------------------RELATED PRODUCTS------------------------------------ */}
+            {/* ----------------------------LATEST PRODUCTS------------------------------------ */}
               <br/>
             <hr></hr>
             <h4 className="sm:text-lg md:text-5xl text-3xl tracking-wide md:tracking-wider font-bold we-use-title3">
-              Related Products
+              Latest Products
             </h4>
         
   
