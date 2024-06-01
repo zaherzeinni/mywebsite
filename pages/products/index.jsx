@@ -12,7 +12,12 @@ import AdvertiseBar from "@/components/common/advertiseBar";
 import AllProducts from "/components/client/products";
 import Support from "@/components/client/sections/support";
 import Footer from "@/components/client/layout/footer";
+import { Button } from "@chakra-ui/react";
 
+// import Categories from "@/components/client/layout/categories";
+
+
+import Link from "next/link";
 
 export default function ProductsPage({
   products,
@@ -86,56 +91,21 @@ export default function ProductsPage({
 
       <AdvertiseBar />
       <Navbar />
-      <div className=" text-end text-lg mr-32    scroll-smooth">
+      <div className=" text-end text-lg mr-52    scroll-smooth">
       {resultProducts.length >0 ? `${resultProducts.length} products found` : "no products found" }
       </div>
-      <OfferSlider offerProducts={offerProducts} />
+      
       {condition !== null && (
         <ProdSlider data={condition} linkText={conditionText} />
       )}
-
+      
       <div className=" container1">
         
         
       <div>
           <AllProducts resultProducts={resultProducts} />
         </div>
-        
-        <div>
-          
-          <ProjectSlider projects={projects} />
-        </div>
 
- 
-
-        <div className="md:mt-16 ">
-          <Support />
-        </div>
-
-        {/* <div>
-          <CustomInput 
-          value={firstName}
-          setValue={setFirstName}
-          lable={"First Name"}
-          placeHolder={"Enter your First Name"}
-          type={"text"}
-          />
-          <CustomInput 
-          value={lastName}
-          setValue={setLastName}
-          lable={"Last Name"}
-          placeHolder={"Enter your Last Name"}
-          type={"text"}
-          />
-          <CustomInput 
-          value={email}
-          setValue={setEmail}
-          lable={"Enter your Email"}
-          placeHolder={"Enter your Email"}
-          type={"email"}
-
-          />
-        </div> */}
       </div>
       <div>
         <Footer />

@@ -101,7 +101,7 @@ const OfferSlider = ({ offerProducts }) => {
       <div className="md:col-span-2 !h-full  flex justify-center lg:grid lg:grid-cols-1  lg:place-items-center gap-4 mt-[50px] lg:mt-[1px]">
         <img
           className="rounded-xl object-cover object-center h-full w-[50%] lg:w-full  "
-          src="USDT.jpg"
+          src="/USDT.jpg"
         />
         {/* <a
                                 href='https://wa.me/96170480041' target="_blank" rel="noreferrer" 

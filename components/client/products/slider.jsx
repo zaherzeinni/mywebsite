@@ -24,7 +24,7 @@ const ProdSlider = ({ data ,linkText }) => {
     speed: 500,
     slidesToShow: conditionSlider  ,
     slidesToScroll: 1,
-    className: "md:w-[750px] mx-auto mt-4 w-[95%] md:mt-32",
+    className: "md:w-[750px] mx-auto mt-4 w-[95%] md:mt-3",
     nextArrow: <CustomSliderArrow direction={"next"} />,
     prevArrow: <CustomSliderArrow />,
   
@@ -61,7 +61,7 @@ const ProdSlider = ({ data ,linkText }) => {
      
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {data?.map((item, index) => (
-          <div key={index} className="flex-col py-6 justify-center items-center">
+          <div key={index} className="flex-col py-1 justify-center items-center">
 <Link href={`/products?${linkText}=${item.title}`}>
 <div className="w-[130px] mx-auto h-[130px] rounded-full overflow-hidden hover:border-4 border-blue-600 border-2 p-1" >
 

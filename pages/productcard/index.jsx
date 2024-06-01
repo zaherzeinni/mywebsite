@@ -81,7 +81,7 @@ const ProductCard = ({ data, index }) => {
 
          {/* ------------------------------------Product Cards--------------------------------------- */}
 
-    <Card key={index} maxW="2xs" h={'450px'}   >
+    <Card key={index} maxW="2xs" h={'450px'}    >
       <Box className="flex-col justify-center h-[85%] overflow-hidden  ">
       
       <Link href={`/products/productdetails/single?id=${data.id}`}>
