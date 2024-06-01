@@ -44,6 +44,26 @@ const ProductCard = ({ data, index }) => {
   const router = useRouter();
   const locale = router.locale;
   const id = router.query.id;
+  
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    const getProduct = async () => {
+      setLoading(true);
+      //setProduct({});
+      const data = await getDocument("products", id);
+      console.log(data, "fetch categories ====>>> 🎭🎭🎭>", data);
+      setProduct(data);
+      setLoading(false);
+    };
+
+    if (id) getProduct();
+  }, [id]);
+
+
+
+
+
 
   useEffect(() => {
     const findItemInWishList = wishList.find((item) => item.id === data.id);
