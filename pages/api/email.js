@@ -15,7 +15,7 @@ export default async function sendEmail(req, res) {
 
  const dataRes =   await resend.sendEmail({
       from: 'onboarding@resend.dev',
-     // to: 'majdgome@gmail.com',
+     /// to: 'majdgome@gmail.com',
      to:'itpromax2024@gmail.com',
       replyTo: data.email,
       subject: `${data.name} `,
