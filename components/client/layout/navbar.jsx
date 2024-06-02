@@ -103,7 +103,7 @@ const Navbar = () => {
                 height={75}
                 src={"/icon.png"}
                 alt="behide logo"
-                className="w-[60px] h-[60px]"
+                className="w-[60px] h-[60px] "
               />
             </Link>
           </div>
@@ -148,7 +148,7 @@ const Navbar = () => {
                           return (
                             <Link
                               key={index}
-                              href={`/products/categories?category=${item.title}`}
+                              href={`/products?category=${item.title}`}
                               className="hover:text-brandBlack block transform rounded-lg px-4 py-2 text-xs font-normal capitalize text-black  duration-300 hover:bg-blue-200"
                             >
                               {item.title}

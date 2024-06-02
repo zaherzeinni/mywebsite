@@ -25,6 +25,16 @@ const UsersTable = ({ users }) => {
       // same name from database   // category={title ,....}
       dataIndex: "displayName",
     },
+    {
+      title: "email",
+      // same name from database   // category={title ,....}
+      dataIndex: "email",
+    },
+    {
+      title: "password",
+      // same name from database   // category={title ,....}
+      dataIndex: "password",
+    },
 
     // {
     //   title: "image",
@@ -33,7 +43,7 @@ const UsersTable = ({ users }) => {
     //     return (
     //       <>
     //         <img
-    //           className="  relative  -ml-6  w-24 h-24 object-contain object-center "
+    //           className="  relative  -ml-6  w-16 h-16 object-contain object-center "
     //           src={record?.avatarUrl}
     //           alt=""
     //         />

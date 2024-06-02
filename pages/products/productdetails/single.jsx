@@ -290,11 +290,14 @@ console.log(filterProduct,"filter productttt")
                   {/* --------------Title and Details----------------- */}
                   <Box className=" justify-center m-auto">
 
+
                   {/* --------------------PATH OF PRODUCT---------------------- */}
+                  
+                  
                   <Box className="flex  font-semibold text-xs lg:text-lg">
                   <Link href='/'><Box className=" underline">Home</Box></Link>&nbsp;/
-                  &nbsp;<Link href={`/products?${product.category}=${product.title}`}><Box className="underline">{product.category}</Box></Link>&nbsp;/
-                  &nbsp;<Link href={`/products?${product.subcategory}=${product.category}`}><Box className="underline">{product.subcategory}</Box></Link>&nbsp;/
+                  &nbsp;<Link href={`/products?category=${product.category}`}><Box className="underline">{product.category}</Box></Link>&nbsp;/
+                  &nbsp;<Link href={`/products?subcategory=${product.subcategory}`}><Box className="underline">{product.subcategory}</Box></Link>&nbsp;/
                   &nbsp;<Box>{product.title}</Box>
                   </Box>
 
@@ -542,7 +545,7 @@ console.log(filterProduct,"filter productttt")
           </Link>
           </Box>
         ) : (
-          <div className="text-center m-auto w-auto h-auto !mt-8 ">
+          <div className="text-center m-auto w-auto h-auto !mt-5 ">
 
             <img src="/soldout.png" className="h-10 w-40 mx-auto  " />
           </div>

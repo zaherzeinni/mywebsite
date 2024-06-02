@@ -105,7 +105,7 @@ const ProductCard = ({ data, index }) => {
 
          {/* ------------------------------------Product Cards--------------------------------------- */}
 
-    <Card key={index} maxW="2xs" h={'450px'}    >
+    <Card key={index} maxW="2xs" h={'420px'}    >
       <Box className="flex-col justify-center h-[85%] overflow-hidden  ">
       
       <Link href={`/products/productdetails/single?id=${data.id}`}>
@@ -143,7 +143,7 @@ const ProductCard = ({ data, index }) => {
         </Stack>
       </Box>
       {/* <Divider my={3}/> */}
-      <CardFooter >
+      <CardFooter mt={-8} >
         {data?.instock ? (
         
           <ButtonGroup spacing="1" m={"auto"} className="flex flex-row sm:flex-col lg:flex-row !mt-5" >

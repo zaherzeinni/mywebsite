@@ -57,7 +57,7 @@ const ProdSlider = ({ data ,linkText }) => {
 
   const [slider, setSlider] = React.useState(null);
   return (
-    <div>
+    <div className="-mt-8">
      
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {data?.map((item, index) => (
@@ -81,6 +81,7 @@ const ProdSlider = ({ data ,linkText }) => {
           </div>
         ))}
       </Slider>
+      
     </div>
   );
 };

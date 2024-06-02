@@ -102,7 +102,7 @@ export default function ProductsPage({
       <div className=" container1">
         
         
-      <div>
+      <div className="-mt-2">
           <AllProducts resultProducts={resultProducts} />
         </div>
 
@@ -123,9 +123,9 @@ ProductsPage.getInitialProps = async (context) => {
   // step 1
   const search = context.query.search;
 
-  //console.log("categoryyyyy", category);
+  console.log("categoryyyyy", category);
 
-  //console.log("subcategoryyyyy", subcategory);
+  console.log("subcategoryyyyy", subcategory);
 
   //    where("fieldname", "==", fieldValue)
 
