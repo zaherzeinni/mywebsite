@@ -1,11 +1,7 @@
-import { Resend } from 'resend'
-// const resend = new Resend(process.env.RESEND_API_KEY)
+import { Resend } from 'resend';
 import EmailTemplate from '@/components/EmailSend';
 
-const resend = new Resend(
-  // 're_YMAgPoJ1_2yYWdyAKQ1Pc5ZZX9LYYDYKn'
-  're_jhGVNK2T_EgPNdPTWoNkZtd71cDk7m2yV'
-  );
+const resend = new Resend('re_aUoYNp6c_HVepFLqRG9UBMrWWJtcg82qY');
 
 export default async function sendEmail(req, res) {
   try {
@@ -15,8 +11,8 @@ export default async function sendEmail(req, res) {
 
  const dataRes =   await resend.sendEmail({
       from: 'onboarding@resend.dev',
-     /// to: 'majdgome@gmail.com',
-     to:'itpromax2024@gmail.com',
+      to:'itpromax2024@gmail.com',
+      // cc:`${data.email}`,
       replyTo: data.email,
       subject: `${data.name} `,
       react: <EmailTemplate {...data} />,

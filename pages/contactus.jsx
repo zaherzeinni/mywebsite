@@ -9,14 +9,70 @@ import Link from "next/link";
 
 import { db } from "@/functions/firebase";
 import { addDoc,collection,serverTimestamp } from "@firebase/firestore";
+import { toast } from "react-toastify";
 
+// const FORM_ID = process.env.NEXT_PUBLIC_FORM_ID;
 
-const FORM_ID = process.env.NEXT_PUBLIC_FORM_ID;
+// function ContactUs() {
+//   const { state, submit } = useForm({
+//     id: FORM_ID,
+//   });
 
 function ContactUs() {
+  
   const { state, submit } = useForm({
-    id: FORM_ID,
   });
+
+
+const onSendEmail = async (e) => {
+  e.preventDefault();
+
+  try {
+    //   const isProd = process.env.NODE_ENV === 'production'
+    //   const base = isProd ? 'https://zenorocha.com' : 'http://localhost:3000'
+
+    if (
+      e.target.name.value !== "" &&
+      e.target.email.value !== "" &&
+      e.target.message.value !== "" &&
+      e.target.phone.value !== ""
+    ) {
+      const res = await fetch(`/api/email`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+
+        body: JSON.stringify({
+          title: "Contact Us",
+          name: e.target.name.value,
+          email: e.target.email.value,
+          message: e.target.message.value,
+          //subject: e.target.subject.value,
+          phone: e.target.phone.value,
+        }),
+      });
+
+      console.log("response", res?.status);
+
+      if (res.status === 200) {
+        toast.success(" your message sent successfully");
+      }
+    } else {
+      toast.error("some fields is empty");
+    }
+
+    //   setIsEmailSent(true)
+    //   setShowToast(true)
+  } catch (e) {
+    console.error(e);
+    toast.error("something went wrong");
+
+    //   setIsEmailSent(false)
+    //   setShowToast(true)
+  }
+};
+
+
+
 
   return (
     <>
@@ -89,7 +145,7 @@ function ContactUs() {
                   </div>
                 </div>
               ) : (
-                <form className="space-y-4" onSubmit={submit}>
+                <form className="space-y-4" onSubmit={onSendEmail}>
                   <div>
                     <label className="sr-only" htmlFor="name">
                       Name
