@@ -26,7 +26,7 @@ const UpdateProductMain = ({ product, cats, subcats }) => {
   const initialValues = product;
 
 
-  console.log("?????-?????-" + initialValues);
+  console.log("initial Valuesss" + initialValues);
 
 
   const onFinish = async (values) => {
