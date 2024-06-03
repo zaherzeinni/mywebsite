@@ -32,7 +32,7 @@ const ProductTable = ({ products }) => {
 
   const columns = [
     {
-      title: "Products",
+      title:`${products.length}` +" "+ "Products",
       // same name from database   // category={title ,....}
       dataIndex: "title",
 
@@ -154,6 +154,7 @@ const ProductTable = ({ products }) => {
 
   return (
     <div className=" w-[90%]  md:w-[70%] mx-auto">
+      
       <Space
         style={{
           marginBottom: 16,
@@ -164,6 +165,7 @@ const ProductTable = ({ products }) => {
                  <Button onClick={clearAll}>Clear filters and sorters</Button>
               
       </Space>
+   
       <Table onChange={handleChange} columns={columns} dataSource={products} />
     </div>
   );
