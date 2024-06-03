@@ -12,7 +12,7 @@ export default async function sendEmail(req, res) {
  const dataRes =   await resend.sendEmail({
       from: 'onboarding@resend.dev',
       to:'itpromax2024@gmail.com',
-      cc:data.email,
+      cc:`${data.email}`,
       replyTo: data.email,
       subject: `${data.name}`,
       react: <EmailTemplate {...data} />,
