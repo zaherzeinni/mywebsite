@@ -11,16 +11,10 @@ import { db } from "@/functions/firebase";
 import { addDoc,collection,serverTimestamp } from "@firebase/firestore";
 import { toast } from "react-toastify";
 
-// const FORM_ID = process.env.NEXT_PUBLIC_FORM_ID;
-
-// function ContactUs() {
-//   const { state, submit } = useForm({
-//     id: FORM_ID,
-//   });
 
 function ContactUs() {
   
-  const { state, submit } = useForm({
+  const { state } = useForm({
   });
 
 
@@ -45,9 +39,9 @@ const onSendEmail = async (e) => {
           title: "Contact Us",
           name: e.target.name.value,
           email: e.target.email.value,
-          message: e.target.message.value,
-          //subject: e.target.subject.value,
           phone: e.target.phone.value,
+          subject: e.target.subject.value,
+          message: e.target.message.value,
         }),
       });
 
@@ -124,7 +118,7 @@ const onSendEmail = async (e) => {
             />
           </section>
           <section className="">
-            <div className="rounded-lg bg-white p-8 drop-shadow-lg lg:col-span-3 lg:p-12">
+            <div className="rounded-lg bg-white p-8 drop-shadow-2xl lg:col-span-3 lg:p-12">
               {state.submitted ? (
                 <div
                   className="rounded-b border-t-4 border-teal-500 bg-teal-100 px-4 py-3 text-teal-900 shadow-md"
@@ -147,47 +141,79 @@ const onSendEmail = async (e) => {
               ) : (
                 <form className="space-y-4" onSubmit={onSendEmail}>
                   <div>
-                    <label className="sr-only" htmlFor="name">
-                      Name
+                    <label className="ml-1" htmlFor="name">
+                      Full Name
                     </label>
                     <input
                       className="w-full rounded-lg border p-3 text-sm drop-shadow-xl focus-within:outline-none focus:border-rose-600"
-                      placeholder="Name"
+                      placeholder="Full Name"
                       type="text"
                       id="name"
                       name="name"
                       required
+                      maxLength = {32}
+                      minLength={4}
                     />
                   </div>
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
-                      <label className="sr-only" htmlFor="email">
+                      <label className="ml-1" htmlFor="email">
                         Email
                       </label>
                       <input
                         className="w-full rounded-lg border p-3 text-sm drop-shadow-xl focus-within:outline-none focus:border-rose-600"
-                        placeholder="Email "
+                        placeholder="Email"
                         type="email"
                         id="email"
                         name="email"
                         required
+                        minLength={10}
                       />
                     </div>
                     <div>
-                      <label className="sr-only" htmlFor="phone">
-                        Phone
+                      <label className="ml-1" htmlFor="phone">
+                        Phone Number
                       </label>
                       <input
                         className="w-full rounded-lg border p-3 text-sm drop-shadow-xl focus-within:outline-none focus:border-rose-600"
-                        placeholder="Phone Number"
+                        placeholder="03xxxxxx"
                         type="tel"
                         id="phone"
                         name="phone"
+                        required
+                        maxLength = {8}
+                        minLength={8}
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="sr-only" htmlFor="message">
+                    <label className="ml-1" htmlFor="subject">
+                      Subject
+                    </label>
+                    <select 
+                      className="w-full rounded-lg border p-3 text-sm drop-shadow-xl focus-within:outline-none focus:border-rose-600 cursor-pointer"
+                      placeholder="Choose subject"
+                      type="text"
+                      id="subject"
+                      name="subject"
+
+                      required
+                    >
+                      
+                    <option  value="">Choose subject</option>
+                    <option  value="1">Student</option>
+                    <option  value="2">Full Time Job</option>
+                    <option  value="3">Full Time Learner</option>
+                    <option  value="4">Prefer not to say</option>
+                    <option  value="5">Other</option>
+                    
+                     </select> 
+                  </div>
+
+                  
+   
+                  <div>
+                    <label className="ml-1" htmlFor="message">
                       Message
                     </label>
                     <textarea
