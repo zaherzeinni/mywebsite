@@ -244,14 +244,14 @@ console.log(filterProduct,"filter productttt")
                     {/* -------------------Product Image---------------------- */}
 
             
-                    <Box mb={2} className=" rounded-xl md:mt-3 mt-2 mx-5 imgbox  ">
+                    <Box mb={2} className=" rounded-xl md:mt-3 mt-2 lg:!ml-32 imgzoom ">
                       {product?.images && product?.images[0] && (
                         <Image
                           alt={product?.title}
                           src={
                             product?.images && product?.images[selectedImage]
                           }
-                          className="sm:w-[30vw] md:w-[27vw] justify-center flex m-auto rounded-lg object-contain"
+                          className="sm:w-[30vw] md:w-[40vw] justify-center flex m-auto rounded-lg object-contain"
                         />
                       )}
                     </Box>
@@ -264,7 +264,7 @@ console.log(filterProduct,"filter productttt")
                       {product?.images &&
                         product?.images.map((url, ind) => (
                           <Box
-                            className="w-[40px] md:w-[60px]  m-auto   rounded-2xl p-1 border-[1px] cursor-pointer imgbox"
+                            className="w-[40px] md:w-[60px]  m-auto   rounded-2xl p-1 border-[1px] cursor-pointer imgzoom"
                             key={ind}
                             ml={ind === 0 ? "auto" : 0}
                             onClick={handleImageClick(ind)}
@@ -288,13 +288,15 @@ console.log(filterProduct,"filter productttt")
                   </Box>
 
                   {/* --------------Title and Details----------------- */}
-                  <Box className=" justify-center m-auto">
+                  
+                  
+                  <Box className=" !justify-center lg:!mx-24 md:!mx-10 !w-auto mt-4">
 
 
                   {/* --------------------PATH OF PRODUCT---------------------- */}
                   
                   
-                  <Box className="flex  font-semibold text-xs lg:text-lg">
+                  <Box className="flex justify-normal  font-semibold text-xs sm:text-2xs md:text-[10px] lg:text-[14px]">
                   <Link href='/'><Box className=" underline">Home</Box></Link>&nbsp;/
                   &nbsp;<Link href={`/products?category=${product.category}`}><Box className="underline">{product.category}</Box></Link>&nbsp;/
                   &nbsp;<Link href={`/products?subcategory=${product.subcategory}`}><Box className="underline">{product.subcategory}</Box></Link>&nbsp;/
@@ -302,40 +304,46 @@ console.log(filterProduct,"filter productttt")
                   </Box>
 
 
-                  <Box mt={4}>Product Name:</Box>
-                    <H1 mb={1} className="text-justify w-[70%] md:w-auto   font-sans">
+                  <Box mt={4} textColor={"blue.600"}>Product Name:</Box>
+                    <H1 mb={1} className="text-justify w-[100%] md:w-auto   font-sans md:!text-[20px]">
                       {product.title}
                     </H1>
 
                     <Box alignItems="center " mb={1}>
                     
-                      <Box>Brand:</Box>
+                      <Box textColor={"blue.600"}>Brand:</Box>
                       <H3>{product.subcategory}</H3>
-                      <Box mt={1}>Type:</Box>
+                      <Box mt={1} textColor={"blue.600"}>Type:</Box>
                       <H3>{product.category}</H3>
                       
-                      <Box my={2}>Description:</Box>
+                      <Box my={1} textColor={"blue.600"}>Description:</Box>
                     </Box>
-
-                    <H3 className=" lg:w-[70%] w-[40%] font-semibold">{product?.desc}</H3>
+                        
+                    <H4 className=" w-[100%] lg:w-[100%] font-semibold">{product?.desc}</H4>
+                    <H4 className=" w-[100%] lg:w-[100%] font-semibold">{product?.desc1}</H4>
+                    <H4 className=" w-[100%] lg:w-[100%] font-semibold">{product?.desc2}</H4>
+                    <H4 className=" w-[100%] lg:w-[100%] font-semibold">{product?.desc3}</H4>
+                    <H4 className=" w-[100%] lg:w-[100%] font-semibold">{product?.desc4}</H4>
+                    <H4 className=" w-[100%] lg:w-[100%] font-semibold">{product?.desc5}</H4>
+                    
 
                     <Box pt={1} my={1}>
-                    <Box my={2}>Price:</Box>
+                    <Box my={2} textColor={"blue.600"}>Price:</Box>
                       {product.discount > 1 ? 
-                      <H4 color="primary.main" mb={0.5} lineHeight="1">
+                      <H3 color="primary.main" mb={0.5} lineHeight="1">
                         <span className=" line-through">$ {product.price}</span>  <span className="text-red-500">${product.price-priceAsale} (on sale)</span>
-                      </H4>
+                      </H3>
                         :
-                        <H4 color="primary.main" mb={0.5} lineHeight="1">
+                        <H3 color="primary.main" mb={0.5} lineHeight="1">
                         <span>$ {product.price}</span>
-                      </H4>
+                      </H3>
                         }
 
                       <Box color="inherit">
                         {product.instock === true ? (
                           <Flex gap={1}>
                             <FcCheckmark className="text-lg top-3 relative" />
-                            <H5 className="!my-2">In stock</H5>
+                            <H4 className="!my-2">In stock</H4>
                             <div className="mt-2 mx-2">
           {wishListExist ? (
             <FiHeart
@@ -354,7 +362,7 @@ console.log(filterProduct,"filter productttt")
                         ) : (
                           <Flex gap={1} mt={5}>
                             <VscClose className="text-red-600 text-lg top-1 relative" />
-                            <H5 className="text-red-600">Out of stock</H5>
+                            <H4 className="text-red-600">Out of stock</H4>
                           </Flex>
                         )}
                       </Box>

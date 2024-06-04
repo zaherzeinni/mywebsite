@@ -58,6 +58,11 @@ const ProductForm = ({
             subcategory: initialValues?.subcategory || "",
             price: initialValues?.price || 0,
             desc: initialValues?.desc || "",
+            desc1: initialValues?.desc1 || "",
+            desc2: initialValues?.desc2 || "",
+            desc3: initialValues?.desc3 || "",
+            desc4: initialValues?.desc4 || "",
+            desc5: initialValues?.desc5 || "",
             instock: initialValues?.instock || true,
             images: initialValues?.images || [],
             video: initialValues?.video || "",
@@ -72,7 +77,22 @@ const ProductForm = ({
           </Form.Item>
 
           <Form.Item name="desc" label="Description">
-            <TextArea rows={4} />
+            <TextArea rows={1} />
+          </Form.Item>
+          <Form.Item name="desc1" label="Description1">
+            <TextArea rows={1} />
+          </Form.Item>
+          <Form.Item name="desc2" label="Description2">
+            <TextArea rows={1} />
+          </Form.Item>
+          <Form.Item name="desc3" label="Description3">
+            <TextArea rows={1} />
+          </Form.Item>
+          <Form.Item name="desc4" label="Description4">
+            <TextArea rows={1} />
+          </Form.Item>
+          <Form.Item name="desc5" label="Description5">
+            <TextArea rows={1} />
           </Form.Item>
 
           <div className=" grid gap-3 md:grid-cols-3 lg:grid-cols-4 grid-cols-1">
