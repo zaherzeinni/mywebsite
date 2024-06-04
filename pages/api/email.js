@@ -1,3 +1,5 @@
+//https://nodemailer.com/
+//https://resend.com/emails
 import { Resend } from 'resend';
 import EmailTemplate from '@/components/EmailSend';
 
