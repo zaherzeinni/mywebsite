@@ -203,7 +203,6 @@ const onSendEmail = async (e) => {
                     <option  value="">Choose subject</option>
                     <option  value="Trade in">Trade in</option>
                     <option  value="More information">More information</option>
-                    <option  value="Hiring">Hiring</option>
                     <option  value="Other">Other</option>
                     
                      </select> 
