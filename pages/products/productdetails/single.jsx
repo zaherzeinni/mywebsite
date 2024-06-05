@@ -296,7 +296,7 @@ console.log(filterProduct,"filter productttt")
                   {/* --------------------PATH OF PRODUCT---------------------- */}
                   
                   
-                  <Box className="flex justify-normal  font-semibold text-xs sm:text-2xs md:text-[10px] lg:text-[14px]">
+                  <Box className="flex justify-normal  font-semibold text-xs sm:text-md md:text-[10px] lg:text-[14px]">
                   <Link href='/'><Box className=" underline">Home</Box></Link>&nbsp;/
                   &nbsp;<Link href={`/products?category=${product.category}`}><Box className="underline">{product.category}</Box></Link>&nbsp;/
                   &nbsp;<Link href={`/products?subcategory=${product.subcategory}`}><Box className="underline">{product.subcategory}</Box></Link>&nbsp;/
@@ -309,32 +309,34 @@ console.log(filterProduct,"filter productttt")
                       {product.title}
                     </H1>
 
-                    <Box alignItems="center " mb={1}>
-                    
+                    <Box alignItems="center ">
+                      <Box className="flex justify-text space-x-1  justify-between">
                       <Box textColor={"blue.600"}>Brand:</Box>
-                      <H3>{product.subcategory}</H3>
-                      <Box mt={1} textColor={"blue.600"}>Type:</Box>
-                      <H3>{product.category}</H3>
-                      
+                      <H3 className="md:!text-sm lg:!text-lg !m-auto">{product.subcategory}</H3>
+                      <Box textColor={"blue.600"} >Type:</Box>
+                      <H3 className="md:!text-sm lg:!text-lg !m-auto" >{product.category}</H3>
+                      </Box>
+
+
                       <Box my={1} textColor={"blue.600"}>Description:</Box>
                     </Box>
                         
-                    <H4 className=" w-[100%] lg:w-[100%] font-semibold">{product?.desc}</H4>
-                    <H4 className=" w-[100%] lg:w-[100%] font-semibold">{product?.desc1}</H4>
-                    <H4 className=" w-[100%] lg:w-[100%] font-semibold">{product?.desc2}</H4>
-                    <H4 className=" w-[100%] lg:w-[100%] font-semibold">{product?.desc3}</H4>
-                    <H4 className=" w-[100%] lg:w-[100%] font-semibold">{product?.desc4}</H4>
-                    <H4 className=" w-[100%] lg:w-[100%] font-semibold">{product?.desc5}</H4>
+                    <H4 className=" w-[100%] font-semibold md:!text-sm lg:!text-lg">{product?.desc}</H4>
+                    <H4 className=" w-[100%] font-semibold md:!text-sm lg:!text-lg">{product?.desc1}</H4>
+                    <H4 className=" w-[100%] font-semibold md:!text-sm lg:!text-lg">{product?.desc2}</H4>
+                    <H4 className=" w-[100%] font-semibold md:!text-sm lg:!text-lg">{product?.desc3}</H4>
+                    <H4 className=" w-[100%] font-semibold md:!text-sm lg:!text-lg">{product?.desc4}</H4>
+                    <H4 className=" w-[100%] font-semibold md:!text-sm lg:!text-lg">{product?.desc5}</H4>
                     
 
                     <Box pt={1} my={1}>
-                    <Box my={2} textColor={"blue.600"}>Price:</Box>
+                    <Box my={0} textColor={"blue.600"}>Price:</Box>
                       {product.discount > 1 ? 
                       <H3 color="primary.main" mb={0.5} lineHeight="1">
                         <span className=" line-through">$ {product.price}</span>  <span className="text-red-500">${product.price-priceAsale} (on sale)</span>
                       </H3>
                         :
-                        <H3 color="primary.main" mb={0.5} lineHeight="1">
+                        <H3 color="primary.main" mt={1} lineHeight="1">
                         <span>$ {product.price}</span>
                       </H3>
                         }
