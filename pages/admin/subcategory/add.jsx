@@ -30,20 +30,3 @@ AddSubPage.getInitialProps = async (context) => {
 };
 
 
-
-
-
-// serverside
-AddSubPage.getInitialProps = async (context) => {
-  const Categories = await getDocuments("cats"); //  []
-
-
-  console.log("data", Categories);
-
-
-  return {
-    // props from serverside will go to props in clientside
-    cats: Categories,
-    
-  };
-};
