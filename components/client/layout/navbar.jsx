@@ -3,7 +3,7 @@ import { ChevronRight, User, Cart } from "@/functions/icons";
 
 import { useAuth } from "@/functions/context";
 // import { cn } from '@/lib/utils';
-// import CartModal from '@components/CartModal.js';
+import CartModal from "@/components/CartModal";
 // import logo from '@public/behide-logo-new.png';
 import Image from "next/image";
 import Link from "next/link";
@@ -40,6 +40,7 @@ const Navbar = () => {
   }, [router.asPath]);
 
   const [cats, setCats] = useState([]);
+  const [showCart, setShowCart] = useState(false);
 
   useEffect(() => {
     const getCategories = async () => {
@@ -81,6 +82,9 @@ const Navbar = () => {
     setDropdown(false);
     setOpen(false);
   }, [router.asPath]);
+
+
+console.log('data in cart',cart)
 
   return (
     <>
@@ -311,15 +315,25 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* <CartModal showCart={showCart} />
+      <CartModal showCart={showCart}
+      cart={cart}
+      />
 
 
       {showCart && (
         <div
           onClick={() => setShowCart(false)}
-          className="fixed inset-0 z-[200] bg-black opacity-50"
+          className="fixed inset- z-[200] bg-black opacity-50"
         ></div>
-      )} */}
+      )}
+
+     CART
+
+      {cart.map((item,index)=>(
+        <div key={index}>
+          {item.title}
+        </div>
+      ))}
     </>
   );
 };

@@ -28,8 +28,8 @@ console.log(inCart,"in carttt")
             {inCart.length}
             
             {inCart.map((item,index)=>(
-                <div key={index}>
-                    {item.cart[0].desc3}
+                <div className='text-3xl bg-green-300 m-auto flex justify-center' key={index}>
+                    {item.cart[1].title}
                 </div>
             ))}
         </div>

@@ -388,7 +388,8 @@ div.CodeMirror {
   font-size: 3.2rem;
   font-weight: 600;
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   letter-spacing: 2px;
   transition: all 0.3s ease-in-out;
   

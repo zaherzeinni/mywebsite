@@ -304,21 +304,21 @@ console.log(filterProduct,"filter productttt")
                   </Box>
 
 
-                  <Box mt={4} textColor={"blue.600"}>Product Name:</Box>
+                  <Box mt={4} textColor={"blue.600"} fontWeight={'semibold'}>Product Name:</Box>
                     <H1 mb={1} className="text-justify w-[100%] md:w-auto   font-sans md:!text-[20px]">
                       {product.title}
                     </H1>
 
                     <Box alignItems="center ">
                       <Box className="flex justify-text space-x-1  justify-between">
-                      <Box textColor={"blue.600"}>Brand:</Box>
-                      <H3 className="md:!text-sm lg:!text-lg !m-auto">{product.subcategory}</H3>
-                      <Box textColor={"blue.600"} >Type:</Box>
-                      <H3 className="md:!text-sm lg:!text-lg !m-auto" >{product.category}</H3>
+                      <Box textColor={"blue.600"} fontWeight={'semibold'}>Brand:</Box>
+                      <H3 className="md:!text-sm lg:!text-[15px] !m-auto">{product.subcategory}</H3>
+                      <Box textColor={"blue.600"} fontWeight={'semibold'} >Type:</Box>
+                      <H3 className="md:!text-sm lg:!text-[15px] !m-auto" >{product.category}</H3>
                       </Box>
 
 
-                      <Box my={1} textColor={"blue.600"}>Description:</Box>
+                      <Box my={1} textColor={"blue.600"} fontWeight={'semibold'}>Description:</Box>
                     </Box>
                         
                     <H4 className=" w-[100%] font-semibold md:!text-sm lg:!text-lg">{product?.desc}</H4>
