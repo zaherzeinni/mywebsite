@@ -314,7 +314,7 @@ console.log('data in cart',cart)
           <Image alt="menu-button" src="/menu.svg" width={30} height={30}  className="!text-black" />
         </div>
       </div>
-
+{/* 
       <CartModal showCart={showCart}
       cart={cart}
       />
@@ -333,7 +333,9 @@ console.log('data in cart',cart)
         <div key={index}>
           {item.title}
         </div>
-      ))}
+      ))} */}
+
+      
     </>
   );
 };

@@ -1,10 +1,10 @@
 import React from 'react'
-import CartComponent from '@/components/client/cart'
+//import CartComponent from '@/components/client/cart'
 
 export default function Cart() {
   return (
     <div>
-        <CartComponent/>
+      cart
 
     </div>
   )
