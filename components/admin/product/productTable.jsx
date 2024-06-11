@@ -153,7 +153,7 @@ const ProductTable = ({ products }) => {
   ];
 
   return (
-    <div className=" w-[90%]  md:w-[70%] mx-auto">
+    <div className=" w-[90%]  md:w-[100%] mx-auto">
       
       <Space
         style={{
