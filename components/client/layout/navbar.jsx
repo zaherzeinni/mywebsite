@@ -3,7 +3,7 @@ import { ChevronRight, User, Cart } from "@/functions/icons";
 
 import { useAuth } from "@/functions/context";
 // import { cn } from '@/lib/utils';
-import CartModal from "@/components/CartModal";
+//import CartModal from "@/components/CartModal";
 // import logo from '@public/behide-logo-new.png';
 import Image from "next/image";
 import Link from "next/link";
