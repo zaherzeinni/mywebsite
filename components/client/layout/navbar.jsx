@@ -40,6 +40,7 @@ const Navbar = () => {
   }, [router.asPath]);
 
   const [cats, setCats] = useState([]);
+  
   const [showCart, setShowCart] = useState(false);
 
   useEffect(() => {
@@ -52,19 +53,19 @@ const Navbar = () => {
     getCategories();
   }, []);
 
-  const Category = [
-    "Office Bag",
-    "Backpack",
-    "Briefcase",
-    "Laptop Bag",
-    "Messenger Bag",
-    "Luggage Bag",
-    "Ladies Bag",
-    "Belt",
-    "Wallet",
-    "Sling Bag",
-    "Jacket",
-  ];
+  // const Category = [
+  //   "Office Bag",
+  //   "Backpack",
+  //   "Briefcase",
+  //   "Laptop Bag",
+  //   "Messenger Bag",
+  //   "Luggage Bag",
+  //   "Ladies Bag",
+  //   "Belt",
+  //   "Wallet",
+  //   "Sling Bag",
+  //   "Jacket",
+  // ];
 
   const toggleMenu = () => {
     setOpen((prev) => !prev);
@@ -315,18 +316,20 @@ console.log('data in cart',cart)
         </div>
       </div>
 
-      <CartModal showCart={showCart}
+      <CartModal 
+      showCart={showCart}
+      setShowCart={setShowCart}
       cart={cart}
       />
 
-{/* 
+
       {showCart && (
         <div
-          onClick={() => setShowCart(false)}
+          onClick={() => setShowCart(true)}
           className="fixed inset- z-[200] bg-black opacity-50"
         ></div>
       )}
-
+{/* 
      CART
 
       {cart.map((item,index)=>(

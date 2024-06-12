@@ -207,11 +207,9 @@ console.log(product.subcategory,"product SUB categoryyy")
 console.log(product.title,"product Titleee")
 
 
-const filterProduct = products?.find((item) => item.subcategory === product.subcategory)
-console.log(filterProduct,"filter productttt")
+// const filterProduct = products?.find((item) => item.subcategory === product.subcategory)
+// console.log(filterProduct,"filter productttt")
 
-//console.log(products.subcategory,"single product is my SUB category")
-//console.log(filterProduct,"Latest product is my SUB category")
 
 
 
