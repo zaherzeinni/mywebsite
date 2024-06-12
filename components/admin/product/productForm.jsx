@@ -75,23 +75,23 @@ const ProductForm = ({
           <Form.Item name="title" label="Add Product - Title">
             <Input />
           </Form.Item>
-
-          <Form.Item name="desc" label="Description">
+          
+          <Form.Item name="desc" label="Model or Color">
             <TextArea rows={1} />
           </Form.Item>
-          <Form.Item name="desc1" label="Description1">
+          <Form.Item name="desc1" label="CPU or STORAGE">
             <TextArea rows={1} />
           </Form.Item>
-          <Form.Item name="desc2" label="Description2">
+          <Form.Item name="desc2" label="GPU or Battery Health">
             <TextArea rows={1} />
           </Form.Item>
-          <Form.Item name="desc3" label="Description3">
+          <Form.Item name="desc3" label="STORAGE or SIMS">
             <TextArea rows={1} />
           </Form.Item>
-          <Form.Item name="desc4" label="Description4">
+          <Form.Item name="desc4" label="MEMORY">
             <TextArea rows={1} />
           </Form.Item>
-          <Form.Item name="desc5" label="Description5">
+          <Form.Item name="desc5" label="BATTERY HEALTH">
             <TextArea rows={1} />
           </Form.Item>
 
