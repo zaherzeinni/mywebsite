@@ -5,6 +5,8 @@ import { Fragment, useState } from 'react'
 import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
+import { useAuth } from '@/functions/context'
+
 // const products = [
 //   {
 //     id: 1,
@@ -20,6 +22,13 @@ import Link from 'next/link'
 
 export default function CartModal({showCart,setShowCart,cart}) {
   //const [open, setOpen] = useState(true)
+const {removeFromCartList} = useAuth()
+
+    const getTotalPrice = () => {
+    // Calculate total of product prices
+    return cart.reduce((total, item) => total + item.price, 0);
+  };
+
 
   return (
     <Transition show={showCart}>
@@ -76,10 +85,12 @@ export default function CartModal({showCart,setShowCart,cart}) {
                                     src={product.images}
                                     alt={product.imagesAlt}
                                     className="h-full w-full object-cover object-center"
+                                    onClick={() => setShowCart(false)}
                                   />
                                 </Link>
+                                
                                 </div>
-
+                                
 
                                 <div className="ml-4 flex flex-1 flex-col">
                                   <div>
@@ -87,7 +98,7 @@ export default function CartModal({showCart,setShowCart,cart}) {
                                       <h3>
                                         <a href={product.href}>{product.title}</a>
                                       </h3>
-                                      <p className="ml-4">${product.price}</p>
+                                      <p className="ml-4">${product.price.toFixed(2)}</p>
                                     </div>
                                     <p className="mt-1 text-sm text-gray-500">{product.desc}</p>
                                     <p className="mt-1 text-sm text-gray-500">{product.subcategory}</p>
@@ -97,7 +108,7 @@ export default function CartModal({showCart,setShowCart,cart}) {
 
                                     <div className="flex">
                                       <button
-
+                                        onClick={() => removeFromCartList(product)}
                                         type="button"
                                         className="font-medium text-indigo-600 hover:text-indigo-500"
                                       >
@@ -116,7 +127,7 @@ export default function CartModal({showCart,setShowCart,cart}) {
                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <p>Subtotal</p>
-                        <p>$262.00</p>
+                        <p>${getTotalPrice().toFixed(2)}</p>
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                       <div className="mt-6">
@@ -129,13 +140,13 @@ export default function CartModal({showCart,setShowCart,cart}) {
                       </div>
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                         <p>
-                          or{' '}
+                          or 
                           <button
                             type="button"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                            className="mx-1 font-medium text-indigo-600 hover:text-indigo-500"
                             onClick={() => setShowCart(false)}
                           >
-                            Continue Shopping
+                             Continue Shopping
                             <span aria-hidden="true"> &rarr;</span>
                           </button>
                         </p>
@@ -187,9 +198,6 @@ export default function CartModal({showCart,setShowCart,cart}) {
 
 //    const handleClose = () => setShowModal(false);
 //    const handleShow = () => setShowModal(true);
-  
-//   //const handleClose = () => setShowCart(false);
-//   //const handleShow = () => setShowCart(true);
 
 //   return (
 //     <>

@@ -67,7 +67,6 @@ import { FiHeart } from "react-icons/fi";
 import { GoHeartFill } from "react-icons/go";
 
 
-
 // ================================================================
 
 // ================================================================
@@ -257,7 +256,7 @@ console.log(product.title,"product Titleee")
                  
                     {/* --------------small images to select----------------- */}
 
-                    <Box className="flex justify-center m-auto md:w-[500px] w-auto my-6 ">
+                    <Box className="flex justify-center m-auto md:w-[500px] w-auto mb-10 ">
              
                       {product?.images &&
                         product?.images.map((url, ind) => (
