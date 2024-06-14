@@ -8,12 +8,25 @@ dark mode
 #1E88E5 blue
 
 
-- [ ]  Navbar click outside
+
+- [ ]  take a style css in ExperienceTeam.js fruits-agency-main  
+
+D:\Web-Developer\REACT JSX\28.Mohammd Jumah\Websites are done\Data of Sweetsips and MUI\fruits-agency-main\fruits-agency-main\src\components\slider\ExperienceTeam.js
+
+page name: farmers
+
+
+- [ ]  cart modal Components
+
+- [ ]  EMAIL API CONTACT US - ORDER - NEWS   ( use nodemailer  ) and with email form + upload images on contact us for trade in
+
+
+
 - [ ]  Booking sell and buy   ( trade in  )
 - [ ]  table in dashboard make filter
 - [ ]  google authentication or SMS
-- [ ]  Search to view products
-- [ ]  Reservation Button
+
+
 - [ ]  Emails and user Profile
 - [ ]  User Profile and Checkout Page
 - [ ] wishlist page and addtocart page 
