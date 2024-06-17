@@ -210,7 +210,9 @@ console.log(product.title,"product Titleee")
 // console.log(filterProduct,"filter productttt")
 
 
-
+function refreshPage(){  
+  window.parent.location = window.parent.location.href; 
+                        }
 
   return (
     <div>
@@ -249,6 +251,7 @@ console.log(product.title,"product Titleee")
                             product?.images && product?.images[selectedImage]
                           }
                           className="sm:w-[30vw] md:w-[40vw] justify-center flex m-auto rounded-lg object-contain"
+                          
                         />
                       )}
                     </Box>
@@ -507,7 +510,7 @@ console.log(product.title,"product Titleee")
     <Card key={index} maxW="xs" w={250} h={'420px'} gap={1} mx={2}  >
       <Box className="flex-col justify-center h-[80%] overflow-hidden ">
       
-      <Link href={`/products/productdetails/single?id=${item.id}`}>
+      <Link href={`/products/productdetails/single?id=${item.id}`} >
         <Image
           src={item.images}
           alt="img"
@@ -515,6 +518,7 @@ console.log(product.title,"product Titleee")
           width={"100%"}
           height={"55%"}
           className="hover:scale-110   duration-700 cursor-pointer  "
+         
         />
       </Link>
       

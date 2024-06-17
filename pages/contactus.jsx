@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "@formcarry/react";
 
 import { CheckCircleIcon } from "@heroicons/react/outline";
@@ -10,7 +10,7 @@ import Link from "next/link";
 import { db } from "@/functions/firebase";
 import { addDoc,collection,serverTimestamp } from "@firebase/firestore";
 import { toast } from "react-toastify";
-
+import TradeIn from "./tradein";
 
 function ContactUs() {
   
@@ -65,7 +65,21 @@ const onSendEmail = async (e) => {
   }
 };
 
+const [show,setShow]=useState(false)
 
+console.log(show,"showww")
+
+function selector() {
+  if (subjectid.value != undefined) {
+      if (subjectid.value == "Trade in"){
+        setShow(!show)
+      // }   else if (subject.value == "Other") {
+      //     check2()
+      // }   else if (subject.value == "More information") {
+      //     check3()
+      }   
+  }
+}
 
 
   return (
@@ -194,21 +208,39 @@ const onSendEmail = async (e) => {
                       className="w-full rounded-lg border p-3 text-sm drop-shadow-xl focus-within:outline-none focus:border-rose-600 cursor-pointer"
                       placeholder="Choose subject"
                       type="text"
-                      id="subject"
+                      id="subjectid"
                       name="subject"
-
                       required
+                      onClick={selector}
                     >
                       
                     <option  value="">Choose subject</option>
-                    <option  value="Trade in">Trade in</option>
+                   
+
+
+                     <option onClick={()=>setShow(true)} value="Trade in"   >To Trade in ; You Should upload 4 Pictures of your phone</option>   
+                    
+                   
+
                     <option  value="More information">More information</option>
                     <option  value="Other">Other</option>
                     
                      </select> 
                   </div>
-
+                  { show? 
+                  <div>
+                  <div className="text-red-500 mb-2 -mt-1 ml-1">Note: 1.front picture 2.back picture 3.about model 4.battery health</div><TradeIn/>
+                  </div>
+                   :
+                   null
+                   } 
+                 
+            
                   
+
+
+
+
    
                   <div>
                     <label className="ml-1" htmlFor="message">
@@ -249,6 +281,7 @@ const onSendEmail = async (e) => {
                 </form>
               )}
             </div>
+            
           </section>
         </div>
      

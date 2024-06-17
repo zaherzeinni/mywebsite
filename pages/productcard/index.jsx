@@ -96,9 +96,9 @@ const ProductCard = ({ data, index }) => {
     }
   }, [cart]);
     
-
-
   console.log(data,"dataaaaaaaaa")
+
+
   return (
       
       <SimpleGrid  >
@@ -147,7 +147,7 @@ const ProductCard = ({ data, index }) => {
         {data?.instock ? (
         
           <ButtonGroup spacing="1" m={"auto"} className="flex flex-row sm:flex-col lg:flex-row !mt-5" >
-            <Button variant="solid" colorScheme="blue">
+            <Button variant="solid" colorScheme="blue" >
               <Link href={`/products/productdetails/single?id=${data.id}`}>Buy now</Link>
             </Button>
 
@@ -156,6 +156,7 @@ const ProductCard = ({ data, index }) => {
                 onClick={() => addToCart(data)}
                 variant="ghost"
                 colorScheme="blue"
+                
               >
                 Add to cart
               </Button>
