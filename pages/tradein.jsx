@@ -8,7 +8,7 @@ const getBase64 = (file) =>
     reader.onload = () => resolve(reader.result);
     reader.onerror = (error) => reject(error);
   });
-const TradeIn = () => {
+const TradeIn = ({initialValues}) => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
   const [fileList, setFileList] = useState([
@@ -46,11 +46,65 @@ const TradeIn = () => {
       </div>
     </button>
   );
+
+
+  const [image, setImage] = useState(initialValues?.image || "");
+
+
+
+  
+
+
+  const [file, setFile] = useState("");
+
+  const onFinish = async (values) => {
+    console.log("values-->", values);
+    console.log("file", file);
+
+    if (!file) {
+      message.error("Please select image");
+      return; // stoppppp progress the function
+    } else {
+      values.image = await uploadImages(file, true, "emails"); // result is image link from firebase/storage
+      values.timeStamp = serverTimestamp()
+      await addDoc(collection(db, "emails"), values);
+      message.success("Images uploaded successfully");
+    }
+  }
+
+
+
+
+
   return (
     <>
+
+<div
+          layout="vertical"
+          // onFinish same as submit normal form
+          onFinish={(values) =>
+            // name of our function
+            onFinish({
+              ...values,
+              image,
+            })
+          }
+          initialValues={{
+            
+            image: initialValues?.image || "",
+          }}
+        />
+
       <Upload
-        action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+        // action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+        accept="image/*"
+        beforeUpload={(file) => {
+            setFile(file);
+            // setFiles((prev) => [...prev, file]);
+            return false;
+          }}
         listType="picture-card"
+        onRemove={() => setFile("")}
         fileList={fileList}
         onPreview={handlePreview}
         onChange={handleChange}

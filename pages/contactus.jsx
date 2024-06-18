@@ -11,6 +11,8 @@ import { db } from "@/functions/firebase";
 import { addDoc,collection,serverTimestamp } from "@firebase/firestore";
 import { toast } from "react-toastify";
 import TradeIn from "./tradein";
+import { uploadImages } from "@/functions/firebase/getData";
+
 
 function ContactUs() {
   
@@ -42,6 +44,7 @@ const onSendEmail = async (e) => {
           phone: e.target.phone.value,
           subject: e.target.subject.value,
           message: e.target.message.value,
+          //emailimage: e.target.emailimage.value,
         }),
       });
 
@@ -82,6 +85,10 @@ function selector() {
 }
 
 
+
+
+
+
   return (
     <>
       <NextSeo
@@ -104,9 +111,6 @@ function selector() {
       </div>
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 md:py-16 lg:px-8">
         <section>
-          {/* <h1 className="text-4xl font-bold tracking-tight text-rose-600 sm:text-5xl md:text-6xl">
-            Contact Us
-          </h1> */}
           <div className=" font-semibold text-lg text-justify">We are here to answer all your questions and help you with everything you need.You can reach us by phone or email at any time.We promise to provide support and advice to get the most out of our products.</div>
           <p className="my-4 text-lg duration-200 hover:text-rose-600 md:justify-start">
             <a
@@ -229,19 +233,14 @@ function selector() {
                   </div>
                   { show? 
                   <div>
-                  <div className="text-red-500 mb-2 -mt-1 ml-1">Note: 1.front picture 2.back picture 3.about model 4.battery health</div><TradeIn/>
+                  <div className="text-red-500 mb-2 -mt-1 ml-1">Note: 1.front picture 2.back picture 3.about model 4.battery health</div>
+                  <TradeIn />
                   </div>
                    :
                    null
                    } 
                  
-            
-                  
 
-
-
-
-   
                   <div>
                     <label className="ml-1" htmlFor="message">
                       Message
