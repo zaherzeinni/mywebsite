@@ -90,7 +90,7 @@ const TradeIn = ({initialValues}) => {
             })
           }
           initialValues={{
-            
+            title: initialValues?.title || "",
             image: initialValues?.image || "",
           }}
         />
@@ -109,6 +109,7 @@ const TradeIn = ({initialValues}) => {
         onPreview={handlePreview}
         onChange={handleChange}
         maxCount={4}
+        id='emailimage'
       >
         {fileList.length >= 8 ? null : uploadButton}
       </Upload>

@@ -100,7 +100,7 @@ const RegisterPage = () => {
     console.log("small id", small_id);
     console.log("image File-->", imageFile);
 
-    // to specify where i well store the image -->{in profile/{id}} profile as folder name and id as imageName
+    // to specify where i will store the image -->{in profile/{id}} profile as folder name and id as imageName
     const storageRef = sRef(storage, `users/${small_id}`);
     // then upload image to location in firebase/storage
     const uploadTask = uploadBytesResumable(storageRef, imageFile);
@@ -110,7 +110,7 @@ const RegisterPage = () => {
     uploadTask.on(
       "state_change",
       (snapshot) => {
-        // calculate pircentge of uploaded data of image
+        // calculate percentage of uploaded data of image
         const progressBar =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         //  slice the numbers after coma --> 1.3232 --> 1
