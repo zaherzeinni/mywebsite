@@ -16,7 +16,7 @@ import { uploadImages } from "@/functions/firebase/getData";
 import { PlusOutlined } from '@ant-design/icons';
 import { Image, Upload } from 'antd';
 
-
+import { useAuth } from "@/functions/context";
 
 
 
@@ -105,7 +105,7 @@ function ContactUs({initialValues}) {
 
 
 
-
+const {cart}= useAuth()
 
   
   const { state } = useForm({
@@ -136,7 +136,8 @@ const onSendEmail = async (e) => {
           phone: e.target.phone.value,
           subject: e.target.subject.value,
           message: e.target.message.value,
-          emailimage: e.target.emailimage.value,
+          cart: cart,
+          //emailimage: e.target.emailimage.value,
         }),
       });
 
@@ -318,7 +319,7 @@ function selector() {
                     
                    
 
-                    <option  value="More information">More information</option>
+                    <option  value="Feedback">Feedback</option>
                     <option  value="Other">Other</option>
                     
                      </select> 
@@ -409,13 +410,14 @@ function selector() {
                       id="message"
                       name="message"
                       defaultValue={""}
+                      minLength={10}
                       required
                     />
                   </div>
                   <div className="mt-4">
                     <button
                       type="submit"
-                      className="inline-flex w-full items-center justify-center rounded-lg bg-rose-600 px-5 py-3 text-white sm:w-auto"
+                      className="inline-flex w-full items-center justify-center rounded-lg bg-rose-600 px-5 py-3 text-white sm:w-auto hover:bg-red-800"
                     >
                       <span className="font-medium"> Submit </span>
                       <svg

@@ -1,56 +1,99 @@
-//https://nodemailer.com/
-//https://resend.com/emails
-import { Resend } from 'resend';
-import EmailTemplate from '@/components/EmailSend';
 
-const resend = new Resend('re_aUoYNp6c_HVepFLqRG9UBMrWWJtcg82qY');
-
-export default async function sendEmail(req, res) {
-  try {
-    const data = req.body
-
-    console.log('data', data)
+import nodemailer from "nodemailer";
+import { useAuth } from "@/functions/context";
 
 
+const email = "noreply.springworthbooks@gmail.com";
+const passw = "bbvh hors bgbq pxjm";
+
+
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,// Use SSL `true` for port 465, `false` for all other ports
+  auth: {
+
+    user: email, // generated ethereal user
+    pass: passw, // generated ethereal password
+  },
+});
+
+
+
+// async..await is not allowed in global scope, must use a wrapper
+async function sendEmail({ title,name, email, phone, message, subject, emailimage,cart}) {
+
+
+
+  // send mail with defined transport object
+  const emailOptions = {
+    from: 'itpromax2024@gmail.com', // sender address
+    to: "itpromax2024@gmail.com, zaherzeinni@hotmail.com", // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: `${title}`, // plain text body
+    html: ` <h2 style="font-size: 3rem; color: #F20F38; background-color: #110B10; padding: 20px; text-align: center;">Order Email</h2>
     
+    <a href='https://www.itpromax.com' rel="noreferrer" traget='_blank'>
+    <img src="/icon.png" width='15%' height='15%'></img>
+    </a>
 
- const dataRes =   await resend.sendEmail({
-      from: 'onboarding@resend.dev',
-      to:'itpromax2024@gmail.com',
-      cc:`${data.email}`,
-      replyTo: data.email,
-      subject: `${data.name}`,
-      react: <EmailTemplate {...data} />,
-      html: `<body style="background: #f3f4f6; padding:0 5px;">
-      <div style="max-width: 600px; margin: 0 auto; padding: 20px 0; font-family:Trebuchet MS;">
-      <div style="text-align: center; margin-bottom: 20px;">
-       <h1 style="color: #000; text-transform: uppercase; font-size: 30px;">You have news message from  SweetSips</h1>
-      </div>
-      <div style="padding: 10px; border-radius:5px; background:#fff; -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3); -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3); box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3);">
-          <h2 style="text-align: center; text-transform: uppercase; color: teal;">New message</h2>
-          <img src="https://sweetsips.com.tr/assets/images/frozeximages/frozex-logo.png" width='15%' height='15%'></img>
-        
-          <p style="font-size:1rem;"><strong> New Offer</p> 
-          <p style="font-size:1rem;"><strong> Product Name: </strong></p>
-         
-      
+    <ul>
+        <li><h3 style=" color: #110B10;">Name:</h3> <span>${name}</span></li>
+        <li><h3 style=" color: #110B10;">Email:</h3> <span>${email}</span></li>
+        <li><h3 style=" color: #110B10;">Phone:</h3> <span>${phone}</span></li>
+        <li><h3 style=" color: #110B10;">Message:</h3> <span>${message}</span></li>
+        <li><h3 style=" color: #110B10;">Pictures of Device:</h3> <span><img src=${emailimage} alt=img width="100" height="150" /> </span></li>
+        <li><h3 style=" color: #110B10;">Subject:</h3> <span>${subject}</span></li>
+    </ul>
+   
+    <table style="border-collapse: collapse; width: 100%; border-spacing: unset;">
+        <thead style="background-color: #E8F0EB; color: #F20F38;">
+            <tr style="border: 1px solid #F20F38;">
+                <th style="border: none; padding: 8px; text-align: left;">Name of Product</th>
+                <th style="border: none; padding: 8px; text-align: left;">Image of Product</th>
+                <th style="border: none; padding: 8px; text-align: left;">Item Price</th>
+               
+            </tr>
+        </thead>
+        <tbody style="background-color: #E8F0EB;">
+            ${cart
+              .map(
+                (item) => `
+            <tr style="border: 1px solid #E8F0EB;">
+                <td style="border: none; padding: 8px;">${item.title}</td>
+                <td style="border: none; padding: 8px;"><img src=${item.images[0]} alt=img width="100" height="150" /></td>
+                <td style="border: none; padding: 8px;">$ ${item.price}</td>
+                
+             
+              
+            </tr>
+            `
+              )
+              .join("")}
+        </tbody>
+    </table>
+    <h2>Thank you for you order From ITPROMAX ,  شكرا لطلبكم</h2>
+`,
+
+  };
+
+  return transporter.sendMail(emailOptions);
   
-  
-      
-      </div>
-      </div>
-      
-      <footer style="text-align: center; padding: 5px 0; color: #000; font-size: 1rem;">
-      <h2>IT PRO MAX</h2>
-      <p>© 2024 All rights reserved</p>
-      </footer>
-      </body>`
+}
 
-    })
+export default async function handler(req, res) {
+  if (req.method === "POST") {
+    console.log("DATA-,", req.body);
+    const emailRes = await sendEmail(req.body);
+    if (emailRes.messageId) {
+      return res.status(200).json({ message: `Email sent successfuly` });
+    }
 
-    console.log('dataRes', dataRes)
-    res.status(200).json({ message: 'Email sent' })
-  } catch (e) {
-    res.status(500).json({ message: e.message })
+    return res.status(400).json({ message: "Error sending email" });
   }
+
+  return res
+    .status(400)
+    .json({ message: `Incorrect method: ${req.method}. Did you mean POST?` });
 }
