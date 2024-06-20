@@ -32,10 +32,10 @@ async function sendEmail({ title,name, email, phone, message, subject, emailimag
     to: "itpromax2024@gmail.com, zaherzeinni@hotmail.com", // list of receivers
     subject: "Hello ✔", // Subject line
     text: `${title}`, // plain text body
-    html: ` <h2 style="font-size: 3rem; color: #F20F38; background-color: #110B10; padding: 20px; text-align: center;">Order Email</h2>
+    html: ` <h2 style="font-size: 3rem; color: #F20F38; background-color: #110B10; padding: 20px; text-align: center;">Order Email from ITPROMAX</h2>
     
-    <a href='https://www.itpromax.com' rel="noreferrer" traget='_blank'>
-    <img src="/icon.png" width='15%' height='15%'></img>
+    <a href='itpromax.com' rel="noreferrer" traget='_blank'>
+    <img src="/icon.png" alt="img" width="50" height="50"/>
     </a>
 
     <ul>
@@ -43,7 +43,7 @@ async function sendEmail({ title,name, email, phone, message, subject, emailimag
         <li><h3 style=" color: #110B10;">Email:</h3> <span>${email}</span></li>
         <li><h3 style=" color: #110B10;">Phone:</h3> <span>${phone}</span></li>
         <li><h3 style=" color: #110B10;">Message:</h3> <span>${message}</span></li>
-        <li><h3 style=" color: #110B10;">Pictures of Device:</h3> <span><img src=${emailimage} alt=img width="100" height="150" /> </span></li>
+        <li><h3 style=" color: #110B10;">Pictures of Device:</h3> <span>${emailimage} </span></li>
         <li><h3 style=" color: #110B10;">Subject:</h3> <span>${subject}</span></li>
     </ul>
    
@@ -73,7 +73,7 @@ async function sendEmail({ title,name, email, phone, message, subject, emailimag
               .join("")}
         </tbody>
     </table>
-    <h2>Thank you for you order From ITPROMAX ,  شكرا لطلبكم</h2>
+    <h2>Thank you for your order  ,  شكرا لطلبكم</h2>
 `,
 
   };
