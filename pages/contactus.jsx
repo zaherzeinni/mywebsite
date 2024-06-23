@@ -8,21 +8,20 @@ import Footer from "@/components/client/layout/footer";
 import Link from "next/link";
 
 import { db } from "@/functions/firebase";
-import { addDoc,collection,serverTimestamp } from "@firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "@firebase/firestore";
 import { toast } from "react-toastify";
 //import TradeIn from "./tradein";
 import { uploadImages } from "@/functions/firebase/getData";
 
-import { PlusOutlined } from '@ant-design/icons';
-import { Image, Upload } from 'antd';
+import { PlusOutlined } from "@ant-design/icons";
+import { Image, Upload } from "antd";
 
 import { useAuth } from "@/functions/context";
 
 
 
-function ContactUs({initialValues}) {
 
-
+function ContactUs({ initialValues }) {
   const getBase64 = (file) =>
     new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -30,157 +29,134 @@ function ContactUs({initialValues}) {
       reader.onload = () => resolve(reader.result);
       reader.onerror = (error) => reject(error);
     });
-    const [previewOpen, setPreviewOpen] = useState(false);
-    const [previewImage, setPreviewImage] = useState('');
-    const [fileList, setFileList] = useState([
-      // {
-      //   uid: '-1',
-      //   name: 'image.png',
-      //   status: 'done',
-      //   url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      // },
-  
-    ]);
-    const handlePreview = async (file) => {
-      if (!file.url && !file.preview) {
-        file.preview = await getBase64(file.originFileObj);
-      }
-      setPreviewImage(file.url || file.preview);
-      setPreviewOpen(true);
-    };
-    const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
-    const uploadButton = (
-      <button
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState("");
+  const [fileList, setFileList] = useState([
+    // {
+    //   uid: '-1',
+    //   name: 'image.png',
+    //   status: 'done',
+    //   url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    // },
+  ]);
+  const handlePreview = async (file) => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj);
+    }
+    setPreviewImage(file.url || file.preview);
+    setPreviewOpen(true);
+  };
+  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  const uploadButton = (
+    <button
+      style={{
+        border: 0,
+        background: "none",
+      }}
+      type="button"
+    >
+      <PlusOutlined />
+      <div
         style={{
-          border: 0,
-          background: 'none',
+          marginTop: 8,
         }}
-        type="button"
       >
-        <PlusOutlined />
-        <div
-          style={{
-            marginTop: 8,
-          }}
-        >
-          Upload
-        </div>
-      </button>
-    );
-  
-  
-    const [image, setImage] = useState(initialValues?.image || "");
-  
-  
-  
-    
-  
-  
-    const [file, setFile] = useState("");
-  
-    const onFinish = async (values) => {
-      console.log("values-->", values);
-      console.log("file", file);
-  
-      if (!file) {
-        message.error("Please select image");
-        return; // stoppppp progress the function
-      } else {
-        values.image = await uploadImages(file, true, "emails"); // result is image link from firebase/storage
-        values.timeStamp = serverTimestamp()
-        await addDoc(collection(db, "emails"), values);
-        message.success("Images uploaded successfully");
-      }
-    }
-  
-  
-  
+        Upload
+      </div>
+    </button>
+  );
 
+  const [image, setImage] = useState(initialValues?.image || "");
 
+  const [file, setFile] = useState("");
 
+  const onFinish = async (values) => {
+    console.log("values-->", values);
+    console.log("file", file);
 
-
-
-
-
-
-
-const {cart}= useAuth()
-
-  
-  const { state } = useForm({
-  });
-
-
-const onSendEmail = async (e) => {
-  e.preventDefault();
-
-  try {
-    //   const isProd = process.env.NODE_ENV === 'production'
-    //   const base = isProd ? 'https://zenorocha.com' : 'http://localhost:3000'
-
-    if (
-      e.target.name.value !== "" &&
-      e.target.email.value !== "" &&
-      e.target.message.value !== "" &&
-      e.target.phone.value !== ""
-    ) {
-      const res = await fetch(`/api/email`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-
-        body: JSON.stringify({
-          title: "Contact Us",
-          name: e.target.name.value,
-          email: e.target.email.value,
-          phone: e.target.phone.value,
-          subject: e.target.subject.value,
-          message: e.target.message.value,
-          cart: cart,
-          //emailimage: e.target.emailimage.value,
-        }),
-      });
-
-      console.log("response", res?.status);
-
-      if (res.status === 200) {
-        toast.success(" your message sent successfully");
-      }
+    if (!file) {
+      message.error("Please select image");
+      return; // stoppppp progress the function
     } else {
-      toast.error("some fields is empty");
+      values.image = await uploadImages(file, true, "emails"); // result is image link from firebase/storage
+      values.timeStamp = serverTimestamp();
+      await addDoc(collection(db, "emails"), values);
+      message.success("Images uploaded successfully");
     }
+  };
 
-    //   setIsEmailSent(true)
-    //   setShowToast(true)
-  } catch (e) {
-    console.error(e);
-    toast.error("something went wrong");
 
-    //   setIsEmailSent(false)
-    //   setShowToast(true)
+  
+
+  const { cart,getTotalPrice } = useAuth();
+
+  const { state } = useForm({});
+
+  const onSendEmail = async (e) => {
+    e.preventDefault();
+
+    try {
+      //   const isProd = process.env.NODE_ENV === 'production'
+      //   const base = isProd ? 'https://zenorocha.com' : 'http://localhost:3000'
+
+      if (
+        e.target.name.value !== "" &&
+        e.target.email.value !== "" &&
+        e.target.message.value !== "" &&
+        e.target.phone.value !== ""
+      ) {
+        const res = await fetch(`/api/email`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+
+          body: JSON.stringify({
+            title: "Contact Us",
+            name: e.target.name.value,
+            email: e.target.email.value,
+            phone: e.target.phone.value,
+            subject: e.target.subject.value,
+            message: e.target.message.value,
+            cart: cart,
+            getTotalPrice: getTotalPrice(),      //send getTotalPrice() as a function ====> props to email.js
+            //emailimage: e.target.emailimage.value,
+          }),
+        });
+
+        console.log("response", res?.status);
+
+        if (res.status === 200) {
+          toast.success(" your message sent successfully");
+        }
+      } else {
+        toast.error("some fields is empty");
+      }
+
+      //   setIsEmailSent(true)
+      //   setShowToast(true)
+    } catch (e) {
+      console.error(e);
+      toast.error("something went wrong");
+
+      //   setIsEmailSent(false)
+      //   setShowToast(true)
+    }
+  };
+
+  const [show, setShow] = useState(false);
+
+  console.log(show, "showww");
+
+  function selector() {
+    if (subjectid.value != undefined) {
+      if (subjectid.value == "Trade in") {
+        setShow(!show);
+        // }   else if (subject.value == "Other") {
+        //     check2()
+        // }   else if (subject.value == "More information") {
+        //     check3()
+      }
+    }
   }
-};
-
-const [show,setShow]=useState(false)
-
-console.log(show,"showww")
-
-function selector() {
-  if (subjectid.value != undefined) {
-      if (subjectid.value == "Trade in"){
-        setShow(!show)
-      // }   else if (subject.value == "Other") {
-      //     check2()
-      // }   else if (subject.value == "More information") {
-      //     check3()
-      }   
-  }
-}
-
-
-
-
-
 
   return (
     <>
@@ -188,7 +164,7 @@ function selector() {
         title="ITPROMAX-Contact Us"
         description="ITPROMAX is a small business "
       />
-      <Navbar/>
+      <Navbar />
       <div>
         {/* group-hover:scale-105 transition-all duration-700 ease-in-out */}
         <img
@@ -204,7 +180,12 @@ function selector() {
       </div>
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 md:py-16 lg:px-8">
         <section>
-          <div className=" font-semibold text-lg text-justify">We are here to answer all your questions and help you with everything you need.You can reach us by phone or email at any time.We promise to provide support and advice to get the most out of our products.</div>
+          <div className=" font-semibold text-lg text-justify">
+            We are here to answer all your questions and help you with
+            everything you need.You can reach us by phone or email at any
+            time.We promise to provide support and advice to get the most out of
+            our products.
+          </div>
           <p className="my-4 text-lg duration-200 hover:text-rose-600 md:justify-start">
             <a
               target={"_blank"}
@@ -215,7 +196,7 @@ function selector() {
             </a>
           </p>
         </section>
-     
+
         <div className="md:grid grid-cols-1 gap-5 py-4 md:grid-cols-2 md:py-8 flex  flex-col-reverse">
           <section className="h-64 md:h-full">
             <iframe
@@ -241,10 +222,10 @@ function selector() {
                     </div>
                     <div>
                       <p className="font-bold">
-                      Your message has been sent successfully.
+                        Your message has been sent successfully.
                       </p>
                       <p className="text-sm">
-                      You will be contacted as soon as possible.
+                        You will be contacted as soon as possible.
                       </p>
                     </div>
                   </div>
@@ -262,7 +243,7 @@ function selector() {
                       id="name"
                       name="name"
                       required
-                      maxLength = {32}
+                      maxLength={32}
                       minLength={4}
                     />
                   </div>
@@ -292,7 +273,7 @@ function selector() {
                         id="phone"
                         name="phone"
                         required
-                        maxLength = {8}
+                        maxLength={8}
                         minLength={8}
                       />
                     </div>
@@ -301,7 +282,7 @@ function selector() {
                     <label className="ml-1" htmlFor="subject">
                       Subject
                     </label>
-                    <select 
+                    <select
                       className="w-full rounded-lg border p-3 text-sm drop-shadow-xl focus-within:outline-none focus:border-rose-600 cursor-pointer"
                       placeholder="Choose subject"
                       type="text"
@@ -310,94 +291,78 @@ function selector() {
                       required
                       onClick={selector}
                     >
-                      
-                    <option  value="">Choose subject</option>
-                   
+                      <option value="">Choose subject</option>
 
+                      <option onClick={() => setShow(true)} value="Trade in">
+                        To Trade in ; You Should upload 4 Pictures of your phone
+                      </option>
 
-                     <option onClick={()=>setShow(true)} value="Trade in"   >To Trade in ; You Should upload 4 Pictures of your phone</option>   
-                    
-                   
-
-                    <option  value="Feedback">Feedback</option>
-                    <option  value="Other">Other</option>
-                    
-                     </select> 
+                      <option value="Feedback">Feedback</option>
+                      <option value="Other">Other</option>
+                    </select>
                   </div>
-                  { show? 
-                  <div>
-                  <div className="text-red-500 mb-2 -mt-1 ml-1">Note: 1.front picture 2.back picture 3.about model 4.battery health</div>
-                  {/* <TradeIn /> */}
+                  {show ? (
+                    <div>
+                      <div className="text-red-500 mb-2 -mt-1 ml-1">
+                        Note: 1.front picture 2.back picture 3.about model
+                        4.battery health
+                      </div>
+                      {/* <TradeIn /> */}
 
+                      <>
+                        <div
+                          layout="vertical"
+                          // onFinish same as submit normal form
+                          onFinish={(values) =>
+                            // name of our function
+                            onFinish({
+                              ...values,
+                              image,
+                            })
+                          }
+                          initialValues={{
+                            title: initialValues?.title || "",
+                            image: initialValues?.image || "",
+                          }}
+                        />
 
-
-                  <>
-
-<div
-          layout="vertical"
-          // onFinish same as submit normal form
-          onFinish={(values) =>
-            // name of our function
-            onFinish({
-              ...values,
-              image,
-            })
-          }
-          initialValues={{
-            title: initialValues?.title || "",
-            image: initialValues?.image || "",
-          }}
-        />
-
-      <Upload
-         //action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-        accept="image/*"
-        beforeUpload={(file) => {
-            setFile(file);
-            // setFiles((prev) => [...prev, file]);
-            return false;
-          }}
-        listType="picture-card"
-        onRemove={() => setFile("")}
-        fileList={fileList}
-        onPreview={handlePreview}
-        onChange={handleChange}
-        maxCount={4}
-        id='emailimage'
-        name="emailimage"
-      >
-        {fileList.length >= 8 ? null : uploadButton}
-      </Upload>
-      {previewImage && (
-        <Image
-          wrapperStyle={{
-            display: 'none',
-          }}
-          preview={{
-            visible: previewOpen,
-            onVisibleChange: (visible) => setPreviewOpen(visible),
-            afterOpenChange: (visible) => !visible && setPreviewImage(''),
-          }}
-          src={previewImage}
-          
-        />
-      )}
-    </>
-
-
-
-
-
-
-
-
-
-
-                  </div>
-                   :
-                   null
-                   } 
-                 
+                        <Upload
+                          //action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+                          accept="image/*"
+                          beforeUpload={(file) => {
+                            setFile(file);
+                            // setFiles((prev) => [...prev, file]);
+                            return false;
+                          }}
+                          listType="picture-card"
+                          onRemove={() => setFile("")}
+                          fileList={fileList}
+                          onPreview={handlePreview}
+                          onChange={handleChange}
+                          maxCount={4}
+                          id="emailimage"
+                          name="emailimage"
+                        >
+                          {fileList.length >= 8 ? null : uploadButton}
+                        </Upload>
+                        {previewImage && (
+                          <Image
+                            wrapperStyle={{
+                              display: "none",
+                            }}
+                            preview={{
+                              visible: previewOpen,
+                              onVisibleChange: (visible) =>
+                                setPreviewOpen(visible),
+                              afterOpenChange: (visible) =>
+                                !visible && setPreviewImage(""),
+                            }}
+                            src={previewImage}
+                          />
+                        )}
+                      </>
+                    </div>
+                  ) : null}
 
                   <div>
                     <label className="ml-1" htmlFor="message">
@@ -417,7 +382,7 @@ function selector() {
                   <div className="mt-4">
                     <button
                       type="submit"
-                      className="inline-flex w-full items-center justify-center rounded-lg bg-rose-600 px-5 py-3 text-white sm:w-auto hover:bg-red-800"
+                      className="inline-flex w-full items-center justify-center rounded-lg bg-rose-600 px-5 py-3 text-white sm:w-auto hover:bg-red-500"
                     >
                       <span className="font-medium"> Submit </span>
                       <svg
@@ -439,12 +404,10 @@ function selector() {
                 </form>
               )}
             </div>
-            
           </section>
         </div>
-     
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

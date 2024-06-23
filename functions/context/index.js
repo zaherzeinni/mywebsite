@@ -521,6 +521,11 @@ export const StateContextProvider = ({ children }) => {
 
   const [inputt, setInputt] = useState();
 
+   function getTotalPrice () {
+    // Calculate total of product prices
+    return cart.reduce((total, item) => total + item.price, 0);
+  };
+
   return (
     <StateContext.Provider
       value={{
@@ -545,6 +550,7 @@ export const StateContextProvider = ({ children }) => {
         addToCart,
         removeFromCartList,
         logout,
+        getTotalPrice,
       }}
     >
       {children}
