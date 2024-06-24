@@ -340,7 +340,7 @@ function ContactUs({ initialValues }) {
                           fileList={fileList}
                           onPreview={handlePreview}
                           onChange={handleChange}
-                          onClick={()=>tradeInAddImage(file)}
+                          //onClick={()=>tradeInAddImage(file)}
                           maxCount={4}
                           id="emailimage"
                           name="emailimage"
