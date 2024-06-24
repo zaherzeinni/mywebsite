@@ -43,7 +43,7 @@ async function sendEmail({ title,name, email, phone, message, subject, emailimag
             <tr style="border: 1px solid #F20F38;">
                 <th style="border: none; padding: 8px; text-align: left;">Name of Product</th>
                 <th style="border: none; padding: 8px; text-align: left;">Image of Product</th>
-                <th style="border: none; padding: 8px; text-align: left;">Item Price </th>
+                <th style="border: none; padding: 8px; text-align: left;">Item Price</th>
             </tr>
         </thead>
         <tbody style="background-color: #E8F0EB;">
