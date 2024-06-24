@@ -5,3 +5,4 @@ export default function CartComponent() {
     <div>CartComponent</div>
   )
 }
+
