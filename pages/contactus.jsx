@@ -78,9 +78,9 @@ function ContactUs({ initialValues }) {
       message.error("Please select image");
       return; // stoppppp progress the function
     } else {
-      values.image = await uploadImages(file, true, "tradein"); // result is image link from firebase/storage
+      values.image = await uploadImages(file, true, "emails"); // result is image link from firebase/storage
       values.timeStamp = serverTimestamp();
-      await addDoc(collection(db, "tradein"), values);
+      await addDoc(collection(db, "emails"), values);
       message.success("Images uploaded successfully");
     }
   };
@@ -88,7 +88,7 @@ function ContactUs({ initialValues }) {
 
   
 
-  const { cart,getTotalPrice,tradeInAddImage ,tradeInList,setTradeInList} = useAuth();
+  const { cart,getTotalPrice } = useAuth();
 
   const { state } = useForm({});
 
@@ -233,7 +233,6 @@ function ContactUs({ initialValues }) {
               ) : (
                 <form className="space-y-4" onSubmit={onSendEmail}>
                   <div>
-                    {tradeInList.length}
                     <label className="ml-1" htmlFor="name">
                       Full Name
                     </label>
@@ -305,8 +304,8 @@ function ContactUs({ initialValues }) {
                   {show ? (
                     <div>
                       <div className="text-red-500 mb-2 -mt-1 ml-1">
-                        Note: 1rst.front picture 2nd.back picture 3rd.about model
-                        4th.battery health.
+                        Note: 1.front picture 2.back picture 3.about model
+                        4.battery health
                       </div>
                       {/* <TradeIn /> */}
 
@@ -340,7 +339,6 @@ function ContactUs({ initialValues }) {
                           fileList={fileList}
                           onPreview={handlePreview}
                           onChange={handleChange}
-                          //onClick={()=>tradeInAddImage(file)}
                           maxCount={4}
                           id="emailimage"
                           name="emailimage"
