@@ -305,8 +305,8 @@ function ContactUs({ initialValues }) {
                   {show ? (
                     <div>
                       <div className="text-red-500 mb-2 -mt-1 ml-1">
-                        Note: 1.front picture 2.back picture 3.about model
-                        4.battery health
+                        Note: 1rst.front picture 2nd.back picture 3rd.about model
+                        4th.battery health
                       </div>
                       {/* <TradeIn /> */}
 
