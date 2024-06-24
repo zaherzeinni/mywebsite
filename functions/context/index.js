@@ -39,6 +39,9 @@ export const StateContextProvider = ({ children }) => {
   // step One for wishlist and cart
   const [wishList, setWishList] = useState([]);
   const [cart, setCart] = useState([]);
+  const [tradeInList, setTradeInList] = useState([]);
+
+  
 
   const wishListSnapShot = async (userId) => {
     const docRef = doc(db, "wishlist", userId); //access the db folder name wishlist with userId
@@ -287,8 +290,6 @@ export const StateContextProvider = ({ children }) => {
         setCart(removeItem);
         toast.success("product removed from cart");
 
-
-
         } else {
           toast.error("Please Login Or Register");
         }
@@ -384,6 +385,55 @@ export const StateContextProvider = ({ children }) => {
   // };
 
 
+
+
+//access the db folder name tradein with userId  (allow user to access db tradein folder)
+  const tradeInSnapShot = async (userId) => {
+    const docRef = doc(db, "tradein", userId); //access the db folder name tradein with userId
+    // fetch data from document
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      console.log("tradein folder is exist");
+      setTradeInList(docSnap.data().tradeInList);
+    }
+  };
+
+
+
+    // send product when click on addtocart icon
+    const tradeInAddImage = async (item) => {
+      // {product}
+  
+      try {
+        if (profile) {
+          console.log("profileeee=>",profile)
+          // specefic user cart get
+          const updateTradeInList = doc(db, "tradein", profile?.uid);
+  
+          // update current user cart and add new product to array
+  
+          await updateDoc(updateTradeInList, {
+            cart: arrayUnion({
+              ...item,
+            }),
+          });
+          console.log(updateTradeInList,"updateTradeInListtttttt")
+  
+          //add product  to  Cart array state then checke if product exist or not in single product cart component
+          setTradeInList((prev)=>[...prev ,item])
+          toast.info("Image added to TradeinList Successfully")  
+          
+        } else {
+          toast.error("Please Login Or Register");
+                }
+              
+               } catch (error) {
+                console.log(error?.message);
+                toast.error(error);
+              }
+              
+            };
 
 
   const register = (
@@ -520,7 +570,7 @@ export const StateContextProvider = ({ children }) => {
   };
 
   const [inputt, setInputt] = useState();
-
+//same result if we type this function like getTotalPrice or logout
    function getTotalPrice () {
     // Calculate total of product prices
     return cart.reduce((total, item) => total + item.price, 0);
@@ -551,6 +601,9 @@ export const StateContextProvider = ({ children }) => {
         removeFromCartList,
         logout,
         getTotalPrice,
+        tradeInAddImage,
+        tradeInList,
+        setTradeInList,
       }}
     >
       {children}
