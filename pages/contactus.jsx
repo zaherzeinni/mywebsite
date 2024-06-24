@@ -10,7 +10,6 @@ import Link from "next/link";
 import { db } from "@/functions/firebase";
 import { addDoc, collection, serverTimestamp } from "@firebase/firestore";
 import { toast } from "react-toastify";
-//import TradeIn from "./tradein";
 import { uploadImages } from "@/functions/firebase/getData";
 
 import { PlusOutlined } from "@ant-design/icons";
@@ -307,7 +306,7 @@ function ContactUs({ initialValues }) {
                         Note: 1.front picture 2.back picture 3.about model
                         4.battery health
                       </div>
-                      {/* <TradeIn /> */}
+                 
 
                       <>
                         <div
