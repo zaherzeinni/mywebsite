@@ -6,7 +6,7 @@ import { useAuth } from '@/functions/context';
 
 export default function Checkout() {
 
-const {cart,getTotalPrice,}=useAuth()
+const {cart,removeFromCartList,getTotalPrice}=useAuth()
   if (typeof window !== "undefined") {
 
     const spans = document.querySelectorAll('.word span');
