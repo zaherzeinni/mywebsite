@@ -212,7 +212,7 @@ export default function Footer() {
                     </div>
                     <div  className='text-gray-200 flex justify-center -mt-1 animate-pulse '>Follow Us</div>
                     <Fade bottom>
-                        <a href='www.itpromax.com'>
+                        <a href='www.itpromax.com' target="_blank" rel="noreferrer">
                         <p className='relative top-5 text-base leading-6 text-center text-gray-200'>
                             © 2024 ITPROMAX Lebanon, Inc. All rights reserved.
                         </p>

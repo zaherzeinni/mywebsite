@@ -620,3 +620,18 @@ div.CodeMirror {
     transform: scale(1) translate(0, 0);
   }
 }
+
+
+#Order-Summary:target {
+  color: #1c0adb;
+}
+
+#Shipping:target {
+  color: #1c0adb;
+
+}
+
+#Payment-Details:target {
+  color: #1c0adb;
+  
+}

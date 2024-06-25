@@ -2,6 +2,7 @@ import React from "react";
 import { Fade } from "react-awesome-reveal";
 import Link from "next/link";
 import ProductCard from "../../../pages/productcard";
+import { NextSeo } from "next-seo";
 
 const AllProducts = ({ resultProducts }) => {
 
@@ -11,6 +12,12 @@ const AllProducts = ({ resultProducts }) => {
 
   return (
     <div className="my-1 grid grid-flow-col  gap-2">
+                  
+      <NextSeo
+        title="ITPROMAX | Products"
+        description="ITPROMAX is a small business "
+      />
+
       <span id="cards" className="scroll-smooth">
         <div className=" flex flex-col justify-center items-center min-h-screen1">
           <div className="flex flex-col w-full  items-center justify-center gap-6 md:gap-5 py-1 px-5 -mt-0">

@@ -3,7 +3,8 @@ import { NextSeo } from "next-seo";
 import Navbar from "@/components/client/layout/navbar";
 import Footer from "@/components/client/layout/footer";
 import { useAuth } from '@/functions/context';
-
+import Link from 'next/link';
+import { Button } from '@chakra-ui/react';
 
 
 // after checkout ---------->  then order confirmation---------------------------
@@ -54,34 +55,34 @@ export default function Checkout() {
   <span>X</span>
 </div> */}
       <div>
-        <h1 className="anton-regular md:!text-7xl !text-3xl  font-bold text-gray-500">
-          Checkout Page
+        <h1 className="anton-regular md:!text-4xl lg:!text-7xl !text-2xl  font-bold text-gray-500">
+          Checkout
         </h1>
       </div>
   
   <div className="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
     <div className="relative">
-      <ul className="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">
-        <li className="flex items-center space-x-3 text-left sm:space-x-4">
-          <a className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-xs font-semibold text-emerald-700" href="#"
+      <ul className="relative flex w-full items-center justify-between space-x-1 md:space-x-2">
+        <li className="flex items-center space-x-1 text-left sm:space-x-4">
+          <a className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-xs font-semibold text-emerald-700" href="#Order-Summary"
             ><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg
           ></a>
-          <span className="font-semibold text-gray-900">Shop</span>
+          <span className="font-semibold text-gray-900">Order Summary</span>
         </li>
         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
         </svg>
-        <li className="flex items-center space-x-3 text-left sm:space-x-4">
-          <a className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-xs font-semibold text-white ring ring-blue-600 ring-offset-2" href="#">2</a>
+        <li className="flex items-center space-x-2 text-left sm:space-x-4">
+          <a className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-xs font-semibold text-white ring ring-blue-600 ring-offset-2" href="#Shipping">2</a>
           <span className="font-semibold text-gray-900">Shipping</span>
         </li>
         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
         </svg>
-        <li className="flex items-center space-x-3 text-left sm:space-x-4">
-          <a className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-xs font-semibold text-white" href="#">3</a>
-          <span className="font-semibold text-gray-500">Payment</span>
+        <li className="flex items-center space-x-1 text-left sm:space-x-4">
+          <a className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-xs font-semibold text-white" href="#Payment-Details">3</a>
+          <span className="font-semibold text-gray-500">Payment Details</span>
         </li>
       </ul>
     </div>
@@ -89,28 +90,46 @@ export default function Checkout() {
 </div>
 <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
   <div className="px-4 pt-8">
-    <p className="text-xl font-medium">Order Summary</p>
+    <p id="Order-Summary" className="text-xl font-medium">Order Summary</p>
     <p className="text-gray-400">Check your items. And select a suitable shipping method.</p>
+    
+    {cart.map((product,index)=>(
     <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
-      <div className="flex flex-col rounded-lg bg-white sm:flex-row">
-        <img className="m-2 h-24 w-28 rounded-md border object-cover object-center" src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
-        <div className="flex w-full flex-col px-4 py-4">
-          <span className="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
-          <span className="float-right text-gray-400">42EU - 8.5US</span>
-          <p className="text-lg font-bold">$138.99</p>
+    
+      <div key={index} className="flex flex-col rounded-lg bg-white sm:flex-row ">
+        <div className='hover: scale-110 duration-300  transition-all hover:cursor-pointer imgzoom my-auto'>
+        <Link href={`/products/productdetails/single?id=${product.id}`}>  
+        <img className="m-auto h-48 w-48 rounded-md border  object-contain object-center align-middle my-auto " src={product.images} alt="image" />
+        </Link>
         </div>
-      </div>
-      <div className="flex flex-col rounded-lg bg-white sm:flex-row">
-        <img className="m-2 h-24 w-28 rounded-md border object-cover object-center" src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
-        <div className="flex w-full flex-col px-4 py-4">
-          <span className="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
-          <span className="float-right text-gray-400">42EU - 8.5US</span>
-          <p className="mt-auto text-lg font-bold">$238.99</p>
-        </div>
-      </div>
-    </div>
+        <div className="flex w-ful flex-col px-4 py-4 m-auto">
+        <Link href={`/products/productdetails/single?id=${product.id}`}>  
+          <span className="font-semibold hover:text-blue-600">{product.title}</span>
+          </Link>
+          <span className="float-right text-gray-400">{product.desc}</span>
+          <span className="float-right text-gray-400">{product.desc1}</span>
+          <span className="float-right text-gray-400">{product.desc2}</span>
+          <span className="float-right text-gray-400">{product.desc3}</span>
+          <span className="float-right text-gray-400">{product.desc4}</span>
+          <span className="float-right text-gray-400">{product.desc5}</span>
+          <p className="text-lg font-bold">$ {product.price}</p>
 
-    <p className="mt-8 text-lg font-medium">Shipping Methods</p>
+
+        </div>
+        <div className=" !text-center !flex !m-auto">
+                                      <Button
+                                        onClick={() => removeFromCartList(product)}
+                                        type="button"
+                                        className=" !font-medium !text-blue-600 hover:!text-red-500"
+                                      >
+                                        Remove
+                                      </Button>
+                                    </div>
+      </div>
+    
+    </div>
+  ))}  
+    <p id="Shipping" className="mt-8 text-lg font-medium">Shipping Methods</p>
     <form className="mt-5 grid gap-6">
       <div className="relative">
         <input className="peer hidden" id="radio_1" type="radio" name="radio" checked />
@@ -136,8 +155,8 @@ export default function Checkout() {
       </div>
     </form>
   </div>
-  <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
-    <p className="text-xl font-medium">Payment Details</p>
+  <div  className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+    <p id='Payment-Details'className="text-xl font-medium">Payment Details</p>
     <p className="text-gray-400">Complete your order by providing your payment details.</p>
     <div className="">
       <label for="email" className="mt-4 mb-2 block text-sm font-medium">Email</label>
