@@ -4,6 +4,9 @@ import Navbar from "@/components/client/layout/navbar";
 import Footer from "@/components/client/layout/footer";
 import { useAuth } from '@/functions/context';
 
+
+
+// after checkout ---------->  then order confirmation---------------------------
 export default function Checkout() {
 
   const {cart,removeFromCartList,getTotalPrice}=useAuth()
