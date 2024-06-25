@@ -25,7 +25,7 @@ const UpdateProjectMain = ({ project}) => {
   const initialValues = project;
 
 
-  console.log("?????-?????-" + initialValues);
+  console.log("initialValues of project" + initialValues);
 
 
   const onFinish = async (values) => {

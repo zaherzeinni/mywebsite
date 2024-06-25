@@ -1,11 +1,15 @@
 import React from 'react'
-//import CartComponent from '@/components/client/cart'
+import { NextSeo } from "next-seo";
 
-export default function Cart() {
+export default function Checkout() {
   return (
     <div>
+            <NextSeo
+        title="ITPROMAX-Checkout"
+        description="ITPROMAX is a small business "
+      />
 <div class="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
-  <a href="#" class="text-2xl font-bold text-gray-800">sneekpeeks</a>
+  <a href="#" class="text-2xl font-bold text-gray-800">ITPROMAX</a>
   <div class="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
     <div class="relative">
       <ul class="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">

@@ -65,7 +65,7 @@ function ContactUs({ initialValues }) {
     </button>
   );
 
-  const [image, setImage] = useState(initialValues?.image || "");
+  const [image, setImage] = useState(initialValues?.image || []);
 
   const [file, setFile] = useState("");
 
@@ -77,9 +77,9 @@ function ContactUs({ initialValues }) {
       message.error("Please select image");
       return; // stoppppp progress the function
     } else {
-      values.image = await uploadImages(file, true, "emails"); // result is image link from firebase/storage
+      values.image = await uploadImages(file, true, "tradein"); // result is image link from firebase/storage
       values.timeStamp = serverTimestamp();
-      await addDoc(collection(db, "emails"), values);
+      await addDoc(collection(db, "tradein"), values);
       message.success("Images uploaded successfully");
     }
   };
@@ -140,7 +140,7 @@ function ContactUs({ initialValues }) {
       //   setShowToast(true)
     }
   };
-
+    // ------------------ show / hide the upload button--------------------
   const [show, setShow] = useState(false);
 
   console.log(show, "showww");
@@ -164,25 +164,30 @@ function ContactUs({ initialValues }) {
         description="ITPROMAX is a small business "
       />
       <Navbar />
+      <a href="#fromContactUs">
       <div>
         {/* group-hover:scale-105 transition-all duration-700 ease-in-out */}
+       
         <img
           src="/contactus.jpg"
           alt="contactus-image"
           className=" relative  h-[100%]  max-w-screen-3xl w-full    md:!h-[800px] object-fit mx-auto "
         />
+        
       </div>
       <div>
         <h1 className="anton-regular   opacity-70 absolute md:top-[8%] mx-2 sm:top-[30%] lg:top-[10%] top-[10%] md:right-[35%] lg:right-[65%]   w-96 text-white md:mx-32 md:!text-7xl !text-3xl  font-bold ">
           Contact Us
         </h1>
       </div>
+      </a>
+      
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 md:py-16 lg:px-8">
         <section>
           <div className=" font-semibold text-lg text-justify">
             We are here to answer all your questions and help you with
             everything you need.You can reach us by phone or email at any
-            time.We promise to provide support and advice to get the most out of
+            time.We promise to provide support and advice you to get the most out of
             our products.
           </div>
           <p className="my-4 text-lg duration-200 hover:text-rose-600 md:justify-start">
@@ -196,7 +201,7 @@ function ContactUs({ initialValues }) {
           </p>
         </section>
 
-        <div className="md:grid grid-cols-1 gap-5 py-4 md:grid-cols-2 md:py-8 flex  flex-col-reverse">
+        <div id="fromContactUs" className="md:grid grid-cols-1 gap-5 py-4 md:grid-cols-2 md:py-8 flex  flex-col-reverse">
           <section className="h-64 md:h-full">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6623.454391220492!2d35.47801366604833!3d33.89667909785311!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f17283e7e3ced%3A0x740bcfc330ca9eb0!2sHamra%2C%20Beirut!5e0!3m2!1sen!2slb!4v1706309292921!5m2!1sen!2slb"
@@ -230,7 +235,7 @@ function ContactUs({ initialValues }) {
                   </div>
                 </div>
               ) : (
-                <form className="space-y-4" onSubmit={onSendEmail}>
+                <form  className="space-y-4" onSubmit={onSendEmail}>
                   <div>
                     <label className="ml-1" htmlFor="name">
                       Full Name
