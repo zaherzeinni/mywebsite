@@ -94,9 +94,9 @@ export default function Checkout() {
     <p className="text-gray-400">Check your items. And select a suitable shipping method.</p>
     
     {cart.map((product,index)=>(
-    <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
+    <div key={index} className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
     
-      <div key={index} className="flex flex-col rounded-lg bg-white sm:flex-row ">
+      <div  className="flex flex-col rounded-lg bg-white sm:flex-row ">
         <div className='hover: scale-110 duration-300  transition-all hover:cursor-pointer imgzoom my-auto'>
         <Link href={`/products/productdetails/single?id=${product.id}`}>  
         <img className="m-auto h-48 w-48 rounded-md border  object-contain object-center align-middle my-auto " src={product.images} alt="image" />
