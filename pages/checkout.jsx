@@ -6,7 +6,8 @@ import { useAuth } from '@/functions/context';
 
 export default function Checkout() {
 
-const {cart,removeFromCartList,getTotalPrice}=useAuth()
+  const {cart,removeFromCartList,getTotalPrice}=useAuth()
+
   if (typeof window !== "undefined") {
 
     const spans = document.querySelectorAll('.word span');
@@ -29,7 +30,7 @@ const {cart,removeFromCartList,getTotalPrice}=useAuth()
   return (
     <div>
             <NextSeo
-        title="ITPROMAX-Checkout"
+        title="ITPROMAX | Checkout"
         description="ITPROMAX is a small business "
       />
       <Navbar/>
@@ -39,7 +40,7 @@ const {cart,removeFromCartList,getTotalPrice}=useAuth()
 
 
 
-<div className="word">
+{/* <div className="word">
   <span>I</span>
   <span>T</span>
   <span>P</span>
@@ -48,10 +49,12 @@ const {cart,removeFromCartList,getTotalPrice}=useAuth()
   <span>M</span>
   <span>A</span>
   <span>X</span>
-</div>
-<div className='mt-5 sm:mt-0  '>
-   CHECKOUT PAGE
-</div>
+</div> */}
+      <div>
+        <h1 className="anton-regular md:!text-7xl !text-3xl  font-bold text-gray-500">
+          Checkout Page
+        </h1>
+      </div>
   
   <div className="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
     <div className="relative">
@@ -184,7 +187,7 @@ const {cart,removeFromCartList,getTotalPrice}=useAuth()
       <div className="mt-6 border-t border-b py-2">
         <div className="flex items-center justify-between">
           <p className="text-sm font-medium text-gray-900">Subtotal</p>
-          <p className="font-semibold text-gray-900">$399.00</p>
+          <p className="font-semibold text-gray-900">$ {getTotalPrice().toFixed(2)}</p>
         </div>
         <div className="flex items-center justify-between">
           <p className="text-sm font-medium text-gray-900">Shipping</p>
@@ -193,7 +196,7 @@ const {cart,removeFromCartList,getTotalPrice}=useAuth()
       </div>
       <div className="mt-6 flex items-center justify-between">
         <p className="text-sm font-medium text-gray-900">Total</p>
-        <p className="text-2xl font-semibold text-gray-900">$408.00</p>
+        <p className="text-2xl font-semibold text-gray-900">$ {(getTotalPrice()+8).toFixed(2)}</p>
       </div>
     </div>
     <button className="mt-4 mb-8 w-full rounded-md bg-sky-600 px-6 py-3 font-medium text-white hover:bg-sky-400">Place Order</button>

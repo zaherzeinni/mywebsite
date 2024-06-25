@@ -92,9 +92,11 @@ export default function Index({
 
       {/* <AdvertiseBar />
       <Navbar /> */}
+      
       {/* <div className=" text-end text-lg mr-32    scroll-smooth">
       {resultProducts.length >0 ? `${resultProducts.length} products found` : "no products found" }
       </div> */}
+      
       {/* <OfferSlider offerProducts={offerProducts} /> */}
       {/* {condition !== null && (
         <ProdSlider data={condition} linkText={conditionText} />
