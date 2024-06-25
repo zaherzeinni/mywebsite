@@ -10,6 +10,7 @@ import { Button } from '@chakra-ui/react';
 // after checkout ---------->  then order confirmation---------------------------
 export default function Checkout() {
 
+
   const {cart,removeFromCartList,getTotalPrice}=useAuth()
 
   if (typeof window !== "undefined") {
@@ -64,7 +65,7 @@ export default function Checkout() {
     <div className="relative">
       <ul className="relative flex w-full items-center justify-between space-x-1 md:space-x-2">
         <li className="flex items-center space-x-1 text-left sm:space-x-4">
-          <a className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-xs font-semibold text-emerald-700" href="#Order-Summary"
+          <a className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-xs font-semibold text-emerald-700" href="#Order-Summary" 
             ><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg
           ></a>
