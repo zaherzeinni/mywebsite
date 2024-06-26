@@ -5,7 +5,7 @@ import Footer from "@/components/client/layout/footer";
 import { useAuth } from '@/functions/context';
 import Link from 'next/link';
 import { Button } from '@chakra-ui/react';
-
+import { useState } from 'react';
 
 // after checkout ---------->  then order confirmation---------------------------
 export default function Checkout() {
@@ -30,7 +30,32 @@ export default function Checkout() {
         span.classList.add('active');
       }, 750 * (idx+1))
     });
+
+    const shippingPrice = document.querySelector('#radio_2').value;
+    console.log("shipping price",shippingPrice)
+  
   }
+
+
+  // ---------------------value of price shipping------------------
+
+  const [shippingPrice, setShippingPrice] = useState();
+
+  console.log("shippingPrice is:" + shippingPrice);
+
+  function selector() {
+    if (subjectid.value != undefined) {
+      if (subjectid.value == "radio_2") {
+        setShippingPrice(10);
+        // }   else if (subject.value == "Other") {
+        //     check2()
+        // }   else if (subject.value == "More information") {
+        //     check3()
+      }
+    }
+  }
+
+
 
   return (
     <div>
@@ -107,6 +132,7 @@ export default function Checkout() {
         <Link href={`/products/productdetails/single?id=${product.id}`}>  
           <span className="font-semibold hover:text-blue-600">{product.title}</span>
           </Link>
+          <span className="float-right text-gray-400">{product.category}</span>
           <span className="float-right text-gray-400">{product.desc}</span>
           <span className="float-right text-gray-400">{product.desc1}</span>
           <span className="float-right text-gray-400">{product.desc2}</span>
@@ -117,15 +143,15 @@ export default function Checkout() {
 
 
         </div>
-        <div className=" !text-center !flex !m-auto">
-                                      <Button
-                                        onClick={() => removeFromCartList(product)}
-                                        type="button"
-                                        className=" !font-medium !text-blue-600 hover:!text-red-500"
-                                      >
-                                        Remove
-                                      </Button>
-                                    </div>
+          <div className=" !text-center !flex !m-auto">
+          <Button 
+          onClick={() => removeFromCartList(product)}
+          type="button"
+          className=" !font-medium !text-blue-600 hover:!text-red-500"
+          >
+          Remove
+          </Button>
+          </div>
       </div>
     
     </div>
@@ -134,23 +160,25 @@ export default function Checkout() {
     <form className="mt-5 grid gap-6">
       <div className="relative">
         <input className="peer hidden" id="radio_1" type="radio" name="radio" checked />
-        <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
-        <label className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="radio_1">
-          <img className="w-14 object-contain" src="/images/naorrAeygcJzX0SyNI4Y0.png" alt="" />
+        <span className="peer-checked:border-blue-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+        <label className="peer-checked:border-2 peer-checked:border-blue-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="radio_1">
+          <img className="w-14 object-contain" src="/delivery-truck.png" alt="" />
           <div className="ml-5">
-            <span className="mt-2 font-semibold">Fedex Delivery</span>
-            <p className="text-slate-500 text-sm leading-6">Delivery: 2-4 Days</p>
+            <span className="mt-2 font-semibold">Free Delivery</span>
+            <p className="text-slate-500 text-sm leading-6 w-40 sm:w-full">delivery estimated time: 2 working days</p>
           </div>
         </label>
       </div>
       <div className="relative">
-        <input className="peer hidden" id="radio_2" type="radio" name="radio" checked />
-        <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
-        <label className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="radio_2">
-          <img className="w-14 object-contain" src="/images/oG8xsl3xsOkwkMsrLGKM4.png" alt="" />
+        <input className="peer hidden" id="radio_2" type="radio" name="radio" value="radio_2"
+        
+        />
+        <span className="peer-checked:border-blue-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+        <label className="peer-checked:border-2 peer-checked:border-blue-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="radio_2">
+          <img className="w-14 object-contain" src="/delivery-moto.png" alt="" />
           <div className="ml-5">
-            <span className="mt-2 font-semibold">Fedex Delivery</span>
-            <p className="text-slate-500 text-sm leading-6">Delivery: 2-4 Days</p>
+            <span className="mt-2 font-semibold">Charge Delivery</span>
+            <p className="text-slate-500 text-sm leading-6 w-40 sm:w-full">delivery estimated time: 24 hours working day</p>
           </div>
         </label>
       </div>
@@ -214,7 +242,7 @@ export default function Checkout() {
         </div>
         <div className="flex items-center justify-between">
           <p className="text-sm font-medium text-gray-900">Shipping</p>
-          <p className="font-semibold text-gray-900">$8.00</p>
+          <p className="font-semibold text-gray-900">$ 1 </p>
         </div>
       </div>
       <div className="mt-6 flex items-center justify-between">
