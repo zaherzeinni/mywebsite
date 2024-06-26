@@ -1,11 +1,15 @@
 import React from 'react'
 import { NextSeo } from "next-seo";
+import AdvertiseBar from '@/components/common/advertiseBar';
 import Navbar from "@/components/client/layout/navbar";
 import Footer from "@/components/client/layout/footer";
 import { useAuth } from '@/functions/context';
 import Link from 'next/link';
-import { Button } from '@chakra-ui/react';
+import { Button,FormControl,FormLabel,FormErrorMessage,Input } from '@chakra-ui/react';
 import { useState } from 'react';
+
+import * as Yup from "yup";
+import { useFormik } from "formik";
 
 // after checkout ---------->  then order confirmation---------------------------
 export default function Checkout() {
@@ -31,30 +35,59 @@ export default function Checkout() {
       }, 750 * (idx+1))
     });
 
-    const shippingPrice = document.querySelector('#radio_2').value;
-    console.log("shipping price",shippingPrice)
+    //const shippingPrice = document.querySelector('#radio_2').value;
+    //console.log("shipping price",shippingPrice)
   
   }
 
 
   // ---------------------value of price shipping------------------
 
-  const [shippingPrice, setShippingPrice] = useState();
+  // const [shippingPrice, setShippingPrice] = useState();
 
-  console.log("shippingPrice is:" + shippingPrice);
+  // console.log("shippingPrice is:" + shippingPrice);
 
-  function selector() {
-    if (subjectid.value != undefined) {
-      if (subjectid.value == "radio_2") {
-        setShippingPrice(10);
-        // }   else if (subject.value == "Other") {
-        //     check2()
-        // }   else if (subject.value == "More information") {
-        //     check3()
-      }
-    }
-  }
+  // function selector() {
+  //   if (subjectid.value != undefined) {
+  //     if (subjectid.value == "radio_2") {
+        
+  //       // }   else if (subject.value == "Other") {
+  //       //     check2()
+  //       // }   else if (subject.value == "More information") {
+  //       //     check3()
+  //     }
+  //   }
+  // }
+// -------------------form email and address validation using Yup and formik----------
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .email("invalid email address")
+      .required("Email is required"),
+    password: Yup.string()
+      .min(6, "password must be at least 6 characters")
+      .required("Password is required"),
+  });
 
+  const {signInUser} = useAuth()
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: async (values, { resetForm }) => {
+      //console.log(values);;
+     signInUser(
+      values.email,
+      values.password,
+     )
+
+      resetForm();
+    },
+  });
+
+  const [showPassword, setShowPassword] = React.useState(false)
 
 
   return (
@@ -63,6 +96,7 @@ export default function Checkout() {
         title="ITPROMAX | Checkout"
         description="ITPROMAX is a small business "
       />
+      <AdvertiseBar/>
       <Navbar/>
 <div className="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
   
@@ -184,19 +218,39 @@ export default function Checkout() {
       </div>
     </form>
   </div>
+  <form onSubmit={formik.handleSubmit}>
   <div  className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
     <p id='Payment-Details'className="text-xl font-medium">Payment Details</p>
     <p className="text-gray-400">Complete your order by providing your payment details.</p>
     <div className="">
-      <label for="email" className="mt-4 mb-2 block text-sm font-medium">Email</label>
+    <FormControl
+                      height={'80px'}
+                      py={"-5"}
+                      isInvalid={
+                        formik.touched.email && formik.errors.email
+                          ? true
+                          : false
+                      }
+                      id="email"
+                      // isRequired
+                    >
+      <FormLabel for="email" className="mt-4 mb-2 block text-sm font-medium">Email</FormLabel>
       <div className="relative">
-        <input type="text" id="email" name="email" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="your.email@gmail.com" />
+        <Input type="email" id="email" name="email" required
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.email}                   className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="youremail@gmail.com" />
+        
         <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-          </svg>
+          </svg> */}
         </div>
       </div>
+      <FormErrorMessage>
+                        {formik.errors.email}
+                      </FormErrorMessage>
+                </FormControl>
       <label for="card-holder" className="mt-4 mb-2 block text-sm font-medium">Card Holder</label>
       <div className="relative">
         <input type="text" id="card-holder" name="card-holder" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Your full name here" />
@@ -252,6 +306,7 @@ export default function Checkout() {
     </div>
     <button className="mt-4 mb-8 w-full rounded-md bg-sky-600 px-6 py-3 font-medium text-white hover:bg-sky-400">Place Order</button>
   </div>
+  </form>
 </div>
 <Footer/>
     </div>

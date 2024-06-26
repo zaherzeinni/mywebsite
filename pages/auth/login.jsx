@@ -10,6 +10,7 @@ import { useFormik } from "formik";
 import Link from "next/link";
 
 import { useAuth } from '@/functions/context';
+import { NextSeo } from 'next-seo';
 import AdvertiseBar from '@/components/common/advertiseBar';
 import Navbar from "@/components/client/layout/navbar";
 import Footer from "@/components/client/layout/footer";
@@ -49,6 +50,10 @@ const {signInUser} = useAuth()
 
     return (
         <div>
+                   <NextSeo
+        title="ITPROMAX | Login"
+        description="ITPROMAX is a small business "
+      />
           <AdvertiseBar/>
           <Navbar/>
         <Flex 
