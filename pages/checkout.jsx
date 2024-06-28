@@ -62,26 +62,41 @@ export default function Checkout() {
   // }
   // -------------------form email and address validation using Yup and formik----------
   const validationSchema = Yup.object().shape({
-    fullName: Yup.string()
-      .min(8, "Full Name must be at least 8 characters")
-      .required("Full Name is required"),
+    firstName: Yup.string()
+      .min(3, "Name must be at least 3 characters")
+      .required("First Name is required"),
+    lastName: Yup.string()
+      .min(3, "Name must be at least 3 characters")
+      .required("last Name is required"),
     email: Yup.string()
       .min(8, "Email must be at least 8 characters")
       .required("Email is required"),
+    phone: Yup.string()
+      .max(8, "Phone Number must be at least 8 numbers")
+      .required("Phone Number is required"),
+    city: Yup.string()
+      .min(4, "City must be at least 4 characters")
+      .required("City is required"),
   });
 
   const { signInUser } = useAuth();
 
   const formik = useFormik({
     initialValues: {
-      fullName: "",
+      firstName: "",
+      lastName: "",
       email: "",
+      phone: "",
+      city: "",
     },
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
       //console.log(values);;
-      signInUser(values.fullName);
+      signInUser(values.firstName);
+      signInUser(values.lastName);
       signInUser(values.email);
+      signInUser(values.phone);
+      signInUser(values.city);
 
       resetForm();
     },
@@ -287,7 +302,7 @@ export default function Checkout() {
                 <div className="ml-5">
                   <span className="mt-2 font-semibold">Free Delivery</span>
                   <p className="text-slate-500 text-sm leading-6 w-40 sm:w-full">
-                    delivery estimated time: 2 working days
+                    delivery inside Beirut estimated time: 2 working days
                   </p>
                 </div>
               </label>
@@ -328,41 +343,81 @@ export default function Checkout() {
             <p className="text-gray-400">
               Complete your order by providing your payment details.
             </p>
-            <div className="">
+            <div className="space-y-3">
+              <div className="flex flex-col sm:flex-row  sm:space-x-2">
+                {/* -------first Name--------- */}
               <FormControl
                 height={"80px"}
                 py={"-5"}
                 isInvalid={
-                  formik.touched.fullName && formik.errors.fullName
+                  formik.touched.firstName && formik.errors.firstName
                     ? true
                     : false
                 }
-                id="fullName"
+                id="firstName"
                 // isRequired
               >
                 <FormLabel
-                  for="fullName"
+                  for="firstName"
                   className="mt-4 mb-2 block text-sm font-medium"
                 >
-                  Full Name
+                  First Name
                 </FormLabel>
                 <div className="relative">
                   <Input
                     type="text"
-                    id="fullName"
-                    name="fullName"
+                    id="firstName"
+                    name="firstName"
                     required
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.fullName}
+                    value={formik.values.firstName}
                     className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder="Your Full Name"
                   />
                   <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3"></div>
                 </div>
-                <FormErrorMessage>{formik.errors.fullName}</FormErrorMessage>
+                <FormErrorMessage>{formik.errors.firstName}</FormErrorMessage>
               </FormControl>
-
+                {/* ---------last Name-------- */}
+              <FormControl
+                height={"80px"}
+                py={"-5"}
+                isInvalid={
+                  formik.touched.lastName && formik.errors.lastName
+                    ? true
+                    : false
+                }
+                id="lastName"
+                // isRequired
+              >
+              <FormLabel
+                  for="lastName"
+                  className="mt-4 mb-2 block text-sm font-medium"
+                >
+                  Last Name
+                </FormLabel>
+                <div className="relative">
+                  <Input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    required
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.lastName}
+                    className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="Your Last Name"
+                  />
+                  <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3"></div>
+                </div>
+                <FormErrorMessage>{formik.errors.lastName}</FormErrorMessage>
+                </FormControl>
+              </div>
+                {/* ---------------email and phone number-------------------- */}
+              <div className="flex flex-col sm:flex-row  sm:space-x-2">
+                {/* ---------email--------- */}
+              
               <FormControl
                 height={"80px"}
                 py={"-5"}
@@ -380,7 +435,7 @@ export default function Checkout() {
                 >
                   Email
                 </FormLabel>
-                <div className="relative">
+                <div className="relative ">
                   <Input
                     type="email"
                     id="email"
@@ -392,14 +447,66 @@ export default function Checkout() {
                     className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder="Your Email"
                   />
-
-                 
                 </div>
                 <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
               </FormControl>
+                {/* -----------phone------------ */}
+              <FormControl
+                height={"80px"}
+                py={"-5"}
+                isInvalid={
+                  formik.touched.phone && formik.errors.phone
+                    ? true
+                    : false
+                }
+                id="phone"
+                // isRequired
+              >
+                <FormLabel
+                  for="phone"
+                  className="mt-4 mb-2 block text-sm font-medium"
+                >
+                  Phone Number
+                </FormLabel>
+                <div className="relative">
+                  <Input
+                    type="number"
+                    id="phone"
+                    name="phone"
+                    maxLength={8}
+                    required
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.phone}
+                    className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="03xxxxxx"
+                  />
+                </div>
+                <FormErrorMessage>{formik.errors.phone}</FormErrorMessage>
+              </FormControl>
+             </div>
 
+                {/* --------------------city and street and building address------------------ */}
+             
+             
+              {/* ---------------problem here in billing address------------------ */}
+              
+                <div className="">
+              <FormControl
+                height={"80px"}
+                py={"-5"}
+                isInvalid={
+                  formik.touched.city && formik.errors.city
+                    ? true
+                    : false
+                }
+                id="city"
+                // isRequired
+              >
+
+              
               <FormLabel
-                for="billing-address"
+                for="city"
                 className="mt-4 mb-2 block text-sm font-medium"
               >
                 Billing Address
@@ -408,8 +515,8 @@ export default function Checkout() {
                 <div className="relative flex-shrink-0 sm:w-4/12 md:w-2/8 my-2 sm:my-0">
                   <Input
                     type="text"
-                    id="billing-address"
-                    name="billing-address"
+                    id="city"
+                    name="city"
                     className="w-full rounded-md border border-gray-200 px-4 py-3 !pl-9 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder="City"
                   />
@@ -421,21 +528,36 @@ export default function Checkout() {
                     />
                   </div>
                 </div>
+                
+                
                 {/* -----------------street and building address---------------- */}
                 <div className="w-full md:w-6/8 sm:mx-2">
-                
                   <Input
                     type="text"
-                    id="billing-address"
-                    name="billing-address"
+                    id="address"
+                    name="address"
                     className="w-full rounded-md border border-gray-200 py-3 pl-2  text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder="Street And Building Address"
                   />
                 </div>
               </div>
 
+              </FormControl>
 
 
+
+
+              <FormControl
+                height={"80px"}
+                py={"-5"}
+                isInvalid={
+                  formik.touched.leavemessage && formik.errors.leavemessage
+                    ? true
+                    : false
+                }
+                id="leavemessage"
+                // isRequired
+              >
               <FormLabel
                 for="leavemessage"
                 className="mt-4 mb-2 block text-sm font-medium"
@@ -453,10 +575,10 @@ export default function Checkout() {
                     placeholder="Leave message about your order or delivery"
                   />
                 </div>
-                {/* -----------------street and building address---------------- */}
+               
               </div>
-
-
+                </FormControl>
+                </div>
 
 
 
