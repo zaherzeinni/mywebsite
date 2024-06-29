@@ -91,7 +91,7 @@ export default function ProductsPage({
 
       <AdvertiseBar />
       <Navbar />
-      <div className=" text-end text-lg  mr-40    scroll-smooth">
+      <div className="hiddn  text-end text-lg  mr-40    scroll-smooth">
       {resultProducts.length >0 ? `${resultProducts.length} products found` : "no products found" }
       </div>
       
