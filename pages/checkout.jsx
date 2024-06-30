@@ -1,4 +1,5 @@
 import React from "react";
+import { useState,useEffect } from "react";
 import { NextSeo } from "next-seo";
 import AdvertiseBar from "@/components/common/advertiseBar";
 import Navbar from "@/components/client/layout/navbar";
@@ -13,7 +14,7 @@ import {
   Input,
   Textarea,
 } from "@chakra-ui/react";
-import { useState } from "react";
+
 
 import * as Yup from "yup";
 import { useFormik } from "formik";
@@ -67,7 +68,7 @@ export default function Checkout() {
       .required("First Name is required"),
     lastName: Yup.string()
       .min(3, "Name must be at least 3 characters")
-      .required("last Name is required"),
+      .required("Last Name is required"),
     email: Yup.string()
       .min(8, "Email must be at least 8 characters")
       .required("Email is required"),
@@ -101,6 +102,19 @@ export default function Checkout() {
       resetForm();
     },
   });
+
+
+
+  const [show, setShow] = useState(false);
+  function selector() {
+    if (subjectid.value != undefined) {
+      if (subjectid.value == "addcoupon") {
+        setShow(!show);
+      }
+    }
+  }
+
+
 
   return (
     <div>
@@ -448,7 +462,7 @@ export default function Checkout() {
                     placeholder="Your Email"
                   />
                 </div>
-                <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+                {/* <FormErrorMessage>{formik.errors.email}</FormErrorMessage> */}
               </FormControl>
                 {/* -----------phone------------ */}
               <FormControl
@@ -487,9 +501,6 @@ export default function Checkout() {
              </div>
 
                 {/* --------------------city and street and building address------------------ */}
-             
-             
-              {/* ---------------problem here in billing address------------------ */}
               
                 <div className="">
               <FormControl
@@ -503,11 +514,9 @@ export default function Checkout() {
                 id="city"
                 // isRequired
               >
-
-              
               <FormLabel
                 for="city"
-                className="mt-4 mb-2 block text-sm font-medium"
+                className="mt-8 mb-2 block text-sm font-medium"
               >
                 Billing Address
               </FormLabel>
@@ -520,6 +529,7 @@ export default function Checkout() {
                     className="w-full rounded-md border border-gray-200 px-4 py-3 !pl-9 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder="City"
                   />
+                
                   <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                     <img
                       className="h-4 w-4 object-contain"
@@ -527,9 +537,9 @@ export default function Checkout() {
                       alt=""
                     />
                   </div>
-                </div>
-                
-                
+                </div>   
+           
+
                 {/* -----------------street and building address---------------- */}
                 <div className="w-full md:w-6/8 sm:mx-2">
                   <Input
@@ -539,9 +549,9 @@ export default function Checkout() {
                     className="w-full rounded-md border border-gray-200 py-3 pl-2  text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder="Street And Building Address"
                   />
+                  
                 </div>
               </div>
-
               </FormControl>
 
 
@@ -560,12 +570,12 @@ export default function Checkout() {
               >
               <FormLabel
                 for="leavemessage"
-                className="mt-4 mb-2 block text-sm font-medium"
+                className="mt-16 sm:mt-4 mb-2 block text-sm font-medium"
               >
                 Leave message
               </FormLabel>
-              <div className="flex flex-col sm:flex-row">
-                <div className="relative flex-shrink-0 sm:w-4/12 md:w-full">
+              <div className="flex flex-col sm:flex-row sm:space-x-4">
+                <div className="relative flex-shrink-0 sm:w-4/6">
                   <Textarea
                     type="text"
                     id="leavemessage"
@@ -575,17 +585,29 @@ export default function Checkout() {
                     placeholder="Leave message about your order or delivery"
                   />
                 </div>
-               
+                <div >
+                  <FormLabel
+                  className=" sm:-mt-6  mt-2 block text-sm font-medium"
+                  onClick={() => setShow(true)}
+                  id="addcoupon"
+                  >Add Coupon </FormLabel>
+                  
+                  <div className="flex space-x-1">
+                  <Input placeholder="Coupon code" className=""></Input>
+                  <Button>Apply</Button>
+                  </div>
+                
+                </div>
               </div>
                 </FormControl>
                 </div>
+         
 
 
 
 
-
-              <div className="mt-6 border-t border-b py-2">
-                <div className="flex items-center justify-between">
+              <div className="mt-6 border-t border-b py-2 ">
+                <div className="flex items-center justify-between mt-20 sm:mt-4">
                   <p className="text-sm font-medium text-gray-900">Subtotal</p>
                   <p className="font-semibold text-gray-900">
                     $ {getTotalPrice().toFixed(2)}
@@ -593,13 +615,13 @@ export default function Checkout() {
                 </div>
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-medium text-gray-900">Shipping</p>
-                  <p className="font-semibold text-gray-900">$ 1 </p>
+                  <p className="font-semibold text-gray-900">$ 0 </p>
                 </div>
               </div>
               <div className="mt-6 flex items-center justify-between">
                 <p className="text-sm font-medium text-gray-900">Total</p>
                 <p className="text-2xl font-semibold text-gray-900">
-                  $ {(getTotalPrice() + 8).toFixed(2)}
+                  $ {(getTotalPrice() + 0).toFixed(2)}
                 </p>
               </div>
             </div>

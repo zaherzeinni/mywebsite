@@ -88,7 +88,7 @@ export default function AboutUs() {
         />
       </div>
       <div>
-        <h1 className="anton-regular  opacity-70 absolute md:top-[5%] mx-2 sm:top-[30%] top-[20%] md:right-[15%] lg:right-[25%]   w-15 text-white md:mx-32 md:!text-7xl !text-3xl  font-bold ">
+        <h1 className="anton-regular  opacity-70 absolute md:top-[5%] mx-2 top-[3%]  right-[30%] md:right-[15%] lg:right-[25%]   w-15 text-white md:mx-32 md:!text-7xl !text-3xl  font-bold  ">
           ABOUT US
         </h1>
       </div>
@@ -98,11 +98,43 @@ export default function AboutUs() {
         aria-labelledby="faq-title"
         className="relative overflow-hidden bg-slate-50 sm:-mt-8"
       >
+        
+        
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+
           <section className=" gap-4 xs:py-10 py-2 px-6">
-            <h1 className="mx-auto w-[100%] text-6xl font-bold tracking-tight text-rose-600 sm:text-5xl md:text-7xl mt-9 xs:mt-5">
+            {/* <h1 className="mx-auto w-[100%] text-6xl font-bold tracking-tight text-rose-600 sm:text-5xl md:text-7xl mt-9 xs:mt-5">
               About Us
-            </h1>
+            </h1> */}
+            
+            <div className="  md:absolute mx-auto lg:w-[300vh] md:w-[150vh] max-w-xs sm:max-w-6xl mt-5 grid-flow-col md:text-end text-start px-10 sm:px-6 lg:px-8">
+     
+
+              <div >
+              <h1 className="anton-regular text-3xl text-gray-500 justify-end flex">We Are Professional</h1>
+              </div>
+             
+              <div className="wrapper justify-end flex">
+              <h2>WEB DEVELOPERS</h2>
+              </div>
+              <p className="ultra-regular text-gray-500 justify-end flex"> Based in the Heart of Beirut</p>
+              
+              <div className=" relative flex justify-end md:mx-[70%] sm:w-[30%] sm:h-[30%] mt-3">
+                <img src="/tiger.jpg" alt="imagetiger" />
+              </div>
+              {/* <div className="w-48 text-end mx-auto ">
+
+https://catchydesign.uk//
+
+Need A Website?
+Get Online in Just 3 Simple Steps
+Let us build your perfect website today. No need to worry about design, development, domain fees, hosting fees, or security. Just complete the following 3 Steps, and your website will be up and running in 7 working days. No hidden fees or extra charges. Terms & Conditions Apply.
+</div> */}
+            </div>
+
+
+
             <article className="grid gap-2 grid-cols-1 mt-10">
               <p className=" w-[100%] md:w-[50%]  my-3 text-justify">
                 <b>IT PRO MAX</b> is a small business company located in
@@ -175,7 +207,7 @@ export default function AboutUs() {
               ))}
             </ul>
           </section>
-
+         
         </div>
       </section>
       <Footer />
