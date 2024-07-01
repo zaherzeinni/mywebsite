@@ -163,10 +163,13 @@ console.log('data in cart',cart)
                       </div>
                     </div>
                   </div>
+
+                  
                 </div>
               </li>
               {[
                 ["Products", "/products"],
+                ["Services", "/services"],
                 ["Contact Us", "/contactus"],
                 ["About Us", "/aboutus"],
               ].map((item, index) => {

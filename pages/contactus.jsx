@@ -142,6 +142,7 @@ function ContactUs({ initialValues }) {
   };
     // ------------------ show / hide the upload button--------------------
   const [show, setShow] = useState(false);
+  const [show1, setShow1] = useState(false);
 
   console.log(show, "showww");
 
@@ -149,8 +150,8 @@ function ContactUs({ initialValues }) {
     if (subjectid.value != undefined) {
       if (subjectid.value == "Trade in") {
         setShow(!show);
-        // }   else if (subject.value == "Other") {
-        //     check2()
+        }   else if (subjectid.value == "feedback") {
+          setShow1(!show1);
         // }   else if (subject.value == "More information") {
         //     check3()
       }
@@ -241,7 +242,7 @@ function ContactUs({ initialValues }) {
                       Full Name
                     </label>
                     <input
-                      className="w-full rounded-lg border p-3 text-sm drop-shadow-xl focus-within:outline-none focus:border-rose-600"
+                      className="w-full rounded-lg border p-3 text-sm drop-shadow-xl focus-within:outline-none focus:border-blue-600"
                       placeholder="Full Name"
                       type="text"
                       id="name"
@@ -257,7 +258,7 @@ function ContactUs({ initialValues }) {
                         Email
                       </label>
                       <input
-                        className="w-full rounded-lg border p-3 text-sm drop-shadow-xl focus-within:outline-none focus:border-rose-600"
+                        className="w-full rounded-lg border p-3 text-sm drop-shadow-xl focus-within:outline-none focus:border-blue-600"
                         placeholder="Email"
                         type="email"
                         id="email"
@@ -271,7 +272,7 @@ function ContactUs({ initialValues }) {
                         Phone Number
                       </label>
                       <input
-                        className="w-full rounded-lg border p-3 text-sm drop-shadow-xl focus-within:outline-none focus:border-rose-600"
+                        className="w-full rounded-lg border p-3 text-sm drop-shadow-xl focus-within:outline-none focus:border-blue-600"
                         placeholder="03xxxxxx"
                         type="tel"
                         id="phone"
@@ -287,7 +288,7 @@ function ContactUs({ initialValues }) {
                       Subject
                     </label>
                     <select
-                      className="w-full rounded-lg border p-3 text-sm drop-shadow-xl focus-within:outline-none focus:border-rose-600 cursor-pointer"
+                      className="w-full rounded-lg border p-3 text-sm drop-shadow-xl focus-within:outline-none focus:border-blue-600 cursor-pointer"
                       placeholder="Choose subject"
                       type="text"
                       id="subjectid"
@@ -298,20 +299,23 @@ function ContactUs({ initialValues }) {
                       <option value="">Choose subject</option>
 
                       <option onClick={() => setShow(true)} value="Trade in">
-                        To Trade in ; You Should upload 4 Pictures of your phone
+                        Trade in ; You Should upload 4 Pictures of your device
                       </option>
 
-                      <option value="Feedback">Feedback</option>
-                      <option value="Other">Other</option>
+                      <option onClick={() => setShow1(true)} value="feedback">Feedback</option>
+
+
+                      <option value="other">Other</option>
                     </select>
                   </div>
+
                   {show ? (
                     <div>
                       <div className="text-red-500 mb-2 -mt-1 ml-1">
-                        Note: 1.front picture 2.back picture 3.about model
-                        4.battery health
+                        Note: Images About - 1.front view  2.back view 3.about model 
+                        4.battery health 
                       </div>
-                 
+
 
                       <>
                         <div
@@ -329,6 +333,8 @@ function ContactUs({ initialValues }) {
                             image: initialValues?.image || "",
                           }}
                         />
+
+                        
 
                         <Upload
                           //action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
@@ -368,12 +374,18 @@ function ContactUs({ initialValues }) {
                     </div>
                   ) : null}
 
+              {show1 === true ?   
+              <div className="text-blue-600 mb-2 -mt-1 ml-1">
+              Dear customer, please help us with your feedback to Keep Your Website Up to Date.Your opinion is very important to us.
+              </div>
+                : null }
+
                   <div>
                     <label className="ml-1" htmlFor="message">
                       Message
                     </label>
                     <textarea
-                      className="w-full rounded-lg border p-3 text-sm drop-shadow-xl focus-within:outline-none focus:border-rose-600"
+                      className="w-full rounded-lg border p-3 text-sm drop-shadow-xl focus-within:outline-none focus:border-blue-600"
                       placeholder="Message"
                       rows={8}
                       id="message"

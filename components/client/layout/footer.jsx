@@ -47,16 +47,16 @@ export default function Footer() {
                                 </Link>
                             </div>
 
-                            <div className='px-5 py-2'>
+                            {/* <div className='px-4 py-2'>
                                 <Link
-                                    href={'/products?category'}
+                                    href={'/products/category'}
                                     className='text-base leading-6 text-gray-100 hover:text-gray-100 hover:bg-sky-500 px-3 py-2 rounded-md transition-all duration-300'
                                 >
                                     Category
                                 </Link>
-                            </div>
+                            </div> */}
 
-                            <div className='px-6 py-2'>
+                            <div className='px-4 py-2'>
                                 <Link
                                     href='/products'
                                     className='text-base leading-6 text-gray-100 hover:text-gray-100 hover:bg-sky-500 px-3 py-2 rounded-md transition-all duration-300'
@@ -64,9 +64,17 @@ export default function Footer() {
                                     Products
                                 </Link>
                             </div>
-                            <div className='px-5 py-2'>
+                            <div className='px-4 py-2'>
                                 <Link
-                                    href='/tradein'
+                                    href='/services'
+                                    className='text-base leading-6 text-gray-100 hover:text-gray-100 hover:bg-sky-500 px-3 py-2 rounded-md transition-all duration-300'
+                                >
+                                    Services
+                                </Link>
+                            </div>
+                            <div className='px-4 py-2'>
+                                <Link
+                                    href='/contactus#fromContactUs'
                                     className='text-base leading-6 text-gray-100 hover:text-gray-100 hover:bg-sky-500 px-3 py-2 rounded-md transition-all duration-300'
                                 >
                                     Trade In
@@ -80,7 +88,7 @@ export default function Footer() {
                                     Contact Us
                                 </Link>
                             </div>
-                            <div className='px-6 py-2'>
+                            <div className='px-4 py-2'>
                                 <Link
                                     href='/aboutus'
                                     className='text-base leading-6 text-gray-100 hover:text-gray-100 hover:bg-sky-500 px-3 py-2 rounded-md transition-all duration-300'

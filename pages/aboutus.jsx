@@ -128,7 +128,7 @@ export default function AboutUs() {
               </Link>
               </div>
 
-              <div className=" relative flex justify-center  sm:w-[50%] sm:h-[50%] lg:h-[700px] mt-3 mx-auto">
+              <div className=" relative flex justify-center  sm:w-[50%] sm:h-[50%] lg:h-[650px] mt-3 mx-auto">
                 <img src="/tiger.jpg" alt="imagetiger" />
               </div>
             

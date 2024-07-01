@@ -33,9 +33,10 @@ const Support = () => {
 
             <CustomSupportCard 
             title={"Buy and Sell your Product"}
-            desc={"Looking for a new phone or new Laptop? Sell your old phone here for the most cash!"}
+            desc={"Looking for a new phone or new Laptop? Sell your old phone here for the most cash!,you are requesting to fill the form and select 'Trade in' subject."}
             icon={ <FaCalendar className='mt-2 w-14 h-14 text-white bg-blue-500 rounded-2xl p-3 relative -top-8 -right-8' />}
-            buttonText={"Submit an application "}
+            buttonText={"Trade in"}
+            linkText={'/contactus#fromContactUs'}
             />
 
             
