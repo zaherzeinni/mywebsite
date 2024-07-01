@@ -5,6 +5,11 @@ import Navbar from "@/components/client/layout/navbar";
 import Footer from "@/components/client/layout/footer";
 import { Container } from "@chakra-ui/react";
 import Link from "next/link";
+
+
+//https://catchydesign.uk//
+
+
 //import { H1, Paragraph, H4 } from "components/Typography";
 //import { Box, Button, Grid, styled } from "@mui/material";
 
@@ -110,41 +115,43 @@ export default function AboutUs() {
               About Us
             </h1> */}
             
-              <Container className="">
-            <div className=" mx-auto md:mx-16 lg:mx-32 md:absolute lg:w-[200vh] md:w-[180vh] max-w-xs sm:max-w-6xl mt-5 grid-flow-col md:text-end text-start px-10 sm:px-6 lg:px-8">
-              <div >
-              <h1 className="anton-regular text-center text-3xl text-gray-500 justify-center flex mx-auto w-auto">We Are Professional</h1>
+              <Container className=" h-[800px] sm:h-0  mx-auto ">
+            <div className="  mx-auto md:mx-16 lg:mx-32 lg:w-[160vh] md:w-[130vh] max-w-xs sm:max-w-6xl mt-5 grid-flow-col md:text-end text-start px-10 sm:px-6 lg:px-8">
+              <div>
+              <h1 className="anton-regular !text-center !text-3xl text-gray-500 !justify-center !flex !mx-auto ">We Are Professional</h1>
               </div>
              
               <div className="containerabout !justify-center flex">
-              <h3 className="text-[22px] sm:!text-4xl text-center flex">WEB DEVELOPERS</h3>
+              <h3 className="text-[24px] sm:!text-4xl !text-center !flex !mx-auto">WEB DEVELOPERS</h3>
               </div>
               <p className="ultra-regular text-center text-gray-500  !text-sm justify-center flex mx-auto"> Based in the Heart of Beirut</p>
               
               <div className="text-center ">
-              <span className="mx-3 sm:mx-1 text-center">Need A Website?</span>
-              <Link href="/services">
-              <span className="text-blue-600 hover:text-blue-400 text-center ">click here</span>
-              </Link>
+              <span className="mx-1 sm:mx-1 text-center italic">Need A Website?</span>
+              
+              {/* <div className="text-center ">click me</div> */}
+           
               </div>
 
-              <div className=" relative flex justify-center  sm:w-[50%] sm:h-[50%] lg:h-[650px] mt-3 mx-auto">
-                <img src="/tiger.jpg" alt="imagetiger" />
-              </div>
-            
-              {/* <div className="w-48 text-end mx-auto ">
 
-https://catchydesign.uk//
 
-Need A Website?
-Get Online in Just 3 Simple Steps
-Let us build your perfect website today. No need to worry about design, development, domain fees, hosting fees, or security. Just complete the following 3 Steps, and your website will be up and running in 7 working days. No hidden fees or extra charges. Terms & Conditions Apply.
-</div> */}
+              <div className="cardTiger  !mt-72 !relative  ">
+  <div className="imgBoxTiger relative flex justify-center  sm:w-[50%] sm:h-[50%] lg:h-[650px] mt-3 mx-auto">
+    <img src="/tiger.jpg" alt="tiger"/>
+  </div>
+  <div className="detailsTiger">
+  <Link href="/services">
+    <h2 className="text-center text-blue-600 italic underline hover:text-blue-400 !text-2xl !my-10">Need A Website?</h2>
+    </Link>
+    <p className="responsivetext !text-center !justify-center !text-xl !mt-3 ">Get Online in Just 3 Simple Steps
+    Let us build your perfect website today. No need to worry about design, development, domain fees, hosting fees, or security. Just complete the following 3 Steps, and your website will be up and running in 7 working days. No hidden fees or extra charges. Terms & Conditions Apply. </p>
+  </div>
+</div>
             </div>
             </Container>
 
 
-            <article className="grid gap-2 grid-cols-1 mt-10">
+            <article className="grid gap-2 grid-cols-1 sm:!mt-[45rem] md:!mt-0 ">
               <p className=" w-[100%] md:w-[50%]  my-3 text-justify">
                 <b>IT PRO MAX</b> is a small business company located in
                 Lebanon,Beirut. It provides you to buy and sell any product such

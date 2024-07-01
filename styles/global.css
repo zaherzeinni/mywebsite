@@ -639,7 +639,7 @@ div.CodeMirror {
 
 
 
-/* ------------------------aboutus--------------------- */
+/* ------------------------aboutus WEB DEVELOPERS--------------------- */
 
 
 
@@ -669,10 +669,11 @@ h3 {
   margin: 5px;
   background: linear-gradient(
     to right,
-    #7953cd 20%,
+    /* #7953cd 20%,
     #00affa 30%,
     #0190cd 70%,
-    #764ada 80%
+    #764ada 80% */
+    #095fab 20%, #25abe8 50%, #fc0505 60% 
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -680,5 +681,85 @@ h3 {
   -text-fill-color: transparent;
   background-size: 500% auto;
   animation: textShine 5s ease-in-out infinite alternate;
-  
+}
+
+/* ----------------aboutus TIGER CATALOG------------------------ */
+
+
+body{
+  margin:0;
+  padding:0;
+  background:skyblue;
+  font-family:cursive;
+}
+.cardTiger{
+  width:340px;
+  height:500px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%)perspective(2000px);
+  background:#fff;
+  transform-style:preserve-3d;
+  box-shadow:inset 300px 0 50px rgba(0,0,0,.5),0 20px 100px rgba(0,0,0,.5);
+  transition:1s;
+}
+
+.responsive {
+  width: 50%;
+  max-width: 400px;
+  height: 50%;
+}
+
+.responsivetext {
+  font-size: smaller;
+}
+
+.cardTiger:hover{
+  transform:translate(-50%,-50%) perspective(2000px) rotate(-10deg);  
+   box-shadow:inset 20px 0 50px rgba(0,0,0,.5),0 10px 100px rgba(0,0,0,.5);
+}
+.cardTiger:before{
+  content:'';
+  position:absolute;
+  top:-5px;
+  left:0;
+  width:100%;
+  height:5px;
+  /* background:#2196F3; */
+  transform-origin:bottom;
+  transform:skewX(-45deg)
+}
+.cardTiger:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:-5px;
+  width:5px;
+  height:100%;
+  /* background:#2196F3; */
+  transform-origin:left;
+  transform:skewY(-45deg);
+}
+.cardTiger .imgBoxTiger img{
+  height:100%;
+  width:100%;
+}
+
+.cardTiger .imgBoxTiger{
+  width:100%;
+  height:100%;
+  position:relative;
+  transform-origin:left;
+  transition:1s cubic-bezier(.15,1.7,.84,.58);
+}
+.cardTiger:hover .imgBoxTiger{
+  transform:rotateY(-125deg)
+}
+.cardTiger .detailsTiger{
+  position:absolute;
+  top:0;left:0;
+  box-sizing:boreder-box;
+  padding:20px;
+    z-index:-1;
 }
