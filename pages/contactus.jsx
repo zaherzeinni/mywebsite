@@ -171,12 +171,12 @@ function ContactUs({ initialValues }) {
         <img
           src="/contactus.jpg"
           alt="contactus-image"
-          className=" relative  h-[100%]  max-w-screen-3xl w-full    md:!h-[800px] object-fit mx-auto "
+          className=" relative  h-[100%]  max-w-screen-3xl w-full    md:!h-[550px] object-fit mx-auto "
         />
         
       </div>
       <div>
-        <h1 className="anton-regular   opacity-70 absolute md:top-[8%] mx-2 sm:top-[30%] lg:top-[10%] top-[10%] md:right-[35%] lg:right-[65%]   w-96 text-white md:mx-32 md:!text-7xl !text-3xl  font-bold ">
+        <h1 className="anton-regular   opacity-70 absolute md:top-[8%] mx-2 sm:top-[30%] lg:top-[10%] top-[10%] md:right-[35%] lg:right-[55%]   w-96 text-white md:mx-32 md:!text-7xl !text-3xl  font-bold ">
           Contact Us
         </h1>
       </div>
@@ -190,7 +190,7 @@ function ContactUs({ initialValues }) {
             time.We promise to provide support and advice you to get the most out of
             our products.
           </div>
-          <p className="my-4 text-lg duration-200 hover:text-rose-600 md:justify-start">
+          <p className="my-4 text-lg duration-200 hover:text-blue-600 md:justify-start">
             <a
               target={"_blank"}
               rel="noopener noreferrer"
@@ -386,7 +386,7 @@ function ContactUs({ initialValues }) {
                   <div className="mt-4">
                     <button
                       type="submit"
-                      className="inline-flex w-full items-center justify-center rounded-lg bg-rose-600 px-5 py-3 text-white sm:w-auto hover:bg-red-500"
+                      className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-5 py-3 text-white sm:w-auto hover:bg-blue-500"
                     >
                       <span className="font-medium"> Submit </span>
                       <svg

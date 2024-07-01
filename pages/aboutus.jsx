@@ -3,6 +3,8 @@ import Image from "next/image";
 import { NextSeo } from "next-seo";
 import Navbar from "@/components/client/layout/navbar";
 import Footer from "@/components/client/layout/footer";
+import { Container } from "@chakra-ui/react";
+import Link from "next/link";
 //import { H1, Paragraph, H4 } from "components/Typography";
 //import { Box, Button, Grid, styled } from "@mui/material";
 
@@ -77,14 +79,14 @@ export default function AboutUs() {
   return (
     <div>
       <Navbar />
-      <NextSeo title="ITPROMAX | AboutUs" 
+      <NextSeo title="AboutUs | ITPROMAX" 
       description="about us"/>
       <div>
         {/* group-hover:scale-105 transition-all duration-700 ease-in-out */}
         <img
           src="/aboutusIMG.jpg"
           alt="about-image"
-          className=" relative  h-[100%]  max-w-screen-3xl w-full    md:!h-[800px] object-fit mx-auto "
+          className=" relative  h-[100%]  max-w-screen-3xl w-full    md:!h-[550px] object-fit mx-auto "
         />
       </div>
       <div>
@@ -108,21 +110,28 @@ export default function AboutUs() {
               About Us
             </h1> */}
             
-            <div className="  md:absolute mx-auto lg:w-[300vh] md:w-[150vh] max-w-xs sm:max-w-6xl mt-5 grid-flow-col md:text-end text-start px-10 sm:px-6 lg:px-8">
-     
-
+              <Container className="">
+            <div className=" mx-auto md:mx-16 lg:mx-32 md:absolute lg:w-[200vh] md:w-[180vh] max-w-xs sm:max-w-6xl mt-5 grid-flow-col md:text-end text-start px-10 sm:px-6 lg:px-8">
               <div >
-              <h1 className="anton-regular text-3xl text-gray-500 justify-end flex">We Are Professional</h1>
+              <h1 className="anton-regular text-center text-3xl text-gray-500 justify-center flex mx-auto w-auto">We Are Professional</h1>
               </div>
              
-              <div className="wrapper justify-end flex">
-              <h2>WEB DEVELOPERS</h2>
+              <div className="containerabout !justify-center flex">
+              <h3 className="text-[22px] sm:!text-4xl text-center flex">WEB DEVELOPERS</h3>
               </div>
-              <p className="ultra-regular text-gray-500 justify-end flex"> Based in the Heart of Beirut</p>
+              <p className="ultra-regular text-center text-gray-500  !text-sm justify-center flex mx-auto"> Based in the Heart of Beirut</p>
               
-              <div className=" relative flex justify-end md:mx-[70%] sm:w-[30%] sm:h-[30%] mt-3">
+              <div className="text-center ">
+              <span className="mx-3 sm:mx-1 text-center">Need A Website?</span>
+              <Link href="/services">
+              <span className="text-blue-600 hover:text-blue-400 text-center ">click here</span>
+              </Link>
+              </div>
+
+              <div className=" relative flex justify-center  sm:w-[50%] sm:h-[50%] lg:h-[700px] mt-3 mx-auto">
                 <img src="/tiger.jpg" alt="imagetiger" />
               </div>
+            
               {/* <div className="w-48 text-end mx-auto ">
 
 https://catchydesign.uk//
@@ -132,7 +141,7 @@ Get Online in Just 3 Simple Steps
 Let us build your perfect website today. No need to worry about design, development, domain fees, hosting fees, or security. Just complete the following 3 Steps, and your website will be up and running in 7 working days. No hidden fees or extra charges. Terms & Conditions Apply.
 </div> */}
             </div>
-
+            </Container>
 
 
             <article className="grid gap-2 grid-cols-1 mt-10">
@@ -144,7 +153,7 @@ Let us build your perfect website today. No need to worry about design, developm
                 Services, Website Hosting, Web Development using REACT & Next JS
                 ,HTML,CSS,JS ,also we install Surveillance Systems CCTV cameras.
               </p>
-              <h2 className="text-2xl font-bold text-rose-600  w-[90%] md:w-[50%]">
+              <h2 className="text-2xl font-bold text-blue-600  w-[90%] md:w-[50%]">
                 After-Sales Service Support;
               </h2>
               <p className="   my-3   text-justify w-[90%] md:w-[50%]">
@@ -153,7 +162,7 @@ Let us build your perfect website today. No need to worry about design, developm
                 warranty service, training, or repair for a product. We provide
                 for our customers satisfaction and trusted service and sales.
               </p>
-              <h2 className="text-2xl font-bold text-rose-600 w-[90%] md:w-[40%]">
+              <h2 className="text-2xl font-bold text-blue-600 w-[90%] md:w-[40%]">
                 Many services that customer will get it after purchasing any
                 item from us:
               </h2>
@@ -180,7 +189,7 @@ Let us build your perfect website today. No need to worry about design, developm
                 or online.
               </p>
             </article>
-            <h2 className="text-2xl my-10 font-bold text-rose-600  w-[100%] md:w-[50%]">
+            <h2 className="text-2xl my-10 font-bold text-blue-600  w-[100%] md:w-[50%]">
               Services of Mobiles & Computers:
             </h2>
 

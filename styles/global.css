@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 /* #42A5F5 */
 
 
@@ -22,12 +24,12 @@
 }
 
 
-
+/* 
 @layer utilities {
   .container1 {
     @apply mx-12 px-2;
   }
-}
+} */
 
 *{
   scroll-behavior: smooth;
@@ -642,44 +644,41 @@ div.CodeMirror {
 
 
 
-@font-face {
-  font-family: "ubuntu";
-  font-style: italic;
-  font-weight: 300;
-  src: local("Lato Light Italic"), local("Lato-LightItalic"),
-    url(https://fonts.gstatic.com/s/ubuntucondensed/v8/u-4k0rCzjgs5J7oXnJcM_0kACGMtT-Dfqw.woff2)
-      format("woff2");
+.containerabout {
+  font-family: sans-serif;
+  color: #3c3c3c;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
 }
 
-a {
-  text-decoration: none;
-  color: #9ca0b1;
-}
-
-.wrapper {
-  /* text-align: center; */
-  h2 {
-    color: #fff;
-    font-size: 30px;
-    text-transform: uppercase;
-    font-weight: 750;
-    font-family: "Josefin Sans", sans-serif;
-    background: linear-gradient(to right,#095fab 10%, #25abe8 50%, #57d75b 60%);
-    background-size: auto auto;
-    background-clip: border-box;
-    background-size: 200% auto;
-    color: #fff;
-    background-clip: text;
-   
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: textclip 1.5s linear infinite;
-    display: inline-block;
+@keyframes textShine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
   }
 }
 
-@keyframes textclip {
-  to {
-    background-position: 200% center;
-  }
+h3 {
+  font-size: clamp(2rem, 1.5vw, 3rem);
+  font-weight:bolder;
+  margin: 5px;
+  background: linear-gradient(
+    to right,
+    #7953cd 20%,
+    #00affa 30%,
+    #0190cd 70%,
+    #764ada 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -text-fill-color: transparent;
+  background-size: 500% auto;
+  animation: textShine 5s ease-in-out infinite alternate;
+  
 }
