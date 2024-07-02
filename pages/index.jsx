@@ -14,7 +14,7 @@ import Support from "@/components/client/sections/support";
 import Footer from "@/components/client/layout/footer";
 import { useAuth } from "@/functions/context";
 import Countdown from './comingSoon';
-
+import { NextSeo } from "next-seo";
 
 
 
@@ -86,6 +86,9 @@ export default function Index({
 
   return (
     <div className="scroll-smooth1">
+              <NextSeo title="Home | ITPROMAX" 
+      description="about us"/>
+  
        <Countdown />
       {/* {modalOpen === true && 
       <FireWork/> } */}

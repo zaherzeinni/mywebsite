@@ -34,10 +34,9 @@ import { orderBy, where } from "firebase/firestore";
 //import MainLayout from "components/ProjectComponents/mainLayout";
 import ClientLayout from "@/components/client/layout/clientLayout";
 import Footer from "@/components/client/layout/footer";
-import { chakra } from "@chakra-ui/react";
 import { FcCheckmark } from "react-icons/fc";
 import { VscClose } from "react-icons/vsc";
-
+import { NextSeo } from "next-seo";
 
 import { FacebookShareButton, FacebookIcon,FacebookMessengerShareButton,FacebookMessengerIcon,EmailShareButton,EmailIcon,WhatsappIcon,TelegramShareButton,TelegramIcon} from 'react-share';
 import { message } from "antd";
@@ -132,11 +131,10 @@ export default function ProductSingle({products,category,subcategory}) {
  
 
   useEffect(() => {
-    const currentUrl = window.location.href;
+    const currentUrl = window.parent.location.href;
     console.log(currentUrl, "urlllllllll");
     setGetUrl(currentUrl);
-  }, []);
-
+  }, );
 
 
 
@@ -209,19 +207,11 @@ console.log(product.title,"product Titleee")
 // const filterProduct = products?.find((item) => item.subcategory === product.subcategory)
 // console.log(filterProduct,"filter productttt")
 
-
-function refreshPage(){  
-  window.parent.location = window.parent.location.href; 
-                        }
-
   return (
     <div>
-      
+        <NextSeo title="Product | ITPROMAX" 
+      description="about us"/>
   
-                {/* <pre></pre>—Monospaced text, preserving spaces and line breaks */}
-              {/* <pre> hi       no       100$    <br/>  
-              by       yes      200%
-        </pre> */}
 
       <ClientLayout />
       <Box className="">

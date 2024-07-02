@@ -3,6 +3,7 @@ import { useForm } from "@formcarry/react";
 
 import { CheckCircleIcon } from "@heroicons/react/outline";
 import { NextSeo } from "next-seo";
+import AdvertiseBar from "@/components/common/advertiseBar";
 import Navbar from "@/components/client/layout/navbar";
 import Footer from "@/components/client/layout/footer";
 import Link from "next/link";
@@ -161,9 +162,10 @@ function ContactUs({ initialValues }) {
   return (
     <>
       <NextSeo
-        title="ITPROMAX-Contact Us"
+        title="ContactUs | ITPROMAX"
         description="ITPROMAX is a small business "
       />
+      <AdvertiseBar />
       <Navbar />
       <a href="#fromContactUs">
       <div>
