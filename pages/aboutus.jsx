@@ -120,16 +120,16 @@ export default function AboutUs() {
               About Us
             </h1> */}
             
-              <Container className=" h-[800px] sm:h-0  mx-auto ">
-            <div className="  mx-auto md:mx-16 lg:mx-32 sm:w-[100vh] md:w-[180vh] lg:w-[200vh]  max-w-xs sm:max-w-6xl mt-5 grid-flow-col md:text-end text-start px-10 sm:px-6 lg:px-8">
+              <Container className=" h-[800px] sm:h-0 !w-full mx-auto ">
+            <div className="  mx-auto md:mx-16 lg:mx-32 sm:w-[100vh] md:w-[180vh] lg:w-[200vh]  max-w-xs sm:max-w-6xl mt-5 grid-flow-col md:text-end text-start px-1 sm:px-6 lg:px-8">
               <div>
-              <h1 className="anton-regular !text-center sm:!text-3xl !text-lg text-gray-500 !justify-center !mx-auto ">We Are Professional</h1>
+              <h1 className="anton-regular !text-center sm:!text-3xl !text-2xl text-gray-500 !justify-center !mx-auto ">We Are Professional</h1>
               </div>
              
               <div className="containerabout !justify-center flex">
-              <h3 className="text-[24px] sm:!text-4xl !text-xl !text-center !mx-auto">WEB DEVELOPERS</h3>
+              <h3 className=" sm:!text-4xl !text-center !mx-auto">WEB DEVELOPERS</h3>
               </div>
-              <p className="ultra-regular text-center text-gray-500  !text-sm justify-center flex mx-auto"> Based in the Heart of Beirut</p>
+              <p className="anton-regular text-center text-gray-500  !text-lg justify-center flex mx-auto"> Based in the Heart of Beirut</p>
               
               <div className="text-center ">
               <span className="mx-1 sm:mx-1 text-center italic">Need A Website?</span>

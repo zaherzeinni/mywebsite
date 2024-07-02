@@ -664,7 +664,7 @@ div.CodeMirror {
 }
 
 h3 {
-  font-size: clamp(2rem, 1.5vw, 3rem);
+  font-size: clamp(1.8rem, 1.5vw, 3rem);
   font-weight:bolder;
   margin: 5px;
   background: linear-gradient(
